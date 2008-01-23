@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE XMI SYSTEM "C:\Documents and Settings\adriano.NASAJON\.netbeans\6.0\.uml\config\UML_2.0EMBT.dtd"> --><XMI xmlns:UML="omg.org/UML/1.4" xmi.version="2.0"> <XMI.header> <XMI.metamodel xmi.name="UML" xmi.version="1.4"/> <XMI.documentation> <XMI.exporter> Embarcadero's Describe </XMI.exporter> <XMI.exporterVersion> 6.0 </XMI.exporterVersion> </XMI.documentation> </XMI.header> <XMI.content> <UML:Project xmi.id="DCE.A36E28E1-4EBB-5146-E8D3-8F18E886ADFC" mode="Implementation" defaultLanguage="Java" projVersion="6.1.4.837" name="Modelo"><UML:Element.ownedElement>
+<UML:Class xmi.id="DCE.60141043-34DD-1AC6-9226-66D9BF04C8C9" name="Licitacao" owner="DCE.A36E28E1-4EBB-5146-E8D3-8F18E886ADFC"><UML:Element.presentation>
+</UML:Element.presentation><UML:Element.ownedElement>
+<UML:Operation xmi.id="DCE.3FD84003-EAF7-7561-DA15-EC79044B80F0" name="Licitacao" isConstructor="true" owner="DCE.60141043-34DD-1AC6-9226-66D9BF04C8C9"/></UML:Element.ownedElement></UML:Class></UML:Element.ownedElement></UML:Project></XMI.content> </XMI>
