@@ -18,12 +18,30 @@
             <graphs>
                 <graph id="3">
                     <name/>
+                    <margins>
+                        <proportional bottom="0.0" left="0.0" right="0.0" top="0.0"/>
+                        <constant bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                    </margins>
+                    <url/>
+                    <graphics type="basicGraph">
+                        <backgroundColor value="255 255 255"/>
+                        <imageUsed/>
+                        <imageTiled value="false"/>
+                        <imageStyle value="WORLD_OFFSET"/>
+                        <imageMinTileStep value="25"/>
+                        <imageX value="0.0"/>
+                        <imageY value="0.0"/>
+                        <drawNodesBeforeEdges value="true"/>
+                    </graphics>
+                </graph>
+                <graph id="4">
+                    <name/>
                     <nodes>
-                        <node id="4">
+                        <node id="5">
                             <name/>
-                            <center x="-112.0" y="75.0"/>
-                            <size height="112.0" width="128.0"/>
-                            <originalSize height="112.0" width="128.0"/>
+                            <center x="-65.0" y="49.5"/>
+                            <size height="163.0" width="222.0"/>
+                            <originalSize height="163.0" width="222.0"/>
                             <shape resource="0"/>
                             <url/>
                             <visible value="true"/>
@@ -38,6 +56,27 @@
                                 <justification value="CENTER"/>
                                 <childGraphMark value="true"/>
                                 <PEID value="DCE.493CB0B0-6802-D517-09C1-947E9CDD6BA6"/>
+                            </graphics>
+                        </node>
+                        <node id="6">
+                            <name/>
+                            <center x="112.0" y="-208.5"/>
+                            <size height="159.0" width="218.0"/>
+                            <originalSize height="159.0" width="218.0"/>
+                            <shape resource="0"/>
+                            <url/>
+                            <visible value="true"/>
+                            <resizability value="RESIZABILITY_NO_FIT"/>
+                            <graphics type="ETGenericNodeUI">
+                                <fillColor value="204 204 204"/>
+                                <borderColor value="0 0 0"/>
+                                <transparent value="false"/>
+                                <drawBorder value="true"/>
+                                <textFont resource="1"/>
+                                <textColor value="0 0 0"/>
+                                <justification value="CENTER"/>
+                                <childGraphMark value="true"/>
+                                <PEID value="DCE.0562CBE0-B482-57C5-6868-1808C49C7DFC"/>
                             </graphics>
                         </node>
                     </nodes>
@@ -58,7 +97,7 @@
                     </graphics>
                 </graph>
             </graphs>
-            <rootGraph value="3"/>
+            <rootGraph value="4"/>
         </instances>
     </graphManager>
     <serviceInput type="jlayout">
