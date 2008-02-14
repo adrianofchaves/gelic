@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMI xmlns:UML="omg.org/UML/1.4" xmi.version="2.0">
+   <XMI.header>
+      <XMI.metamodel xmi.name="UML" xmi.version="1.4"/>
+		<XMI.documentation>
+			<XMI.exporter>
+				Embarcadero's Describe
+			</XMI.exporter>
+			<XMI.exporterVersion>
+				6.0
+			</XMI.exporterVersion>
+		</XMI.documentation>
+   </XMI.header>
+
+   <XMI.content>
+   <UML:Profile xmi.id="DCE.0143DBC9-9346-319A-7E7F-CDA49B6F2A29" name="Unnamed" isCloned="true" href="D:\Adriano\Documentos\NetBeansProjects\Estacio\ProFin\workcopy\Projeto\Modelo\Modelo.etup#//*[@xmi.id=&apos;DCE.0143DBC9-9346-319A-7E7F-CDA49B6F2A29&apos;]" isDirty="false"><UML:Element.ownedElement>
+<UML:Stereotype xmi.id="DCE.41EF13BE-4C6C-6956-3876-47275A222C37" name="JSP" owner="__uri_.\Modelo.etup#//*[@xmi.id=&apos;DCE.0143DBC9-9346-319A-7E7F-CDA49B6F2A29&apos;]"/>
+<UML:Stereotype xmi.id="DCE.1C04ABF5-98A5-0E5C-CE1C-6E3A4A0749F0" name="JSP" owner="__uri_.\Modelo.etup#//*[@xmi.id=&apos;DCE.0143DBC9-9346-319A-7E7F-CDA49B6F2A29&apos;]"/>
+<UML:Stereotype xmi.id="DCE.0695DE66-A28B-D13E-1810-1C67B7776B65" name="JSP" owner="__uri_.\Modelo.etup#//*[@xmi.id=&apos;DCE.0143DBC9-9346-319A-7E7F-CDA49B6F2A29&apos;]"/>
+<UML:Stereotype xmi.id="DCE.09D1BF75-49C5-CB56-6259-D1CD9F234356" name="JSP" owner="__uri_.\Modelo.etup#//*[@xmi.id=&apos;DCE.0143DBC9-9346-319A-7E7F-CDA49B6F2A29&apos;]"/>
+<UML:Stereotype xmi.id="DCE.11D67B34-A4DF-EF88-048A-11B9DFBAFABF" name="JSP" owner="__uri_.\Modelo.etup#//*[@xmi.id=&apos;DCE.0143DBC9-9346-319A-7E7F-CDA49B6F2A29&apos;]"/>
+<UML:Stereotype xmi.id="DCE.8154B515-9E65-8B54-FEA0-6F216E825E4E" name="JSP" owner="__uri_.\Modelo.etup#//*[@xmi.id=&apos;DCE.0143DBC9-9346-319A-7E7F-CDA49B6F2A29&apos;]"/>
+<UML:Stereotype xmi.id="DCE.332C6073-1D8E-EB00-86B3-91331282FB64" name="JSP" owner="__uri_.\Modelo.etup#//*[@xmi.id=&apos;DCE.0143DBC9-9346-319A-7E7F-CDA49B6F2A29&apos;]"/></UML:Element.ownedElement></UML:Profile></XMI.content>
+</XMI>
