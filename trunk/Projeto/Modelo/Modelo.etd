@@ -3036,7 +3036,7 @@
 &lt;br&gt;Assim como pedido de compra, essa classe parece um pouco sem sentido.  
       Podemos criar uma classe 
     &lt;/p&gt;</UML:TaggedValue.dataValue></UML:TaggedValue></UML:Element.ownedElement></UML:Class>
-<UML:Class xmi.id="DCE.112E86A2-421C-44D8-ECCE-3C5EA1946FA5" name="ItemOrdemFornecimento" owner="DCE.E8785FE9-3BE6-D120-9784-B199D033DF09" associationEnd="DCE.32A24480-99C7-B98B-AE97-59176721FDAD DCE.6E482074-D37D-55A4-CF4C-2D0B38456538 DCE.1B7A522C-8F39-2120-E6EE-6DCB83FF7F7B DCE.160282C0-FA8A-DD7F-3711-E5B694FF7A6D DCE.9B155235-72BC-3525-BFA4-CA3B488DBD82"><UML:Element.presentation>
+<UML:Class xmi.id="DCE.112E86A2-421C-44D8-ECCE-3C5EA1946FA5" name="ItemOrdemFornecimento" owner="DCE.E8785FE9-3BE6-D120-9784-B199D033DF09" associationEnd="DCE.32A24480-99C7-B98B-AE97-59176721FDAD DCE.6E482074-D37D-55A4-CF4C-2D0B38456538 DCE.1B7A522C-8F39-2120-E6EE-6DCB83FF7F7B DCE.160282C0-FA8A-DD7F-3711-E5B694FF7A6D DCE.9B155235-72BC-3525-BFA4-CA3B488DBD82" referencingReference="DCE.5DE2D555-3171-141F-4FDA-D08D834EB469"><UML:Element.presentation>
 
 
 
@@ -3057,7 +3057,12 @@
 <UML:Parameter xmi.id="DCE.9CCD3C5B-894B-3510-F79C-B3D27876DD26" type="DCE.BB447044-36E0-09A6-DDB6-4B2DE77F3234" direction="result" owner="DCE.F8E9B826-CC4D-2D5D-5E3E-E1AEE8A22E0B"><UML:TypedElement.multiplicity>
 <UML:Multiplicity xmi.id="DCE.8661B418-FCB0-EBDD-2F89-3BF636531565"/></UML:TypedElement.multiplicity></UML:Parameter>
 <UML:Parameter xmi.id="DCE.4B75C866-9553-B894-D3A0-0733D23BC4B0" type="DCE.FA11EE4C-D1CD-C534-B6A6-828890BA4E88" name="val" owner="DCE.F8E9B826-CC4D-2D5D-5E3E-E1AEE8A22E0B"><UML:TypedElement.multiplicity>
-<UML:Multiplicity xmi.id="DCE.7059AE12-2873-23B1-A035-28BEE5E70C13"/></UML:TypedElement.multiplicity></UML:Parameter></UML:Element.ownedElement></UML:Operation></UML:Element.ownedElement></UML:Class>
+<UML:Multiplicity xmi.id="DCE.7059AE12-2873-23B1-A035-28BEE5E70C13"/></UML:TypedElement.multiplicity></UML:Parameter></UML:Element.ownedElement></UML:Operation>
+<UML:TaggedValue xmi.id="DCE.5D8F29DF-4123-F154-75CF-96D77DFFA0F1" owner="DCE.112E86A2-421C-44D8-ECCE-3C5EA1946FA5" name="documentation">
+<UML:TaggedValue.dataValue>&lt;p style="margin-top: 0"&gt;
+      Comp&amp;#245;e uma ordem de fornecimento.
+    &lt;/p&gt;</UML:TaggedValue.dataValue></UML:TaggedValue>
+<UML:Reference xmi.id="DCE.5DE2D555-3171-141F-4FDA-D08D834EB469" source="DCE.112E86A2-421C-44D8-ECCE-3C5EA1946FA5" owner="DCE.112E86A2-421C-44D8-ECCE-3C5EA1946FA5" target="DCE.16130CBD-3B81-A91D-3DEE-CF3383CD4CFE"/></UML:Element.ownedElement></UML:Class>
 <UML:Class xmi.id="DCE.1520BABD-8AA1-FA2C-E7A6-EFD3D89C4ACC" name="Fornecimento" owner="DCE.E8785FE9-3BE6-D120-9784-B199D033DF09" associationEnd="DCE.7CB226F6-9F73-90A6-E2E4-9740E81F0CE4 DCE.C66CCAE0-88EF-B71F-CD42-E90BBDEFB36A DCE.8C5184ED-1371-58D9-8886-26A977E1D663" referencingReference="DCE.F7EBE3B7-57A2-39AD-5EB5-79297FAF300A DCE.3C230F63-3E94-5F04-A70E-5BDB9F9F6A5C"><UML:Element.presentation>
 
 
@@ -5658,7 +5663,7 @@
 
 
 </UML:Element.presentation></UML:Extend></UML:Element.ownedElement></UML:UseCase>
-<UML:UseCase xmi.id="DCE.16130CBD-3B81-A91D-3DEE-CF3383CD4CFE" name="Incluir Item de Ordem de Fornecimento" owner="DCE.4F8143EA-D547-669D-2ABA-478573276571" extendedBy="DCE.553B2B81-4EE7-F7D6-7048-E22971D2C9CE" referredReference="DCE.3C230F63-3E94-5F04-A70E-5BDB9F9F6A5C"><UML:Element.presentation>
+<UML:UseCase xmi.id="DCE.16130CBD-3B81-A91D-3DEE-CF3383CD4CFE" name="Incluir Item de Ordem de Fornecimento" owner="DCE.4F8143EA-D547-669D-2ABA-478573276571" extendedBy="DCE.553B2B81-4EE7-F7D6-7048-E22971D2C9CE" referredReference="DCE.3C230F63-3E94-5F04-A70E-5BDB9F9F6A5C DCE.5DE2D555-3171-141F-4FDA-D08D834EB469"><UML:Element.presentation>
 
 
 </UML:Element.presentation><UML:Element.ownedElement>
@@ -5676,12 +5681,15 @@
       ordem de fornecimento onde o item ser&amp;#225; inclu&amp;#237;do j&amp;#225; &amp;#233; conhecida pelo 
       sistema. Por conseguinte, &amp;#233; conhecido o contrato (lote) tamb&amp;#233;m.&lt;br&gt;&lt;b&gt;P&amp;#243;s-condi&amp;#231;&amp;#227;o: 
       &lt;/b&gt;Um novo objeto da classe &lt;u&gt;ItemOrdemFornecimento&lt;/u&gt; ser&amp;#225; 
-      instanciado ao final deste caso de uso. O relacionamento deste com a 
-      classe &lt;u&gt;Fornecimento&lt;/u&gt; ser&amp;#225; assinalada.&lt;br&gt;&lt;b&gt;Fluxo T&amp;#237;pico&lt;/b&gt;:&lt;br&gt;1.Sistema 
-      exibe os itens contratados que ainda n&amp;#227;o foram totalmente fornecidos.&lt;br&gt;2.Ator 
-      seleciona item.&lt;br&gt;3.Sistema exibe empresas configuradas para fornecer o 
-      item contratado (pedido-m&amp;#227;e).&lt;br&gt;4.Ator seleciona empresa.&lt;br&gt;5.Ator 
-      informa quantidade.&lt;br&gt;6.Ator confirma inclus&amp;#227;o.
+      instanciado ao final deste caso de uso. O relacionamento deste com 
+      objetos das classes &lt;u&gt;Fornecimento&lt;/u&gt; e &lt;u&gt;LocalEntrega&lt;/u&gt; ser&amp;#227;o 
+      assinalados.&lt;br&gt;&lt;b&gt;Fluxo T&amp;#237;pico&lt;/b&gt;:&lt;br&gt;1.Sistema exibe os itens 
+      contratados que ainda n&amp;#227;o foram totalmente fornecidos.&lt;br&gt;2.Ator 
+      seleciona item.&lt;br&gt;3.Sistema exibe fornecimentos (empresa) para o item 
+      contratado (pedido-m&amp;#227;e).&lt;br&gt;4.Ator seleciona fornecimento.
+&lt;br&gt;5.Sistema exibe locais de entrega do &amp;#243;rg&amp;#227;o contratante.
+&lt;br&gt;6.Ator seleciona local de entrega.&lt;br&gt;7.Ator informa quantidade.&lt;br&gt;8.Ator 
+      confirma inclus&amp;#227;o.
     &lt;/p&gt;</UML:TaggedValue.dataValue></UML:TaggedValue></UML:Element.ownedElement></UML:UseCase>
 <UML:UseCase xmi.id="DCE.BD0E2E59-F9C3-F5C0-EAF2-097C327F0BC3" name="Consultar Ordem Fornecimento" owner="DCE.4F8143EA-D547-669D-2ABA-478573276571" extendedBy="DCE.D32D1955-D87C-5F69-5A88-1538D8BC1C3C DCE.7D2EAD96-BFAB-F214-19F3-EB00BC15C7CB DCE.0828CC7A-9475-D9DF-8E8E-D646B8E2B238"><UML:Element.presentation>
 
@@ -5707,7 +5715,17 @@
 
 
 
-</UML:Element.presentation></UML:Extend></UML:Element.ownedElement></UML:UseCase>
+</UML:Element.presentation></UML:Extend>
+<UML:TaggedValue xmi.id="DCE.9DF0BA41-561C-5269-A560-FEFD96A2A8DA" owner="DCE.BD0E2E59-F9C3-F5C0-EAF2-097C327F0BC3" name="documentation">
+<UML:TaggedValue.dataValue>&lt;p style="margin-top: 0"&gt;
+  &lt;b&gt;ESBO&amp;#199;O&lt;/b&gt;
+&lt;br&gt;
+&lt;br&gt;&lt;b&gt;Item Local Entrega
+&lt;/b&gt;&lt;br&gt;&lt;b&gt;------ -----------------&lt;/b&gt;
+    &lt;/p&gt;
+    &lt;p style="margin-top: 0"&gt;
+  &lt;br&gt;
+    &lt;/p&gt;</UML:TaggedValue.dataValue></UML:TaggedValue></UML:Element.ownedElement></UML:UseCase>
 <UML:UseCase xmi.id="DCE.C2946FD1-801E-6DAF-2DB5-EC558EB758AB" name="Incluir Nota Fiscal de Venda" owner="DCE.4F8143EA-D547-669D-2ABA-478573276571" extendedBy="DCE.7641CFB6-986C-50A4-D1AA-548815C23727"><UML:Element.presentation>
 
 
