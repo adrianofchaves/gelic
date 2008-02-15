@@ -24,8 +24,26 @@
             <graphs>
                 <graph id="4">
                     <name/>
+                    <margins>
+                        <proportional bottom="0.0" left="0.0" right="0.0" top="0.0"/>
+                        <constant bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                    </margins>
+                    <url/>
+                    <graphics type="basicGraph">
+                        <backgroundColor value="255 255 255"/>
+                        <imageUsed/>
+                        <imageTiled value="false"/>
+                        <imageStyle value="WORLD_OFFSET"/>
+                        <imageMinTileStep value="25"/>
+                        <imageX value="0.0"/>
+                        <imageY value="0.0"/>
+                        <drawNodesBeforeEdges value="true"/>
+                    </graphics>
+                </graph>
+                <graph id="5">
+                    <name/>
                     <nodes>
-                        <node id="5">
+                        <node id="6">
                             <name/>
                             <center x="-279.5" y="243.0"/>
                             <size height="95.0" width="155.0"/>
@@ -46,9 +64,9 @@
                                 <PEID value="DCE.31EF98B6-41D2-DB7A-12E7-64B553A6E428"/>
                             </graphics>
                         </node>
-                        <node id="6">
+                        <node id="7">
                             <name value="Registrar Proposta Vencedora"/>
-                            <center x="38.0" y="213.5"/>
+                            <center x="35.0" y="213.5"/>
                             <size height="67.0" width="106.0"/>
                             <originalSize height="67.0" width="106.0"/>
                             <shape resource="0"/>
@@ -69,7 +87,7 @@
                         </node>
                     </nodes>
                     <edges>
-                        <edge id="7" source="6" target="5">
+                        <edge id="8" source="7" target="6">
                             <sourceClipping/>
                             <targetClipping/>
                             <url/>
@@ -103,7 +121,7 @@
                     </graphics>
                 </graph>
             </graphs>
-            <rootGraph value="4"/>
+            <rootGraph value="5"/>
         </instances>
     </graphManager>
     <serviceInput type="jlayout">
