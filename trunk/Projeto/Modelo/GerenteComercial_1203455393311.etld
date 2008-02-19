@@ -16,7 +16,7 @@
                     <name value="SansSerif"/>
                     <bold value="true"/>
                     <italic value="false"/>
-                    <fontHeight value="16"/>
+                    <fontHeight value="12"/>
                 </font>
                 <font id="3">
                     <name value="SansSerif"/>
@@ -30,30 +30,12 @@
             <graphs>
                 <graph id="5">
                     <name/>
-                    <margins>
-                        <proportional bottom="0.0" left="0.0" right="0.0" top="0.0"/>
-                        <constant bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-                    </margins>
-                    <url/>
-                    <graphics type="basicGraph">
-                        <backgroundColor value="255 255 255"/>
-                        <imageUsed/>
-                        <imageTiled value="false"/>
-                        <imageStyle value="WORLD_OFFSET"/>
-                        <imageMinTileStep value="25"/>
-                        <imageX value="0.0"/>
-                        <imageY value="0.0"/>
-                        <drawNodesBeforeEdges value="true"/>
-                    </graphics>
-                </graph>
-                <graph id="6">
-                    <name/>
                     <nodes>
-                        <node id="7">
+                        <node id="6">
                             <name/>
-                            <center x="-356.3" y="423.0"/>
-                            <size height="22.0" width="22.0"/>
-                            <originalSize height="22.0" width="22.0"/>
+                            <center x="-289.0" y="311.0"/>
+                            <size height="95.0" width="155.0"/>
+                            <originalSize height="95.0" width="155.0"/>
                             <shape resource="0"/>
                             <url/>
                             <visible value="true"/>
@@ -67,14 +49,35 @@
                                 <textColor value="0 0 0"/>
                                 <justification value="CENTER"/>
                                 <childGraphMark value="true"/>
-                                <PEID value="DCE.31CFBB9B-6250-925C-0C7C-57E6AAAFC604"/>
+                                <PEID value="DCE.5DD7A632-EEED-4E4B-B910-34BA4C0FD77D"/>
+                            </graphics>
+                        </node>
+                        <node id="7">
+                            <name value="Registrar Proposta Vencedora"/>
+                            <center x="-246.5" y="-41.0"/>
+                            <size height="60.0" width="183.0"/>
+                            <originalSize height="60.0" width="183.0"/>
+                            <shape resource="0"/>
+                            <url/>
+                            <visible value="true"/>
+                            <resizability value="RESIZABILITY_NO_FIT"/>
+                            <graphics type="ETGenericNodeUI">
+                                <fillColor value="204 204 204"/>
+                                <borderColor value="0 0 0"/>
+                                <transparent value="false"/>
+                                <drawBorder value="true"/>
+                                <textFont resource="2"/>
+                                <textColor value="0 0 0"/>
+                                <justification value="CENTER"/>
+                                <childGraphMark value="true"/>
+                                <PEID value="DCE.03907DCF-F411-DFB0-F891-0B5126ED5C63"/>
                             </graphics>
                         </node>
                         <node id="8">
-                            <name value="Aberta"/>
-                            <center x="-10.700000000000045" y="370.8"/>
-                            <size height="80.0" width="150.0"/>
-                            <originalSize height="80.0" width="150.0"/>
+                            <name value="Encerrar Licitação"/>
+                            <center x="119.5" y="20.0"/>
+                            <size height="60.0" width="90.0"/>
+                            <originalSize height="58.09370816599733" width="88.66934404283805"/>
                             <shape resource="0"/>
                             <url/>
                             <visible value="true"/>
@@ -88,14 +91,14 @@
                                 <textColor value="0 0 0"/>
                                 <justification value="CENTER"/>
                                 <childGraphMark value="true"/>
-                                <PEID value="DCE.255D3A62-49FC-23A7-0747-68763FB13A61"/>
+                                <PEID value="DCE.A4187F78-3D8F-24FF-F869-CB7948B7D8AF"/>
                             </graphics>
                         </node>
                         <node id="9">
-                            <name/>
-                            <center x="-424.95217391304345" y="3.474534161490709"/>
-                            <size height="16.0" width="16.0"/>
-                            <originalSize height="16.0" width="16.0"/>
+                            <name value="Home do Gerente Comercial"/>
+                            <center x="-135.5" y="174.0"/>
+                            <size height="60.0" width="90.0"/>
+                            <originalSize height="60.0" width="90.0"/>
                             <shape resource="0"/>
                             <url/>
                             <visible value="true"/>
@@ -105,18 +108,18 @@
                                 <borderColor value="0 0 0"/>
                                 <transparent value="false"/>
                                 <drawBorder value="true"/>
-                                <textFont resource="1"/>
+                                <textFont resource="2"/>
                                 <textColor value="0 0 0"/>
                                 <justification value="CENTER"/>
                                 <childGraphMark value="true"/>
-                                <PEID value="DCE.84E730E1-63F5-8CEE-1C42-2EB35550506D"/>
+                                <PEID value="DCE.DFAB5B09-4CC4-7197-F516-B379F0EA5F01"/>
                             </graphics>
                         </node>
                         <node id="10">
-                            <name value="Encerrada"/>
-                            <center x="-364.9298136645962" y="149.48322981366462"/>
-                            <size height="80.0" width="150.00000000000023"/>
-                            <originalSize height="77.88819875776403" width="148.50683229813666"/>
+                            <name value="Efetuar Login"/>
+                            <center x="26.0" y="227.0"/>
+                            <size height="60.0" width="90.0"/>
+                            <originalSize height="58.09370816599727" width="88.66934404283803"/>
                             <shape resource="0"/>
                             <url/>
                             <visible value="true"/>
@@ -130,14 +133,14 @@
                                 <textColor value="0 0 0"/>
                                 <justification value="CENTER"/>
                                 <childGraphMark value="true"/>
-                                <PEID value="DCE.14CA4D71-EDBD-708C-76DB-9040918CE5BA"/>
+                                <PEID value="DCE.44F9D390-123F-C4AC-B9F3-69B27B5F42F8"/>
                             </graphics>
                         </node>
                         <node id="11">
-                            <name value="Participando"/>
-                            <center x="204.1900621118012" y="13.421118012422362"/>
-                            <size height="79.96521739130435" width="149.54534161490693"/>
-                            <originalSize height="77.00191813587439" width="147.58700976042593"/>
+                            <name value="Consultar Licitação"/>
+                            <center x="-246.0" y="73.0"/>
+                            <size height="60.0" width="120.0"/>
+                            <originalSize height="57.88219178082192" width="118.11095890410962"/>
                             <shape resource="0"/>
                             <url/>
                             <visible value="true"/>
@@ -151,61 +154,56 @@
                                 <textColor value="0 0 0"/>
                                 <justification value="CENTER"/>
                                 <childGraphMark value="true"/>
-                                <PEID value="DCE.574D6A29-FA53-162E-48FB-4D00F0BE8ABC"/>
-                            </graphics>
-                        </node>
-                        <node id="12">
-                            <name value="Contratada"/>
-                            <center x="-355.5664596273293" y="-346.94161490683234"/>
-                            <size height="79.96521739130435" width="149.54534161490687"/>
-                            <originalSize height="77.888198757764" width="147.46832298136644"/>
-                            <shape resource="0"/>
-                            <url/>
-                            <visible value="true"/>
-                            <resizability value="RESIZABILITY_NO_FIT"/>
-                            <graphics type="ETGenericNodeUI">
-                                <fillColor value="204 204 204"/>
-                                <borderColor value="0 0 0"/>
-                                <transparent value="false"/>
-                                <drawBorder value="true"/>
-                                <textFont resource="2"/>
-                                <textColor value="0 0 0"/>
-                                <justification value="CENTER"/>
-                                <childGraphMark value="true"/>
-                                <PEID value="DCE.CD043FE0-3825-A20C-CEA1-4F357C3708A7"/>
-                            </graphics>
-                        </node>
-                        <node id="13">
-                            <name value="Ganha"/>
-                            <center x="146.08695652173918" y="-298.8236024844721"/>
-                            <size height="79.96521739130435" width="149.54534161490687"/>
-                            <originalSize height="77.0019181358744" width="147.58700976042587"/>
-                            <shape resource="0"/>
-                            <url/>
-                            <visible value="true"/>
-                            <resizability value="RESIZABILITY_NO_FIT"/>
-                            <graphics type="ETGenericNodeUI">
-                                <fillColor value="204 204 204"/>
-                                <borderColor value="0 0 0"/>
-                                <transparent value="false"/>
-                                <drawBorder value="true"/>
-                                <textFont resource="2"/>
-                                <textColor value="0 0 0"/>
-                                <justification value="CENTER"/>
-                                <childGraphMark value="true"/>
-                                <PEID value="DCE.E3B96BE8-459D-ED0C-A956-AA8DFA17C859"/>
+                                <PEID value="DCE.50B517D9-06F6-7D11-D1B7-EC963FA75BFB"/>
                             </graphics>
                         </node>
                     </nodes>
                     <edges>
-                        <edge id="14" source="7" target="8">
+                        <edge id="12" source="9" target="10">
+                            <sourceClipping/>
+                            <targetClipping/>
+                            <edgeLabels>
+                                <edgeLabel id="13">
+                                    <name value="&lt;&lt;include&gt;&gt;"/>
+                                    <size height="20.0" width="75.0"/>
+                                    <constantOffset x="0.0" y="-10.0"/>
+                                    <distanceFromSource value="0.5"/>
+                                    <url/>
+                                    <visible value="true"/>
+                                    <resizability value="RESIZABILITY_NO_FIT"/>
+                                    <graphics type="ETGenericEdgeLabelUI">
+                                        <fillColor value="255 255 255"/>
+                                        <borderColor value="0 0 0"/>
+                                        <transparent value="true"/>
+                                        <drawBorder value="false"/>
+                                        <textFont resource="3"/>
+                                        <textColor value="0 0 0"/>
+                                        <justification value="CENTER"/>
+                                        <PEID value="DCE.0754E701-983E-9478-FF67-49D264D3FD4B"/>
+                                    </graphics>
+                                </edgeLabel>
+                            </edgeLabels>
+                            <url/>
+                            <visible value="true"/>
+                            <graphics type="relationEdge">
+                                <lineColor value="0 0 0"/>
+                                <arrowWidth value="6.0"/>
+                                <arrowHeight value="6.0"/>
+                                <arrowType value="NO_ARROW"/>
+                                <bendWidth value="5.0"/>
+                                <bendHeight value="5.0"/>
+                                <antiAliasing value="false"/>
+                                <PEID value="DCE.5856B9D3-C419-31D2-7F6D-B5FD2A98D683"/>
+                            </graphics>
+                        </edge>
+                        <edge id="14" source="8" target="11">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
                                 <edgeLabel id="15">
-                                    <name value="Incluir Licitação"/>
+                                    <name value="&lt;&lt;extend&gt;&gt;"/>
                                     <size height="20.0" width="75.0"/>
-                                    <constantOffset x="0.0" y="10.0"/>
+                                    <constantOffset x="0.0" y="-10.0"/>
                                     <distanceFromSource value="0.5"/>
                                     <url/>
                                     <visible value="true"/>
@@ -218,7 +216,7 @@
                                         <textFont resource="3"/>
                                         <textColor value="0 0 0"/>
                                         <justification value="CENTER"/>
-                                        <PEID value="DCE.2522FD21-02FD-4337-CDE2-0C85F948B3AA"/>
+                                        <PEID value="DCE.629E7696-8027-6964-9F72-673462BC194F"/>
                                     </graphics>
                                 </edgeLabel>
                             </edgeLabels>
@@ -232,160 +230,17 @@
                                 <bendWidth value="5.0"/>
                                 <bendHeight value="5.0"/>
                                 <antiAliasing value="false"/>
-                                <PEID value="DCE.1A1C59BD-E07E-8512-6C45-CA5CF7837594"/>
+                                <PEID value="DCE.29054061-A9F1-E454-973B-6BB1B4593BE0"/>
                             </graphics>
                         </edge>
-                        <edge id="16" source="10" target="9">
-                            <sourceClipping/>
-                            <targetClipping/>
-                            <url/>
-                            <visible value="true"/>
-                            <graphics type="relationEdge">
-                                <lineColor value="0 0 0"/>
-                                <arrowWidth value="6.0"/>
-                                <arrowHeight value="6.0"/>
-                                <arrowType value="NO_ARROW"/>
-                                <bendWidth value="5.0"/>
-                                <bendHeight value="5.0"/>
-                                <antiAliasing value="false"/>
-                                <PEID value="DCE.65397C96-E014-C067-E83F-D052BFF10C09"/>
-                            </graphics>
-                        </edge>
-                        <edge id="17" source="8" target="11">
+                        <edge id="16" source="7" target="11">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="18">
-                                    <name value="Cadastrar Proposta"/>
-                                    <size height="20.0" width="74.99999999999996"/>
-                                    <constantOffset x="0.0" y="10.0"/>
-                                    <distanceFromSource value="0.5"/>
-                                    <url/>
-                                    <visible value="true"/>
-                                    <resizability value="RESIZABILITY_NO_FIT"/>
-                                    <graphics type="ETGenericEdgeLabelUI">
-                                        <fillColor value="255 255 255"/>
-                                        <borderColor value="0 0 0"/>
-                                        <transparent value="true"/>
-                                        <drawBorder value="false"/>
-                                        <textFont resource="3"/>
-                                        <textColor value="0 0 0"/>
-                                        <justification value="CENTER"/>
-                                        <PEID value="DCE.55E8E6A8-C66B-A965-CE05-1AC036E41D22"/>
-                                    </graphics>
-                                </edgeLabel>
-                            </edgeLabels>
-                            <url/>
-                            <visible value="true"/>
-                            <graphics type="relationEdge">
-                                <lineColor value="0 0 0"/>
-                                <arrowWidth value="6.0"/>
-                                <arrowHeight value="6.0"/>
-                                <arrowType value="NO_ARROW"/>
-                                <bendWidth value="5.0"/>
-                                <bendHeight value="5.0"/>
-                                <antiAliasing value="false"/>
-                                <PEID value="DCE.6E075464-2EC5-ABCB-5209-A4A80F9D6499"/>
-                            </graphics>
-                        </edge>
-                        <edge id="19" source="11" target="10">
-                            <sourceClipping/>
-                            <targetClipping/>
-                            <edgeLabels>
-                                <edgeLabel id="20">
-                                    <name value="Encerrar Licitação"/>
-                                    <size height="20.00000000000003" width="75.0"/>
-                                    <constantOffset x="-6.172856936832076" y="-25.819793082494854"/>
-                                    <distanceFromSource value="0.5050917654202263"/>
-                                    <url/>
-                                    <visible value="true"/>
-                                    <resizability value="RESIZABILITY_NO_FIT"/>
-                                    <graphics type="ETGenericEdgeLabelUI">
-                                        <fillColor value="255 255 255"/>
-                                        <borderColor value="0 0 0"/>
-                                        <transparent value="true"/>
-                                        <drawBorder value="false"/>
-                                        <textFont resource="3"/>
-                                        <textColor value="0 0 0"/>
-                                        <justification value="CENTER"/>
-                                        <PEID value="DCE.D2F7164A-D10D-34A3-95B8-309C1E4A506A"/>
-                                    </graphics>
-                                </edgeLabel>
-                            </edgeLabels>
-                            <url/>
-                            <visible value="true"/>
-                            <graphics type="relationEdge">
-                                <lineColor value="0 0 0"/>
-                                <arrowWidth value="6.0"/>
-                                <arrowHeight value="6.0"/>
-                                <arrowType value="NO_ARROW"/>
-                                <bendWidth value="5.0"/>
-                                <bendHeight value="5.0"/>
-                                <antiAliasing value="false"/>
-                                <PEID value="DCE.F36A5851-7E35-E06E-D2B3-D43E78A21A1A"/>
-                            </graphics>
-                        </edge>
-                        <edge id="21" source="8" target="10">
-                            <sourceClipping/>
-                            <targetClipping/>
-                            <edgeLabels>
-                                <edgeLabel id="22">
-                                    <name value="Encerrar Licitação"/>
+                                <edgeLabel id="17">
+                                    <name value="&lt;&lt;extend&gt;&gt;"/>
                                     <size height="20.0" width="75.0"/>
-                                    <constantOffset x="-3.4981050508942246" y="5.598911909450777"/>
-                                    <distanceFromSource value="0.5302993288596707"/>
-                                    <url/>
-                                    <visible value="true"/>
-                                    <resizability value="RESIZABILITY_NO_FIT"/>
-                                    <graphics type="ETGenericEdgeLabelUI">
-                                        <fillColor value="255 255 255"/>
-                                        <borderColor value="0 0 0"/>
-                                        <transparent value="true"/>
-                                        <drawBorder value="false"/>
-                                        <textFont resource="3"/>
-                                        <textColor value="0 0 0"/>
-                                        <justification value="CENTER"/>
-                                        <PEID value="DCE.FC5E7AAB-70E0-EDA9-0EBB-E3EDD33FD648"/>
-                                    </graphics>
-                                </edgeLabel>
-                            </edgeLabels>
-                            <url/>
-                            <visible value="true"/>
-                            <graphics type="relationEdge">
-                                <lineColor value="0 0 0"/>
-                                <arrowWidth value="6.0"/>
-                                <arrowHeight value="6.0"/>
-                                <arrowType value="NO_ARROW"/>
-                                <bendWidth value="5.0"/>
-                                <bendHeight value="5.0"/>
-                                <antiAliasing value="false"/>
-                                <PEID value="DCE.934A45B6-A461-BC6A-2A5D-B4716432FC54"/>
-                            </graphics>
-                        </edge>
-                        <edge id="23" source="12" target="9">
-                            <sourceClipping/>
-                            <targetClipping/>
-                            <url/>
-                            <visible value="true"/>
-                            <graphics type="relationEdge">
-                                <lineColor value="0 0 0"/>
-                                <arrowWidth value="6.0"/>
-                                <arrowHeight value="6.0"/>
-                                <arrowType value="NO_ARROW"/>
-                                <bendWidth value="5.0"/>
-                                <bendHeight value="5.0"/>
-                                <antiAliasing value="false"/>
-                                <PEID value="DCE.DD976958-E022-4F07-8992-C39A761D0288"/>
-                            </graphics>
-                        </edge>
-                        <edge id="24" source="11" target="13">
-                            <sourceClipping/>
-                            <targetClipping/>
-                            <edgeLabels>
-                                <edgeLabel id="25">
-                                    <name value="Registrar Proposta Vencedora"/>
-                                    <size height="24.0" width="205.0"/>
-                                    <constantOffset x="0.0" y="10.0"/>
+                                    <constantOffset x="0.0" y="-10.0"/>
                                     <distanceFromSource value="0.5"/>
                                     <url/>
                                     <visible value="true"/>
@@ -398,7 +253,7 @@
                                         <textFont resource="3"/>
                                         <textColor value="0 0 0"/>
                                         <justification value="CENTER"/>
-                                        <PEID value="DCE.F5A56C5E-7F85-FC9C-9ADD-058D9CEA210C"/>
+                                        <PEID value="DCE.5987D2C8-5D48-B044-9AAA-1A7CD2CB8718"/>
                                     </graphics>
                                 </edgeLabel>
                             </edgeLabels>
@@ -412,18 +267,18 @@
                                 <bendWidth value="5.0"/>
                                 <bendHeight value="5.0"/>
                                 <antiAliasing value="false"/>
-                                <PEID value="DCE.4244B430-2F6F-77C0-8EB1-9665D2CAB9A2"/>
+                                <PEID value="DCE.4126724B-C243-E4A3-207A-D36D954CE3D6"/>
                             </graphics>
                         </edge>
-                        <edge id="26" source="13" target="12">
+                        <edge id="18" source="11" target="9">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="27">
-                                    <name value="Incluir Contrato"/>
-                                    <size height="24.0" width="106.00000000000007"/>
-                                    <constantOffset x="-1.3871605875797712" y="14.461816115733143"/>
-                                    <distanceFromSource value="0.4783639824270438"/>
+                                <edgeLabel id="19">
+                                    <name value="&lt;&lt;extend&gt;&gt;"/>
+                                    <size height="20.0" width="75.0"/>
+                                    <constantOffset x="0.0" y="-10.0"/>
+                                    <distanceFromSource value="0.5"/>
                                     <url/>
                                     <visible value="true"/>
                                     <resizability value="RESIZABILITY_NO_FIT"/>
@@ -435,7 +290,7 @@
                                         <textFont resource="3"/>
                                         <textColor value="0 0 0"/>
                                         <justification value="CENTER"/>
-                                        <PEID value="DCE.986EAFA1-3FBB-3D11-F4B9-D0E632AA5D8C"/>
+                                        <PEID value="DCE.BBBB9BEC-BD05-85BF-190B-3EEFE2A3F2EC"/>
                                     </graphics>
                                 </edgeLabel>
                             </edgeLabels>
@@ -449,7 +304,23 @@
                                 <bendWidth value="5.0"/>
                                 <bendHeight value="5.0"/>
                                 <antiAliasing value="false"/>
-                                <PEID value="DCE.FA14CB7E-6039-7273-7BEC-279F99CCF8C4"/>
+                                <PEID value="DCE.9FC474D5-22B7-9A5B-43F1-66CFA46C7ADC"/>
+                            </graphics>
+                        </edge>
+                        <edge id="20" source="6" target="9">
+                            <sourceClipping/>
+                            <targetClipping/>
+                            <url/>
+                            <visible value="true"/>
+                            <graphics type="relationEdge">
+                                <lineColor value="0 0 0"/>
+                                <arrowWidth value="6.0"/>
+                                <arrowHeight value="6.0"/>
+                                <arrowType value="NO_ARROW"/>
+                                <bendWidth value="5.0"/>
+                                <bendHeight value="5.0"/>
+                                <antiAliasing value="false"/>
+                                <PEID value="DCE.EE12A89C-C66F-3829-BC1E-048E41199636"/>
                             </graphics>
                         </edge>
                     </edges>
@@ -470,7 +341,7 @@
                     </graphics>
                 </graph>
             </graphs>
-            <rootGraph value="6"/>
+            <rootGraph value="5"/>
         </instances>
     </graphManager>
     <serviceInput type="jlayout">
