@@ -48,8 +48,26 @@
                 </graph>
                 <graph id="6">
                     <name/>
+                    <margins>
+                        <proportional bottom="0.0" left="0.0" right="0.0" top="0.0"/>
+                        <constant bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                    </margins>
+                    <url/>
+                    <graphics type="basicGraph">
+                        <backgroundColor value="255 255 255"/>
+                        <imageUsed/>
+                        <imageTiled value="false"/>
+                        <imageStyle value="WORLD_OFFSET"/>
+                        <imageMinTileStep value="25"/>
+                        <imageX value="0.0"/>
+                        <imageY value="0.0"/>
+                        <drawNodesBeforeEdges value="true"/>
+                    </graphics>
+                </graph>
+                <graph id="7">
+                    <name/>
                     <nodes>
-                        <node id="7">
+                        <node id="8">
                             <name/>
                             <center x="-471.6666666666667" y="381.0"/>
                             <size height="22.0" width="22.0"/>
@@ -70,7 +88,7 @@
                                 <PEID value="DCE.795DDB2C-D962-66BB-A915-3F951358A1DA"/>
                             </graphics>
                         </node>
-                        <node id="8">
+                        <node id="9">
                             <name value="Cadastrado"/>
                             <center x="-6.666666666666671" y="353.3333333333333"/>
                             <size height="80.0" width="150.0"/>
@@ -91,7 +109,7 @@
                                 <PEID value="DCE.6169F12F-7096-3A82-EF35-364C07B7C6F6"/>
                             </graphics>
                         </node>
-                        <node id="9">
+                        <node id="10">
                             <name value="Proposto"/>
                             <center x="390.0" y="282.66666666666663"/>
                             <size height="80.0" width="150.0"/>
@@ -112,7 +130,7 @@
                                 <PEID value="DCE.73A2C786-7810-9049-32BF-24C3216AA1EA"/>
                             </graphics>
                         </node>
-                        <node id="10">
+                        <node id="11">
                             <name value="Contratado"/>
                             <center x="-388.648275862069" y="266.5209195402299"/>
                             <size height="79.99999999999977" width="150.0"/>
@@ -133,7 +151,7 @@
                                 <PEID value="DCE.1BBE244E-BF08-2C0B-5D21-E3AB184DB35E"/>
                             </graphics>
                         </node>
-                        <node id="11">
+                        <node id="12">
                             <name value="Encerrado"/>
                             <center x="-390.23126436781604" y="-593.2137931034483"/>
                             <size height="80.0" width="150.0"/>
@@ -154,7 +172,7 @@
                                 <PEID value="DCE.B84FFA60-65AC-8C51-731E-80F589B6D06E"/>
                             </graphics>
                         </node>
-                        <node id="12">
+                        <node id="13">
                             <name value="Ganho"/>
                             <center x="367.65195402298855" y="7.494712643678135"/>
                             <size height="80.0" width="150.0"/>
@@ -175,7 +193,7 @@
                                 <PEID value="DCE.5BCFC58F-C2FC-D3A1-E5E5-A77298349106"/>
                             </graphics>
                         </node>
-                        <node id="13">
+                        <node id="14">
                             <name value="Completo"/>
                             <center x="-395.85517241379307" y="-359.67586206896556"/>
                             <size height="80.0" width="149.9999999999999"/>
@@ -196,7 +214,7 @@
                                 <PEID value="DCE.F4C01752-5040-877F-EB6F-ECA788DC873B"/>
                             </graphics>
                         </node>
-                        <node id="14">
+                        <node id="15">
                             <name value="Entregue"/>
                             <center x="29.37609195402301" y="-438.2841379310345"/>
                             <size height="80.0" width="150.0"/>
@@ -217,7 +235,7 @@
                                 <PEID value="DCE.E1884481-BF12-2836-128E-AED209F5FD60"/>
                             </graphics>
                         </node>
-                        <node id="15">
+                        <node id="16">
                             <name value="Faturado"/>
                             <center x="346.9206896551724" y="-206.64344827586208"/>
                             <size height="80.0" width="150.66666666666674"/>
@@ -238,7 +256,7 @@
                                 <PEID value="DCE.B972DD7C-B027-B6C1-CCC8-3F0748F858BD"/>
                             </graphics>
                         </node>
-                        <node id="16">
+                        <node id="17">
                             <name value="Recebido"/>
                             <center x="357.5257471264368" y="-570.9004597701149"/>
                             <size height="80.0" width="150.66666666666652"/>
@@ -259,7 +277,7 @@
                                 <PEID value="DCE.4311CA9A-0913-3B3D-F1D2-BEAE70A880C1"/>
                             </graphics>
                         </node>
-                        <node id="17">
+                        <node id="18">
                             <name/>
                             <center x="-449.10252873563235" y="-499.42919648280326"/>
                             <size height="16.347586206896494" width="16.347586206896608"/>
@@ -280,7 +298,7 @@
                                 <PEID value="DCE.0EFE9706-8A4C-43A3-A6B2-0082DBF470F4"/>
                             </graphics>
                         </node>
-                        <node id="18">
+                        <node id="19">
                             <name value="Configurado"/>
                             <center x="-40.26068965517237" y="-77.1289655172414"/>
                             <size height="80.37563218390807" width="149.85287356321842"/>
@@ -303,11 +321,11 @@
                         </node>
                     </nodes>
                     <edges>
-                        <edge id="19" source="7" target="8">
+                        <edge id="20" source="8" target="9">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="20">
+                                <edgeLabel id="21">
                                     <name value="Incluir Lote"/>
                                     <size height="20.0" width="75.0"/>
                                     <constantOffset x="2.0270270270270316" y="12.83783783783781"/>
@@ -340,11 +358,11 @@
                                 <PEID value="DCE.FE88A218-F490-21A3-1F9A-AF0BAECA6BFB"/>
                             </graphics>
                         </edge>
-                        <edge id="21" source="8" target="9">
+                        <edge id="22" source="9" target="10">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="22">
+                                <edgeLabel id="23">
                                     <name value="Incluir Proposta"/>
                                     <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="10.0"/>
@@ -377,11 +395,11 @@
                                 <PEID value="DCE.13F6640C-7CDF-9DE2-57B4-64131879C74A"/>
                             </graphics>
                         </edge>
-                        <edge id="23" source="12" target="10">
+                        <edge id="24" source="13" target="11">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="24">
+                                <edgeLabel id="25">
                                     <name value="Incluir Contrato"/>
                                     <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="10.0"/>
@@ -414,11 +432,11 @@
                                 <PEID value="DCE.2B7AF684-83D0-49E5-1A92-2CEAF50E07CB"/>
                             </graphics>
                         </edge>
-                        <edge id="25" source="9" target="12">
+                        <edge id="26" source="10" target="13">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="26">
+                                <edgeLabel id="27">
                                     <name value="Proposta Ganha"/>
                                     <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="10.0"/>
@@ -451,13 +469,13 @@
                                 <PEID value="DCE.29C97591-9476-EC66-304A-2B6A95ABBDAA"/>
                             </graphics>
                         </edge>
-                        <edge id="27" source="13" target="14">
+                        <edge id="28" source="14" target="15">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="28">
+                                <edgeLabel id="29">
                                     <name value="Entrega Registrada"/>
-                                    <size height="20.0" width="74.99999999999977"/>
+                                    <size height="20.0" width="75.0"/>
                                     <constantOffset x="-3.388708051910811" y="15.962838638412606"/>
                                     <distanceFromSource value="0.6198342405816025"/>
                                     <url/>
@@ -488,13 +506,13 @@
                                 <PEID value="DCE.2ABAA4A4-14C2-85A3-51E7-C382001AD252"/>
                             </graphics>
                         </edge>
-                        <edge id="29" source="14" target="15">
+                        <edge id="30" source="15" target="16">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="30">
+                                <edgeLabel id="31">
                                     <name value="Faturar Nota Venda"/>
-                                    <size height="20.0" width="74.99999999999994"/>
+                                    <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="10.0"/>
                                     <distanceFromSource value="0.5"/>
                                     <url/>
@@ -525,11 +543,11 @@
                                 <PEID value="DCE.CEB4B0B7-06A0-6883-C7E6-53B4AAB57780"/>
                             </graphics>
                         </edge>
-                        <edge id="31" source="15" target="16">
+                        <edge id="32" source="16" target="17">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="32">
+                                <edgeLabel id="33">
                                     <name value="Registrar Recebimento Nota"/>
                                     <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="10.0"/>
@@ -562,11 +580,11 @@
                                 <PEID value="DCE.C5FD63C7-AC00-7005-398F-989664DE7F80"/>
                             </graphics>
                         </edge>
-                        <edge id="33" source="16" target="11">
+                        <edge id="34" source="17" target="12">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="34">
+                                <edgeLabel id="35">
                                     <name value="Registrar Pagamento Duplicata"/>
                                     <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="10.0"/>
@@ -599,7 +617,7 @@
                                 <PEID value="DCE.4C6A897D-7C67-1FB5-0E07-53050FF13720"/>
                             </graphics>
                         </edge>
-                        <edge id="35" source="11" target="17">
+                        <edge id="36" source="12" target="18">
                             <sourceClipping/>
                             <targetClipping/>
                             <url/>
@@ -615,13 +633,13 @@
                                 <PEID value="DCE.2413904C-4A77-A871-B325-C45F05A97DB8"/>
                             </graphics>
                         </edge>
-                        <edge id="36" source="18" target="13">
+                        <edge id="37" source="19" target="14">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="37">
+                                <edgeLabel id="38">
                                     <name value="Cadastrar Item de Ordem de Fornecimento"/>
-                                    <size height="24.0" width="289.0"/>
+                                    <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="10.0"/>
                                     <distanceFromSource value="0.5"/>
                                     <url/>
@@ -652,13 +670,13 @@
                                 <PEID value="DCE.72A26010-E8E9-9594-C680-A790962741EB"/>
                             </graphics>
                         </edge>
-                        <edge id="38" source="10" target="18">
+                        <edge id="39" source="11" target="19">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="39">
+                                <edgeLabel id="40">
                                     <name value="Gerar pedido mãe"/>
-                                    <size height="24.0" width="124.99999999999994"/>
+                                    <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="10.0"/>
                                     <distanceFromSource value="0.5"/>
                                     <url/>
@@ -675,9 +693,9 @@
                                         <PEID value="DCE.ED5D202E-3E0E-045D-18D1-912736EACF76"/>
                                     </graphics>
                                 </edgeLabel>
-                                <edgeLabel id="40">
+                                <edgeLabel id="41">
                                     <name value="[Todos os ItemLote ficam &quot;Configurado&quot;]"/>
-                                    <size height="24.0" width="270.0"/>
+                                    <size height="20.0" width="75.00000000000003"/>
                                     <constantOffset x="-20.603970818586447" y="-20.888025784045297"/>
                                     <distanceFromSource value="0.5188708163965263"/>
                                     <url/>
@@ -726,7 +744,7 @@
                     </graphics>
                 </graph>
             </graphs>
-            <rootGraph value="6"/>
+            <rootGraph value="7"/>
         </instances>
     </graphManager>
     <serviceInput type="jlayout">
