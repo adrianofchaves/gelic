@@ -48,10 +48,28 @@
                 </graph>
                 <graph id="6">
                     <name/>
+                    <margins>
+                        <proportional bottom="0.0" left="0.0" right="0.0" top="0.0"/>
+                        <constant bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                    </margins>
+                    <url/>
+                    <graphics type="basicGraph">
+                        <backgroundColor value="255 255 255"/>
+                        <imageUsed/>
+                        <imageTiled value="false"/>
+                        <imageStyle value="WORLD_OFFSET"/>
+                        <imageMinTileStep value="25"/>
+                        <imageX value="0.0"/>
+                        <imageY value="0.0"/>
+                        <drawNodesBeforeEdges value="true"/>
+                    </graphics>
+                </graph>
+                <graph id="7">
+                    <name/>
                     <nodes>
-                        <node id="7">
+                        <node id="8">
                             <name value="Pendente"/>
-                            <center x="-165.22035553651742" y="358.1141155136716"/>
+                            <center x="22.000827871778455" y="400.762956521739"/>
                             <size height="80.0" width="149.99999999999983"/>
                             <originalSize height="77.04000000000002" width="147.43862068965515"/>
                             <shape resource="0"/>
@@ -70,9 +88,9 @@
                                 <PEID value="DCE.43F7D9AC-834B-4521-09C7-DE7257E173FA"/>
                             </graphics>
                         </node>
-                        <node id="8">
+                        <node id="9">
                             <name/>
-                            <center x="-525.3231815520811" y="441.07537973870205"/>
+                            <center x="-694.4728221603484" y="422.28097522667235"/>
                             <size height="22.0" width="22.0"/>
                             <originalSize height="22.0" width="22.0"/>
                             <shape resource="0"/>
@@ -91,11 +109,11 @@
                                 <PEID value="DCE.B2CAF2C2-4635-E043-6EC4-749926CF2477"/>
                             </graphics>
                         </node>
-                        <node id="9">
+                        <node id="10">
                             <name value="Solicitado"/>
-                            <center x="-168.62706960805306" y="202.2496149068321"/>
-                            <size height="80.0" width="150.66666666666663"/>
-                            <originalSize height="77.04000000000002" width="147.43862068965518"/>
+                            <center x="-15.380386663810896" y="60.56871935460822"/>
+                            <size height="79.99999999999994" width="150.66666666666663"/>
+                            <originalSize height="78.79192660812453" width="148.9095126722353"/>
                             <shape resource="0"/>
                             <url/>
                             <visible value="true"/>
@@ -112,11 +130,11 @@
                                 <PEID value="DCE.A7F70203-A8C6-E35A-92F8-D86641558B99"/>
                             </graphics>
                         </node>
-                        <node id="10">
+                        <node id="11">
                             <name value="Entregue"/>
-                            <center x="-166.8896540301278" y="-3.8551344327834443"/>
+                            <center x="-550.0063613907331" y="69.1538984793319"/>
                             <size height="80.0" width="150.66666666666674"/>
-                            <originalSize height="80.0" width="150.66666666666666"/>
+                            <originalSize height="79.3892583089027" width="149.88144456594551"/>
                             <shape resource="0"/>
                             <url/>
                             <visible value="true"/>
@@ -133,9 +151,9 @@
                                 <PEID value="DCE.687A9946-3CE8-B025-BB41-644D6F4D709C"/>
                             </graphics>
                         </node>
-                        <node id="11">
+                        <node id="12">
                             <name/>
-                            <center x="-190.02643678160916" y="-88.08068965517242"/>
+                            <center x="-710.4868694224316" y="199.6182717212822"/>
                             <size height="16.0" width="16.0"/>
                             <originalSize height="16.0" width="16.0"/>
                             <shape resource="0"/>
@@ -156,15 +174,15 @@
                         </node>
                     </nodes>
                     <edges>
-                        <edge id="12" source="8" target="7">
+                        <edge id="13" source="9" target="8">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="13">
-                                    <name value="Incuir Item de Ordem de Fornecimento"/>
-                                    <size height="24.0" width="258.99999999999955"/>
-                                    <constantOffset x="0.0" y="10.0"/>
-                                    <distanceFromSource value="0.5"/>
+                                <edgeLabel id="14">
+                                    <name value="Incluir Item de Ordem de Fornecimento"/>
+                                    <size height="24.0" width="262.0"/>
+                                    <constantOffset x="0.5125608752733228" y="17.0664579395758"/>
+                                    <distanceFromSource value="0.49918702252624325"/>
                                     <url/>
                                     <visible value="true"/>
                                     <resizability value="RESIZABILITY_NO_FIT"/>
@@ -193,15 +211,15 @@
                                 <PEID value="DCE.0B2E8334-C201-FB39-2443-2DCBC891C116"/>
                             </graphics>
                         </edge>
-                        <edge id="14" source="7" target="9">
+                        <edge id="15" source="8" target="10">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="15">
+                                <edgeLabel id="16">
                                     <name value="Enviar pedido"/>
                                     <size height="20.0" width="75.0"/>
-                                    <constantOffset x="0.0" y="10.0"/>
-                                    <distanceFromSource value="0.5"/>
+                                    <constantOffset x="-54.86530088370569" y="6.028707599434938"/>
+                                    <distanceFromSource value="0.40139234427348613"/>
                                     <url/>
                                     <visible value="true"/>
                                     <resizability value="RESIZABILITY_NO_FIT"/>
@@ -230,15 +248,15 @@
                                 <PEID value="DCE.706F47E8-0C58-9911-DA42-D271BBBFB60F"/>
                             </graphics>
                         </edge>
-                        <edge id="16" source="9" target="10">
+                        <edge id="17" source="10" target="11">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="17">
+                                <edgeLabel id="18">
                                     <name value="Registrar Entrega"/>
-                                    <size height="19.999999999999915" width="75.0"/>
-                                    <constantOffset x="0.0" y="10.0"/>
-                                    <distanceFromSource value="0.5"/>
+                                    <size height="20.0" width="75.0"/>
+                                    <constantOffset x="0.38103518801528935" y="23.728253754343328"/>
+                                    <distanceFromSource value="0.5009923842970241"/>
                                     <url/>
                                     <visible value="true"/>
                                     <resizability value="RESIZABILITY_NO_FIT"/>
@@ -267,7 +285,7 @@
                                 <PEID value="DCE.F73CD666-FCE9-595B-24CA-EF2DA3637B77"/>
                             </graphics>
                         </edge>
-                        <edge id="18" source="10" target="11">
+                        <edge id="19" source="11" target="12">
                             <sourceClipping/>
                             <targetClipping/>
                             <url/>
@@ -301,7 +319,7 @@
                     </graphics>
                 </graph>
             </graphs>
-            <rootGraph value="6"/>
+            <rootGraph value="7"/>
         </instances>
     </graphManager>
     <serviceInput type="jlayout">

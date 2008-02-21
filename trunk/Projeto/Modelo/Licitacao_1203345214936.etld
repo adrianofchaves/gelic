@@ -48,10 +48,28 @@
                 </graph>
                 <graph id="6">
                     <name/>
+                    <margins>
+                        <proportional bottom="0.0" left="0.0" right="0.0" top="0.0"/>
+                        <constant bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                    </margins>
+                    <url/>
+                    <graphics type="basicGraph">
+                        <backgroundColor value="255 255 255"/>
+                        <imageUsed/>
+                        <imageTiled value="false"/>
+                        <imageStyle value="WORLD_OFFSET"/>
+                        <imageMinTileStep value="25"/>
+                        <imageX value="0.0"/>
+                        <imageY value="0.0"/>
+                        <drawNodesBeforeEdges value="true"/>
+                    </graphics>
+                </graph>
+                <graph id="7">
+                    <name/>
                     <nodes>
-                        <node id="7">
+                        <node id="8">
                             <name/>
-                            <center x="-356.3" y="423.0"/>
+                            <center x="-395.5687099579989" y="410.5153267017297"/>
                             <size height="22.0" width="22.0"/>
                             <originalSize height="22.0" width="22.0"/>
                             <shape resource="0"/>
@@ -70,11 +88,11 @@
                                 <PEID value="DCE.31CFBB9B-6250-925C-0C7C-57E6AAAFC604"/>
                             </graphics>
                         </node>
-                        <node id="8">
+                        <node id="9">
                             <name value="Aberta"/>
-                            <center x="-10.700000000000045" y="370.8"/>
+                            <center x="58.3319111600136" y="327.4493579191514"/>
                             <size height="80.0" width="150.0"/>
-                            <originalSize height="80.0" width="150.0"/>
+                            <originalSize height="77.888198757764" width="147.4683229813665"/>
                             <shape resource="0"/>
                             <url/>
                             <visible value="true"/>
@@ -91,9 +109,9 @@
                                 <PEID value="DCE.255D3A62-49FC-23A7-0747-68763FB13A61"/>
                             </graphics>
                         </node>
-                        <node id="9">
+                        <node id="10">
                             <name/>
-                            <center x="-424.95217391304345" y="3.474534161490709"/>
+                            <center x="498.33751273613245" y="-56.56057996904744"/>
                             <size height="16.0" width="16.0"/>
                             <originalSize height="16.0" width="16.0"/>
                             <shape resource="0"/>
@@ -112,11 +130,11 @@
                                 <PEID value="DCE.84E730E1-63F5-8CEE-1C42-2EB35550506D"/>
                             </graphics>
                         </node>
-                        <node id="10">
+                        <node id="11">
                             <name value="Encerrada"/>
-                            <center x="-364.9298136645962" y="149.48322981366462"/>
+                            <center x="434.01028113166075" y="101.7897305899588"/>
                             <size height="80.0" width="150.00000000000023"/>
-                            <originalSize height="77.88819875776403" width="148.50683229813666"/>
+                            <originalSize height="77.888198757764" width="148.5068322981366"/>
                             <shape resource="0"/>
                             <url/>
                             <visible value="true"/>
@@ -133,11 +151,11 @@
                                 <PEID value="DCE.14CA4D71-EDBD-708C-76DB-9040918CE5BA"/>
                             </graphics>
                         </node>
-                        <node id="11">
+                        <node id="12">
                             <name value="Participando"/>
-                            <center x="204.1900621118012" y="13.421118012422362"/>
-                            <size height="79.96521739130435" width="149.54534161490693"/>
-                            <originalSize height="77.00191813587439" width="147.58700976042593"/>
+                            <center x="-381.71518470684885" y="143.00530811195654"/>
+                            <size height="79.96521739130412" width="149.545341614907"/>
+                            <originalSize height="77.88819875776397" width="147.4683229813665"/>
                             <shape resource="0"/>
                             <url/>
                             <visible value="true"/>
@@ -154,11 +172,11 @@
                                 <PEID value="DCE.574D6A29-FA53-162E-48FB-4D00F0BE8ABC"/>
                             </graphics>
                         </node>
-                        <node id="12">
+                        <node id="13">
                             <name value="Contratada"/>
-                            <center x="-355.5664596273293" y="-346.94161490683234"/>
-                            <size height="79.96521739130435" width="149.54534161490687"/>
-                            <originalSize height="77.888198757764" width="147.46832298136644"/>
+                            <center x="400.6418824119479" y="-263.7034371119047"/>
+                            <size height="79.96521739130458" width="149.54534161490687"/>
+                            <originalSize height="79.96521739130458" width="149.54534161490693"/>
                             <shape resource="0"/>
                             <url/>
                             <visible value="true"/>
@@ -175,11 +193,11 @@
                                 <PEID value="DCE.CD043FE0-3825-A20C-CEA1-4F357C3708A7"/>
                             </graphics>
                         </node>
-                        <node id="13">
+                        <node id="14">
                             <name value="Ganha"/>
-                            <center x="146.08695652173918" y="-298.8236024844721"/>
-                            <size height="79.96521739130435" width="149.54534161490687"/>
-                            <originalSize height="77.0019181358744" width="147.58700976042587"/>
+                            <center x="-217.53948404767957" y="-205.2525521401146"/>
+                            <size height="79.96521739130458" width="149.54534161490693"/>
+                            <originalSize height="79.96521739130458" width="149.54534161490693"/>
                             <shape resource="0"/>
                             <url/>
                             <visible value="true"/>
@@ -198,15 +216,15 @@
                         </node>
                     </nodes>
                     <edges>
-                        <edge id="14" source="7" target="8">
-                            <sourceClipping/>
-                            <targetClipping/>
+                        <edge id="15" source="8" target="9">
+                            <sourceClipping x="0.5" y="3.3583088719395124E-4"/>
+                            <targetClipping x="-0.5" y="-9.235349397798131E-5"/>
                             <edgeLabels>
-                                <edgeLabel id="15">
+                                <edgeLabel id="16">
                                     <name value="Incluir Licitação"/>
                                     <size height="20.0" width="75.0"/>
-                                    <constantOffset x="0.0" y="10.0"/>
-                                    <distanceFromSource value="0.5"/>
+                                    <constantOffset x="9.600965137844469" y="23.21169913225083"/>
+                                    <distanceFromSource value="0.275214010504198"/>
                                     <url/>
                                     <visible value="true"/>
                                     <resizability value="RESIZABILITY_NO_FIT"/>
@@ -235,9 +253,9 @@
                                 <PEID value="DCE.1A1C59BD-E07E-8512-6C45-CA5CF7837594"/>
                             </graphics>
                         </edge>
-                        <edge id="16" source="10" target="9">
-                            <sourceClipping/>
-                            <targetClipping/>
+                        <edge id="17" source="11" target="10">
+                            <sourceClipping x="-2.0115345093292536E-4" y="-0.5"/>
+                            <targetClipping x="0.001885813602496178" y="0.5"/>
                             <url/>
                             <visible value="true"/>
                             <graphics type="relationEdge">
@@ -251,15 +269,15 @@
                                 <PEID value="DCE.65397C96-E014-C067-E83F-D052BFF10C09"/>
                             </graphics>
                         </edge>
-                        <edge id="17" source="8" target="11">
-                            <sourceClipping/>
-                            <targetClipping/>
+                        <edge id="18" source="9" target="12">
+                            <sourceClipping x="-0.3263307740228655" y="-0.5"/>
+                            <targetClipping x="0.24024348094068312" y="0.5"/>
                             <edgeLabels>
-                                <edgeLabel id="18">
+                                <edgeLabel id="19">
                                     <name value="Cadastrar Proposta"/>
-                                    <size height="20.0" width="74.99999999999996"/>
-                                    <constantOffset x="0.0" y="10.0"/>
-                                    <distanceFromSource value="0.5"/>
+                                    <size height="20.0" width="74.99999999999994"/>
+                                    <constantOffset x="-11.580716065282502" y="39.37457725106276"/>
+                                    <distanceFromSource value="0.5731390141181057"/>
                                     <url/>
                                     <visible value="true"/>
                                     <resizability value="RESIZABILITY_NO_FIT"/>
@@ -288,15 +306,15 @@
                                 <PEID value="DCE.6E075464-2EC5-ABCB-5209-A4A80F9D6499"/>
                             </graphics>
                         </edge>
-                        <edge id="19" source="11" target="10">
-                            <sourceClipping/>
-                            <targetClipping/>
+                        <edge id="20" source="12" target="11">
+                            <sourceClipping x="0.5" y="0.0021055667744129727"/>
+                            <targetClipping x="-0.5" y="-0.001955288049523762"/>
                             <edgeLabels>
-                                <edgeLabel id="20">
+                                <edgeLabel id="21">
                                     <name value="Encerrar Licitação"/>
-                                    <size height="20.00000000000003" width="75.0"/>
-                                    <constantOffset x="-6.172856936832076" y="-25.819793082494854"/>
-                                    <distanceFromSource value="0.5050917654202263"/>
+                                    <size height="19.999999999999943" width="74.99999999999983"/>
+                                    <constantOffset x="0.0" y="13.999999999999993"/>
+                                    <distanceFromSource value="0.4545454545454547"/>
                                     <url/>
                                     <visible value="true"/>
                                     <resizability value="RESIZABILITY_NO_FIT"/>
@@ -325,15 +343,15 @@
                                 <PEID value="DCE.F36A5851-7E35-E06E-D2B3-D43E78A21A1A"/>
                             </graphics>
                         </edge>
-                        <edge id="21" source="8" target="10">
-                            <sourceClipping/>
-                            <targetClipping/>
+                        <edge id="22" source="9" target="11">
+                            <sourceClipping x="0.3264031774142668" y="-0.5"/>
+                            <targetClipping x="-0.23956856442569907" y="0.5"/>
                             <edgeLabels>
-                                <edgeLabel id="22">
+                                <edgeLabel id="23">
                                     <name value="Encerrar Licitação"/>
-                                    <size height="20.0" width="75.0"/>
-                                    <constantOffset x="-3.4981050508942246" y="5.598911909450777"/>
-                                    <distanceFromSource value="0.5302993288596707"/>
+                                    <size height="20.0" width="74.99999999999989"/>
+                                    <constantOffset x="20.264260491318225" y="40.453862453160355"/>
+                                    <distanceFromSource value="0.5654628287114793"/>
                                     <url/>
                                     <visible value="true"/>
                                     <resizability value="RESIZABILITY_NO_FIT"/>
@@ -362,9 +380,9 @@
                                 <PEID value="DCE.934A45B6-A461-BC6A-2A5D-B4716432FC54"/>
                             </graphics>
                         </edge>
-                        <edge id="23" source="12" target="9">
-                            <sourceClipping/>
-                            <targetClipping/>
+                        <edge id="24" source="13" target="10">
+                            <sourceClipping x="2.5328287383908537E-4" y="0.5"/>
+                            <targetClipping x="-0.0023673296183437387" y="-0.5"/>
                             <url/>
                             <visible value="true"/>
                             <graphics type="relationEdge">
@@ -378,15 +396,15 @@
                                 <PEID value="DCE.DD976958-E022-4F07-8992-C39A761D0288"/>
                             </graphics>
                         </edge>
-                        <edge id="24" source="11" target="13">
-                            <sourceClipping/>
-                            <targetClipping/>
+                        <edge id="25" source="12" target="14">
+                            <sourceClipping x="3.0501989729215785E-4" y="-0.5"/>
+                            <targetClipping x="-3.0501989729225294E-4" y="0.5"/>
                             <edgeLabels>
-                                <edgeLabel id="25">
+                                <edgeLabel id="26">
                                     <name value="Registrar Proposta Vencedora"/>
-                                    <size height="24.0" width="205.0"/>
-                                    <constantOffset x="0.0" y="10.0"/>
-                                    <distanceFromSource value="0.5"/>
+                                    <size height="20.0" width="74.99999999999994"/>
+                                    <constantOffset x="80.27922837499264" y="49.097786148773196"/>
+                                    <distanceFromSource value="0.8346579513572946"/>
                                     <url/>
                                     <visible value="true"/>
                                     <resizability value="RESIZABILITY_NO_FIT"/>
@@ -415,15 +433,15 @@
                                 <PEID value="DCE.4244B430-2F6F-77C0-8EB1-9665D2CAB9A2"/>
                             </graphics>
                         </edge>
-                        <edge id="26" source="13" target="12">
-                            <sourceClipping/>
-                            <targetClipping/>
+                        <edge id="27" source="14" target="13">
+                            <sourceClipping x="0.5" y="-0.008315386444843748"/>
+                            <targetClipping x="-0.5" y="0.008352767446460343"/>
                             <edgeLabels>
-                                <edgeLabel id="27">
+                                <edgeLabel id="28">
                                     <name value="Incluir Contrato"/>
-                                    <size height="24.0" width="106.00000000000007"/>
-                                    <constantOffset x="-1.3871605875797712" y="14.461816115733143"/>
-                                    <distanceFromSource value="0.4783639824270438"/>
+                                    <size height="20.0" width="75.0"/>
+                                    <constantOffset x="2.251298443480664" y="18.471223149194742"/>
+                                    <distanceFromSource value="0.5459711148774076"/>
                                     <url/>
                                     <visible value="true"/>
                                     <resizability value="RESIZABILITY_NO_FIT"/>
@@ -470,7 +488,7 @@
                     </graphics>
                 </graph>
             </graphs>
-            <rootGraph value="6"/>
+            <rootGraph value="7"/>
         </instances>
     </graphManager>
     <serviceInput type="jlayout">
@@ -557,6 +575,8 @@
             </optionDefaults>
         </defaults>
         <option context="none" name="all:all:none:graphManager" value="4"/>
+        <option context="7" name="layout:all:graph:layoutStyle" value="LAYOUT_STYLE_ORTHOGONAL"/>
+        <option context="7" name="layout:hierarchical:graph:levelDirection" value="DIRECTION_BOTTOM_TO_TOP"/>
     </serviceInput>
     <preferences>
         <preference name="maximumZoomLevel" value="50.0"/>
