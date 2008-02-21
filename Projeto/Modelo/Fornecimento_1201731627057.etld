@@ -48,8 +48,26 @@
                 </graph>
                 <graph id="6">
                     <name/>
+                    <margins>
+                        <proportional bottom="0.0" left="0.0" right="0.0" top="0.0"/>
+                        <constant bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                    </margins>
+                    <url/>
+                    <graphics type="basicGraph">
+                        <backgroundColor value="255 255 255"/>
+                        <imageUsed/>
+                        <imageTiled value="false"/>
+                        <imageStyle value="WORLD_OFFSET"/>
+                        <imageMinTileStep value="25"/>
+                        <imageX value="0.0"/>
+                        <imageY value="0.0"/>
+                        <drawNodesBeforeEdges value="true"/>
+                    </graphics>
+                </graph>
+                <graph id="7">
+                    <name/>
                     <nodes>
-                        <node id="7">
+                        <node id="8">
                             <name/>
                             <center x="-416.5" y="520.0"/>
                             <size height="22.0" width="22.0"/>
@@ -70,11 +88,11 @@
                                 <PEID value="DCE.C16DB961-4507-47A6-B042-C0099CA44E9F"/>
                             </graphics>
                         </node>
-                        <node id="8">
+                        <node id="9">
                             <name value="Configurado"/>
-                            <center x="146.5" y="492.0"/>
+                            <center x="391.4935774429784" y="387.0027525244378"/>
                             <size height="80.0" width="150.0"/>
-                            <originalSize height="78.2332432170856" width="147.20202342162145"/>
+                            <originalSize height="78.2332432170856" width="148.23140820079362"/>
                             <shape resource="0"/>
                             <url/>
                             <visible value="true"/>
@@ -91,7 +109,7 @@
                                 <PEID value="DCE.50CDCD9E-8076-1C17-5CC9-0ECB938F8161"/>
                             </graphics>
                         </node>
-                        <node id="9">
+                        <node id="10">
                             <name value="Completo"/>
                             <center x="-229.5" y="46.0"/>
                             <size height="80.0" width="150.0"/>
@@ -112,33 +130,12 @@
                                 <PEID value="DCE.7816F072-30AE-3F71-46E1-08EF72780E0D"/>
                             </graphics>
                         </node>
-                        <node id="10">
+                        <node id="11">
                             <name/>
-                            <center x="-407.5" y="-220.0"/>
+                            <center x="-527.9380191631449" y="255.57576797754626"/>
                             <size height="16.0" width="16.0"/>
                             <originalSize height="16.0" width="16.0"/>
                             <shape resource="0"/>
-                            <nodeLabels>
-                                <nodeLabel id="11">
-                                    <name value="Unnamed"/>
-                                    <size height="20.0" width="75.0"/>
-                                    <proportionalOffset x="0.0625" y="1.0"/>
-                                    <constantOffset x="0.0" y="10.0"/>
-                                    <url/>
-                                    <visible value="true"/>
-                                    <resizability value="RESIZABILITY_TIGHT_FIT"/>
-                                    <graphics type="ETGenericNodeLabelUI">
-                                        <fillColor value="255 255 255"/>
-                                        <borderColor value="0 0 0"/>
-                                        <transparent value="true"/>
-                                        <drawBorder value="false"/>
-                                        <textFont resource="3"/>
-                                        <textColor value="0 0 0"/>
-                                        <justification value="CENTER"/>
-                                        <PEID value="DCE.16C427C4-FC21-70E5-C162-990AC03D08DF"/>
-                                    </graphics>
-                                </nodeLabel>
-                            </nodeLabels>
                             <url/>
                             <visible value="true"/>
                             <resizability value="RESIZABILITY_NO_FIT"/>
@@ -156,15 +153,15 @@
                         </node>
                     </nodes>
                     <edges>
-                        <edge id="12" source="7" target="8">
+                        <edge id="12" source="8" target="9">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
                                 <edgeLabel id="13">
                                     <name value="Gerar Pedido mãe"/>
-                                    <size height="24.0" width="127.0"/>
-                                    <constantOffset x="0.0" y="10.0"/>
-                                    <distanceFromSource value="0.5"/>
+                                    <size height="20.0" width="75.0"/>
+                                    <constantOffset x="5.127099274783376" y="31.14848888657457"/>
+                                    <distanceFromSource value="0.49879666482336815"/>
                                     <url/>
                                     <visible value="true"/>
                                     <resizability value="RESIZABILITY_NO_FIT"/>
@@ -193,15 +190,15 @@
                                 <PEID value="DCE.266A6CF1-DE61-06D5-5181-639F13CB8CB0"/>
                             </graphics>
                         </edge>
-                        <edge id="14" source="8" target="9">
+                        <edge id="14" source="9" target="10">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
                                 <edgeLabel id="15">
                                     <name value="Incluir Item de Ordem Fornecimento"/>
-                                    <size height="24.0" width="242.0"/>
-                                    <constantOffset x="0.0" y="10.0"/>
-                                    <distanceFromSource value="0.5"/>
+                                    <size height="20.0" width="74.99999999999991"/>
+                                    <constantOffset x="31.421175659496598" y="-57.220500819437376"/>
+                                    <distanceFromSource value="0.4751466266714123"/>
                                     <url/>
                                     <visible value="true"/>
                                     <resizability value="RESIZABILITY_NO_FIT"/>
@@ -218,9 +215,9 @@
                                 </edgeLabel>
                                 <edgeLabel id="16">
                                     <name value="[Fornecimento.Quantidade&lt;= Total(ItemOrdemFornecimento.Quantidade)]"/>
-                                    <size height="24.0" width="492.0"/>
-                                    <constantOffset x="-19.740846096881498" y="16.64250702337995"/>
-                                    <distanceFromSource value="0.3503893634518578"/>
+                                    <size height="20.000000000000114" width="75.00000000000009"/>
+                                    <constantOffset x="-60.40460295832291" y="110.00166481771592"/>
+                                    <distanceFromSource value="0.5463810966941618"/>
                                     <url/>
                                     <visible value="true"/>
                                     <resizability value="RESIZABILITY_NO_FIT"/>
@@ -249,7 +246,7 @@
                                 <PEID value="DCE.FD5715EB-D6F7-BBE8-5B32-EC87AC5C030C"/>
                             </graphics>
                         </edge>
-                        <edge id="17" source="9" target="10">
+                        <edge id="17" source="10" target="11">
                             <sourceClipping/>
                             <targetClipping/>
                             <url/>
@@ -283,7 +280,7 @@
                     </graphics>
                 </graph>
             </graphs>
-            <rootGraph value="6"/>
+            <rootGraph value="7"/>
         </instances>
     </graphManager>
     <serviceInput type="jlayout">
