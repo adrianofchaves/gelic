@@ -15,6 +15,9 @@
     </head>
     <body>
         <h2>Seja bem-vindo ao GELIC.</h2>
+        <BR><BR>Testes de acentos: <BR>
+        áãàâçéèêóòô
+        ÁÀÃÂÇÉÈÊÓÒÔ
         <a href="login.jsp">Clique aqui para começar</a>
     </body>
 </html>
