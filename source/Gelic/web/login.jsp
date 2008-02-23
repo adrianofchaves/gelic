@@ -15,7 +15,7 @@
     </head>
     <body>
         <h2>Login</h2>
-        <form name="login" action="GelicServlet?comando=EfetuarLogin" method="POST">
+        <form name="formlogin" action="GelicServlet?comando=EfetuarLogin" method="POST">
          Digite seu login e senha:<BR><BR><BR>
          Login: <BR>
          <input type="text" name="login" value="" /> <BR>
