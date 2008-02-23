@@ -1,5 +1,5 @@
 /**
- * Representa uma exce
+ * 
  */
 package control.commands;
 
