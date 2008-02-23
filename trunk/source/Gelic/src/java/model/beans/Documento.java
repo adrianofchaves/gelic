@@ -1,5 +1,7 @@
 package model.beans;
 
+import java.sql.Date;
+
 
 /**
  *  <p style="margin-top: 0">

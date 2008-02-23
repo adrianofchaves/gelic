@@ -1,6 +1,6 @@
 package model.beans;
 
-
+import java.sql.Date;
 /**
  *  <p style="margin-top: 0">
  *        Um objeto desta classe representa uma Nota fiscal emitida pela empresa 

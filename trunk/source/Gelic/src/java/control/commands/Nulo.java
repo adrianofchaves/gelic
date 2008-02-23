@@ -18,7 +18,7 @@ public class Nulo implements Comando {
         this.proxima = proxima;
     }
 
-    public String executar(HttpServletRequest req) throws ExcecaoComando {
+    public String executar(HttpServletRequest req) /*throws ExcecaoComando */{
         return proxima;
     }
 }

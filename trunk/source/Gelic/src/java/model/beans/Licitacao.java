@@ -1,6 +1,7 @@
 package model.beans;
 
-import java.util.ArrayList; 
+import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *  <p style="margin-top: 0">

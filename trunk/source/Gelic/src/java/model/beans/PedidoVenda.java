@@ -1,6 +1,6 @@
 package model.beans;
 
-
+import java.sql.Date;
 /**
  *  <p style="margin-top: 0">
  *        <b>obsoleto: </b>ver classe Fornecimento e seus relacionamentos
