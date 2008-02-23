@@ -7,7 +7,7 @@ package control.commands;
  *
  * @author adriano
  */
-class ExcecaoComando extends Exception {
+public class ExcecaoComando extends Exception {
 
     public ExcecaoComando() {
         super();
