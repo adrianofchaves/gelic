@@ -1,4 +1,4 @@
-package model.gelic;
+package model.beans;
 
 
 /**

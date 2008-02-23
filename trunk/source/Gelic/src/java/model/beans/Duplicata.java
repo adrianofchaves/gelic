@@ -1,6 +1,4 @@
-package model.gelic;
-
-import java.sql.Date;
+package model.beans;
 
 
 /**

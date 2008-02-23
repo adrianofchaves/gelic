@@ -1,31 +1,38 @@
-package model.gelic;
+package model.beans;
 
 
+/**
+ *  <p style="margin-top: 0">
+ *    Representa a esp&#233;cie do documento.  
+ *  <br>
+ *  <br><b>Caso de uso: </b> Manter Tipos Documento
+ *      </p>
+ */
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-// #[regen=yes,id=DCE.65C7621A-3EE4-298B-932D-A6D7AC55C9FF]
+// #[regen=yes,id=DCE.E30DA965-77DC-66AB-CA71-5EE32462FA5F]
 // </editor-fold> 
-public class TipoLicitacao {
+public class TipoDocumento {
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.C762CF5B-5989-0E10-9636-D0658322E9F9]
+    // #[regen=yes,id=DCE.CD8DFC0B-A293-0F42-DF06-873E3E10F81A]
     // </editor-fold> 
     private String nome;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.840F2D76-51E7-E850-261A-9FFE3693974F]
+    // #[regen=yes,id=DCE.528AE73E-2A70-D57E-33C1-8026AA7C4E74]
     // </editor-fold> 
-    public TipoLicitacao () {
+    public TipoDocumento () {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.FFD2C5B0-EF14-178B-3DA3-E382EFEEC0D0]
+    // #[regen=yes,regenBody=yes,id=DCE.E5E6F9F0-60BE-77B4-3C64-08D1DADFC4B0]
     // </editor-fold> 
     public String getNome () {
         return nome;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.7A2775BC-9532-2520-38EC-416C818D09D5]
+    // #[regen=yes,regenBody=yes,id=DCE.54D0E8FA-37D4-EF96-500C-6AA2E44BF4EF]
     // </editor-fold> 
     public void setNome (String val) {
         this.nome = val;

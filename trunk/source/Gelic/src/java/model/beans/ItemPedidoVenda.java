@@ -1,43 +1,47 @@
-package model.gelic;
+package model.beans;
 
 
 /**
  *  <p style="margin-top: 0">
- *        Comp&#245;e uma ordem de fornecimento.
- *  <br>
- *  <br><b>Caso de uso: </b>Incluir Item de Ordem de Fornecimento
+ *        <b>obsoleto: </b>ver classe Fornecimento e seus relacionamentos.
+ *      </p>
+ *      <p style="margin-top: 0">
+ *        
+ *  <br>    </p>
+ *      <p style="margin-top: 0">
+ *        Item que comp&#245;e um pedido de venda.
  *      </p>
  */
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-// #[regen=yes,id=DCE.112E86A2-421C-44D8-ECCE-3C5EA1946FA5]
+// #[regen=yes,id=DCE.9B77463C-5054-5CB1-59E9-AA73A7712A45]
 // </editor-fold> 
-public class ItemOrdemFornecimento {
+public class ItemPedidoVenda {
 
     /**
      *  <p style="margin-top: 0">
-     *    <b>Caso de uso: </b>Incluir Item de Ordem de Fornecimento
+     *    Quantidade de itens que ser&#227;o entregues/vendidos.
      *      </p>
      */
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.9EF7CCB4-0397-4295-AF47-E91DC6BE7FAE]
+    // #[regen=yes,id=DCE.A4B979BE-354E-1461-BA53-E02BE585CF3F]
     // </editor-fold> 
     private float quantidade;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.61F86772-7B7D-1063-79B9-6C1CE5AAD1DF]
+    // #[regen=yes,id=DCE.943D422E-DC48-4CA8-4920-3FFCFAA4E363]
     // </editor-fold> 
-    public ItemOrdemFornecimento () {
+    public ItemPedidoVenda () {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.6697D280-2274-5583-7F93-676B98DA3669]
+    // #[regen=yes,regenBody=yes,id=DCE.0D3D4AEB-4183-FAC1-98C5-90DC731342E5]
     // </editor-fold> 
     public float getQuantidade () {
         return quantidade;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.F8E9B826-CC4D-2D5D-5E3E-E1AEE8A22E0B]
+    // #[regen=yes,regenBody=yes,id=DCE.8D7B94FA-26E3-D772-646E-963B107C21B0]
     // </editor-fold> 
     public void setQuantidade (float val) {
         this.quantidade = val;
