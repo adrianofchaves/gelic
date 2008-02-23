@@ -26,7 +26,7 @@ public class EfetuarLogin implements Comando {
         req.getSession().setAttribute("usuario", usuario);
         /* Por enquanto apenas um home.  Depois, aqui devemos resolver para qual
          * JSP o usuário será direcionado. */
-        return "homeAdministrador.jsp";
+        return "/homeAdministrador.jsp";
     }
 }
 
