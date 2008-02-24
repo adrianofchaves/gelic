@@ -1,6 +1,6 @@
 <%-- 
-    Document   : homeAnalista
-    Created on : 24/02/2008, 14:16:52
+    Document   : homeComercial
+    Created on : 24/02/2008, 18:00:45
     Author     : Giordano
 --%>
 
@@ -11,10 +11,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>GELIC [Analista] - Licitações</title>
+        <title>GELIC [Comercial] - Licitações</title>
     </head>
     <body>
-        <h2>Bem-vindo, analista!</h2>
-        
+        <h2>Bem-vindo, comercial!</h2>
     </body>
 </html>
