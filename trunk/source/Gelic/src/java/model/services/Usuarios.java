@@ -1,9 +1,4 @@
 package model.services;
-
-import model.beans.Usuario;
-
-
-// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.4C280404-F5D8-E997-9B56-B559AAEA5A24]
 // </editor-fold> 
 public class Usuarios {
@@ -27,13 +22,10 @@ public class Usuarios {
      */
     public static boolean loginValido(String login, String senha,
             model.beans.Usuario usuario) {
-        if ((login != null) &&
-                (login.equalsIgnoreCase("ADMIN")))  {
-            usuario = new model.beans.Usuario();
-            usuario.setTipo(model.beans.Usuario.ADMINISTRADOR);
+        usuario = model.daos.Usuarios.recuperaUm(login);
+        if( senha.equals(usuario.getSenha()))
             return true;
-        }
-        usuario = null;
+        usuario = null; 
         return false;
 
     }
