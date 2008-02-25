@@ -15,6 +15,17 @@
     </head>
     <body>
         <h2>Bem-vindo, analista!</h2>
-        
+        <table border="1">
+        <thead>
+        <tr>
+            <th>Licitações</th>
+            <th>Tipo de Licitações</th>
+            <th>Tipos de Documento</th>
+            <th>Produtos</th>
+            <th>Orgão Públicos</th>
+            <th>Empresas</th>
+        </tr>
+        </thead>
+        </table>
     </body>
 </html>
