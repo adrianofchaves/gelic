@@ -7,6 +7,7 @@ package model.beans;
 public class Usuario {
     private int tipo;
     private String login;
+    private String senha;
     
     public static final int ADMINISTRADOR = 1;
     public static final int COMERCIAL = 2;
@@ -35,6 +36,14 @@ public class Usuario {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
 }
