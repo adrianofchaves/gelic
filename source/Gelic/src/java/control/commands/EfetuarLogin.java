@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+
 // #[regen=yes,id=DCE.EA8F4164-3E10-FACD-0F29-08131E42EFB0]
 // </editor-fold> 
 public class EfetuarLogin implements Comando {
@@ -22,11 +23,24 @@ public class EfetuarLogin implements Comando {
         if (model.services.Usuarios.loginValido(login, senha, usuario)) {
             req.getSession().setAttribute("login", login);
         }
-        /* Se tentou logar e errou, mata a sessão */
+        /* Se tentou logar e errou, mata a sessão (usuario == null), se não 
+        coloca os dados do usuário na sessão. */
         req.getSession().setAttribute("usuario", usuario);
-        /* Por enquanto apenas um home.  Depois, aqui devemos resolver para qual
-         * JSP o usuário será direcionado. */
-        return "/homeAdministrador.jsp";
+
+        switch (usuario.getTipo()) {
+            case model.beans.Usuario.ADMINISTRADOR:
+                return "/homeAdministrador.jsp";
+            case model.beans.Usuario.ANALISTA:
+                return "/homeAnalisata.jsp";
+            case model.beans.Usuario.COMERCIAL:
+                return "/homeComercial.jsp";
+            case model.beans.Usuario.FINANCEIRO:
+                return "/homeFinanceiro.jsp";
+            case model.beans.Usuario.GERENTECOMERCIAL:
+                return "/homeGerenteComercial";
+            default:
+                return "/login.jsp";
+        }
     }
 }
 

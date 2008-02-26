@@ -22,7 +22,7 @@ public class Usuarios {
      */
     public static boolean loginValido(String login, String senha,
             model.beans.Usuario usuario) {
-        usuario = model.daos.Usuarios.recuperaUm(login);
+        usuario = model.daos.Usuarios.recuperar(login);
         if( senha.equals(usuario.getSenha()))
             return true;
         usuario = null; 
