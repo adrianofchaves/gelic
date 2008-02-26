@@ -15,7 +15,7 @@ public class Usuarios {
      * @param Login login do usuário
      * @return model.beans.Usuario
      */
-    public static model.beans.Usuario recuperaUm( String Login ){
+    public static model.beans.Usuario recuperar( String Login ){
         /**
          * TODO: Aqui, o banco é o próprio programa.  Quando o banco estiver 
          * implementado devemos programar um select. Que substituirá todos esses

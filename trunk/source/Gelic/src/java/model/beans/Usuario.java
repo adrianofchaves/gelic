@@ -1,6 +1,5 @@
 package model.beans;
 
-
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.E27F3EE7-B7EE-658E-399B-839565633C35]
 // </editor-fold> 
@@ -8,7 +7,7 @@ public class Usuario {
     private int tipo;
     private String login;
     private String senha;
-    
+
     public static final int ADMINISTRADOR = 1;
     public static final int COMERCIAL = 2;
     public static final int FINANCEIRO = 3;
