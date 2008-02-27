@@ -18,7 +18,7 @@
         <font color="red"><b>
                 ${requestScope.erros}
         </b></font>        
-        <form name="formlogin" action="GelicServlet?comando=EfeturLogin" method="GET">
+        <form name="formlogin" action="GelicServlet?comando=EfeturLogin" method="get">
             <br><br>Digite seu login e senha:<BR><BR>
             Login: <BR>
             <input type="text" name="login" value="" />             
