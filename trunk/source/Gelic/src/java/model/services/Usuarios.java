@@ -8,26 +8,16 @@ public class Usuarios {
     // </editor-fold> 
     public Usuarios() {
     }
-
     /**
-     * Método do sistema usado para executar login.
-     * 
-     * Por enquanto a senha não é checada.
-     * 
+     * Recupera um usuário a partir do login e senha.
      * @param login - login do usuário (case insensitive check)
-     * @param senha - senha do usuário (case sensitive check)
-     * @param usuario - bean do usuário retornado caso o login seja válido.
-     * @return - retorna True se o login e senha representam um usuário válido
-     * para o sistema.
+     * @param senha - senha do usuário (case sensitive check). Aceita senha nula
+     * ou vazia.
+     * @return usuario - bean do usuário retornado caso o login seja válido. 
+     * <B>retorna <CODE>null</CODE> se usuário não for encontrado 
      */
-    public static boolean loginValido(String login, String senha,
-            model.beans.Usuario usuario) {
-        usuario = model.daos.Usuarios.recuperar(login);
-        if( senha.equals(usuario.getSenha()))
-            return true;
-        usuario = null; 
-        return false;
-
+    public static model.beans.Usuario recuperar( String login, String senha ){
+        return model.daos.Usuarios.recuperar(login);
     }
 }
 

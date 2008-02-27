@@ -11,41 +11,43 @@ package model.daos;
  */
 public class Usuarios {
     /**
-     * Recupera um usuário do banco de dados.
-     * @param Login login do usuário
+     * Recupera um usuário do banco de dados. 
+     * @param Login login do usuário.  Se for null a função retornará null.
      * @return model.beans.Usuario
      */
-    public static model.beans.Usuario recuperar( String Login ){
+    public static model.beans.Usuario recuperar( String login  ){
         /**
          * TODO: Aqui, o banco é o próprio programa.  Quando o banco estiver 
          * implementado devemos programar um select. Que substituirá todos esses
          * if...
          */
-        if( Login.equalsIgnoreCase("ADMIN")){
+        if( login == null )
+            return null;
+        if( login.equalsIgnoreCase("ADMIN")){
             model.beans.Usuario usuario = new model.beans.Usuario();
             
             usuario.setTipo(model.beans.Usuario.ADMINISTRADOR);
             return usuario;
         }
-        if( Login.equalsIgnoreCase("ANALISTA")){
+        if( login.equalsIgnoreCase("ANALISTA")){
             model.beans.Usuario usuario = new model.beans.Usuario();
             
             usuario.setTipo(model.beans.Usuario.ANALISTA);
             return usuario;
         }
-        if( Login.equalsIgnoreCase("COMERCIAL")){
+        if( login.equalsIgnoreCase("COMERCIAL")){
             model.beans.Usuario usuario = new model.beans.Usuario();
             
             usuario.setTipo(model.beans.Usuario.COMERCIAL);
             return usuario;
         }
-        if( Login.equalsIgnoreCase("FINANCEIRO")){
+        if( login.equalsIgnoreCase("FINANCEIRO")){
             model.beans.Usuario usuario = new model.beans.Usuario();
             
             usuario.setTipo(model.beans.Usuario.FINANCEIRO);
             return usuario;
         }
-        if( Login.equalsIgnoreCase("GERENTECOMERCIAL")){
+        if( login.equalsIgnoreCase("GERENTECOMERCIAL")){
             model.beans.Usuario usuario = new model.beans.Usuario();
             
             usuario.setTipo(model.beans.Usuario.GERENTECOMERCIAL);
