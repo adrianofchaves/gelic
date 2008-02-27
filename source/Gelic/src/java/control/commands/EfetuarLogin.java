@@ -50,13 +50,13 @@ public class EfetuarLogin implements Comando {
             case model.beans.Usuario.ADMINISTRADOR:
                 return "homeAdministrador.jsp";
             case model.beans.Usuario.ANALISTA:
-                return "homeAnalisata.jsp";
+                return "homeAnalista.jsp";
             case model.beans.Usuario.COMERCIAL:
                 return "homeComercial.jsp";
             case model.beans.Usuario.FINANCEIRO:
                 return "homeFinanceiro.jsp";
             case model.beans.Usuario.GERENTECOMERCIAL:
-                return "homeGerenteComercial";
+                return "homeGerenteComercial.jsp";
             default:
                 return "login.jsp";
             }
