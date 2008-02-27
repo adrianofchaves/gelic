@@ -18,12 +18,19 @@
         <table border="1">
         <thead>
         <tr>
-            <th>Licitações</th>
-            <th>Tipo de Licitações</th>
-            <th>Tipos de Documento</th>
-            <th>Produtos</th>
-            <th>Orgão Públicos</th>
-            <th>Empresas</th>
+            <th bgcolor="#99FF66">Licitações</th>
+            <th bgcolor="#99FF66">Tipo de Licitações</th>
+            <th bgcolor="#99FF66">Tipos de Documento</th>
+            <th bgcolor="#99FF66">Produtos</th>
+            <th bgcolor="#99FF66">Orgão Públicos</th>
+            <th bgcolor="#99FF66">Empresas</th>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <p>&nbsp;</p>
+                <Center>Lista de Contratos</center>
+                <p>&nbsp;</p>
+            </td>
         </tr>
         </thead>
         </table>
