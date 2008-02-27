@@ -35,6 +35,19 @@ public class GelicServlet extends HttpServlet {
     public void init() throws ServletException {
         carregaComandos();
     }
+    /**
+     * Inclui, se necessário  "/" no início do url
+     * 
+     * @param url
+     * @return url com o "/"
+     */
+    private String colocaBarraNoInicio(String url) {
+        if (url.charAt(0) != '/') {
+            return '/' + url;
+        } else {
+            return url;
+        }
+    }
 
     /** Este método executa um forward.<BR>
      * <B>NOTA:</B>Os exceptions são tratados.
@@ -50,7 +63,8 @@ public class GelicServlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
 
-        getServletConfig().getServletContext().getRequestDispatcher(url).
+        String urlTratada = colocaBarraNoInicio(url);
+        getServletConfig().getServletContext().getRequestDispatcher(urlTratada).
                 forward(request, response);
     }
 
@@ -69,6 +83,8 @@ public class GelicServlet extends HttpServlet {
          */
         String nomeComando = request.getParameter("comando");
         control.commands.Comando comando = procuraComando(nomeComando);
+        if (comando == null)
+            comando = procuraComando("<vazio>");
         forward(comando.executar(request), request, response);
     //forward("/homeAdministrador.jsp", request, response);
     }
