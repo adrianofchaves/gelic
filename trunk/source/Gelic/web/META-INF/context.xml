@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/Gelic"/>
+<Context 
+    path="/Gelic">
+    <Resource
+        name="jdbc/gelic"
+        type="javax.sql.DataSource"
+        password="sysgelic"
+        driverClassName="org.firebirdsql.jdbc.FBDriver"
+        maxIdle="10"
+        maxWait="-1"    
+        username="gelic"
+            url="jdbc:firebirdsql:localhost:D:\Adriano\Documentos\NetBeansProjects\Estacio\ProFin\bd\gelic.fdb"
+            maxActive="20"/>  
+        </Context>
