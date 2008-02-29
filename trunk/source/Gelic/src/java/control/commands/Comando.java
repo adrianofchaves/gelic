@@ -12,6 +12,6 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface Comando {
 
-    public String executar(HttpServletRequest req); //throws  ExcecaoComando
+    public String executar(HttpServletRequest req) throws  ExcecaoComando;
             
 }

@@ -1,5 +1,9 @@
 package control.commands;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -15,7 +19,22 @@ public class EfetuarLogin implements Comando {
     public EfetuarLogin() {
     }
 
-    public String executar(HttpServletRequest req) /*throws ExcecaoComando*/ {
+    public String executar(HttpServletRequest req) throws ExcecaoComando {
+        try {
+            return processar(req);
+        } catch (NamingException ex) {
+            Logger.getLogger(EfetuarLogin.class.getName()).
+                    log(Level.SEVERE, null, ex);
+            throw new control.commands.ExcecaoComando(ex.getMessage());
+        } catch (SQLException ex) {
+            Logger.getLogger(EfetuarLogin.class.getName()).
+                    log(Level.SEVERE, null, ex);
+            throw new control.commands.ExcecaoComando(ex.getMessage());
+        }
+
+    }
+
+    private String processar(HttpServletRequest req) throws NamingException, SQLException {
 
         String login = (String) req.getParameter("login");
         String senha = (String) req.getParameter("senha");
@@ -38,12 +57,12 @@ public class EfetuarLogin implements Comando {
                 req.setAttribute("usuario", null);
                 return "login.jsp";
             }
-            if (!usuario.getSenha().equals(senha)){
+            if (!usuario.getSenha().equals(senha)) {
                 /* senha informada diferente da cadastrada.*/
-                req.setAttribute( "erros", "Senha inválida!");
+                req.setAttribute("erros", "Senha inválida!");
                 req.setAttribute("erroSenha", "Informe a senha.");
                 req.setAttribute("usuario", null);
-                return "login.jsp";                
+                return "login.jsp";
             }
         }
         switch (usuario.getTipo()) {
@@ -59,8 +78,7 @@ public class EfetuarLogin implements Comando {
                 return "homeGerenteComercial.jsp";
             default:
                 return "login.jsp";
-            }
-
+        }
     }
 }
 
