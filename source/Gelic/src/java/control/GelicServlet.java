@@ -5,8 +5,11 @@
 package control;
 
 import control.commands.Comando;
+import control.commands.ExcecaoComando;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -74,18 +77,14 @@ public class GelicServlet extends HttpServlet {
      * @param response servlet response
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        /**
-         * 
-         * Por enquanto vou deixar aqui um forward para o homeAdministrador.  
-         * deve-se implementar uma resolução de comandos aqui.
-         * 
-         */
-        String nomeComando = request.getParameter("comando");
-        control.commands.Comando comando = procuraComando(nomeComando);
-        if (comando == null)
-            comando = procuraComando("<vazio>");
-        forward(comando.executar(request), request, response);
+            throws ServletException, IOException{
+        try {
+            processa(response, request);
+            //forward("/homeAdministrador.jsp", request, response);
+        } catch (ExcecaoComando ex) {
+            Logger.getLogger(GelicServlet.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ServletException(ex.getClass().getName() + "." + ex.getMessage() );
+        }
     //forward("/homeAdministrador.jsp", request, response);
     }
 
@@ -115,6 +114,22 @@ public class GelicServlet extends HttpServlet {
      */
     public String getServletInfo() {
         return "Servlet do Gerente de Licitações";
+    }
+
+    private void processa(HttpServletResponse response, HttpServletRequest request) throws ServletException, IOException, ExcecaoComando {
+        /**
+         *
+         * Por enquanto vou deixar aqui um forward para o homeAdministrador.
+         * deve-se implementar uma resolução de comandos aqui.
+         *
+         */
+        String nomeComando = request.getParameter("comando");
+        control.commands.Comando comando = procuraComando(nomeComando);
+        if (comando == null) {
+            comando = procuraComando("<vazio>");
+        }
+        forward(comando.executar(request), request, response);
+        //forward("/homeAdministrador.jsp", request, response);
     }
 
     private Comando procuraComando(String nomeComando) {
