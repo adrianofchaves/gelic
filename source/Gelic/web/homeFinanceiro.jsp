@@ -13,7 +13,25 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC [Financeiro] - Licitações</title>
     </head>
-    <body>
+    <body background="./imagens/fundo.jpg">
         <h2>Bem-vindo, financeiro!</h2>
+        <table border="1">
+        <thead>
+        <tr>
+            <th bgcolor="#C0C0C0">
+                <input type="submit" value="Bancos" name="bancos" />
+            </th>
+            <th bgcolor="#C0C0C0">
+                <input type="submit" value="Pagamentos de Compras" name="pagamentosCompras" />
+            </th>
+            <th bgcolor="#C0C0C0">
+                <input type="submit" value="Notas de Compras" name="notasCompras" />
+            </th>
+           <th bgcolor="#C0C0C0">
+               <input type="submit" value="Duplicatas" name="duplicatas" />
+            </th>
+        </tr>
+        </thead>
+        </table>
     </body>
 </html>
