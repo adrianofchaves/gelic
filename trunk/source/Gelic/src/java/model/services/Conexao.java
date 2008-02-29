@@ -6,6 +6,7 @@ package model.services;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -13,28 +14,55 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
- * Essa classe é responsável por fornecer a conexão com o banco de dados.  
+ * Essa classe é responsável por fornecer a conexão com o banco de dados.  A 
+ * princípio ele busca um <CODE>Datasource</CODE> no pool de conexões do Tomcat.  
+ * 
+ * Ela pode fornecer um <CODE>Datasource</CODE> para quem não precisar compartilhar a conexão
+ * ou um <Code>Connection</code>
+ * <BR><BR>
+ * <COLOR="GREEN">TODO: Se não encontrar cria um próprio.  Assim deixará de 
+ * propagar NamingException's.</COLOR>
  * @author adriano
  */
 public class Conexao {
 
     static private Conexao servico = null;
+    private final String nomePoolDefault = "jdbc/gelic";
     private DataSource pool;
     private ThreadLocal<Connection> conexao;
 
-    private Conexao() throws NamingException {
-        /* Abre arquivo poolGelic.properties */
-        ResourceBundle prop = ResourceBundle.getBundle("Gelic");
-
-        /* lê valor "pool" */
+    /**
+     * Lê no bundle "Gelic.properties" o nome do pool de conexões do Tomcat.
+     * Se não encontrar o arquivo ou a propriedade "pool" retorna o padrão:
+     * "jdbc/gelic".
+     * 
+     * @return String contendo o nome do pool do Tomcat.
+     */
+    private String getNomePool() {
+        ResourceBundle prop = null;
+        
+        try {
+            /* Abre arquivo poolGelic.properties */
+            prop = ResourceBundle.getBundle("Gelic");
+        } catch (MissingResourceException e) {
+            return nomePoolDefault;
+        }
+        if (prop == null) {
+            return nomePoolDefault; /* lê valor "pool" */
+        }
         String nomePool = prop.getString("pool");
         if (nomePool == null) {
-            nomePool = "jdbc/gelic";
+            return nomePoolDefault;
         }
         if (nomePool.equals("")) {
-            nomePool = "jdbc/gelic";
+            return nomePoolDefault;
         }
+        return nomePool;
 
+    }
+
+    private Conexao() throws NamingException {
+        String nomePool = getNomePool();
         /* procura conexão no pull do Tomcat */
         InitialContext ic = new InitialContext();
         Context ambiente = (Context) ic.lookup("java:comp/env");
