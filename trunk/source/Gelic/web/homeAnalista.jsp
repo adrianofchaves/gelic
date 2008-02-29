@@ -18,12 +18,8 @@
         <table border="1">
         <thead>
         <tr>
-            <th bgcolor="#99FF66">Licitações</th>
-            <th bgcolor="#99FF66">Tipo de Licitações</th>
-            <th bgcolor="#99FF66">Tipos de Documento</th>
-            <th bgcolor="#99FF66">Produtos</th>
-            <th bgcolor="#99FF66">Orgão Públicos</th>
-            <th bgcolor="#99FF66">Empresas</th>
+            <th bgcolor="#C0C0C0">Contratos</th>
+            <th bgcolor="#C0C0C0">Incluir Contrato</th>
         </tr>
         <tr>
             <td colspan="6">

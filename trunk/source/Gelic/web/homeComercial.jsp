@@ -15,5 +15,36 @@
     </head>
     <body>
         <h2>Bem-vindo, comercial!</h2>
+                <table border="1">
+        <thead>
+        <tr>
+            <th bgcolor="#C0C0C0">
+                <input type="submit" value="Licitações" name="licitacoes" />
+            </th>
+            <th bgcolor="#C0C0C0">
+                <input type="submit" value="Tipo de Licitações" name="tipoLicitacoes" />
+            </th>
+            <th bgcolor="#C0C0C0">
+                <input type="submit" value="Tipos de Documento" name="tipoDocumento" />
+            </th>
+            <th bgcolor="#C0C0C0">
+                <input type="submit" value="Produtos" name="produtos" />
+            </th>
+            <th bgcolor="#C0C0C0">
+                <input type="submit" value="Orgão Públicos" name="orgaoPublico" />
+            </th>
+            <th bgcolor="#C0C0C0">
+                <input type="submit" value="Empresas" name="empresas" />
+            </th>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <p>&nbsp;</p>
+                <Center>Lista de Contratos</center>
+                <p>&nbsp;</p>
+            </td>
+        </tr>
+        </thead>
+        </table>
     </body>
 </html>
