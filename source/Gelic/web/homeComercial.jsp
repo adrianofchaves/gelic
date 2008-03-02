@@ -13,27 +13,27 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC [Comercial] - Licitações</title>
     </head>
-    <body>
+    <body bgcolor="#FFFF99">
         <h2>Bem-vindo, comercial!</h2>
-                <table border="1">
+        <table border="0" bordercolor="#111111">
         <thead>
         <tr>
-            <th bgcolor="#C0C0C0">
+            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
                 <input type="submit" value="Licitações" name="licitacoes" />
             </th>
-            <th bgcolor="#C0C0C0">
+            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
                 <input type="submit" value="Tipo de Licitações" name="tipoLicitacoes" />
             </th>
-            <th bgcolor="#C0C0C0">
+            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
                 <input type="submit" value="Tipos de Documento" name="tipoDocumento" />
             </th>
-            <th bgcolor="#C0C0C0">
+            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
                 <input type="submit" value="Produtos" name="produtos" />
             </th>
-            <th bgcolor="#C0C0C0">
+            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
                 <input type="submit" value="Orgão Públicos" name="orgaoPublico" />
             </th>
-            <th bgcolor="#C0C0C0">
+            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
                 <input type="submit" value="Empresas" name="empresas" />
             </th>
         </tr>

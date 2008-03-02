@@ -13,13 +13,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC [Analista] - Licitações</title>
     </head>
-    <body>
+    <body bgcolor="#FFFF99">
         <h2>Bem-vindo, analista!</h2>
-        <table border="1">
+        <table border="0" bordercolor="#111111">
         <thead>
         <tr>
-            <th bgcolor="#C0C0C0">Contratos</th>
-            <th bgcolor="#C0C0C0">Incluir Contrato</th>
+            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
+            <input type="submit" value="Contratos" name="contratos" />
+            </th>
+            <th bgcolor="#C0C0C0">
+            <input type="submit" value="Incluir Contrato" name="incluirContrato" />
+            </th>
         </tr>
         <tr>
             <td colspan="6">

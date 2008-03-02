@@ -13,21 +13,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC [Financeiro] - Licitações</title>
     </head>
-    <body background="./imagens/fundo.jpg">
+    <body bgcolor="#FFFF99">
         <h2>Bem-vindo, financeiro!</h2>
-        <table border="1">
+        <table border="0" bordercolor="#111111">
         <thead>
         <tr>
-            <th bgcolor="#C0C0C0">
+            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
                 <input type="submit" value="Bancos" name="bancos" />
             </th>
-            <th bgcolor="#C0C0C0">
+            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
                 <input type="submit" value="Pagamentos de Compras" name="pagamentosCompras" />
             </th>
-            <th bgcolor="#C0C0C0">
+            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
                 <input type="submit" value="Notas de Compras" name="notasCompras" />
             </th>
-           <th bgcolor="#C0C0C0">
+           <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
                <input type="submit" value="Duplicatas" name="duplicatas" />
             </th>
         </tr>

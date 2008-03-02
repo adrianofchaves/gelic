@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC [Gerente Comercial] - Licitações</title>
     </head>
-    <body>
+    <body bgcolor="#FFFF99">
         <h2>Bem-vindo, Gerente Comercial!</h2>
     </body>
 </html>
