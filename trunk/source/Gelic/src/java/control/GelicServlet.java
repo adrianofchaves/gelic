@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Este é o Servlet principal do sistema. A princípio é responsável pelo Login
+ * e pelos casos de uso do administrador.
  *
  * @author adriano
  */
@@ -32,6 +34,7 @@ public class GelicServlet extends HttpServlet {
 
         comandos.put("<vazio>", new control.commands.Nulo("index.jsp"));
         comandos.put("EfetuarLogin", new control.commands.EfetuarLogin());
+        comandos.put("CadastroUsuarios", new control.commands.CadastroUsuarios());
 
     }
 

@@ -16,7 +16,7 @@
     <body>
         <h2>Bem-vindo, administrador!</h2>
         <P>Se você deseja acessar o cadastro de usuários clique 
-            <a href="cadastroUsuarios.jsp">aqui</a>
+            <a href="GelicServlet?comando=CadastroUsuarios">aqui</a>
         </P>
     </body>
 </html>
