@@ -24,6 +24,12 @@
             <th bgcolor="#C0C0C0">
             <input type="submit" value="Incluir Contrato" name="incluirContrato" />
             </th>
+            <th bgcolor="#C0C0C0">
+            <input type="submit" value="Nota Fiscal de Venda" name="nfvenda" />
+            </th>
+            <th bgcolor="#C0C0C0">
+            <input type="submit" value="Nota Fiscal de Compra" name="nfcompra" />
+            </th>
         </tr>
         <tr>
             <td colspan="6">

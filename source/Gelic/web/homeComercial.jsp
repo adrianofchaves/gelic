@@ -40,7 +40,7 @@
         <tr>
             <td colspan="6">
                 <p>&nbsp;</p>
-                <Center>Lista de Contratos</center>
+                <Center>Lista de Licitações</center>
                 <p>&nbsp;</p>
             </td>
         </tr>
