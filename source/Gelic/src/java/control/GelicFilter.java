@@ -39,12 +39,22 @@ public class GelicFilter implements Filter {
             log("GelicFilter:DoBeforeProcessing");
         }
 
+        String cmd = request.getRequestURI();
+        if ( (!cmd.endsWith("/login.jsp")) &&
+               (!cmd.endsWith("/index.jsp")) ) {
+            String nomeComando = request.getParameter("comando");
+            if ( (nomeComando == null )
+                    ||
+                    (!nomeComando.equalsIgnoreCase("efetuarlogin"))) {
+                model.beans.Usuario usuario =
+                        (model.beans.Usuario) request.getSession().getAttribute("usuario");
+                if (usuario == null) {  // TODO: e request não é para index.jsp ou login.jsp
+                    response.sendRedirect(request.getContextPath() + "/index.jsp");
+                }
+            }
+        }
 
-        /*model.beans.Usuario usuario =
-                (model.beans.Usuario) request.getSession().getAttribute("usuario");
-        if (usuario == null) {  // TODO: e request não é para index.jsp ou login.jsp
-            response.sendRedirect(request.getContextPath() + "/index.jsp");
-        }*/
+
 
     //
     // Write code here to process the request and/or response before
@@ -437,7 +447,7 @@ public class GelicFilter implements Filter {
         }
          */
     }
-    private static final boolean debug = false;
+    private static final boolean debug = true;
 }
 
 
