@@ -9,8 +9,12 @@
                 <library>
                     <file>${libs.Firebird.classpath}</file>
                 </library>
-                <library files="1">
+                <library>
                     <file>${libs.JayBird.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library files="1">
+                    <file>${libs.Jaybird.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
