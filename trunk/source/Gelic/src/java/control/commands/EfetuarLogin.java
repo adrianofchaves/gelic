@@ -44,7 +44,7 @@ public class EfetuarLogin implements Comando {
             req.setAttribute("erroLogin", "Informe o login.");
             req.setAttribute("erros", "Login inválido!");
             /* se foi uma tentar o login e falhar, mata a sessão */
-            req.setAttribute("usuario", null);
+            req.getSession().setAttribute("usuario", null);
             return "login.jsp";
         }
         if ((senha != null) && (!senha.equals(""))) {
@@ -54,17 +54,18 @@ public class EfetuarLogin implements Comando {
                  * uma senha */
                 req.setAttribute("erros", "Senha inválida!");
                 req.setAttribute("erroSenha", "Informe a senha.");
-                req.setAttribute("usuario", null);
+                req.getSession().setAttribute("usuario", null);
                 return "login.jsp";
             }
             if (!usuario.getSenha().equals(senha)) {
                 /* senha informada diferente da cadastrada.*/
                 req.setAttribute("erros", "Senha inválida!");
                 req.setAttribute("erroSenha", "Informe a senha.");
-                req.setAttribute("usuario", null);
+                req.getSession().setAttribute("usuario", null);
                 return "login.jsp";
             }
         }
+        req.getSession().setAttribute("usuario", usuario);
         switch (usuario.getTipo()) {
             case model.beans.Usuario.ADMINISTRADOR:
                 return "homeAdministrador.jsp";
