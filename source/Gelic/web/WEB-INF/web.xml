@@ -7,6 +7,12 @@
     <filter-mapping>
         <filter-name>GelicFilter</filter-name>
         <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        </filter-mapping>
+    <filter-mapping>
+        <filter-name>GelicFilter</filter-name>
+        <url-pattern>/home*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
     <servlet>
         <servlet-name>GelicServlet</servlet-name>
