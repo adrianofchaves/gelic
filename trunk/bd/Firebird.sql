@@ -6,9 +6,9 @@ SET SQL DIALECT 3;
 
 SET NAMES NONE;
 
-SET CLIENTLIB 'd:\adriano\servidor\fbclient.dll';
+SET CLIENTLIB 'C:\Arquivos de programas\Firebird\Firebird_2_0\bin\fbclient.dll';
 
-CREATE DATABASE 'LOCALHOST:D:\Adriano\Documentos\NetBeansProjects\Estacio\ProFin\bd\gelic.fdb'
+CREATE DATABASE 'LOCALHOST:E:\Adriano\Estácio\ProFin2\bd\gelic.fdb'
 USER 'SISGELIC' PASSWORD 'gelic'
 PAGE_SIZE 16384
 DEFAULT CHARACTER SET NONE;
