@@ -18,7 +18,7 @@
         <font color="red"><b>
                 ${requestScope.erros}
         </b></font>        
-        <form name="formlogin" action="GelicServlet?comando=EfeturLogin" method="get">
+        <form name="formlogin" action="GelicServlet?comando=EfetuarLogin" method="post">
             <br><br>Digite seu login e senha:<BR><BR>
             Login: <BR>
             <input type="text" name="login" value="" />             
@@ -28,7 +28,7 @@
             <input type="password" name="senha" value="" />
             <font color="red">${requestScope.erroSenha}</font>
             <BR>
-            <input type="submit" value="EfetuarLogin" name="comando" />
+            <input type="submit" value="Efetuar Login" name="comando" />
         </form>
     </body>
 </html>
