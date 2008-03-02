@@ -2,9 +2,21 @@ package model.services;
 // #[regen=yes,id=DCE.4C280404-F5D8-E997-9B56-B559AAEA5A24]
 // </editor-fold> 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.naming.NamingException;
+import model.beans.Usuario;
 
 public class Usuarios {
+
+    /**
+     * Recupera todos os usuários cadastrados no banco.
+     * 
+     * @return lista de usuários
+     */
+    public static ArrayList<Usuario> recuperar()
+            throws SQLException, NamingException {
+        return model.daos.Usuarios.recuperar();
+    }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.4DD9DF74-6AB7-439C-D378-2D7EB77AEE4E]
