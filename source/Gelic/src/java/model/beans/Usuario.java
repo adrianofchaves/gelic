@@ -7,6 +7,7 @@ public class Usuario {
     private int tipo;
     private String login;
     private String senha;
+    private Papel papel;
 
     public static final int ADMINISTRADOR = 1;
     public static final int COMERCIAL = 2;
@@ -43,6 +44,14 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Papel getPapel() {
+        return papel;
+    }
+
+    public void setPapel(Papel papel) {
+        this.papel = papel;
     }
 
 }
