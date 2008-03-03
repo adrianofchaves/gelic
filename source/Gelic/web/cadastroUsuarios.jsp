@@ -27,7 +27,7 @@
                         ${usuario.login}
                     </td>
                     <td>
-                       ${usuario.tipo}
+                       ${usuario.papel.nome}
                     </td>
                     <td>
                         <a href="GelicServlet?comando=ExcluirUsuario&usuario=${usuario.login}">Excluir</a>

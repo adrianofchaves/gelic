@@ -33,7 +33,7 @@ public class Usuarios {
      * <B>retorna <CODE>null</CODE> se usuário não for encontrado 
      */
     public static model.beans.Usuario recuperar(String login, String senha)
-            throws NamingException, SQLException {
+            throws NamingException, SQLException {        
         return model.daos.Usuarios.recuperar(login);
     }
 }
