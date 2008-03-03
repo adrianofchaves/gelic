@@ -15,8 +15,26 @@
     </head>
     <body>
         <h2>Cadastro de usuários</h2>
-        <c:forEach var="usuario" items="usuarios">
-            <P>teste ${requestScope.usuario.Login}<P>            
-        </c:forEach>
+        <table>
+            <tr>
+                <td>Login</td>
+                <td>Papel</td>
+            </tr>
+            <c:forEach var="usuario" items="${requestScope.usuarios}">
+                
+                <tr>
+                    <td>
+                        ${usuario.login}
+                    </td>
+                    <td>
+                       ${usuario.tipo}
+                    </td>
+                    <td>
+                        <a href="GelicServlet?comando=ExcluirUsuario&usuario=${usuario.login}">Excluir</a>
+                    </td>
+                </tr>
+                
+            </c:forEach>
+        </table>
     </body>
 </html>
