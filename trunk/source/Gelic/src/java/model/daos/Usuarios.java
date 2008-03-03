@@ -19,11 +19,39 @@ import model.beans.Usuario;
 public class Usuarios {
 
     public static final String sqlRecuperarLogin =
-            "select PAPEL TIPO, LOGIN, SENHA from USUARIOS where LOGIN containing ?";
+            "select PAPEL TIPO, LOGIN, SENHA, PAPEIS.NOME NOMEPAPEL " +
+            " from USUARIOS " +
+            " inner join PAPEIS on USUARIOS.PAPEL = PAPEIS.ID " +
+            " where LOGIN containing ?";
     public static final String sqlRecuperarTodos =
-            "select PAPEL TIPO, LOGIN, SENHA from USUARIOS";
+            "select PAPEL TIPO, LOGIN, SENHA, PAPEIS.NOME NOMEPAPEL " +
+            " from USUARIOS " +
+            " inner join PAPEIS on USUARIOS.PAPEL = PAPEIS.ID ";
     public static final String sqlContaUsuarios =
             "select count(*) from USUARIOS";
+
+    /**
+     * Instancia beans de usuários
+     * 
+     * @param tipo - id do papel ou tipo do usuário.
+     * @param nomePapel - nome do papel a que o usuário está relacionado.
+     * @param login - login do usuário.
+     * @param senha - senha do usuário.
+     */
+    static private model.beans.Usuario criaUsuario(int tipo, String nomePapel,
+            String login, String senha) {
+        model.beans.Usuario usuario = new model.beans.Usuario();
+        usuario.setPapel(new model.beans.Papel());
+
+        usuario.getPapel().setId(tipo);
+        usuario.getPapel().setNome(nomePapel);
+
+        usuario.setLogin(login);
+        usuario.setTipo(tipo);
+        usuario.setSenha(senha);
+
+        return usuario;
+    }
 
     public static ArrayList<Usuario> recuperar()
             throws SQLException, NamingException {
@@ -31,7 +59,6 @@ public class Usuarios {
         PreparedStatement pstmt;
         int quantidadeUsuarios;
         ResultSet rs;
-        model.beans.Usuario usuario;
 
         Connection gelic = model.services.Conexao.getPool().getConnection();
         /* Conta quantidade de usuários cadastrados */
@@ -54,10 +81,12 @@ public class Usuarios {
             if (usuarios == null) {
                 usuarios = new ArrayList<Usuario>();
             }
-            usuario = new model.beans.Usuario();
-            usuario.setLogin(rs.getString("LOGIN"));            
-            usuario.setTipo(rs.getInt("TIPO"));
-            usuarios.add(usuario);
+
+            usuarios.add(criaUsuario(
+                    rs.getInt("TIPO"),
+                    rs.getString("NOMEPAPEL"),
+                    rs.getString("LOGIN"),
+                    rs.getString("SENHA")));
         }
         return usuarios;
     }
@@ -77,10 +106,10 @@ public class Usuarios {
         if (!rs.next()) {
             return null;
         }
-        model.beans.Usuario usuario = new model.beans.Usuario();
-        usuario.setLogin(rs.getString("LOGIN"));
-        usuario.setSenha(rs.getString("SENHA"));
-        usuario.setTipo(rs.getInt("TIPO"));
-        return usuario;
+        return criaUsuario(
+                rs.getInt("TIPO"),
+                rs.getString("NOMEPAPEL"),
+                rs.getString("LOGIN"),
+                rs.getString("SENHA"));
     }
 }
