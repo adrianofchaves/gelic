@@ -18,6 +18,9 @@
         <table border="0" bordercolor="#111111">
         <thead>
         <tr>
+            <th>
+                <img border="0" src="/imagens/mnLicitacao.jpg">
+            </th>
             <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
                 <input type="submit" value="Licitações" name="licitacoes" />
             </th>
