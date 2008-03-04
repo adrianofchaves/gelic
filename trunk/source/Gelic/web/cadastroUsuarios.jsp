@@ -9,32 +9,34 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h2>Cadastro de usuários</h2>
-        <table>
-            <tr>
-                <td>Login</td>
-                <td>Papel</td>
-            </tr>
-            <c:forEach var="usuario" items="${requestScope.usuarios}">
-                
-                <tr>
-                    <td>
-                        ${usuario.login}
-                    </td>
-                    <td>
-                       ${usuario.papel.nome}
-                    </td>
-                    <td>
-                        <a href="GelicServlet?comando=ExcluirUsuario&usuario=${usuario.login}">Excluir</a>
-                    </td>
-                </tr>
-                
-            </c:forEach>
-        </table>
-    </body>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>JSP Page</title>
+</head>
+<body>
+<h2>Cadastro de usuários</h2>
+<table>
+<tr>
+    <td>Login</td>
+    <td>Papel</td>
+</tr>
+<c:forEach var="usuario" items="${requestScope.usuarios}">
+
+<tr>
+    <td>
+        ${usuario.login}
+    </td>
+    <td>
+        ${usuario.papel.nome}
+    </td>  
+    <td>
+    <a href="GelicServlet?comando=ExcluirUsuario&usuario=${usuario.login}">
+        <img src="img/trash.PNG" width="16" height="16" alt="trash"/>
+    </a>
+    </td>
+</tr>
+
+</c:forEach>
+</table>
+</body>
 </html>
