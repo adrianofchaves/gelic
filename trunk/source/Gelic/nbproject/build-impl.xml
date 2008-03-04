@@ -455,17 +455,20 @@
     <target depends="init" if="dist.ear.dir" name="library-inclusion-in-manifest">
         <basename file="${libs.Jaybird.classpath}" property="included.lib.libs.Jaybird.classpath"/>
         <copy-ear-war file="${libs.Jaybird.classpath}" propname="included.lib.libs.Jaybird.classpath.X"/>
-        <basename file="${libs.Jaybird.classpath}" property="included.lib.libs.Jaybird.classpath"/>
-        <copy-ear-war file="${libs.Jaybird.classpath}" propname="included.lib.libs.Jaybird.classpath.X"/>
+        <basename file="${libs.jstl11.classpath.libfile.2}" property="included.lib.libs.jstl11.classpath.2"/>
+        <basename file="${libs.jstl11.classpath.libfile.1}" property="included.lib.libs.jstl11.classpath.1"/>
+        <copy-ear-war file="${libs.jstl11.classpath.libfile.2}" propname="included.lib.libs.jstl11.classpath.2.X"/>
+        <copy-ear-war file="${libs.jstl11.classpath.libfile.1}" propname="included.lib.libs.jstl11.classpath.1.X"/>
         <mkdir dir="${build.web.dir}/META-INF"/>
         <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Class-Path" value="${included.lib.libs.Jaybird.classpath} ${included.lib.libs.Jaybird.classpath} "/>
+            <attribute name="Class-Path" value="${included.lib.libs.Jaybird.classpath} ${included.lib.libs.jstl11.classpath.1.X} ${included.lib.libs.jstl11.classpath.2.X} "/>
         </manifest>
         <delete dir="${dist.ear.dir}/temp"/>
     </target>
     <target depends="init" name="library-inclusion-in-archive" unless="dist.ear.dir">
         <copy file="${libs.Jaybird.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.Jaybird.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copy file="${libs.jstl11.classpath.libfile.2}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copy file="${libs.jstl11.classpath.libfile.1}" todir="${build.web.dir}/WEB-INF/lib"/>
     </target>
     <target depends="init,compile,compile-jsps,-pre-dist,library-inclusion-in-manifest" name="do-ear-dist">
         <dirname file="${dist.ear.war}" property="dist.jar.dir"/>

@@ -79,7 +79,7 @@ public class Usuarios {
         rs = pstmt.executeQuery();
         while (rs.next()) {
             if (usuarios == null) {
-                usuarios = new ArrayList<Usuario>();
+                usuarios = new ArrayList<Usuario>(quantidadeUsuarios);
             }
 
             usuarios.add(criaUsuario(

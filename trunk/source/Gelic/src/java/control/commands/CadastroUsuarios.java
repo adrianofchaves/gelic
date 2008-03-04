@@ -23,10 +23,8 @@ public class CadastroUsuarios implements Comando {
 
     public String executar(HttpServletRequest req) throws ExcecaoComando {
         try {
-
             ArrayList<Usuario> usuarios = model.services.Usuarios.recuperar();
             req.setAttribute("usuarios", usuarios);
-
             return "/cadastroUsuarios.jsp";
         } catch (SQLException ex) {
             Logger.getLogger(CadastroUsuarios.class.getName()).
