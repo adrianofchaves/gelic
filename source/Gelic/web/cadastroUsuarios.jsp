@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -15,13 +16,14 @@
     </head>
     <body>
         <h2>Cadastro de usuários</h2>
+        <P> Os usuários cadastrados são:
         <table>
-            <tr>
-                <td>Login</td>
-                <td>Papel</td>
+            <tr bgcolor="gray">
+                <td align="center">Login</td>
+                <td align="center">Papel</td>
             </tr>
             <c:forEach var="usuario" items="${requestScope.usuarios}">
-                
+            
                 <tr>
                     <td>
                         <a href="GelicServlet?comando=AlterarUsuario&login=${usuario.login}">
@@ -40,16 +42,27 @@
                 
             </c:forEach>
         </table>
-        
+        <H3>        
+            Cadastro do usuário:
+        </H3>
+        <P>Para cadastrar um novo usuário preencha os campos abaixo:</P>
         <form name="frmusuario" action="GelicServlet?comando=GravarUsuario" method="POST">
-            <input type="text" name="nomeUsuario" value="${formUsuario.nome}" />
-            <input type="password" name="senhaUsuario" value="${formUsuario.senhaUsuario}" />
-            <input type="password" name="confirmaSenhaUsuario" value="${formUsuario.confirmaSenhaUsuario}" />
-            <select name="papelUsuario">
-                <c:forEach var="papel" items="${applicationScope.papeis}">
-                <option>${papel.nome}</option>
-                </c:forEach>    
-            </select>
+            <P>Login:
+                <input type="text" name="nomeUsuario" value="${formUsuario.nome}" />
+            </P>
+            <P>Senha:
+                <input type="password" name="senhaUsuario" value="${formUsuario.senhaUsuario}" />
+            </P>
+            <P>Confirme a senha:
+                <input type="password" name="confirmaSenhaUsuario" value="${formUsuario.confirmaSenhaUsuario}" />
+            </P>
+            <P>Selecione o papel que o usuário irá exercer:
+                <select name="papelUsuario">
+                    <c:forEach var="papel" items="${applicationScope.papeis}">
+                        <option>${papel.nome}</option>                
+                    </c:forEach>    
+                </select>
+            </P>
             <input type="submit" value="Gravar" name="executar" />
         </form>
     </body>
