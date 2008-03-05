@@ -25,12 +25,14 @@ public class CadastroUsuarios implements Comando {
         try {
 
 
-            req.setAttribute("browserUsuarios",new view.BrowserUsuarios(
+            req.getSession().setAttribute("browserUsuarios",
+                    new view.BrowserUsuarios(
                     model.services.Usuarios.recuperar()));
 
             view.FormUsuario frm = new view.FormUsuario();
             frm.setInclusao(true);
             req.getSession().setAttribute("formUsuario", frm);
+            
             return "/cadastroUsuarios.jsp";
         } catch (SQLException ex) {
             Logger.getLogger(CadastroUsuarios.class.getName()).
