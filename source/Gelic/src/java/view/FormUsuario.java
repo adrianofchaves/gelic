@@ -12,15 +12,28 @@ package view;
 public class FormUsuario extends Form {
 
     private model.beans.Usuario usuario;
+    
     private boolean inclusao = true;
+    
     private String loginUsuario;
-    private String senhaUsuario;
-    private String confirmaSenhaUsuario;
-    private String papelUsuario;
-    private int idPapel;
-    private String erroPapelUsuario;
-    private String erroConfirmaSenhaUsuario;
     private String erroLoginUsuario;
+
+    private String senhaUsuario;
+    private String erroSenhaUsuario;
+    
+    private String confirmaSenhaUsuario;
+    private String erroConfirmaSenhaUsuario;
+
+    private String papelUsuario;
+    private String erroPapelUsuario;
+    private int idPapel;
+
+    public void apagaErros() {
+        super.apagaErros();
+        erroConfirmaSenhaUsuario = null;
+        erroLoginUsuario = null;
+        erroPapelUsuario = null;                
+    }
 
     public void atualizaCampos() {
         setLoginUsuario(getUsuario().getLogin());
@@ -110,5 +123,13 @@ public class FormUsuario extends Form {
 
     public void setErroLoginUsuario(String erroLoginUsuario) {
         this.erroLoginUsuario = erroLoginUsuario;
+    }
+
+    public String getErroSenhaUsuario() {
+        return erroSenhaUsuario;
+    }
+
+    public void setErroSenhaUsuario(String erroSenhaUsuario) {
+        this.erroSenhaUsuario = erroSenhaUsuario;
     }
 }

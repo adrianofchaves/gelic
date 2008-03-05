@@ -14,7 +14,13 @@ import javax.naming.NamingException;
  */
 public class Papeis {
     static ArrayList <model.beans.Papel> papeis = null;
-
+    /**
+     * Retorna todos os papeis cadastrados.
+     * 
+     * @return
+     * @throws javax.naming.NamingException
+     * @throws java.sql.SQLException
+     */
     static public ArrayList<model.beans.Papel> recuperar()
             throws NamingException, SQLException {
         if (papeis==null){
@@ -23,9 +29,29 @@ public class Papeis {
         return papeis;
 
     }
-
-    public static Object recuperar(String papelUsuario) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    /**
+     * Retorna o papel com o nome passado pelo parâmetro.
+     * 
+     * @param nomePapel
+     * @return
+     * @throws javax.naming.NamingException
+     * @throws java.sql.SQLException
+     */
+    public static model.beans.Papel recuperar(String nomePapel) 
+            throws NamingException, SQLException {
+        if(nomePapel == null){
+            return null;
+        }
+        /* Como espera-se que a lista de papéis seja relativamente curta, não
+         * há necessidade de ir ao banco buscar essa informação: resolve com 
+         * a lista mantida estáticamente
+         */         
+        recuperar();
+        for( model.beans.Papel papel : papeis ){
+            if( nomePapel.equalsIgnoreCase(papel.getNome()))
+                return papel;
+        }
+        return null;
     }
     
 }

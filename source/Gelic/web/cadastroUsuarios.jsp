@@ -22,7 +22,7 @@
                 <td align="center">Login</td>
                 <td align="center">Papel</td>
             </tr>
-            <c:forEach var="usuario" items="${requestScope.browserUsuarios.usuarios}">
+            <c:forEach var="usuario" items="${sessionScope.browserUsuarios.usuarios}">
             
                 <tr>
                     <td>
@@ -49,21 +49,36 @@
         <c:if test="${sessionScope.formUsuario.inclusao}">
             <H3>Criando usuário:</H3>
         </c:if>
+        
+        <font color="red">
+        <c:forEach var="erro" items="${sessionScope.formUsuario.erros}">
+            <P>${erro}</P>
+        </c:forEach>
+        </font>
+        
         <form name="frmusuario" action="GelicServlet?comando=GravarUsuario" 
               method="POST">
             <P>Login:
                 <input type="text" name="loginUsuario" 
                        value="${sessionScope.formUsuario.loginUsuario}" />
-                <font color="red">${sessionScope.erroLoginUsuario}</font>
+                <font color="red">
+                    ${sessionScope.formUsuario.erroLoginUsuario}
+                </font>
             </P>
             <P>Senha:
                 <input type="password" name="senhaUsuario" 
                        value="${sessionScope.formUsuario.senhaUsuario}" />
+                <font color="red">
+                    ${sessionScope.formUsuario.erroSenhaUsuario}
+                </font>
             </P>
             <P>Confirme a senha:
                 <input type="password" name="confirmaSenhaUsuario" 
                        value="${sessionScope.formUsuario.confirmaSenhaUsuario}" 
                        />
+                <font color="red">
+                    ${sessionScope.formUsuario.erroConfirmaSenhaUsuario}
+                </font>
             </P>
             <P>Selecione o papel que o usuário:
                 <select name="papelUsuario" 
@@ -72,6 +87,9 @@
                         <option>${papel.nome}</option>                
                     </c:forEach>    
                 </select>
+                <font color="red">
+                    ${sessionScope.formUsuario.erroPapelUsuario}
+                </font>
             </P>
             <input type="submit" value="Gravar" name="executar"/>            
         </form>

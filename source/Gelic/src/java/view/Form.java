@@ -14,6 +14,10 @@ public class Form {
 
     private ArrayList<String> erros = null;
 
+    public void apagaErros() {
+        erros = null;
+    }
+
     public void addErro(String erro) {
         if (getErros() == null) {
             setErros(new ArrayList<String>());
