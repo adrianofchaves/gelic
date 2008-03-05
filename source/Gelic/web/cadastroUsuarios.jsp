@@ -15,14 +15,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h2>Cadastro de usuários</h2>
+        <h1>Cadastro de usuários</h1>
         <P> Os usuários cadastrados são:
         <table>
             <tr bgcolor="gray">
                 <td align="center">Login</td>
                 <td align="center">Papel</td>
             </tr>
-            <c:forEach var="usuario" items="${requestScope.usuarios}">
+            <c:forEach var="usuario" items="${requestScope.browserUsuarios.usuarios}">
             
                 <tr>
                     <td>
@@ -42,28 +42,41 @@
                 
             </c:forEach>
         </table>
-        <H3>        
-            Cadastro do usuário:
-        </H3>
-        <P>Para cadastrar um novo usuário preencha os campos abaixo:</P>
-        <form name="frmusuario" action="GelicServlet?comando=GravarUsuario" method="POST">
+        <BR><BR>
+        <c:if test="${!sessionScope.formUsuario.inclusao}">
+            <H3>Alterando usuário: </H3>
+        </c:if>
+        <c:if test="${sessionScope.formUsuario.inclusao}">
+            <H3>Criando usuário:</H3>
+        </c:if>
+        <form name="frmusuario" action="GelicServlet?comando=GravarUsuario" 
+              method="POST">
             <P>Login:
-                <input type="text" name="nomeUsuario" value="${formUsuario.nome}" />
+                <input type="text" name="loginUsuario" 
+                       value="${sessionScope.formUsuario.loginUsuario}" />
+                <font color="red">${sessionScope.erroLoginUsuario}</font>
             </P>
             <P>Senha:
-                <input type="password" name="senhaUsuario" value="${formUsuario.senhaUsuario}" />
+                <input type="password" name="senhaUsuario" 
+                       value="${sessionScope.formUsuario.senhaUsuario}" />
             </P>
             <P>Confirme a senha:
-                <input type="password" name="confirmaSenhaUsuario" value="${formUsuario.confirmaSenhaUsuario}" />
+                <input type="password" name="confirmaSenhaUsuario" 
+                       value="${sessionScope.formUsuario.confirmaSenhaUsuario}" 
+                       />
             </P>
-            <P>Selecione o papel que o usuário irá exercer:
-                <select name="papelUsuario">
+            <P>Selecione o papel que o usuário:
+                <select name="papelUsuario" 
+                        tabindex="${sessionScope.formUsuario.idPapel}" >
                     <c:forEach var="papel" items="${applicationScope.papeis}">
                         <option>${papel.nome}</option>                
                     </c:forEach>    
                 </select>
             </P>
-            <input type="submit" value="Gravar" name="executar" />
+            <input type="submit" value="Gravar" name="executar"/>            
         </form>
+        <P>
+            Para voltar ao início clique <a href="homeAdministrador.jsp">aqui</a>
+        </P>        
     </body>
 </html>

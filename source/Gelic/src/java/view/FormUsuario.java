@@ -2,20 +2,31 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package view;
 
 /**
- *
+ * Representa a tela de cadastro de usuários contendo os valores de seus campos.
+ * 
  * @author adriano
  */
-public class FormUsuario {
+public class FormUsuario extends Form {
+
     private model.beans.Usuario usuario;
-    private boolean inclusao = false;
-    private String nome;
+    private boolean inclusao = true;
+    private String loginUsuario;
     private String senhaUsuario;
     private String confirmaSenhaUsuario;
     private String papelUsuario;
+    private int idPapel;
+    private String erroPapelUsuario;
+    private String erroConfirmaSenhaUsuario;
+    private String erroLoginUsuario;
+
+    public void atualizaCampos() {
+        setLoginUsuario(getUsuario().getLogin());
+        setPapelUsuario(getUsuario().getPapel().getNome());
+        setIdPapel(getUsuario().getPapel().getId());
+    }
 
     public model.beans.Usuario getUsuario() {
         return usuario;
@@ -23,6 +34,10 @@ public class FormUsuario {
 
     public void setUsuario(model.beans.Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public boolean getInclusao() {
+        return isInclusao();
     }
 
     public boolean isInclusao() {
@@ -33,12 +48,12 @@ public class FormUsuario {
         this.inclusao = inclusao;
     }
 
-    public String getNome() {
-        return nome;
+    public String getLoginUsuario() {
+        return loginUsuario;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setLoginUsuario(String nome) {
+        this.loginUsuario = nome;
     }
 
     public String getSenhaUsuario() {
@@ -64,6 +79,36 @@ public class FormUsuario {
     public void setPapelUsuario(String papelUsuario) {
         this.papelUsuario = papelUsuario;
     }
-    
 
+    public int getIdPapel() {
+        return idPapel;
+    }
+
+    public void setIdPapel(int idPapel) {
+        this.idPapel = idPapel;
+    }
+
+    public String getErroPapelUsuario() {
+        return erroPapelUsuario;
+    }
+
+    public void setErroPapelUsuario(String erroPapelUsuario) {
+        this.erroPapelUsuario = erroPapelUsuario;
+    }
+
+    public String getErroConfirmaSenhaUsuario() {
+        return erroConfirmaSenhaUsuario;
+    }
+
+    public void setErroConfirmaSenhaUsuario(String erroConfirmaSenhaUsuario) {
+        this.erroConfirmaSenhaUsuario = erroConfirmaSenhaUsuario;
+    }
+
+    public String getErroLoginUsuario() {
+        return erroLoginUsuario;
+    }
+
+    public void setErroLoginUsuario(String erroLoginUsuario) {
+        this.erroLoginUsuario = erroLoginUsuario;
+    }
 }
