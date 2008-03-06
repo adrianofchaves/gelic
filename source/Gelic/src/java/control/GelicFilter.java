@@ -48,9 +48,9 @@ public class GelicFilter implements Filter {
                     (!nomeComando.equalsIgnoreCase("efetuarlogin"))) {
                 model.beans.Usuario usuario =
                         (model.beans.Usuario) request.getSession().getAttribute("usuario");
-                if (usuario == null) {  // TODO: e request não é para index.jsp ou login.jsp
-                    response.sendRedirect(request.getContextPath() + "/index.jsp");
-                }
+//                if (usuario == null) {  
+//                    response.sendRedirect(request.getContextPath() + "/index.jsp");
+//                }
             }
         }
 
