@@ -117,9 +117,13 @@ public class GravarUsuario implements Comando {
                     "Está diferente da informada em Senha");
             frm.addErro("As senhas informadas são diferentes");
         }
+        model.beans.Papel papel = model.services.Papeis.recuperar(
+                frm.getPapelUsuario());
         if (model.services.Papeis.recuperar(frm.getPapelUsuario()) == null) {
             frm.setErroPapelUsuario("Papel inválido.");
             frm.addErro("O papel informado não é válido.");
+        } else {
+            frm.setIdPapel(papel.getId());
         }
         if (frm.isInclusao() && model.services.Usuarios.recuperar(
                 frm.getLoginUsuario()) != null) {
