@@ -20,17 +20,19 @@ import view.FormUsuario;
  */
 public class GravarUsuario implements Comando {
 
-    private void atualizaBrowser(HttpServletRequest req)
+    private void atualizaBrowser(HttpServletRequest req, String mensagem)
             throws NamingException, SQLException {
-        req.getSession().setAttribute("browserUsuarios",
-                new view.BrowserUsuarios(model.services.Usuarios.recuperar()));
+        view.BrowserUsuarios browser = new view.BrowserUsuarios(
+                model.services.Usuarios.recuperar());
+        browser.setMensagem(mensagem);
+        req.getSession().setAttribute("browserUsuarios", browser);
     }
 
     private FormUsuario populaForm(HttpServletRequest req) {
 
         /* Popula o form: copia valores do parameters para o form */
         view.FormUsuario frm = (view.FormUsuario) req.getSession().getAttribute(
-                "formUsuario");        
+                "formUsuario");
         /* loginUsuario */
         frm.setLoginUsuario(util.Forms.recuperaParametro(req, "loginUsuario"));
         /* senhaUsuario */
@@ -67,7 +69,8 @@ public class GravarUsuario implements Comando {
                     frm.getSenhaUsuario(),
                     frm.getIdPapel());
 
-            atualizaBrowser(req);
+            atualizaBrowser(req, "Usuário incluído com sucesso.");
+            ressetaForm(req);
             return "/cadastroUsuarios.jsp";
         }
         /* Alterando */
@@ -76,11 +79,12 @@ public class GravarUsuario implements Comando {
                 frm.getLoginUsuario(),
                 frm.getSenhaUsuario(),
                 frm.getIdPapel());
-        atualizaBrowser(req);
+        atualizaBrowser(req, "Usuário alterado com sucesso.");
+        ressetaForm(req);
         return "/cadastroUsuarios.jsp";
     }
 
-        public String executar(HttpServletRequest req) throws ExcecaoComando {
+    public String executar(HttpServletRequest req) throws ExcecaoComando {
         try {
             return processa(req);
         } catch (NoSuchAlgorithmException ex) {
@@ -96,6 +100,12 @@ public class GravarUsuario implements Comando {
                     log(Level.SEVERE, null, ex);
             throw new control.commands.ExcecaoComando(ex.getMessage());
         }
+    }
+
+    private void ressetaForm(HttpServletRequest req) {
+        view.FormUsuario frm = new view.FormUsuario();
+        frm.setInclusao(true);
+        req.getSession().setAttribute("formUsuario", frm);
     }
 
     private void validaForm(FormUsuario frm)

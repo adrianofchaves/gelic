@@ -38,6 +38,8 @@ public class Usuarios {
             "  PAPEL = ?" +
             " where" +
             "  LOGIN = ?";
+    public static final String sqlIncluiUsuario = 
+            "insert into USUARIOS(LOGIN, SENHA, PAPEL) value (?,?,?)";
     
     
     /**
@@ -69,6 +71,24 @@ public class Usuarios {
         return pstmt.executeUpdate();
         
         
+    }
+
+    public static int incluir(
+            String login, 
+            String senha, 
+            int papel) 
+            throws SQLException, NamingException, NoSuchAlgorithmException {
+        
+        Connection gelic = model.services.Conexao.getConnection();
+        
+        PreparedStatement pstmt = gelic.prepareStatement(sqlIncluiUsuario);
+        
+        pstmt.setString(1, login);
+        pstmt.setString(2, model.beans.Usuario.criptografaSenha(senha));
+        pstmt.setInt(3, papel);
+        
+        
+        return pstmt.executeUpdate();
     }
 
     /**
