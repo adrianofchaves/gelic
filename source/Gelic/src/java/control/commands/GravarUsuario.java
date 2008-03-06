@@ -4,6 +4,7 @@
  */
 package control.commands;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,20 +32,20 @@ public class GravarUsuario implements Comando {
         view.FormUsuario frm = (view.FormUsuario) req.getSession().getAttribute(
                 "formUsuario");        
         /* loginUsuario */
-        frm.setLoginUsuario(recuperaParametro(req, "loginUsuario"));
+        frm.setLoginUsuario(util.Forms.recuperaParametro(req, "loginUsuario"));
         /* senhaUsuario */
-        frm.setSenhaUsuario(recuperaParametro(req, "senhaUsuario"));
+        frm.setSenhaUsuario(util.Forms.recuperaParametro(req, "senhaUsuario"));
         /* confirmaSenhaUsuario */
         frm.setConfirmaSenhaUsuario(
-                recuperaParametro(req, "confirmaSenhaUsuario"));
+                util.Forms.recuperaParametro(req, "confirmaSenhaUsuario"));
         /* papelUsuario*/
-        frm.setPapelUsuario(recuperaParametro(req, "papelUsuario"));
+        frm.setPapelUsuario(util.Forms.recuperaParametro(req, "papelUsuario"));
 
         return frm;
     }
 
     private String processa(HttpServletRequest req)
-            throws SQLException, NamingException {
+            throws SQLException, NamingException, NoSuchAlgorithmException {
         /*Popula form*/
         FormUsuario frm = populaForm(req);
         /*Executa críticas*/
@@ -53,7 +54,7 @@ public class GravarUsuario implements Comando {
         req.getSession().setAttribute("formUsuario", frm);
 
 
-        if (!frm.getErros().isEmpty()) {
+        if (frm.temErros()) {
             /* Se hou erros, volta */
             return "/cadastroUsuarios.jsp";
         }
@@ -79,17 +80,13 @@ public class GravarUsuario implements Comando {
         return "/cadastroUsuarios.jsp";
     }
 
-    private String recuperaParametro(HttpServletRequest req, String nome) {
-        String parametro = req.getParameter(nome);
-        if (parametro == null) {
-            parametro = "";
-        }
-        return parametro;
-    }
-
-    public String executar(HttpServletRequest req) throws ExcecaoComando {
+        public String executar(HttpServletRequest req) throws ExcecaoComando {
         try {
             return processa(req);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(GravarUsuario.class.getName()).
+                    log(Level.SEVERE, null, ex);
+            throw new control.commands.ExcecaoComando(ex.getMessage());
         } catch (SQLException ex) {
             Logger.getLogger(GravarUsuario.class.getName()).
                     log(Level.SEVERE, null, ex);

@@ -4,6 +4,7 @@
  */
 package model.daos;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,6 +30,46 @@ public class Usuarios {
             " inner join PAPEIS on USUARIOS.PAPEL = PAPEIS.ID ";
     public static final String sqlContaUsuarios =
             "select count(*) from USUARIOS";
+    public static final String sqlAlteraUsuario =
+            "update USUARIOS " +
+            " set " +
+            "  LOGIN = ?," +
+            "  SENHA = ?," +
+            "  PAPEL = ?" +
+            " where" +
+            "  LOGIN = ?";
+    
+    
+    /**
+     * Altera o registro do usuário identificado pelo parâmetro login.
+     * 
+     * @param login
+     * @param novoLogin
+     * @param novaSenha
+     * @param novoPapel
+     * @return número de registros afetados (deve ser 1)
+     * @throws java.sql.SQLException
+     * @throws javax.naming.NamingException
+     */
+    public static int alterar(
+             String login, 
+             String novoLogin, 
+             String novaSenha, 
+             int novoPapel) throws SQLException, NamingException, NoSuchAlgorithmException {
+        
+        Connection gelic = model.services.Conexao.getConnection();
+        
+        PreparedStatement pstmt = gelic.prepareStatement(sqlAlteraUsuario);
+        
+        pstmt.setString(1, novoLogin);
+        pstmt.setString(2, model.beans.Usuario.criptografaSenha(novaSenha));
+        pstmt.setInt(3, novoPapel);
+        pstmt.setString(4, login);
+        
+        return pstmt.executeUpdate();
+        
+        
+    }
 
     /**
      * Instancia beans de usuários

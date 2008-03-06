@@ -1,5 +1,6 @@
 package control.commands;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,8 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-
-// #[regen=yes,id=DCE.EA8F4164-3E10-FACD-0F29-08131E42EFB0]
 // </editor-fold> 
 public class EfetuarLogin implements Comando {
 
@@ -22,6 +21,10 @@ public class EfetuarLogin implements Comando {
     public String executar(HttpServletRequest req) throws ExcecaoComando {
         try {
             return processar(req);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(EfetuarLogin.class.getName()).
+                    log(Level.SEVERE, null, ex);
+            throw new control.commands.ExcecaoComando(ex.getMessage());
         } catch (NamingException ex) {
             Logger.getLogger(EfetuarLogin.class.getName()).
                     log(Level.SEVERE, null, ex);
@@ -34,37 +37,39 @@ public class EfetuarLogin implements Comando {
 
     }
 
-    private String processar(HttpServletRequest req) throws NamingException, SQLException {
+    private String processar(HttpServletRequest req) throws NamingException, SQLException, NoSuchAlgorithmException {
 
-        String login = (String) req.getParameter("login");
-        String senha = (String) req.getParameter("senha");
+        /* Popula form */
+        view.FormLogin frm = new view.FormLogin();
+        frm.setLogin(util.Forms.recuperaParametro(req, "login"));
+        frm.setSenha(util.Forms.recuperaParametro(req, "senha"));
 
-        model.beans.Usuario usuario = model.services.Usuarios.recuperar(login, senha);
+
+
+        model.beans.Usuario usuario = model.services.Usuarios.recuperar(
+                frm.getLogin());
+
         if (usuario == null) {
-            req.setAttribute("erroLogin", "Informe o login.");
-            req.setAttribute("erros", "Login inválido!");
-            /* se foi uma tentar o login e falhar, mata a sessão */
-            req.getSession().setAttribute("usuario", null);
-            return "login.jsp";
-        }
-        if ((senha != null) && (!senha.equals(""))) {
-            /* informou alguma senha */
-            if ((usuario.getSenha() == null) || usuario.getSenha().equals("")) {
-                /* tem usuário com o login e sem senha.  No entanto foi informada
-                 * uma senha */
-                req.setAttribute("erros", "Senha inválida!");
-                req.setAttribute("erroSenha", "Informe a senha.");
-                req.getSession().setAttribute("usuario", null);
-                return "login.jsp";
+            /* Não existe usuário com este login */
+            if (frm.getLogin().isEmpty()) {
+                frm.setErroLogin("Informe um Login");
+            } else {
+                frm.setErroLogin("Não existe usuário com este login.");
             }
-            if (!usuario.getSenha().equals(senha)) {
-                /* senha informada diferente da cadastrada.*/
-                req.setAttribute("erros", "Senha inválida!");
-                req.setAttribute("erroSenha", "Informe a senha.");
-                req.getSession().setAttribute("usuario", null);
-                return "login.jsp";
+            frm.addErro("Login inválido!");
+        } else {
+            if (!usuario.isSenhaValida(frm.getSenha())) {
+                frm.setErroSenha("Senha inválida.");
+                frm.addErro("Senha inválida.");
             }
         }
+
+        req.setAttribute("formLogin", frm);
+        if (frm.temErros()) {
+            return "/login.jsp";
+        }
+
+        /* Login aceito */
         req.getSession().setAttribute("usuario", usuario);
         switch (usuario.getTipo()) {
             case model.beans.Usuario.ADMINISTRADOR:
