@@ -39,7 +39,7 @@ public class Usuarios {
             " where" +
             "  LOGIN = ?";
     public static final String sqlIncluiUsuario = 
-            "insert into USUARIOS(LOGIN, SENHA, PAPEL) value (?,?,?)";
+            "insert into USUARIOS(LOGIN, SENHA, PAPEL) values (?,?,?)";
     
     
     /**
