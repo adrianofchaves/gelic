@@ -8,6 +8,7 @@ import javax.naming.NamingException;
 import model.beans.Usuario;
 
 public class Usuarios {
+
     /**
      * Altera o registro do usuário no banco de dados.
      * @param login - login do usuário (antes de alterar).
@@ -16,23 +17,35 @@ public class Usuarios {
      * @param idPapel - novo papel do usuário
      */
     public static void alterar(
-            String login, 
+            String login,
+            String loginUsuario,
+            String senhaUsuario,
+            int idPapel)
+            throws SQLException, NamingException, NoSuchAlgorithmException {
+        if (model.daos.Usuarios.alterar(
+                login,
+                loginUsuario,
+                senhaUsuario,
+                idPapel) == 1) {
+            model.services.Conexao.getConnection().commit();
+        } else {
+            model.services.Conexao.getConnection().rollback();
+        }
+    }
+
+    public static void incluir(
             String loginUsuario, 
             String senhaUsuario, 
             int idPapel) 
-            throws SQLException, NamingException, NoSuchAlgorithmException {
-        if ( model.daos.Usuarios.alterar( 
-                login, 
-                loginUsuario, 
-                senhaUsuario, 
-                idPapel ) == 1 )
+            throws NamingException, SQLException, NoSuchAlgorithmException {
+        if (model.daos.Usuarios.incluir(
+                loginUsuario,
+                senhaUsuario,
+                idPapel) == 1) {
             model.services.Conexao.getConnection().commit();
-        else
+        } else {
             model.services.Conexao.getConnection().rollback();
-    }
-
-    public static void incluir(String loginUsuario, String senhaUsuario, int idPapel) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        }
     }
 
     /**
@@ -62,6 +75,5 @@ public class Usuarios {
     // </editor-fold> 
     public Usuarios() {
     }
-
 }
 

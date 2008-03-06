@@ -43,6 +43,9 @@
             </c:forEach>
         </table>
         <BR><BR>
+        <font color="blue">
+            <P>${sessionScope.browserUsuarios.mensagem}</P>
+        </font>
         <c:if test="${!sessionScope.formUsuario.inclusao}">
             <H3>Alterando usuário: </H3>
         </c:if>
@@ -51,9 +54,9 @@
         </c:if>
         
         <font color="red">
-        <c:forEach var="erro" items="${sessionScope.formUsuario.erros}">
-            <P>${erro}</P>
-        </c:forEach>
+            <c:forEach var="erro" items="${sessionScope.formUsuario.erros}">
+                <P>${erro}</P>
+            </c:forEach>
         </font>
         
         <form name="frmusuario" action="GelicServlet?comando=GravarUsuario" 

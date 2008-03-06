@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author adriano
  */
-public class BrowserUsuarios {
+public class BrowserUsuarios extends Form {
 
     private ArrayList<model.beans.Usuario> usuarios;
 

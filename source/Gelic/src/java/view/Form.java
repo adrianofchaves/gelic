@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Form {
 
     private ArrayList<String> erros = null;
+    private String mensagem;
 
     public void apagaErros() {
         erros = null;
@@ -28,11 +29,20 @@ public class Form {
     public ArrayList<String> getErros() {
         return erros;
     }
-    public boolean temErros(){
-        return !((erros == null)||erros.isEmpty());
+
+    public boolean temErros() {
+        return !((erros == null) || erros.isEmpty());
     }
 
     public void setErros(ArrayList<String> erros) {
         this.erros = erros;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
     }
 }
