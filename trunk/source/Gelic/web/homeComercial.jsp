@@ -15,33 +15,42 @@
     </head>
     <body bgcolor="#FFFF99">
         <h2>Bem-vindo, comercial!</h2>
-        <table border="0" bordercolor="#111111">
+        <table width="100%">
         <thead>
         <tr>
-            <th>
-                <img border="0" src="/imagens/mnLicitacao.jpg">
+            <th border="1" align="center" background="img/fundoMenu.jpg">
+                <a href="">
+                <img border="0" width="153" height="32" src="img/menuLicitacao.gif"/>
+                </a>
             </th>
-            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
-                <input type="submit" value="Licitações" name="licitacoes" />
+            <th border="1" align="center" background="img/fundoMenu.jpg">
+                <a href="">
+                <img border="0" width="176" height="32" src="img/menuTipoLicitacoes.gif"/>
+                </a>
             </th>
-            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
-                <input type="submit" value="Tipo de Licitações" name="tipoLicitacoes" />
+            <th border="1" align="center" background="img/fundoMenu.jpg">
+                <a href="">
+                <img border="0" width="215" height="32" src="img/menuTiposDocumento.gif"/>
+                </a>
             </th>
-            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
-                <input type="submit" value="Tipos de Documento" name="tipoDocumento" />
+            <th border="1" align="center" background="img/fundoMenu.jpg">
+                <a href="">
+                <img border="0" width="122" height="32" src="img/menuProdutos.gif"/>
+                </a>
             </th>
-            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
-                <input type="submit" value="Produtos" name="produtos" />
+            <th border="0" align="center" background="img/fundoMenu.jpg">
+                <a href="">
+                <img border="0" width="169" height="32" src="img/menuOrgaosPublicos.gif"/>
+                </a>
             </th>
-            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
-                <input type="submit" value="Orgão Públicos" name="orgaoPublico" />
-            </th>
-            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
-                <input type="submit" value="Empresas" name="empresas" />
+            <th border="1" align="center" background="img/fundoMenu.jpg">
+                <a href="">
+                <img border="0" width="122" height="32" src="img/menuEmpresas.gif" alt="Empresas"/>
+                </a>
             </th>
         </tr>
         <tr>
-            <td colspan="6">
+            <td colspan="6" border="1" bordercolor="#C0C0C0" background="img/fundoMenu.jpg">
                 <p>&nbsp;</p>
                 <Center>Lista de Licitações</center>
                 <p>&nbsp;</p>
