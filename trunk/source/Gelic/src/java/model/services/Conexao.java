@@ -66,7 +66,7 @@ public class Conexao {
         /* procura conexão no pull do Tomcat */
         InitialContext ic = new InitialContext();
         Context ambiente = (Context) ic.lookup("java:comp/env");
-        pool = (DataSource) ambiente.lookup(nomePool);
+        pool = (DataSource) ambiente.lookup(nomePool);        
     }
 
     /**
@@ -86,7 +86,11 @@ public class Conexao {
     }
 
     /**
-     * Retorna um Connection usado no Thread corrente. 
+     * Retorna um Connection usado no Thread corrente.  Deve ser usado quando a
+     * a mesma conexão deve ser visível a mais de uma classe.  Por exemplo, 
+     * quando adota-se o padrão de services em que a classe de serviço é 
+     * responsável pelo commit enquanto os DAOs são responsáveis apenas pelos
+     * comandos SQL.
      * 
      * @return Connection
      * @throws java.sql.SQLException
@@ -98,9 +102,12 @@ public class Conexao {
             servico = new Conexao();
         }
         if (servico.conexao == null) {
-            servico.conexao = new ThreadLocal<Connection>();
-            servico.conexao.set(servico.pool.getConnection());
-            return servico.conexao.get();
+            servico.conexao = new ThreadLocal<Connection>();            
+        }
+        if( servico.conexao.get() == null){
+            Connection c = servico.pool.getConnection();
+            c.setAutoCommit(false);
+           servico.conexao.set(c);    
         }
         return servico.conexao.get();
     }

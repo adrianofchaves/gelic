@@ -28,6 +28,9 @@ public class Form {
     public ArrayList<String> getErros() {
         return erros;
     }
+    public boolean temErros(){
+        return !((erros == null)||erros.isEmpty());
+    }
 
     public void setErros(ArrayList<String> erros) {
         this.erros = erros;

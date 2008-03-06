@@ -1,15 +1,34 @@
 package model.services;
 // #[regen=yes,id=DCE.4C280404-F5D8-E997-9B56-B559AAEA5A24]
 // </editor-fold> 
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
 import model.beans.Usuario;
 
 public class Usuarios {
-
-    public static void alterar(String login, String loginUsuario, String senhaUsuario, int idPapel) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    /**
+     * Altera o registro do usuário no banco de dados.
+     * @param login - login do usuário (antes de alterar).
+     * @param loginUsuario - novo login do usuário
+     * @param senhaUsuario - nova senha do usuário
+     * @param idPapel - novo papel do usuário
+     */
+    public static void alterar(
+            String login, 
+            String loginUsuario, 
+            String senhaUsuario, 
+            int idPapel) 
+            throws SQLException, NamingException, NoSuchAlgorithmException {
+        if ( model.daos.Usuarios.alterar( 
+                login, 
+                loginUsuario, 
+                senhaUsuario, 
+                idPapel ) == 1 )
+            model.services.Conexao.getConnection().commit();
+        else
+            model.services.Conexao.getConnection().rollback();
     }
 
     public static void incluir(String loginUsuario, String senhaUsuario, int idPapel) {
@@ -44,18 +63,5 @@ public class Usuarios {
     public Usuarios() {
     }
 
-    /**
-     * Recupera um usuário a partir do login e senha.
-     * @param login - login do usuário (case insensitive check)
-     * @param senha - senha do usuário (case sensitive check). Aceita senha nula
-     * ou vazia.
-     * @return usuario - bean do usuário retornado caso o login seja válido. 
-     * <B>retorna <CODE>null</CODE> se usuário não for encontrado.  A 
-     * propriedade papel é também assinalada.
-     */
-    public static model.beans.Usuario recuperar(String login, String senha)
-            throws NamingException, SQLException {
-        return model.daos.Usuarios.recuperar(login);
-    }
 }
 
