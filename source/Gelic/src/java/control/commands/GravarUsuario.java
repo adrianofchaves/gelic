@@ -48,6 +48,17 @@ public class GravarUsuario implements Comando {
 
     private String processa(HttpServletRequest req)
             throws SQLException, NamingException, NoSuchAlgorithmException {
+        if (req.getParameter("cancelar") != null) {
+            req.getSession().setAttribute("browserUsuarios",
+                    new view.BrowserUsuarios(
+                    model.services.Usuarios.recuperar()));
+
+            view.FormUsuario frm = new view.FormUsuario();
+            frm.setInclusao(true);
+            req.getSession().setAttribute("formUsuario", frm);
+            return "/cadastroUsuarios.jsp";
+        }
+
         /*Popula form*/
         FormUsuario frm = populaForm(req);
         /*Executa críticas*/

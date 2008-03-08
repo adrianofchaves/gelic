@@ -11,12 +11,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>GELIC [Administrador] - Licitações</title>
+        <title>GELIC--Administrador</title>
+        <H1 STYLE="font-family: Arial,Helvetica,sans-serif;
+            background-color: #3300cc;
+            background-position: right;
+            color: silver;
+            font-style: oblique;
+            font-weight: 900;
+            font-variant: small-caps;
+            font-size: XX-large;
+            text-align: right;
+        ">GELIC</H1>
     </head>
     <body>
-        <h2>Bem-vindo, administrador!</h2>
+        <P STYLE="font-size: large;
+           font-weight: 500;">Bem-vindo, administrador!</P>        
         <P>Se você deseja acessar o cadastro de usuários clique 
-            <a href="GelicServlet?comando=CadastroUsuarios">aqui</a>
+            <a href="GelicServlet?comando=CadastroUsuarios">aqui</a>            
+        </P>
+        <P>Se você deseja acessar o cadastro de modalidade de licitações clique 
+            <a href="GelicServlet?comando=CadastroUsuarios">aqui</a>            
         </P>
     </body>
 </html>
