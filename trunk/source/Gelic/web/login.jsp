@@ -13,24 +13,47 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>GELIC--Login</title>
+        <title>GELIC--Autenticação</title>
+        <H1 STYLE="font-family: Arial,Helvetica,sans-serif;
+            background-color: #3300cc;
+            background-position: right;
+            color: silver;
+            font-style: oblique;
+            font-weight: 900;
+            font-variant: small-caps;
+            font-size: XX-large;
+            text-align: right;
+        ">GELIC</H1>
     </head>
     <body>
-        <h2>Login</h2><br>
-        <font color="red"><b>
+        <form 
+            style="background-color: #fbfbec;"
+            name="formlogin" 
+            action="GelicServlet?comando=EfetuarLogin" method="post">
+            <h2 style="background-color: #3300cc;
+                font-style: oblique;
+                color: #ffffff;
+                font-weight: bold;
+                font-variant: small-caps;">Autenticação</h2>
+            <font style="background-color: #fbfbec;color: red;"> 
                 ${requestScope.formLogin.erros}
-        </b></font>        
-        <form name="formlogin" action="GelicServlet?comando=EfetuarLogin" method="post">
-            <br><br>Digite seu login e senha:<BR><BR>
-            Login: <BR>
-            <input type="text" name="login" value="" />             
-            <font color="red">${requestScope.formLogin.erroLogin}</font>
-            <BR>
-            Senha: <BR>
-            <input type="password" name="senha" value="" />
-            <font color="red">${requestScope.formLogin.erroSenha}</font>
-            <BR>
-            <input type="submit" value="Efetuar Login" name="comando" />
+            </font>                    
+            <P>Login:<BR>
+                <input type="text" name="login" value="" />             
+                <font style="background-color: #fbfbec;color: red;">
+                    ${requestScope.formLogin.erroLogin}
+                </font>
+            </P>
+            <P>
+                Senha:<BR>
+                <input type="password" name="senha" value="" />
+                <font style="background-color: #fbfbec;
+                      color: red;">${requestScope.formLogin.erroSenha}</font>
+                
+            </P>
+            <P>
+                <input type="submit" value="Efetuar Login" name="comando" />
+            </P>
         </form>
     </body>
 </html>
