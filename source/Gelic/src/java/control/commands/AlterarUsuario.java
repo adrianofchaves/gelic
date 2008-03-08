@@ -25,8 +25,10 @@ public class AlterarUsuario implements Comando{
                juntos, então é necessário enviar a lista de usuários 
                cadastrados
              */
-            req.setAttribute("browserUsuarios",new view.BrowserUsuarios(
-                    model.services.Usuarios.recuperar()));
+            req.setAttribute("browserUsuarios", null);
+            view.BrowserUsuarios browser = new view.BrowserUsuarios(
+                    model.services.Usuarios.recuperar());
+            req.setAttribute("browserUsuarios", browser );
             
             String login = req.getParameter("login");
             view.FormUsuario frm = new view.FormUsuario();
