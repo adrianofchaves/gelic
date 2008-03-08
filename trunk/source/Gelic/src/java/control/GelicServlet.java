@@ -41,6 +41,7 @@ public class GelicServlet extends HttpServlet {
         comandos.put("AlterarUsuario", new control.commands.AlterarUsuario());
         comandos.put("ExcluirUsuario", new control.commands.ExcluirUsuario());
         comandos.put("GravarUsuario", new control.commands.GravarUsuario());
+        comandos.put("Logout", new control.commands.Logout());
 
     }
 

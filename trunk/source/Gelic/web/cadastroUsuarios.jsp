@@ -129,7 +129,11 @@
             </p>
         </form>
         <P>
-            Para voltar ao início clique <a href="homeAdministrador.jsp">aqui</a>
-        </P>        
+            Para voltar ao início clique 
+            <a href="homeAdministrador.jsp">aqui</a>
+        </P>   
+        <P>Para efetuar logout clique 
+            <a href="GelicServlet?comando=Logout">aqui</a>
+        </p>
     </body>
 </html>

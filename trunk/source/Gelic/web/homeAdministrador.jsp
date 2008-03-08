@@ -21,7 +21,7 @@
             font-variant: small-caps;
             font-size: XX-large;
             text-align: right;
-        ">GELIC</H1>
+        ">GELIC</H1>        
     </head>
     <body>
         <P STYLE="font-size: large;
@@ -32,5 +32,9 @@
         <P>Se você deseja acessar o cadastro de modalidade de licitações clique 
             <a href="GelicServlet?comando=CadastroUsuarios">aqui</a>            
         </P>
+        <P>Para efetuar logout clique <a href="GelicServlet?comando=Logout"> 
+                aqui
+            </a>
+        </p>
     </body>
 </html>
