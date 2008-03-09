@@ -11,17 +11,17 @@ package view;
 public class FormModalidade extends Form {
 
     private model.beans.Modalidade modalidade;
-    private String sigla;
-    private String erroSigla;
-    private String nome;
-    private String erroNome;
+    private String siglaModalidade;
+    private String errosiglaModalidade;
+    private String nomeModalidade;
+    private String erroNomeModalidade;
     private Boolean inclusao = true;
     
 
     public void apagaErros() {
         super.apagaErros();
-        erroNome = "";
-        erroSigla = "";
+        erroNomeModalidade = "";
+        errosiglaModalidade = "";
     }
 
     public void atualizaCampos() {
@@ -29,8 +29,8 @@ public class FormModalidade extends Form {
         if (modalidade == null) {
             return;
         }
-        sigla = modalidade.getSigla();
-        nome = modalidade.getNome();
+        siglaModalidade = modalidade.getSigla();
+        nomeModalidade = modalidade.getNome();
     }
 
     public model.beans.Modalidade getModalidade() {
@@ -41,36 +41,36 @@ public class FormModalidade extends Form {
         this.modalidade = modalidade;
     }
 
-    public String getSigla() {
-        return sigla;
+    public String getSiglaModalidade() {
+        return siglaModalidade;
     }
 
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
+    public void setSiglaModalidade(String siglaModalidade) {
+        this.siglaModalidade = siglaModalidade;
     }
 
-    public String getErroSigla() {
-        return erroSigla;
+    public String getErroSiglaModalidade() {
+        return errosiglaModalidade;
     }
 
-    public void setErroSigla(String erroSigla) {
-        this.erroSigla = erroSigla;
+    public void setErroSiglaModalidade(String errosiglaModalidade) {
+        this.errosiglaModalidade = errosiglaModalidade;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeModalidade() {
+        return nomeModalidade;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeModalidade(String nomeModalidade) {
+        this.nomeModalidade = nomeModalidade;
     }
 
-    public String getErroNome() {
-        return erroNome;
+    public String getErroNomeModalidade() {
+        return erroNomeModalidade;
     }
 
-    public void setErroNome(String erroNome) {
-        this.erroNome = erroNome;
+    public void setErroNomeModalidade(String erroNomeModalidade) {
+        this.erroNomeModalidade = erroNomeModalidade;
     }
 
     public Boolean getInclusao() {

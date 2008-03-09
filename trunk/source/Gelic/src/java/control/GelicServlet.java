@@ -4,8 +4,19 @@
  */
 package control;
 
+import control.commands.AlterarModalidade;
+import control.commands.AlterarUsuario;
+import control.commands.CadastroModalidades;
+import control.commands.CadastroUsuarios;
 import control.commands.Comando;
+import control.commands.EfetuarLogin;
 import control.commands.ExcecaoComando;
+import control.commands.ExcluirUsuario;
+import control.commands.GravarModalidade;
+import control.commands.GravarUsuario;
+import control.commands.Logout;
+import control.commands.NovaModalidade;
+import control.commands.Nulo;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -35,16 +46,17 @@ public class GelicServlet extends HttpServlet {
     private void carregaComandos() {
         comandos = new HashMap();
 
-        comandos.put("<vazio>", new control.commands.Nulo("index.jsp"));
-        comandos.put("EfetuarLogin", new control.commands.EfetuarLogin());
-        comandos.put("CadastroUsuarios", new control.commands.CadastroUsuarios());
-        comandos.put("AlterarUsuario", new control.commands.AlterarUsuario());
-        comandos.put("ExcluirUsuario", new control.commands.ExcluirUsuario());
-        comandos.put("GravarUsuario", new control.commands.GravarUsuario());
-        comandos.put("Logout", new control.commands.Logout());
-        comandos.put("CadastroModalidades",
-                new control.commands.CadastroModalidades());
-        comandos.put("AlterarModalidade", new control.commands.AlterarModalidade());
+        comandos.put("<vazio>", new Nulo("index.jsp"));
+        comandos.put("EfetuarLogin", new EfetuarLogin());
+        comandos.put("CadastroUsuarios", new CadastroUsuarios());
+        comandos.put("AlterarUsuario", new AlterarUsuario());
+        comandos.put("ExcluirUsuario", new ExcluirUsuario());
+        comandos.put("GravarUsuario", new GravarUsuario());
+        comandos.put("Logout", new Logout());
+        comandos.put("CadastroModalidades", new CadastroModalidades());
+        comandos.put("AlterarModalidade", new AlterarModalidade());
+        comandos.put("NovaModalidade", new NovaModalidade());
+        comandos.put("GravarModalidade", new GravarModalidade());
 
     }
 
@@ -154,7 +166,9 @@ public class GelicServlet extends HttpServlet {
         return "Servlet do Gerente de Licitações";
     }
 
-    private void processa(HttpServletResponse response, HttpServletRequest request) throws ServletException, IOException, ExcecaoComando {
+    private void processa(HttpServletResponse response, 
+            HttpServletRequest request) throws 
+            ServletException, IOException, ExcecaoComando {
         /**
          *
          * Por enquanto vou deixar aqui um forward para o homeAdministrador.

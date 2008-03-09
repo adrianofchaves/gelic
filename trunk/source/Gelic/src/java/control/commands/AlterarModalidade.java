@@ -27,7 +27,9 @@ public class AlterarModalidade implements Comando{
                     model.services.Modalidades.recuperar(sigla);
             view.FormModalidade frm = new view.FormModalidade();
             frm.setModalidade(modalidade);
-
+            frm.atualizaCampos();
+            frm.setInclusao(false);
+            req.getSession().setAttribute("formModalidade", frm);
             return "/formModalidade.jsp";
         } catch (SQLException ex) {
             Logger.getLogger(AlterarModalidade.class.getName()).log(
