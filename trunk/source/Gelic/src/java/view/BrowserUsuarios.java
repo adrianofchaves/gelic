@@ -12,8 +12,11 @@ import java.util.ArrayList;
  */
 public class BrowserUsuarios extends Form {
 
-    private ArrayList<model.beans.Usuario> usuarios;
-
+    private ArrayList<model.beans.Usuario> usuarios = null;
+    
+    public BrowserUsuarios(){
+        
+    }
     public BrowserUsuarios(
             ArrayList<model.beans.Usuario> usuarios) {
         this.usuarios = usuarios;
