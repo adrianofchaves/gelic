@@ -42,8 +42,9 @@ public class GelicServlet extends HttpServlet {
         comandos.put("ExcluirUsuario", new control.commands.ExcluirUsuario());
         comandos.put("GravarUsuario", new control.commands.GravarUsuario());
         comandos.put("Logout", new control.commands.Logout());
-        comandos.put("CadastroModalidades", 
+        comandos.put("CadastroModalidades",
                 new control.commands.CadastroModalidades());
+        comandos.put("AlterarModalidade", new control.commands.AlterarModalidade());
 
     }
 
@@ -53,25 +54,28 @@ public class GelicServlet extends HttpServlet {
         ServletContext cntx = this.getServletContext();
         cntx.setAttribute("papeis", model.services.Papeis.recuperar());
     }
+
     /**
      * Carrega listas no contexto da aplicação.  Essas listas somente são 
      * recarregadas quando o Servlet é iniciado.
      */
-    private void carregaTabelasNoContexto() throws ServletException{
+    private void carregaTabelasNoContexto() throws ServletException {
         try {
             carregaPapeis();
         } catch (SQLException ex) {
             Logger.getLogger(GelicServlet.class.getName()).log(Level.SEVERE, null, ex);
-             throw new ServletException(ex.getClass().getName() + "." + ex.getMessage() );
+            throw new ServletException(ex.getClass().getName() + "." + ex.getMessage());
         } catch (NamingException ex) {
             Logger.getLogger(GelicServlet.class.getName()).log(Level.SEVERE, null, ex);
-             throw new ServletException(ex.getClass().getName() + "." + ex.getMessage() );
+            throw new ServletException(ex.getClass().getName() + "." + ex.getMessage());
         }
     }
+
     public void init() throws ServletException {
-        carregaComandos();        
+        carregaComandos();
         carregaTabelasNoContexto();
     }
+
     /**
      * Inclui, se necessário  "/" no início do url
      * 
@@ -111,13 +115,13 @@ public class GelicServlet extends HttpServlet {
      * @param response servlet response
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+            throws ServletException, IOException {
         try {
             processa(response, request);
-            //forward("/homeAdministrador.jsp", request, response);
+        //forward("/homeAdministrador.jsp", request, response);
         } catch (ExcecaoComando ex) {
             Logger.getLogger(GelicServlet.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ServletException(ex.getClass().getName() + "." + ex.getMessage() );
+            throw new ServletException(ex.getClass().getName() + "." + ex.getMessage());
         }
     //forward("/homeAdministrador.jsp", request, response);
     }
@@ -163,7 +167,7 @@ public class GelicServlet extends HttpServlet {
             comando = procuraComando("<vazio>");
         }
         forward(comando.executar(request), request, response);
-        //forward("/homeAdministrador.jsp", request, response);
+    //forward("/homeAdministrador.jsp", request, response);
     }
 
     private Comando procuraComando(String nomeComando) {
