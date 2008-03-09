@@ -30,7 +30,7 @@
             <a href="GelicServlet?comando=CadastroUsuarios">aqui</a>            
         </P>
         <P>Se você deseja acessar o cadastro de modalidade de licitações clique 
-            <a href="GelicServlet?comando=CadastroUsuarios">aqui</a>            
+            <a href="GelicServlet?comando=CadastroModalidades">aqui</a>            
         </P>
         <P>Para efetuar logout clique <a href="GelicServlet?comando=Logout"> 
                 aqui
