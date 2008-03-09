@@ -50,7 +50,7 @@
             
             <P>Sigla:<br>
                 <input type="text" name="siglaModalidade" 
-                       value="${sessionScope.formUsuario.siglaModalidade}" />
+                       value="${sessionScope.formModalidade.siglaModalidade}" />
                 <font style="background-color: #fbfbec;color: red;">
                     ${sessionScope.formUsuario.erroSiglaModalidade}
                 </font>

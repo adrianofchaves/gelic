@@ -59,11 +59,11 @@ public class Modalidades {
             String nome) throws SQLException, NamingException {
         Connection gelic = model.services.Conexao.getConnection();
 
-        PreparedStatement pstmt = gelic.prepareStatement(sqlIncluiModalidade);
+        PreparedStatement pstmt = gelic.prepareStatement(sqlAlteraModalidade);
 
         pstmt.setString(1, sigla);
         pstmt.setString(2, nome);
-        pstmt.setString(1, siglaAnterior);
+        pstmt.setString(3, siglaAnterior);
 
         return pstmt.executeUpdate();
     }

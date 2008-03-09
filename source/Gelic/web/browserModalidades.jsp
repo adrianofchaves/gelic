@@ -81,7 +81,7 @@
                   color: #0033cc;font-variant: normal;">
             <P>${sessionScope.browserModalidades.mensagem}</P>
         </font>
-        <form action="GelicServlet?comando=CriarModalidade">
+        <form action="GelicServlet?comando=NovaModalidade" method = "post">
             <input type="submit" value="Criar"/> 
         </form>
         <P>
