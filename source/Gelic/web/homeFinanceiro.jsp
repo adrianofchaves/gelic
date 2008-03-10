@@ -12,23 +12,38 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC [Financeiro] - Licitações</title>
+        <H1 STYLE="font-family: Arial,Helvetica,sans-serif;
+            background-color: #3300cc;
+            background-position: right;
+            color: silver;
+            font-style: oblique;
+            font-weight: 900;
+            font-variant: small-caps;
+            font-size: XX-large;
+            text-align: right;
+        ">GELIC</H1>        
     </head>
-    <body bgcolor="#FFFF99">
-        <h2>Bem-vindo, financeiro!</h2>
-        <table border="0" bordercolor="#111111">
+    <body vlink=#FFFF00">
+        <P STYLE="font-size: large;
+           font-weight: 500;">Bem-vindo, Financeiro!</P>        
+        <table width="100%" style="background-color: #3300cc;
+                font-style: oblique;
+                color: #ffffff;
+                font-weight: bold;
+                font-variant: small-caps;">
         <thead>
         <tr>
-            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
-                <input type="submit" value="Bancos" name="bancos" />
+            <th align="center" height="18">
+                <b><a style="color: #FFFFFF" href="">Bancos</b></a>
             </th>
-            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
-                <input type="submit" value="Pagamentos de Compras" name="pagamentosCompras" />
+            <th align="center" height="18">
+                <b><a style="color: #FFFFFF" href="">Pagamentos de Compras</b></a>
             </th>
-            <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
-                <input type="submit" value="Notas de Compras" name="notasCompras" />
+            <th align="center" height="18">
+                <b><a style="color: #FFFFFF" href="">Notas de Compras</b></a>
             </th>
-           <th bgcolor="#C0C0C0" align="center" bordercolor="#FFFFFF">
-               <input type="submit" value="Duplicatas" name="duplicatas" />
+            <th align="center" height="18">
+                <b><a style="color: #FFFFFF" href="">Duplicatas</b></a>
             </th>
         </tr>
         </thead>
