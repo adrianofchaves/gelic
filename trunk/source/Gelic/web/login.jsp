@@ -11,44 +11,32 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
+    <link rel="STYLESHEET" href="estilos.css" type="text/css">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC--Autenticação</title>
-        <H1 STYLE="font-family: Arial,Helvetica,sans-serif;
-            background-color: #3300cc;
-            background-position: right;
-            color: silver;
-            font-style: oblique;
-            font-weight: 900;
-            font-variant: small-caps;
-            font-size: XX-large;
-            text-align: right;
-        ">GELIC</H1>
+        <H1 class="nomeSistema">GELIC &nbsp;&nbsp;</H1>
     </head>
     <body>
-        <form 
-            style="background-color: #fbfbec;"
+        <form             
             name="formlogin" 
-            action="GelicServlet?comando=EfetuarLogin" method="post">
-            <h2 style="background-color: #3300cc;
-                font-style: oblique;
-                color: #ffffff;
-                font-weight: bold;
-                font-variant: small-caps;">Autenticação</h2>
-            <font style="background-color: #fbfbec;color: red;"> 
+            action="GelicServlet?comando=EfetuarLogin" method="post">            
+            <p class="caption">Autenticação</p>
+            <font class="erro"> 
                 ${requestScope.formLogin.erros}
             </font>                    
             <P>Login:<BR>
-                <input type="text" name="login" value="" />             
-                <font style="background-color: #fbfbec;color: red;">
+                <input class="caixaTexto" type="text" name="login" value="" />             
+                <font class="erroCampo"> 
                     ${requestScope.formLogin.erroLogin}
                 </font>
             </P>
             <P>
                 Senha:<BR>
-                <input type="password" name="senha" value="" />
-                <font style="background-color: #fbfbec;
-                      color: red;">${requestScope.formLogin.erroSenha}</font>
+                <input class="caixaTexto"  type="password" name="senha" value="" />
+                <font class="erroCampo">
+                    ${requestScope.formLogin.erroSenha}
+                </font>
                 
             </P>
             <P>
