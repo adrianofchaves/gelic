@@ -9,23 +9,14 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
+    <link rel="STYLESHEET" href="estilos.css" type="text/css">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC--Administrador</title>
-        <H1 STYLE="font-family: Arial,Helvetica,sans-serif;
-            background-color: #3300cc;
-            background-position: right;
-            color: silver;
-            font-style: oblique;
-            font-weight: 900;
-            font-variant: small-caps;
-            font-size: XX-large;
-            text-align: right;
-        ">GELIC</H1>        
+        <H1 class="nomeSistema">GELIC &nbsp;&nbsp;</H1>
     </head>
     <body>
-        <P STYLE="font-size: large;
-           font-weight: 500;">Bem-vindo, administrador!</P>        
+        <P class="bemvindo">Bem-vindo, administrador!</P>        
         <P>Se você deseja acessar o cadastro de usuários clique 
             <a href="GelicServlet?comando=CadastroUsuarios">aqui</a>            
         </P>

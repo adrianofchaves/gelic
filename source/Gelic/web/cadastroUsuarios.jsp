@@ -10,37 +10,16 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
+    <link rel="STYLESHEET" href="estilos.css" type="text/css">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>GELIC--Cadastro de usuários</title>  
-        
-        <H1 STYLE="font-family: Arial,Helvetica,sans-serif;
-            background-color: #3300cc;
-            background-position: right;
-            color: silver;
-            font-style: oblique;
-            font-weight: 900;
-            font-variant: small-caps;
-            font-size: XX-large;
-            text-align: right;
-        ">GELIC</H1>        
+        <title>GELIC--Cadastro de usuários</title> 
+        <H1 class="nomeSistema">GELIC &nbsp;&nbsp;</H1>
     </head>
     <body>        
         <table 
-            style="font-family: Arial,Helvetica,sans-serif;width: 100%;">
-            <h2 style="background-color: #3300cc;
-                font-style: oblique;
-                color: #ffffff;
-                font-weight: bold;
-                font-variant: small-caps;">
-            Cadastro de usuários</h2>       
-            <tr  style="font-variant: small-caps;
-                 font-weight: bold;
-                 border-bottom-style: solid;
-                 border-bottom-width: 2px;
-                 font-family: Arial,Helvetica,sans-serif;
-                 border-bottom-color: #999999;
-                 background-color: #d8edf0;">
+            <P class="caption" >Cadastro de usuários</P>
+            <tr class="cabecalho">
                 <td>Login</td>
                 <td>Papel</td>
                 <TD> </TD>
@@ -48,11 +27,7 @@
             <c:forEach 
                 var="usuario" 
                 items="${sessionScope.browserUsuarios.usuarios}">                
-                <tr 
-                    style="font-size: small;
-                    background-color: #fbfbec;
-                    font-family: Arial,Helvetica,sans-serif;
-                    color: #6e6c6c;">
+                <tr class="dados">
                     <td>
                         <a href="GelicServlet?comando=AlterarUsuario&login=${usuario.login}">
                             ${usuario.login}    
@@ -75,81 +50,75 @@
                 
             </c:forEach>
         </table>        
-        <font style="font-family: Arial,Helvetica,sans-serif;
-font-style: no
-    font-weight: 700;
-    color: #0033cc;font-variant: normal;">
-    <P>${sessionScope.browserUsuarios.mensagem}</P>
-</font>
-        <form name="frmusuario" 
-              style="background-color: #fbfbec;"
+        <P>
+            <font class="mensagem">
+                ${sessionScope.browserUsuarios.mensagem}
+            </font>
+        </P>
+        <form name="frmusuario"
               action="GelicServlet?comando=GravarUsuario" 
               method="POST">
-            <h2 style="background-color: #3300cc;
-                font-style: oblique;
-                color: #ffffff;
-                font-weight: bold;
-                font-variant: small-caps;">
-<c:if test="${!sessionScope.formUsuario.inclusao}">
-    Alterando usuário:
-</c:if>
-<c:if test="${sessionScope.formUsuario.inclusao}">
-    Criando usuário:
-</c:if>
-</H2>
-<font style="background-color: #fbfbec;color: red;">
-<c:forEach var="erro" items="${sessionScope.formUsuario.erros}">
-    <P>${erro}</P>
-</c:forEach>
-</font>
-
-<P>Login:<br>
-    <input type="text" name="loginUsuario" 
-           value="${sessionScope.formUsuario.loginUsuario}" />
-    <font style="background-color: #fbfbec;color: red;">
-        ${sessionScope.formUsuario.erroLoginUsuario}
-    </font>
-</P>
-<P>Senha:<br>
-    <input type="password" name="senhaUsuario" 
-           value="${sessionScope.formUsuario.senhaUsuario}" />
-    <font style="background-color: #fbfbec;color: red;">
-        ${sessionScope.formUsuario.erroSenhaUsuario}
-    </font>
-</P>
-<P>Confirme a senha:<br>
-    <input type="password" name="confirmaSenhaUsuario" 
-           value="${sessionScope.formUsuario.confirmaSenhaUsuario}" 
-           />
-    <font style="background-color: #fbfbec;color: red;">
-        ${sessionScope.formUsuario.erroConfirmaSenhaUsuario}
-    </font>
-</P>
-<P>Selecione o papel que o usuário:<BR>
-    <select name="papelUsuario" 
-            tabindex="${sessionScope.formUsuario.idPapel}" >
-<c:forEach var="papel" items="${applicationScope.papeis}">
-    <option>${papel.nome}</option>                
-</c:forEach>    
-</select>
-<font style="background-color: #fbfbec;
-      color: red;">
-        ${sessionScope.formUsuario.erroPapelUsuario}
-</font>
-</P>
-<p>
-<input type="submit" value="Gravar" name="executar"/>
-<c:if test="${!sessionScope.formUsuario.inclusao}">
-    <INPUT TYPE="submit" value="Cancelar" name="cancelar"/>
-</c:if>
-</p>
-</form>
-<P>
-Para voltar ao início clique 
-<a href="homeAdministrador.jsp">aqui</a>
-</P>   
-<P>Para efetuar logout clique 
-<a href="GelicServlet?comando=Logout">aqui</a>
-</p>
-</body>
+            <p class="caption">            
+                <c:if test="${!sessionScope.formUsuario.inclusao}">
+                    Alterando usuário:
+                </c:if>
+                <c:if test="${sessionScope.formUsuario.inclusao}">
+                    Criando usuário:
+                </c:if>
+            </p>
+            <font class = "erro">
+                <c:forEach var="erro" items="${sessionScope.formUsuario.erros}">
+                    <P>${erro}</P>
+                </c:forEach>
+            </font>
+            
+            <P>Login:<br>
+                <input type="text" name="loginUsuario" class = "caixaTexto"
+                       value="${sessionScope.formUsuario.loginUsuario}" />
+                <font class="erroCampo">
+                    ${sessionScope.formUsuario.erroLoginUsuario}
+                </font>
+            </P>
+            <P>Senha:<br>
+                <input type="password" name="senhaUsuario" class = "caixaTexto"
+                       value="${sessionScope.formUsuario.senhaUsuario}" />
+                <font class="erroCampo">
+                    ${sessionScope.formUsuario.erroSenhaUsuario}
+                </font>
+            </P>
+            <P>Confirme a senha:<br>
+                <input type="password" name="confirmaSenhaUsuario" 
+                       class = "caixaTexto"
+                       value="${sessionScope.formUsuario.confirmaSenhaUsuario}" 
+                       />
+                <font class="erroCampo">
+                    ${sessionScope.formUsuario.erroConfirmaSenhaUsuario}
+                </font>
+            </P>
+            <P>Selecione o papel que o usuário:<BR>
+                <select name="papelUsuario" 
+                        tabindex="${sessionScope.formUsuario.idPapel}" >
+                    <c:forEach var="papel" items="${applicationScope.papeis}">
+                        <option>${papel.nome}</option>                
+                    </c:forEach>    
+                </select>
+                <font class="erroCampo">
+                    ${sessionScope.formUsuario.erroPapelUsuario}
+                </font>
+            </P>
+            <p>
+                <input type="submit" value="Gravar" name="executar"/>
+                <c:if test="${!sessionScope.formUsuario.inclusao}">
+                    <INPUT TYPE="submit" value="Cancelar" name="cancelar"/>
+                </c:if>
+            </p>
+        </form>
+        <P>
+            Para voltar ao início clique 
+            <a href="homeAdministrador.jsp">aqui</a>
+        </P>   
+        <P>Para efetuar logout clique 
+            <a href="GelicServlet?comando=Logout">aqui</a>
+        </p>
+    </body>
 </html>
