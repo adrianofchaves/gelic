@@ -12,8 +12,35 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC [Gerente Comercial] - Licitações</title>
+        <H1 STYLE="font-family: Arial,Helvetica,sans-serif;
+            background-color: #3300cc;
+            background-position: right;
+            color: silver;
+            font-style: oblique;
+            font-weight: 900;
+            font-variant: small-caps;
+            font-size: XX-large;
+            text-align: right;
+        ">GELIC</H1>        
     </head>
-    <body bgcolor="#FFFF99">
-        <h2>Bem-vindo, Gerente Comercial!</h2>
+    <body vlink=#FFFF00">
+        <P STYLE="font-size: large;
+           font-weight: 500;">Bem-vindo, Gerente Comercial!</P>        
+        <table width="100%" style="background-color: #3300cc;
+                font-style: oblique;
+                color: #ffffff;
+                font-weight: bold;
+                font-variant: small-caps;">
+        <thead>
+        <tr>
+            <th align="center" height="18">
+                <b><a style="color: #FFFFFF" href="">Licitações</b></a>
+            </th>
+            <th align="center" height="18">
+                <b><a style="color: #FFFFFF" href="">Propostas</b></a>
+            </th>
+        </tr>
+        </thead>
+        </table>
     </body>
 </html>
