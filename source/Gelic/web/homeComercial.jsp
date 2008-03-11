@@ -9,23 +9,14 @@
    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
+    <link rel="STYLESHEET" href="estilos.css" type="text/css">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC [Comercial] - Licitações</title>
-        <H1 STYLE="font-family: Arial,Helvetica,sans-serif;
-            background-color: #3300cc;
-            background-position: right;
-            color: silver;
-            font-style: oblique;
-            font-weight: 900;
-            font-variant: small-caps;
-            font-size: XX-large;
-            text-align: right;
-        ">GELIC</H1>        
+        <H1 class="nomesistema">GELIC &nbsp;&nbsp;</H1>        
     </head>
-    <body vlink=#FFFF00">
-        <P STYLE="font-size: large;
-           font-weight: 500;">Bem-vindo, Comercial!</P>        
+    <body vlink="#FFFF00">
+        <P class="bemvindo">Bem-vindo, Comercial!</P>        
         <table width="100%" style="background-color: #3300cc;
                 font-style: oblique;
                 color: #ffffff;
@@ -55,13 +46,7 @@
         </thead>
         </table>
         <table>
-        <tr style="font-variant: small-caps;
-                 font-weight: bold;
-                 border-bottom-style: solid;
-                 border-bottom-width: 2px;
-                 font-family: Arial,Helvetica,sans-serif;
-                 border-bottom-color: #999999;
-                 background-color: #d8edf0;">
+        <tr class = "cabecalho">
             <td>
                 <b><Center>Titulo Campo1</center></b>
             </td>
@@ -74,10 +59,7 @@
             <td>
                 <b><Center>Titulo Campo4</center></b>
             </td>
-            <tr style="font-size: small;
-                    background-color: #fbfbec;
-                    font-family: Arial,Helvetica,sans-serif;
-                    color: #6e6c6c;">
+            <tr class="dados">
                 <td>Campo1</td>
                 <td>Campo2</td>
                 <td>Campo3</td>
