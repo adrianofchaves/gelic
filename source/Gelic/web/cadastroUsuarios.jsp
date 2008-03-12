@@ -16,9 +16,9 @@
         <title>GELIC--Cadastro de usuários</title> 
         <H1 class="nomeSistema">GELIC &nbsp;&nbsp;</H1>
     </head>
-    <body>        
-        <table 
-            <P class="caption" >Cadastro de usuários</P>
+    <body>  
+        <P class="caption" >Cadastro de usuários</P>    
+        <table>             
             <tr class="cabecalho">
                 <td>Login</td>
                 <td>Papel</td>
@@ -107,11 +107,14 @@
                 </font>
             </P>
             <p>
-                <input type="submit" value="Gravar" name="executar"/>
+                <input class="botao" type="submit" value="Gravar" 
+                       name="executar"/>
                 <c:if test="${!sessionScope.formUsuario.inclusao}">
-                    <INPUT TYPE="submit" value="Cancelar" name="cancelar"/>
+                    <INPUT class= "botao" TYPE="submit" value="Cancelar" 
+                           name="cancelar"/>
                 </c:if>
             </p>
+            <P></P>
         </form>
         <P>
             Para voltar ao início clique 

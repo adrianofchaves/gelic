@@ -11,62 +11,49 @@
 
 <html>
     <head>
+        <link rel="STYLESHEET" href="estilos.css" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC--Cadastro de usuários</title>  
         
-        <H1 STYLE="font-family: Arial,Helvetica,sans-serif;
-            background-color: #3300cc;
-            background-position: right;
-            color: silver;
-            font-style: oblique;
-            font-weight: 900;
-            font-variant: small-caps;
-            font-size: XX-large;
-            text-align: right;
-        ">GELIC</H1>        
+        <H1 class="nomeSistema">GELIC &nbsp;&nbsp;</H1>
+        
     </head>
     <body>
         <form name="frmModalidade" 
               style="background-color: #fbfbec;"
               action="GelicServlet?comando=GravarModalidade" 
               method="POST">
-            <h2 style="background-color: #3300cc;
-                font-style: oblique;
-                color: #ffffff;
-                font-weight: bold;
-                font-variant: small-caps;">
+            <p class="caption">Autenticação
                 <c:if test="${!sessionScope.formModalidade.inclusao}">
                     Alterando modalidade:
                 </c:if>
                 <c:if test="${sessionScope.formModalidade.inclusao}">
                     Criando usuário:
                 </c:if>
-            </H2>
-            <font style="background-color: #fbfbec;color: red;">
+            </p>
+            <font class="erro" >
                 <c:forEach var="erro" items="${sessionScope.formModalidade.erros}">
                     <P>${erro}</P>
                 </c:forEach>
             </font>
             
             <P>Sigla:<br>
-                <input type="text" name="siglaModalidade" 
+                <input type="text" name="siglaModalidade" class="caixaTexto"
                        value="${sessionScope.formModalidade.siglaModalidade}" />
-                <font style="background-color: #fbfbec;color: red;">
-                    ${sessionScope.formUsuario.erroSiglaModalidade}
+                <font class="erroCampo" >
+                    ${sessionScope.formModalidade.erroSiglaModalidade}
                 </font>
             </P>
             <P>Nome:<br>
-                <input type="text" name="nomeModalidade" 
+                <input type="text" name="nomeModalidade" class="caixaTexto"
                        value="${sessionScope.formModalidade.nomeModalidade}" />
-                <font style="background-color: #fbfbec;color: red;">
+                <font class="erroCampo" >
                     ${sessionScope.formModalidade.erroNomeModalidade}
                 </font>
             </P>            
             <p>
                 <input type="submit" value="Gravar" name="executar"/>
-                <c:if test="${!sessionScope.formUsuario.inclusao}">
-                    <INPUT TYPE="submit" value="Cancelar" name="cancelar"/>
-                </c:if>
+                <INPUT TYPE="submit" value="Cancelar" name="cancelar"/>                
             </p>
         </form>
         <P>
