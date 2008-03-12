@@ -39,11 +39,8 @@
                     <td>
                         <a href="GelicServlet?comando=
                            ExcluirUsuario&usuario=${usuario.login}">
-                            <img src="img/trash.PNG"  width="16" height="16" 
-                                 style="border-top-style: none;
-                                 border-bottom-style: none;
-                                 border-left-style: none;
-                                 border-right-style: none;" alt="trash"/>
+                            <img src="img/trash.PNG" width="16" height="16" 
+                                 alt="excluir"/>
                         </a>
                     </td>
                 </tr>
@@ -55,7 +52,7 @@
                 ${sessionScope.browserUsuarios.mensagem}
             </font>
         </P>
-        <form name="frmusuario"
+        <form name="frmusuario" 
               action="GelicServlet?comando=GravarUsuario" 
               method="POST">
             <p class="caption">            
@@ -70,8 +67,7 @@
                 <c:forEach var="erro" items="${sessionScope.formUsuario.erros}">
                     <P>${erro}</P>
                 </c:forEach>
-            </font>
-            
+            </font>    
             <P>Login:<br>
                 <input type="text" name="loginUsuario" class = "caixaTexto"
                        value="${sessionScope.formUsuario.loginUsuario}" />

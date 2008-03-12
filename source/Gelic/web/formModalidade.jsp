@@ -20,7 +20,6 @@
     </head>
     <body>
         <form name="frmModalidade" 
-              style="background-color: #fbfbec;"
               action="GelicServlet?comando=GravarModalidade" 
               method="POST">
             <p class="caption">Autenticação
@@ -52,8 +51,10 @@
                 </font>
             </P>            
             <p>
-                <input type="submit" value="Gravar" name="executar"/>
-                <INPUT TYPE="submit" value="Cancelar" name="cancelar"/>                
+                <input class="botao" type="submit" value="Gravar" 
+                       name="executar"/>
+                <INPUT class="botao" TYPE="submit" value="Cancelar" 
+                       name="cancelar"/>                
             </p>
         </form>
         <P>

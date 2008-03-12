@@ -11,36 +11,15 @@
 
 <html>
     <head>
+        <link rel="STYLESHEET" href="estilos.css" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>GELIC--Cadastro de modalidades de licitações</title>  
-        
-        <H1 STYLE="font-family: Arial,Helvetica,sans-serif;
-            background-color: #3300cc;
-            background-position: right;
-            color: silver;
-            font-style: oblique;
-            font-weight: 900;
-            font-variant: small-caps;
-            font-size: XX-large;
-            text-align: right;
-        ">GELIC</H1>        
+        <title>GELIC--Cadastro de modalidades de licitações</title>          
+        <H1 class="nomeSistema">GELIC &nbsp;&nbsp;</H1>
     </head>
-    <body>        
-        <table 
-            style="font-family: Arial,Helvetica,sans-serif;width: 100%;">
-            <h2 style="background-color: #3300cc;
-                font-style: oblique;
-                color: #ffffff;
-                font-weight: bold;
-                font-variant: small-caps;">
-            Cadastro de modalidades</h2>       
-            <tr  style="font-variant: small-caps;
-                 font-weight: bold;
-                 border-bottom-style: solid;
-                 border-bottom-width: 2px;
-                 font-family: Arial,Helvetica,sans-serif;
-                 border-bottom-color: #999999;
-                 background-color: #d8edf0;">
+    <body>    
+        <P class="caption" >Cadastro de modalidades</P>    
+        <table>            
+            <tr  class="cabecalho">
                 <td>Sigla</td>
                 <td>Nome</td>
                 <TD> </TD>
@@ -48,11 +27,7 @@
             <c:forEach 
                 var="modalidade" 
                 items="${sessionScope.browserModalidades.modalidades}">                
-                <tr 
-                    style="font-size: small;
-                    background-color: #fbfbec;
-                    font-family: Arial,Helvetica,sans-serif;
-                    color: #6e6c6c;">
+                <tr class="dados">
                     <td>
                         <a href="GelicServlet?comando=AlterarModalidade&sigla=${modalidade.sigla}">
                             ${modalidade.sigla}    
@@ -62,27 +37,20 @@
                         ${modalidade.nome}
                     </td>  
                     <td>
-                        <a href="GelicServlet?comando=
-                           ExcluirModalidade&usuario=${modalidade.sigla}">
+                        <a href="GelicServlet?comando=ExcluirModalidade&usuario=${modalidade.sigla}">
                             <img src="img/trash.PNG"  width="16" height="16" 
-                                 style="border-top-style: none;
-                                 border-bottom-style: none;
-                                 border-left-style: none;
-                                 border-right-style: none;" alt="trash"/>
+                                 alt="trash"/>
                         </a>
                     </td>
                 </tr>
                 
             </c:forEach>
         </table>        
-        <font style="font-family: Arial,Helvetica,sans-serif;
-              font-style: no
-                  font-weight: 700;
-                  color: #0033cc;font-variant: normal;">
+        <font class="mensagem">
             <P>${sessionScope.browserModalidades.mensagem}</P>
         </font>
         <form action="GelicServlet?comando=NovaModalidade" method = "post">
-            <input type="submit" value="Criar"/> 
+            <input type="submit"  class= "botao" value="Criar"/> 
         </form>
         <P>
             Para voltar ao início clique 
