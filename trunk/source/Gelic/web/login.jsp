@@ -40,7 +40,7 @@
                 
             </P>
             <P>
-                <input type="submit" value="Efetuar Login" name="comando" />
+                <input class="botao" type="submit" value="Efetuar Login" name="comando" />
             </P>
         </form>
     </body>
