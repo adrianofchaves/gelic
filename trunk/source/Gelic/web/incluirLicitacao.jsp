@@ -1,5 +1,5 @@
 <%-- 
-    Document   : manterLicitacao
+    Document   : incluirLicitacao
     Created on : 02/03/2008, 17:32:12
     Author     : Giordano
 --%>
@@ -9,9 +9,11 @@
    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
+    <link rel="STYLESHEET" href="estilos.css" type="text/css">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>GeLic - Licitação</title>
+        <title>GeLic - Incluir Licitação</title>
+        <H1 class="nomeSistema">GELIC &nbsp;&nbsp;</H1>        
     </head>
     <body>
         <p><b>Orgão:</b>
@@ -34,7 +36,7 @@
         <b>Processo:</b>
         <input type="text" name="processo" value="" size="6" readonly="readonly" />
         </p><p>
-        <CENTER>Datas</p><p>
+        <CENTER>Datas</p><p></CENTER>
         <b>Documentação:</b>
         <input type="text" name="datadocumentacao" value="" size="9" readonly="readonly" />
         <b>Proposta:</b>

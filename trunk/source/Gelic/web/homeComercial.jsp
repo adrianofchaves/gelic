@@ -13,7 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC [Comercial] - Licitações</title>
-        <H1 class="nomesistema">GELIC &nbsp;&nbsp;</H1>        
+        <H1 class="nomeSistema">GELIC &nbsp;&nbsp;</H1>        
     </head>
     <body vlink="#FFFF00">
         <P class="bemvindo">Bem-vindo, Comercial!</P>        
@@ -23,7 +23,7 @@
                 font-weight: bold;
                 font-variant: small-caps;">
         <thead>
-        <tr>
+        <tr >
             <th align="center" height="18">
                 <b><a style="color: #FFFFFF" href="">Nova Licitação</b></a>
             </th>
