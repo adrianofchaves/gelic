@@ -102,4 +102,11 @@ tr.cabecalho{
     background-color: #ffffcc;    
      
  }
+img {
+
+    border-top-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    border-right-style: none;
+}
 
