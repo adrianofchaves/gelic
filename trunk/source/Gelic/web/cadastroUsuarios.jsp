@@ -52,17 +52,17 @@
                 ${sessionScope.browserUsuarios.mensagem}
             </font>
         </P>
+        <p class="caption">            
+            <c:if test="${!sessionScope.formUsuario.inclusao}">
+                Alterando usuário
+            </c:if>
+            <c:if test="${sessionScope.formUsuario.inclusao}">
+                Criando usuário
+            </c:if>
+        </p>
         <form name="frmusuario" 
               action="GelicServlet?comando=GravarUsuario" 
               method="POST">
-            <p class="caption">            
-                <c:if test="${!sessionScope.formUsuario.inclusao}">
-                    Alterando usuário:
-                </c:if>
-                <c:if test="${sessionScope.formUsuario.inclusao}">
-                    Criando usuário:
-                </c:if>
-            </p>
             <font class = "erro">
                 <c:forEach var="erro" items="${sessionScope.formUsuario.erros}">
                     <P>${erro}</P>
@@ -91,7 +91,7 @@
                     ${sessionScope.formUsuario.erroConfirmaSenhaUsuario}
                 </font>
             </P>
-            <P>Selecione o papel que o usuário:<BR>
+            <P>Papel do usuário:<BR>
                 <select name="papelUsuario" 
                         tabindex="${sessionScope.formUsuario.idPapel}" >
                     <c:forEach var="papel" items="${applicationScope.papeis}">
@@ -110,7 +110,7 @@
                            name="cancelar"/>
                 </c:if>
             </p>
-            <P></P>
+            
         </form>
         <P>
             Para voltar ao início clique 
