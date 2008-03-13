@@ -18,10 +18,10 @@
         <H1 class="nomeSistema">GELIC &nbsp;&nbsp;</H1>
     </head>
     <body>
+        <p class="caption">Autenticação</p>
         <form             
             name="formlogin" 
-            action="GelicServlet?comando=EfetuarLogin" method="post">            
-            <p class="caption">Autenticação</p>
+            action="GelicServlet?comando=EfetuarLogin" method="post"> 
             <font class="erro"> 
                 ${requestScope.formLogin.erros}
             </font>                    
@@ -42,6 +42,7 @@
             <P>
                 <input class="botao" type="submit" value="Efetuar Login" name="comando" />
             </P>
+            
         </form>
     </body>
 </html>

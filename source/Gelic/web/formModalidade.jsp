@@ -19,17 +19,17 @@
         
     </head>
     <body>
+        <p class="caption">Autenticação
+            <c:if test="${!sessionScope.formModalidade.inclusao}">
+                Alterando modalidade:
+            </c:if>
+            <c:if test="${sessionScope.formModalidade.inclusao}">
+                Criando usuário:
+            </c:if>
+        </p>
         <form name="frmModalidade" 
               action="GelicServlet?comando=GravarModalidade" 
               method="POST">
-            <p class="caption">Autenticação
-                <c:if test="${!sessionScope.formModalidade.inclusao}">
-                    Alterando modalidade:
-                </c:if>
-                <c:if test="${sessionScope.formModalidade.inclusao}">
-                    Criando usuário:
-                </c:if>
-            </p>
             <font class="erro" >
                 <c:forEach var="erro" items="${sessionScope.formModalidade.erros}">
                     <P>${erro}</P>

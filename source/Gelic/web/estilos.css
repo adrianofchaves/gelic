@@ -15,14 +15,15 @@ root {
     display: block;    
 }
 body{    
-    background-color: #f2f0dc;
-    text-indent: 5%;
+    background-color: #c9dee8;
+    
+    color: #666666;
 }
 h1.nomeSistema {    
-    background-color: #6e6e05;
+    background-color: #517580;
     font-family: Arial,Helvetica,sans-serif;
     background-position: right center;
-    color: #cccccc;
+    color: #ffffff;
     font-style: oblique;
     font-weight: 900;
     font-variant: small-caps;
@@ -44,7 +45,9 @@ font.erro{
 }
 font.erroCampo{
     color: red;
-    font-weight: 100;
+    font-weight: 100;   
+    position: relative;
+    left: 5%;
 }
 p{
     font-family: Arial,Helvetica,sans-serif;
@@ -54,9 +57,13 @@ p.bemvindo{
     font-weight: bold;
 }
 form{
-    background-color: #fcfccb;
+    background-color: #eff7f7;
     font-family: Arial,Helvetica,sans-serif;
+    text-indent: 5%;
+    padding-top: 1mm;
+    padding-bottom: 1mm;
 }
+
 input.caixaTexto{
     position: relative;
     text-indent: 5%;
@@ -66,6 +73,7 @@ input.botao{
     position: relative;
     left: 5%;
 }
+
 select {
     position: relative;
     text-indent: 5%;
@@ -73,33 +81,37 @@ select {
 }
 
 p.caption{    
-    background-color: #74740a;    
+    background-color: #7b8e94;    
     font-weight: 600;
     color: #f2f1f1;
-    font-style: oblique;
+    font-style: normal;
     font-variant: small-caps;   
+    font-size: large;
 }
 table{
-    background-color: #f2f2df;
+    background-color: #e0eef1;
     font-family: Arial,Helvetica,sans-serif;
     width: 100%;
     
     color: #666666;
+    text-indent: 5%;
 }
 tr.dados{    
-    background-color: #ffffcc;    
+    background-color: #e3feff;    
     font-family: Arial,Helvetica,sans-serif;
     color: #666666;
 }
 tr.cabecalho{
-    background-color: #fcfcb6;
+    
     font-weight: 600;    
-    font-style: oblique;
-    font-variant: small-caps;    
+    font-style: normal;
+    font-variant: normal;    
     color: #333333;
- }
+     font-size: medium;
+    font-family: Arial,Helvetica,sans-serif;
+}
  form {
-    background-color: #ffffcc;    
+    background-color: #e0eef1;    
      
  }
 img {

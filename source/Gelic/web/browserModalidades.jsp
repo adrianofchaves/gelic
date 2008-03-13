@@ -50,7 +50,7 @@
             <P>${sessionScope.browserModalidades.mensagem}</P>
         </font>
         <form action="GelicServlet?comando=NovaModalidade" method = "post">
-            <input type="submit"  class= "botao" value="Criar"/> 
+            <input type="submit"  value="Criar"/> 
         </form>
         <P>
             Para voltar ao início clique 
