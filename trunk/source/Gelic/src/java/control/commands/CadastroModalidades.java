@@ -19,11 +19,7 @@ public class CadastroModalidades implements Comando{
 
     public String executar(HttpServletRequest req) throws ExcecaoComando {
         try {
-            view.BrowserModalidades browser = new view.BrowserModalidades(
-                    model.services.Modalidades.recuperar());
-            req.getSession().setAttribute("browserModalidades", browser);
-            
-            return "/browserModalidades.jsp";
+          return control.BrowserModalidades.prepara(req);
         } catch (SQLException ex) {
             Logger.getLogger(CadastroModalidades.class.getName()).log(
                     Level.SEVERE, null, ex);

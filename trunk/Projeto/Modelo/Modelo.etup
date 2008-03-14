@@ -21,5 +21,6 @@
 <UML:Stereotype xmi.id="DCE.11D67B34-A4DF-EF88-048A-11B9DFBAFABF" name="JSP" owner="__uri_.\Modelo.etup#//*[@xmi.id=&apos;DCE.0143DBC9-9346-319A-7E7F-CDA49B6F2A29&apos;]"/>
 <UML:Stereotype xmi.id="DCE.8154B515-9E65-8B54-FEA0-6F216E825E4E" name="JSP" owner="__uri_.\Modelo.etup#//*[@xmi.id=&apos;DCE.0143DBC9-9346-319A-7E7F-CDA49B6F2A29&apos;]"/>
 <UML:Stereotype xmi.id="DCE.332C6073-1D8E-EB00-86B3-91331282FB64" name="JSP" owner="__uri_.\Modelo.etup#//*[@xmi.id=&apos;DCE.0143DBC9-9346-319A-7E7F-CDA49B6F2A29&apos;]"/>
-<UML:Stereotype xmi.id="DCE.27DB86CA-0621-4112-14BE-4FA0C6BD83F8" name="JSP" owner="__uri_.\Modelo.etup#//*[@xmi.id=&apos;DCE.0143DBC9-9346-319A-7E7F-CDA49B6F2A29&apos;]"/></UML:Element.ownedElement></UML:Profile></XMI.content>
+<UML:Stereotype xmi.id="DCE.27DB86CA-0621-4112-14BE-4FA0C6BD83F8" name="JSP" owner="__uri_.\Modelo.etup#//*[@xmi.id=&apos;DCE.0143DBC9-9346-319A-7E7F-CDA49B6F2A29&apos;]"/>
+<UML:Stereotype xmi.id="DCE.2BAC45A0-77D9-6F0D-8F38-A59FCC010EB0" name="interface" owner="__uri_.\Modelo.etup#//*[@xmi.id=&apos;DCE.0143DBC9-9346-319A-7E7F-CDA49B6F2A29&apos;]"/></UML:Element.ownedElement></UML:Profile></XMI.content>
 </XMI>

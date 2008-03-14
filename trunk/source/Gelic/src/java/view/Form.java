@@ -15,7 +15,7 @@ public class Form {
     private ArrayList<String> erros = null;
     private String mensagem;
 
-    public void apagaErros() {
+    protected void apagaErros() {
         erros = null;
     }
 
