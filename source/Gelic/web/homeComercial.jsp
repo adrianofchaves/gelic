@@ -25,7 +25,7 @@
         <thead>
         <tr >
             <th align="center" height="18">
-                <b><a style="color: #FFFFFF" href="">Nova Licitação</b></a>
+                <b><a style="color: #FFFFFF" href="GelicServlet?comando=NovaLicitacao">Nova Licitação</b></a>
             </th>
             <th align="center" height="18">
                 <b><a style="color: #FFFFFF" href="">Tipos de Licitação</b></a>
