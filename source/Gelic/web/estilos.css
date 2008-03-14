@@ -96,6 +96,24 @@ table{
     color: #666666;
     text-indent: 5%;
 }
+table.menu{
+    background-color: #c9dee8;
+    color: #666666;
+    font-weight: bold;
+    font-variant: small-caps;
+    border-top-style: hidden;
+    border-bottom-style: hidden;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    text-indent: 0%;
+}
+th.menuItem{
+    border-top-style: groove;
+    border-bottom-style: groove;
+    border-left-style: groove;
+    border-right-style: groove;
+    background-position: center center;
+}
 tr.dados{    
     background-color: #e3feff;    
     font-family: Arial,Helvetica,sans-serif;
@@ -107,15 +125,15 @@ tr.cabecalho{
     font-style: normal;
     font-variant: normal;    
     color: #333333;
-     font-size: medium;
+    font-size: medium;
     font-family: Arial,Helvetica,sans-serif;
 }
- form {
+form {
     background-color: #e0eef1;    
-     
- }
+    
+}
 img {
-
+    
     border-top-style: none;
     border-bottom-style: none;
     border-left-style: none;

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 // #[regen=yes,id=DCE.CFF743B0-A47F-16ED-2373-CC945800542A]
 // </editor-fold> 
 public class Licitacao {
-
+    private model.beans.Modalidade modalidade;
     /**
      *  <p style="margin-top: 0">
      *    N&#250;mero da licita&#231;&#227;o
@@ -501,6 +501,14 @@ public class Licitacao {
     // </editor-fold> 
     public void setValorGarantia (float val) {
         this.valorGarantia = val;
+    }
+
+    public model.beans.Modalidade getModalidade() {
+        return modalidade;
+    }
+
+    public void setModalidade(model.beans.Modalidade modalidade) {
+        this.modalidade = modalidade;
     }
 
 }

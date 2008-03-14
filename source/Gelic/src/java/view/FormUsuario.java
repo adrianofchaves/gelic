@@ -4,6 +4,9 @@
  */
 package view;
 
+import java.sql.SQLException;
+import javax.naming.NamingException;
+
 /**
  * Representa a tela de cadastro de usuários contendo os valores de seus campos.
  * 
@@ -28,11 +31,34 @@ public class FormUsuario extends Form {
     private String erroPapelUsuario;
     private int idPapel;
 
-    public void apagaErros() {
+    protected void apagaErros() {
         super.apagaErros();
         erroConfirmaSenhaUsuario = null;
         erroLoginUsuario = null;
         erroPapelUsuario = null;                
+    }
+    
+    public void valida() throws SQLException, NamingException {
+        apagaErros();
+        /* Executa críticas */
+        if (!getSenhaUsuario().equals(getConfirmaSenhaUsuario())) {
+            setErroConfirmaSenhaUsuario("Está diferente da informada em Senha");
+            addErro("As senhas informadas são diferentes");
+        }
+        model.beans.Papel papel = model.services.Papeis.recuperar(
+                getPapelUsuario());
+        if (model.services.Papeis.recuperar(getPapelUsuario()) == null) {
+            setErroPapelUsuario("Papel inválido.");
+            addErro("O papel informado não é válido.");
+        } else {
+            setIdPapel(papel.getId());
+        }
+        if (isInclusao() && model.services.Usuarios.recuperar(
+                getLoginUsuario()) != null) {
+            setErroLoginUsuario("Login já existe.");
+            addErro("Login inválido.");
+        }
+
     }
 
     public void atualizaCampos() {
@@ -105,7 +131,7 @@ public class FormUsuario extends Form {
         return erroPapelUsuario;
     }
 
-    public void setErroPapelUsuario(String erroPapelUsuario) {
+    private void setErroPapelUsuario(String erroPapelUsuario) {
         this.erroPapelUsuario = erroPapelUsuario;
     }
 
@@ -113,7 +139,7 @@ public class FormUsuario extends Form {
         return erroConfirmaSenhaUsuario;
     }
 
-    public void setErroConfirmaSenhaUsuario(String erroConfirmaSenhaUsuario) {
+    private void setErroConfirmaSenhaUsuario(String erroConfirmaSenhaUsuario) {
         this.erroConfirmaSenhaUsuario = erroConfirmaSenhaUsuario;
     }
 
@@ -121,7 +147,7 @@ public class FormUsuario extends Form {
         return erroLoginUsuario;
     }
 
-    public void setErroLoginUsuario(String erroLoginUsuario) {
+    private void setErroLoginUsuario(String erroLoginUsuario) {
         this.erroLoginUsuario = erroLoginUsuario;
     }
 
@@ -129,7 +155,7 @@ public class FormUsuario extends Form {
         return erroSenhaUsuario;
     }
 
-    public void setErroSenhaUsuario(String erroSenhaUsuario) {
+    private void setErroSenhaUsuario(String erroSenhaUsuario) {
         this.erroSenhaUsuario = erroSenhaUsuario;
     }
 }

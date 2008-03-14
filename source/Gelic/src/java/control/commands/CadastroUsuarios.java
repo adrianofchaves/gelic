@@ -24,16 +24,8 @@ public class CadastroUsuarios implements Comando {
     public String executar(HttpServletRequest req) throws ExcecaoComando {
         try {
 
-
-            req.getSession().setAttribute("browserUsuarios",
-                    new view.BrowserUsuarios(
-                    model.services.Usuarios.recuperar()));
-
-            view.FormUsuario frm = new view.FormUsuario();
-            frm.setInclusao(true);
-            req.getSession().setAttribute("formUsuario", frm);
+            return control.CadastroUsuarios.preparar(req);
             
-            return "/cadastroUsuarios.jsp";
         } catch (SQLException ex) {
             Logger.getLogger(CadastroUsuarios.class.getName()).
                     log(Level.SEVERE, null, ex);

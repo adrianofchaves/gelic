@@ -19,12 +19,7 @@ public class GravarModalidade implements Comando {
 
     private String executaCancelar(HttpServletRequest req)
             throws SQLException, NamingException {
-        view.BrowserModalidades browser = new view.BrowserModalidades(
-                model.services.Modalidades.recuperar());
-        req.getSession().setAttribute("browserModalidades", browser);
-
-        return "/browserModalidades.jsp";
-
+        return control.BrowserModalidades.prepara(req);
     }
 
     public String executar(HttpServletRequest req) throws ExcecaoComando {
