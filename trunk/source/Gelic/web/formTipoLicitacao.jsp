@@ -1,6 +1,6 @@
 <%-- 
-    Document   : formModalidade
-    Created on : 09/03/2008, 11:48:24
+    Document   : formTipoLicitacao
+    Created on : 15/03/2008, 01:18:51
     Author     : Adriano
 --%>
 
@@ -13,16 +13,16 @@
     <head>
         <link rel="STYLESHEET" href="estilos.css" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>GELIC--Cadastro de usuários</title>  
+        <title>GELIC--Cadastro de tipos de licitação</title>  
         <table class="nomeSistema"><th>GELIC &nbsp;&nbsp;</th></table>
         
         <table class="menu">
             <tr>
                 <th class="menuItem" >
-                    <a href="Gelic?comando=CadastroModalidades">Voltar</a>
+                    <a href="Comercial?comando=CadastroTiposLicitacoes">Voltar</a>
                 </th>
                 <th class="menuItem" >
-                    <a href="homeAdministrador.jsp">Início</a>
+                    <a href="homeComercial.jsp">Início</a>
                 </th>
                 <th class="menuItem" >
                     <a href="Gelic?comando=Logout">Trocar usuário</a>                    
@@ -31,35 +31,30 @@
         </table>
     </head>
     <body>
-        <form name="frmModalidade" 
-              action="Gelic?comando=GravarModalidade" 
+        <form name="frmTipoLicitacao" 
+              action="Comercial?comando=GravarTipoLicitacao" 
               method="POST">
-        <p class="caption">
-            <c:if test="${!sessionScope.formModalidade.inclusao}">
-                Alterando modalidade
-            </c:if>
-            <c:if test="${sessionScope.formModalidade.inclusao}">
-                Nova modalidade:
-            </c:if>
-        </p>
+            <p class="caption">
+                <c:if test="${!sessionScope.formTipoLicitacao.inclusao}">
+                    Alterando tipo de licitação
+                </c:if>
+                <c:if test="${sessionScope.formTipoLicitacao.inclusao}">
+                    Novo tipo de licitação
+                </c:if>
+            </p>
             <font class="erro" >
-                <c:forEach var="erro" items="${sessionScope.formModalidade.erros}">
+                <c:forEach var="erro" 
+                           items="${sessionScope.formTipoLicitacao.erros}">
                     <P>${erro}</P>
                 </c:forEach>
             </font>
             
-            <P>Sigla:<br>
-                <input type="text" name="siglaModalidade" class="caixaTexto"
-                       value="${sessionScope.formModalidade.siglaModalidade}" />
-                <font class="erroCampo" >
-                    ${sessionScope.formModalidade.erroSiglaModalidade}
-                </font>
-            </P>
+            
             <P>Nome:<br>
-                <input type="text" name="nomeModalidade" class="caixaTexto"
-                       value="${sessionScope.formModalidade.nomeModalidade}" />
+                <input type="text" name="nomeTipoLicitacao" class="caixaTexto"
+                       value="${sessionScope.formTipoLicitacao.nomeTipoLicitacao}" />
                 <font class="erroCampo" >
-                    ${sessionScope.formModalidade.erroNomeModalidade}
+                    ${sessionScope.formTipoLicitacao.erroNomeTipoLicitacao}
                 </font>
             </P>            
             <p>

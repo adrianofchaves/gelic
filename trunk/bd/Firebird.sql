@@ -16,6 +16,13 @@ DEFAULT CHARACTER SET NONE;
 
 
 /******************************************************************************/
+/****                              Generators                              ****/
+/******************************************************************************/
+
+CREATE GENERATOR GEN_TIPOSLICITACOES_ID;
+SET GENERATOR GEN_TIPOSLICITACOES_ID TO 1;
+
+/******************************************************************************/
 /****                                Tables                                ****/
 /******************************************************************************/
 
@@ -42,6 +49,11 @@ CREATE TABLE LICITACOES (
     MODALIDADE  VARCHAR(3)
 );
 
+CREATE TABLE TIPOSLICITACOES (
+    ID    INTEGER NOT NULL,
+    NOME  VARCHAR(25) NOT NULL
+);
+
 
 INSERT INTO PAPEIS (ID, NOME) VALUES (1, 'Administrador');
 INSERT INTO PAPEIS (ID, NOME) VALUES (2, 'Comercial');
@@ -59,20 +71,55 @@ INSERT INTO USUARIOS (LOGIN, SENHA, PAPEL) VALUES ('ger', null, 5);
 COMMIT WORK;
 
 
+/******************************************************************************/
+/****                          Unique Constraints                          ****/
+/******************************************************************************/
+
+ALTER TABLE PAPEIS ADD CONSTRAINT UNQ1_PAPEIS UNIQUE (NOME);
+ALTER TABLE TIPOSLICITACOES ADD CONSTRAINT UNQ1_TIPOSLICITACOES UNIQUE (NOME);
+
 
 /******************************************************************************/
 /****                             Primary Keys                             ****/
 /******************************************************************************/
 
-ALTER TABLE PAPEIS ADD CONSTRAINT PK_PAPEIS PRIMARY KEY (ID);
-ALTER TABLE USUARIOS ADD CONSTRAINT PK_USUARIOS PRIMARY KEY (LOGIN);
-ALTER TABLE MODALIDADES ADD CONSTRAINT PK_MODALIDADES PRIMARY KEY (SIGLA);
 ALTER TABLE LICITACOES ADD CONSTRAINT PK_LICITACOES PRIMARY KEY (NUMERO);
+ALTER TABLE MODALIDADES ADD CONSTRAINT PK_MODALIDADES PRIMARY KEY (SIGLA);
+ALTER TABLE PAPEIS ADD CONSTRAINT PK_PAPEIS PRIMARY KEY (ID);
+ALTER TABLE TIPOSLICITACOES ADD CONSTRAINT PK_TIPOSLICITACOES PRIMARY KEY (ID);
+ALTER TABLE USUARIOS ADD CONSTRAINT PK_USUARIOS PRIMARY KEY (LOGIN);
 
 
 /******************************************************************************/
 /****                             Foreign Keys                             ****/
 /******************************************************************************/
 
-ALTER TABLE USUARIOS ADD CONSTRAINT FK_USUARIOS_1 FOREIGN KEY (PAPEL) REFERENCES PAPEIS (ID) ON UPDATE CASCADE;
 ALTER TABLE LICITACOES ADD CONSTRAINT FK_LICITACOES_1 FOREIGN KEY (MODALIDADE) REFERENCES MODALIDADES (SIGLA) ON UPDATE CASCADE;
+ALTER TABLE LICITACOES ADD CONSTRAINT FK_LICITACOES_2 FOREIGN KEY (TIPO) REFERENCES TIPOSLICITACOES (ID) ON UPDATE CASCADE;
+ALTER TABLE USUARIOS ADD CONSTRAINT FK_USUARIOS_1 FOREIGN KEY (PAPEL) REFERENCES PAPEIS (ID) ON UPDATE CASCADE;
+
+/******************************************************************************/
+/****                               Triggers                               ****/
+/******************************************************************************/
+
+
+SET TERM ^ ;
+
+/******************************************************************************/
+/****                         Triggers for tables                          ****/
+/******************************************************************************/
+
+
+
+/* Trigger: TIPOSLICITACOES_BI */
+CREATE TRIGGER TIPOSLICITACOES_BI FOR TIPOSLICITACOES
+ACTIVE BEFORE INSERT POSITION 0
+as
+begin
+  if (new.id is null) then
+    new.id = gen_id(gen_tiposlicitacoes_id,1);
+end
+^
+
+SET TERM ; ^
+

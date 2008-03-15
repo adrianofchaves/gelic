@@ -19,13 +19,13 @@
         <table class="menu">
             <tr>
                 <th class="menuItem" >
-                    <a href="GelicServlet?comando=CadastroUsuarios">Usuários</a>
+                    <a href="Gelic?comando=CadastroUsuarios">Usuários</a>
                 </th>
                 <th class="menuItem" >
-                    <a href="GelicServlet?comando=CadastroModalidades">Modalidades</a>                    
+                    <a href="Gelic?comando=CadastroModalidades">Modalidades</a>                    
                 </th>
                 <th class="menuItem" >
-                    <a href="GelicServlet?comando=Logout">Trocar usuário</a>
+                    <a href="Gelic?comando=Logout">Trocar usuário</a>
                 </th>                
             </tr>        
         </table>

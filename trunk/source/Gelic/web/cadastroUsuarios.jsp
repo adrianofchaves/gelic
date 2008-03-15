@@ -24,7 +24,7 @@
                     <a href="homeAdministrador.jsp">Voltar</a>
                 </th>
                 <th class="menuItem" >
-                    <a href="GelicServlet?comando=Logout">Trocar usuário</a>                    
+                    <a href="Gelic?comando=Logout">Trocar usuário</a>                    
                 </th>
             </tr>
         </table>
@@ -45,7 +45,7 @@
                 items="${sessionScope.browserUsuarios.usuarios}">                
                 <tr class="dados">
                     <td>
-                        <a href="GelicServlet?comando=AlterarUsuario&login=${usuario.login}">
+                        <a href="Gelic?comando=AlterarUsuario&login=${usuario.login}">
                             ${usuario.login}    
                         </a>                        
                     </td>
@@ -53,7 +53,7 @@
                         ${usuario.papel.nome}
                     </td>  
                     <td>
-                        <a href="GelicServlet?comando=
+                        <a href="Gelic?comando=
                            ExcluirUsuario&usuario=${usuario.login}">
                             <img src="img/trash.PNG" width="16" height="16" 
                                  alt="excluir"/>
@@ -69,7 +69,7 @@
             </font>
         </P>
         <form name="frmusuario" 
-              action="GelicServlet?comando=GravarUsuario" 
+              action="Gelic?comando=GravarUsuario" 
               method="POST">
             <p class="caption">            
                 <c:if test="${!sessionScope.formUsuario.inclusao}">

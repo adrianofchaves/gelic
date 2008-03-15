@@ -10,12 +10,22 @@
         <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
     <servlet>
-        <servlet-name>GelicServlet</servlet-name>
+        <servlet-name>Gelic</servlet-name>
         <servlet-class>control.GelicServlet</servlet-class>
-    </servlet>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+    <servlet>
+        <servlet-name>Comercial</servlet-name>
+        <servlet-class>control.ServletComercial</servlet-class>
+        <load-on-startup>2</load-on-startup>
+        </servlet>
     <servlet-mapping>
-        <servlet-name>GelicServlet</servlet-name>
-        <url-pattern>/GelicServlet</url-pattern>
+        <servlet-name>Gelic</servlet-name>
+        <url-pattern>/Gelic</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Comercial</servlet-name>
+        <url-pattern>/Comercial</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
