@@ -26,7 +26,8 @@
                     TODO: tela que lista todas as licitações com critérios 
                 </th> -->
                 <th class="menuItem" >
-                    <a href="homeComercial.jsp">Tipos de licitação</a>                    
+                    <a href="Comercial?comando=CadastroTiposLicitacoes">
+                    Tipos de licitações</a>                    
                 </th>
                 <th class="menuItem" >
                     <a href="homeComercial.jsp">Tipos de documento</a>
@@ -41,7 +42,7 @@
                     <a href="homeComercial.jsp">Empresas</a>                    
                 </th>
                 <th class="menuItem" >
-                    <a href="GelicServlet?comando=Logout">Trocar usuário</a>
+                    <a href="Gelic?comando=Logout">Trocar usuário</a>
                 </th>                
                 
             </tr>        
@@ -151,27 +152,27 @@
         
         <P class="bemvindo">Bem-vindo, comercial!</P>        
         <P>Se você deseja acessar o cadastro de licitações clique 
-            <a href="GelicServlet?comando=CadastroUsuarios">aqui</a>            
+            <a href="Gelic?comando=CadastroUsuarios">aqui</a>            
         </P>
         
         <P>Se você deseja acessar o cadastro de tipos de licitações clique 
-            <a href="GelicServlet?comando=CadastroModalidades">aqui</a>            
+            <a href="Gelic?comando=CadastroModalidades">aqui</a>            
         </P>
         
         <P>Se você deseja acessar o cadastro de tipos de documentos clique 
-            <a href="GelicServlet?comando=CadastroModalidades">aqui</a>            
+            <a href="Gelic?comando=CadastroModalidades">aqui</a>            
         </P>
         
         <P>Se você deseja acessar o cadastro de produtos clique 
-            <a href="GelicServlet?comando=CadastroModalidades">aqui</a>            
+            <a href="Gelic?comando=CadastroModalidades">aqui</a>            
         </P>
         <P>Se você deseja acessar o cadastro de órgãos públicos clique 
-            <a href="GelicServlet?comando=CadastroModalidades">aqui</a>            
+            <a href="Gelic?comando=CadastroModalidades">aqui</a>            
         </P>
         <P>Se você deseja acessar o cadastro de empresas clique 
-            <a href="GelicServlet?comando=CadastroModalidades">aqui</a>            
+            <a href="Gelic?comando=CadastroModalidades">aqui</a>            
         </P>
-        <P>Para efetuar logout clique <a href="GelicServlet?comando=Logout"> 
+        <P>Para efetuar logout clique <a href="Gelic?comando=Logout"> 
                 aqui
             </a>
         </p>

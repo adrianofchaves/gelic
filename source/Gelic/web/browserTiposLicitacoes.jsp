@@ -1,6 +1,6 @@
 <%-- 
-    Document   : browserModalidades
-    Created on : 08/03/2008, 15:37:11
+    Document   : browserTiposLicitacoes
+    Created on : 14/03/2008, 22:59:34
     Author     : Adriano
 --%>
 
@@ -18,11 +18,11 @@
         
         <table class="menu"><tr>
                 <th class="menuItem" >
-                    <a href="homeAdministrador.jsp">
+                    <a href="homeComercial.jsp">
                     Voltar</a>
                 </th>
                 <th class="menuItem" >
-                    <a href="Gelic?comando=NovaModalidade">
+                    <a href="Comercial?comando=NovoTipoLicitacao">
                     Nova modalidade</a>                    
                 </th>
                 <th class="menuItem" >
@@ -33,27 +33,25 @@
         
     </head>
     <body>    
-        <table class="cadastro"><TH class="cadastro">Modalidades</TH></TABLE>
+        <table class="cadastro"><TH class="cadastro">
+                Tipos de Licitações
+        </TH></TABLE>
         <table class="cadastro">            
             <tr class="cabecalho">
-                <td>Sigla</td>
                 <td>Nome</td>
                 <TD> </TD>
             </tr>
             <c:forEach 
-                var="modalidade" 
-                items="${sessionScope.browserModalidades.modalidades}">                
+                var="tipo" 
+                items="${sessionScope.browserTiposLicitacoes.tiposLicitacoes}">                
                 <tr class="dados">
                     <td>
-                        <a href="Gelic?comando=AlterarModalidade&sigla=${modalidade.sigla}">
-                            ${modalidade.sigla}    
+                        <a href="Comercial?comando=AlterarTipoLicitacao&nome=${tipo.nome}">
+                            ${tipo.nome}    
                         </a>                        
                     </td>
                     <td>
-                        ${modalidade.nome}
-                    </td>  
-                    <td>
-                        <a href="Gelic?comando=ExcluirModalidade&usuario=${modalidade.sigla}">
+                        <a href="Comercial?comando=ExcluirTipoLicitacao&nome=${modalidade.sigla}">
                             <img src="img/trash.PNG"  width="16" height="16" 
                                  alt="trash"/>
                         </a>
@@ -63,7 +61,7 @@
             </c:forEach>
         </table>        
         <font class="mensagem">
-            <P>${sessionScope.browserModalidades.mensagem}</P>
+            <P>${sessionScope.browserTiposLicitacoes.mensagem}</P>
         </font>
     </body>
 </html>

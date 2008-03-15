@@ -23,7 +23,7 @@
         
         <form             
             name="formlogin" 
-            action="GelicServlet?comando=EfetuarLogin" method="post"> 
+            action="Gelic?comando=EfetuarLogin" method="post"> 
             <P>Digite seu login e  sua senha para começar </P>
             <font class="erro"> 
                 ${requestScope.formLogin.erros}
