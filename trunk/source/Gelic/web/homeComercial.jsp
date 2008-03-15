@@ -13,18 +13,20 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC [Comercial] - Licitações</title>
-        <H1 class="nomeSistema">GELIC &nbsp;&nbsp;</H1>        
-    </head>
-    <body>
-        <P class="bemvindo">Bem-vindo, Comercial!</P>  
-        <P>Opções:</P>
+        <table class="nomeSistema">
+            <th>GELIC &nbsp;&nbsp;</th>        
+        </table>
         <table class="menu">
             <tr>
                 <th class="menuItem" >
-                    <a href="homeComercial.jsp">Nova Licitação</a>
+                    <a href="homeComercial.jsp">Nova licitação</a>
                 </th>
+                <!-- <th class="menuItem" >
+                    <a href="homeComercial.jsp">Todas licitações</a>
+                    TODO: tela que lista todas as licitações com critérios 
+                </th> -->
                 <th class="menuItem" >
-                    <a href="homeComercial.jsp">Tipos de Licitação</a>                    
+                    <a href="homeComercial.jsp">Tipos de licitação</a>                    
                 </th>
                 <th class="menuItem" >
                     <a href="homeComercial.jsp">Tipos de documento</a>
@@ -33,29 +35,80 @@
                     <a href="homeComercial.jsp">Produtos</a>
                 </th>
                 <th class="menuItem" >
-                    <a href="homeComercial.jsp">Órgão Públicoso</a>
+                    <a href="homeComercial.jsp">Órgãos Públicos</a>
                 </th>
                 <th class="menuItem" >
-                    <a href="homeComercial.jsp">Empresas</a>
-                    
+                    <a href="homeComercial.jsp">Empresas</a>                    
                 </th>
+                <th class="menuItem" >
+                    <a href="GelicServlet?comando=Logout">Trocar usuário</a>
+                </th>                
+                
             </tr>        
         </table>
-        <P>Licitações:</P>
-        <table>
+        <p></p>
+    </head>
+    <body>        
+        <table class="cadastro">
+            <TH class="cadastro"> LICITAÇÕES ABERTAS</TH>
+        </table>
+        <table class="cadastro">
+            
             <tr class = "cabecalho">
                 <td>
-                    <b><Center>Titulo Campo1</center></b>
+                    <b><Center>Número</center></b>
                 </td>
                 <td>
-                    <b><Center>Titulo Campo2</center></b>
+                    <b><Center>Tipo</center></b>
                 </td>
                 <td>
-                    <b><Center>Titulo Campo3</center></b>
+                    <b><Center>Modalidade</center></b>
                 </td>
                 <td>
-                    <b><Center>Titulo Campo4</center></b>
+                    <b><Center>Processo</center></b>
                 </td>
+                <tr class="dados">
+                    <td>Campo1</td>
+                    <td>Campo2</td>
+                    <td>Campo3</td>
+                    <td>Campo4</td>
+                </tr>
+                <tr class="dados">
+                    <td>Campo1</td>
+                    <td>Campo2</td>
+                    <td>Campo3</td>
+                    <td>Campo4</td>
+                </tr>
+                <tr class="dados">
+                    <td>Campo1</td>
+                    <td>Campo2</td>
+                    <td>Campo3</td>
+                    <td>Campo4</td>
+                </tr>
+                <tr class="dados">
+                    <td>Campo1</td>
+                    <td>Campo2</td>
+                    <td>Campo3</td>
+                    <td>Campo4</td>
+                </tr>
+                <tr class="dados">
+                    <td>Campo1</td>
+                    <td>Campo2</td>
+                    <td>Campo3</td>
+                    <td>Campo4</td>
+                </tr>
+                <tr class="dados">
+                    <td>Campo1</td>
+                    <td>Campo2</td>
+                    <td>Campo3</td>
+                    <td>Campo4</td>
+                </tr>
+                <tr class="dados">
+                    <td>Campo1</td>
+                    <td>Campo2</td>
+                    <td>Campo3</td>
+                    <td>Campo4</td>
+                </tr>
                 <tr class="dados">
                     <td>Campo1</td>
                     <td>Campo2</td>
@@ -64,5 +117,68 @@
                 </tr>
             </tr>
         </table>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+        <BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+        
+        
+        <table>
+            <TR>Licitações</TR>
+            <TR>Tipos de Licitações</TR>
+            <TR>Tipos de Documento</TR>
+            <TR>Produtos</TR>
+            <TR>Órgãos Público</TR>
+            <TR>Empresas</TR>
+        </table>
+        
+        <BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+        <BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+        
+        <P class="bemvindo">Bem-vindo, comercial!</P>        
+        <P>Se você deseja acessar o cadastro de licitações clique 
+            <a href="GelicServlet?comando=CadastroUsuarios">aqui</a>            
+        </P>
+        
+        <P>Se você deseja acessar o cadastro de tipos de licitações clique 
+            <a href="GelicServlet?comando=CadastroModalidades">aqui</a>            
+        </P>
+        
+        <P>Se você deseja acessar o cadastro de tipos de documentos clique 
+            <a href="GelicServlet?comando=CadastroModalidades">aqui</a>            
+        </P>
+        
+        <P>Se você deseja acessar o cadastro de produtos clique 
+            <a href="GelicServlet?comando=CadastroModalidades">aqui</a>            
+        </P>
+        <P>Se você deseja acessar o cadastro de órgãos públicos clique 
+            <a href="GelicServlet?comando=CadastroModalidades">aqui</a>            
+        </P>
+        <P>Se você deseja acessar o cadastro de empresas clique 
+            <a href="GelicServlet?comando=CadastroModalidades">aqui</a>            
+        </P>
+        <P>Para efetuar logout clique <a href="GelicServlet?comando=Logout"> 
+                aqui
+            </a>
+        </p>
+        <BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+        <BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+        
+        
+        
     </body>
 </html>

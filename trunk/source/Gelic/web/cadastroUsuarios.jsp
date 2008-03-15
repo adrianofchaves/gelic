@@ -14,11 +14,27 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC--Cadastro de usuários</title> 
-        <H1 class="nomeSistema">GELIC &nbsp;&nbsp;</H1>
+        <table class="nomeSistema">
+            <th>GELIC &nbsp;&nbsp;</th>        
+        </table>
+        
+        <table class="menu">
+            <tr>
+                <th class="menuItem" >
+                    <a href="homeAdministrador.jsp">Voltar</a>
+                </th>
+                <th class="menuItem" >
+                    <a href="GelicServlet?comando=Logout">Trocar usuário</a>                    
+                </th>
+            </tr>
+        </table>
+        <P></P>
     </head>
     <body>  
-        <P class="caption" >Cadastro de usuários</P>    
-        <table>             
+        <table class="cadastro">
+            <TH class="cadastro">USUÁRIOS</TH>    
+        </table>
+        <table class="cadastro">             
             <tr class="cabecalho">
                 <td>Login</td>
                 <td>Papel</td>
@@ -52,17 +68,17 @@
                 ${sessionScope.browserUsuarios.mensagem}
             </font>
         </P>
-        <p class="caption">            
-            <c:if test="${!sessionScope.formUsuario.inclusao}">
-                Alterando usuário
-            </c:if>
-            <c:if test="${sessionScope.formUsuario.inclusao}">
-                Criando usuário
-            </c:if>
-        </p>
         <form name="frmusuario" 
               action="GelicServlet?comando=GravarUsuario" 
               method="POST">
+            <p class="caption">            
+                <c:if test="${!sessionScope.formUsuario.inclusao}">
+                    Alterando usuário
+                </c:if>
+                <c:if test="${sessionScope.formUsuario.inclusao}">
+                    Novo usuário
+                </c:if>
+            </p>
             <font class = "erro">
                 <c:forEach var="erro" items="${sessionScope.formUsuario.erros}">
                     <P>${erro}</P>
@@ -111,13 +127,6 @@
                 </c:if>
             </p>
             
-        </form>
-        <P>
-            Para voltar ao início clique 
-            <a href="homeAdministrador.jsp">aqui</a>
-        </P>   
-        <P>Para efetuar logout clique 
-            <a href="GelicServlet?comando=Logout">aqui</a>
-        </p>
+        </form>        
     </body>
 </html>

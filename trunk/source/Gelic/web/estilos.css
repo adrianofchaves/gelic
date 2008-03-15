@@ -19,19 +19,7 @@ body{
     
     color: #666666;
 }
-h1.nomeSistema {    
-    background-color: #517580;
-    font-family: Arial,Helvetica,sans-serif;
-    background-position: right center;
-    color: #ffffff;
-    font-style: oblique;
-    font-weight: 900;
-    font-variant: small-caps;
-    font-size: XX-large;
-    text-align: right;       
-    text-indent: 10%;
-    vertical-align: middle;
-}
+
 font{
     font-family: Arial,Helvetica,sans-serif;
 }
@@ -88,31 +76,55 @@ p.caption{
     font-variant: small-caps;   
     font-size: large;
 }
+
 table{
     background-color: #e0eef1;
     font-family: Arial,Helvetica,sans-serif;
-    width: 100%;
-    
     color: #666666;
-    text-indent: 5%;
+    
 }
+table.cadastro{
+    width: 100%;
+}
+
 table.menu{
     background-color: #c9dee8;
     color: #666666;
     font-weight: bold;
-    font-variant: small-caps;
-    border-top-style: hidden;
-    border-bottom-style: hidden;
-    border-left-style: hidden;
-    border-right-style: hidden;
-    text-indent: 0%;
+    font-size: large;
+}
+th.cadastro{
+    
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    color: #000000;    
+    background-position: center;
+    padding-bottom: 10px;
+    clip: rect(0px, 10px, 0px, 0px);
+    border-bottom-style: groove;
+    padding-top: 10px;
 }
 th.menuItem{
-    border-top-style: groove;
-    border-bottom-style: groove;
-    border-left-style: groove;
-    border-right-style: groove;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
     background-position: center center;
+    
+    font-family: Arial,Helvetica,sans-serif;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    padding-right: 4px;
+    background-color: #bee0e9;
+    border-top-color: #bee0e9;
+    border-bottom-color: #bee0e9;
+    border-left-color: #bee0e9;
+    border-right-color: #84d0de;
 }
 tr.dados{    
     background-color: #e3feff;    
@@ -128,6 +140,31 @@ tr.cabecalho{
     font-size: medium;
     font-family: Arial,Helvetica,sans-serif;
 }
+
+table.nomeSistema {    
+    background-color: #517580;
+    font-family: Arial,Helvetica,sans-serif;
+    color: #ffffff;
+    font-style: oblique;
+    font-weight: 900;
+    font-variant: small-caps;
+    font-size: XX-large;
+    text-align: right;       
+    vertical-align: middle;
+    width: 100%;
+    border-top-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    border-right-style: none;
+}
+th.nomeSistema1{
+    color: #ffffff;
+    background-color: #517580;
+    width: 100;
+
+}
+
+
 form {
     background-color: #e0eef1;    
     

@@ -14,12 +14,28 @@
         <link rel="STYLESHEET" href="estilos.css" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC--Cadastro de modalidades de licitações</title>          
-        <H1 class="nomeSistema">GELIC &nbsp;&nbsp;</H1>
+        <table class="nomeSistema"><th>GELIC &nbsp;&nbsp;</th></table>
+        
+        <table class="menu"><tr>
+                <th class="menuItem" >
+                    <a href="homeAdministrador.jsp">
+                    Voltar</a>
+                </th>
+                <th class="menuItem" >
+                    <a href="GelicServlet?comando=NovaModalidade">
+                    Nova modalidade</a>                    
+                </th>
+                <th class="menuItem" >
+                    <a href="GelicServlet?comando=Logout">
+                    Trocar usuário</a>                    
+                </th>
+        </tr></table>
+        
     </head>
     <body>    
-        <P class="caption" >Cadastro de modalidades</P>    
-        <table>            
-            <tr  class="cabecalho">
+        <table class="cadastro"><TH class="cadastro">Modalidades</TH></TABLE>
+        <table class="cadastro">            
+            <tr class="cabecalho">
                 <td>Sigla</td>
                 <td>Nome</td>
                 <TD> </TD>
@@ -49,15 +65,5 @@
         <font class="mensagem">
             <P>${sessionScope.browserModalidades.mensagem}</P>
         </font>
-        <form action="GelicServlet?comando=NovaModalidade" method = "post">
-            <input type="submit"  value="Criar"/> 
-        </form>
-        <P>
-            Para voltar ao início clique 
-            <a href="homeAdministrador.jsp">aqui</a>
-        </P>   
-        <P>Para efetuar logout clique 
-            <a href="GelicServlet?comando=Logout">aqui</a>
-        </p>
     </body>
 </html>

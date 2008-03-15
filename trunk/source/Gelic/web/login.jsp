@@ -15,13 +15,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC--Autenticação</title>
-        <H1 class="nomeSistema">GELIC &nbsp;&nbsp;</H1>
+        <table class="nomeSistema">
+            <th>GELIC &nbsp;&nbsp;</th>        
+        </table>
     </head>
     <body>
-        <p class="caption">Autenticação</p>
+        
         <form             
             name="formlogin" 
             action="GelicServlet?comando=EfetuarLogin" method="post"> 
+            <P>Digite seu login e  sua senha para começar </P>
             <font class="erro"> 
                 ${requestScope.formLogin.erros}
             </font>                    

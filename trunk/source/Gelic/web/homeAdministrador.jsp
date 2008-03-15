@@ -13,19 +13,23 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC--Administrador</title>
-        <H1 class="nomeSistema">GELIC &nbsp;&nbsp;</H1>
+       <table class="nomeSistema">
+            <th>GELIC &nbsp;&nbsp;</th>        
+        </table>        
+        <table class="menu">
+            <tr>
+                <th class="menuItem" >
+                    <a href="GelicServlet?comando=CadastroUsuarios">Usuários</a>
+                </th>
+                <th class="menuItem" >
+                    <a href="GelicServlet?comando=CadastroModalidades">Modalidades</a>                    
+                </th>
+                <th class="menuItem" >
+                    <a href="GelicServlet?comando=Logout">Trocar usuário</a>
+                </th>                
+            </tr>        
+        </table>
     </head>
     <body>
-        <P class="bemvindo">Bem-vindo, administrador!</P>        
-        <P>Se você deseja acessar o cadastro de usuários clique 
-            <a href="GelicServlet?comando=CadastroUsuarios">aqui</a>            
-        </P>
-        <P>Se você deseja acessar o cadastro de modalidade de licitações clique 
-            <a href="GelicServlet?comando=CadastroModalidades">aqui</a>            
-        </P>
-        <P>Para efetuar logout clique <a href="GelicServlet?comando=Logout"> 
-                aqui
-            </a>
-        </p>
     </body>
 </html>

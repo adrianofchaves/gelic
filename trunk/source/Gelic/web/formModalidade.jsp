@@ -14,12 +14,27 @@
         <link rel="STYLESHEET" href="estilos.css" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC--Cadastro de usuários</title>  
+        <table class="nomeSistema"><th>GELIC &nbsp;&nbsp;</th></table>
         
-        <H1 class="nomeSistema">GELIC &nbsp;&nbsp;</H1>
-        
+        <table class="menu">
+            <tr>
+                <th class="menuItem" >
+                    <a href="GelicServlet?comando=CadastroModalidades">Voltar</a>
+                </th>
+                <th class="menuItem" >
+                    <a href="homeAdministrador.jsp">Início</a>
+                </th>
+                <th class="menuItem" >
+                    <a href="GelicServlet?comando=Logout">Trocar usuário</a>                    
+                </th>
+            </tr>
+        </table>
     </head>
     <body>
-        <p class="caption">Autenticação
+        <form name="frmModalidade" 
+              action="GelicServlet?comando=GravarModalidade" 
+              method="POST">
+        <p class="caption">
             <c:if test="${!sessionScope.formModalidade.inclusao}">
                 Alterando modalidade:
             </c:if>
@@ -27,9 +42,6 @@
                 Criando usuário:
             </c:if>
         </p>
-        <form name="frmModalidade" 
-              action="GelicServlet?comando=GravarModalidade" 
-              method="POST">
             <font class="erro" >
                 <c:forEach var="erro" items="${sessionScope.formModalidade.erros}">
                     <P>${erro}</P>
@@ -56,13 +68,6 @@
                 <INPUT class="botao" TYPE="submit" value="Cancelar" 
                        name="cancelar"/>                
             </p>
-        </form>
-        <P>
-            Para voltar ao início clique 
-            <a href="homeAdministrador.jsp">aqui</a>
-        </P>   
-        <P>Para efetuar logout clique 
-            <a href="GelicServlet?comando=Logout">aqui</a>
-        </p>
+        </form>       
     </body>
 </html>

@@ -15,7 +15,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>GELIC - Controle de Licitações</title>
-        <H1 class="nomeSistema">GELIC &nbsp;&nbsp;</H1>
+        <table class="nomeSistema"><th>GELIC &nbsp;&nbsp;</th></table>
     </head>
     <body>
         <P class="bemvindo">Seja bem-vindo ao GELIC.</P>
