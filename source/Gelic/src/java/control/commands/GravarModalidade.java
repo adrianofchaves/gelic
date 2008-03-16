@@ -19,7 +19,7 @@ public class GravarModalidade implements Comando {
 
     private String executaCancelar(HttpServletRequest req)
             throws SQLException, NamingException {
-        return control.BrowserModalidades.prepara(req);
+        return control.Modalidades.preparaBrowser(req);
     }
 
     public String executar(HttpServletRequest req) throws ExcecaoComando {
@@ -34,11 +34,7 @@ public class GravarModalidade implements Comando {
             frm.setNomeModalidade(req.getParameter("nomeModalidade"));
             frm.setSiglaModalidade(req.getParameter("siglaModalidade"));
             /* Executa críticas */
-            if (frm.getSiglaModalidade().length() > 3) {
-                frm.setErroSiglaModalidade(
-                        "Sigla deve ter no máxim 3 caracteres");
-                frm.addErro("Sigla inválida");
-            }
+            frm.valida();
             /* Se tem erros sai */
             if( frm.temErros()){
                 return "/formModalidade.jsp";
@@ -56,9 +52,7 @@ public class GravarModalidade implements Comando {
                         frm.getNomeModalidade());
                 browser.setMensagem("Modalidade alterada com sucesso");
             }
-            browser.setModalidades(model.services.Modalidades.recuperar());
-            req.getSession().setAttribute("browserModalidades", browser);
-            return "/browserModalidades.jsp";
+            return control.Modalidades.preparaBrowser(req);            
         } catch (SQLException ex) {
             Logger.getLogger(GravarModalidade.class.getName()).log(
                     Level.SEVERE, null, ex);

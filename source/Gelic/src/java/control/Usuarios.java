@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author adriano
  */
-public class CadastroUsuarios {
+public class Usuarios {
 
-    static public String preparar(HttpServletRequest req) 
+    static public String prepararBrowser(HttpServletRequest req) 
             throws NamingException, SQLException {
         req.getSession().setAttribute("browserUsuarios",
                 new view.BrowserUsuarios(model.services.Usuarios.recuperar()));

@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author adriano
  */
-public class BrowserModalidades {
+public class Modalidades {
 
-    static public String prepara(HttpServletRequest req) 
+    static public String preparaBrowser(HttpServletRequest req) 
             throws SQLException, NamingException {
         view.BrowserModalidades browser = new view.BrowserModalidades(
                 model.services.Modalidades.recuperar());

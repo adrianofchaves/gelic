@@ -23,7 +23,7 @@
                 </th>
                 <th class="menuItem" >
                     <a href="Comercial?comando=NovoTipoLicitacao">
-                    Nova modalidade</a>                    
+                    Novo tipo de licitação</a>                    
                 </th>
                 <th class="menuItem" >
                     <a href="Gelic?comando=Logout">

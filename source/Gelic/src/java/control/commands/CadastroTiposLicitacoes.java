@@ -20,12 +20,7 @@ public class CadastroTiposLicitacoes implements Comando{
 
     public String executar(HttpServletRequest req) throws ExcecaoComando {
         try {
-            view.BrowserTiposLicitacoes browser = 
-                    new view.BrowserTiposLicitacoes(
-                    model.services.TiposLicitacoes.recuperar());
-            req.getSession().setAttribute("browserTiposLicitacoes", browser);            
-            
-            return "/browserTiposLicitacoes.jsp";
+            return control.TipoLicitacao.preparaBrowser(req);
         } catch (SQLException ex) {
             Logger.getLogger(CadastroTiposLicitacoes.class.getName()).log(
                     Level.SEVERE, null, ex);
