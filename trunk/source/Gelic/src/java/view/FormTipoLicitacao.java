@@ -2,25 +2,53 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package view;
+
+import java.sql.SQLException;
+import javax.naming.NamingException;
 
 /**
  *
  * @author Adriano
  */
-public class FormTipoLicitacao extends Form{
+public class FormTipoLicitacao extends Form {
+
     private model.beans.TipoLicitacao tipoLicitacao;
     private String nomeTipoLicitacao;
     private String erroNomeTipoLicitacao;
     private boolean inclusao = true;
-    protected void apagaErros(){
-        super.apagaErros();
-        erroNomeTipoLicitacao="";        
+
+    public void valida() throws SQLException, NamingException {
+        apagaErros();
+        if (isInclusao()) {
+            /* críticas de inclusão */
+            if (model.services.TiposLicitacoes.recuperar(
+                    nomeTipoLicitacao) != null) {
+                erroNomeTipoLicitacao = "Nome já existe";
+                addErro("Já existe um tipo de licitação com este nome.");
+            }
+        }
+        if (!isInclusao()) {
+            /* críticas para a alteração */
+            if (!getNomeTipoLicitacao().equalsIgnoreCase(
+                    tipoLicitacao.getNome())) {
+                /* alterou o nome.  Verificamos se novo nome já existe */
+                if (model.services.TiposLicitacoes.recuperar(
+                        nomeTipoLicitacao) != null) {
+                    erroNomeTipoLicitacao = "Nome já existe";
+                    addErro("Já existe um tipo de licitação com este nome.");
+                }
+            }
+        }
     }
+    protected void apagaErros() {
+        super.apagaErros();
+        erroNomeTipoLicitacao = "";
+    }
+
     public void atualizaCampos() {
         apagaErros();
-        if(tipoLicitacao==null){
+        if (tipoLicitacao == null) {
             return;
         }
         setNomeTipoLicitacao(tipoLicitacao.getNome());
@@ -57,6 +85,4 @@ public class FormTipoLicitacao extends Form{
     public void setInclusao(boolean inclusao) {
         this.inclusao = inclusao;
     }
-    
-
 }

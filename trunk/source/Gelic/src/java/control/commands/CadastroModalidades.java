@@ -19,7 +19,7 @@ public class CadastroModalidades implements Comando{
 
     public String executar(HttpServletRequest req) throws ExcecaoComando {
         try {
-          return control.BrowserModalidades.prepara(req);
+          return control.Modalidades.preparaBrowser(req);
         } catch (SQLException ex) {
             Logger.getLogger(CadastroModalidades.class.getName()).log(
                     Level.SEVERE, null, ex);

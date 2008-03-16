@@ -16,12 +16,20 @@ public class FormModalidade extends Form {
     private String nomeModalidade;
     private String erroNomeModalidade;
     private Boolean inclusao = true;
-    
 
     public void apagaErros() {
         super.apagaErros();
         erroNomeModalidade = "";
         errosiglaModalidade = "";
+    }
+
+    public void valida() {
+        apagaErros();
+        if (getSiglaModalidade().length() > 3) {
+            setErroSiglaModalidade("Sigla deve ter no máxim 3 caracteres");
+            addErro("Sigla inválida");
+        }
+
     }
 
     public void atualizaCampos() {

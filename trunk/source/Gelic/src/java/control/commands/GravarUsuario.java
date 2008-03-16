@@ -89,7 +89,7 @@ public class GravarUsuario implements Comando {
             if (req.getParameter("cancelar") == null) {
                 return processa(req);
             } else {
-                return control.CadastroUsuarios.preparar(req);
+                return control.Usuarios.prepararBrowser(req);
             }
 
         } catch (NoSuchAlgorithmException ex) {

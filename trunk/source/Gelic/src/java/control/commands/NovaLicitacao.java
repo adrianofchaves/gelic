@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 // </editor-fold> 
 public class NovaLicitacao implements Comando{
     public String executar(HttpServletRequest req) throws ExcecaoComando {
-        /*throw new UnsupportedOperationException("Not supported yet.");*/
-        return "/incluirLicitacao.jsp";
+       return control.TipoLicitacao.preparaCadastro(req);
     }
 
 }
