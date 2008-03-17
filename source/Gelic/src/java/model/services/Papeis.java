@@ -46,7 +46,13 @@ public class Papeis {
          * há necessidade de ir ao banco buscar essa informação: resolve com 
          * a lista mantida estáticamente
          */         
+        
         recuperar();
+        
+        if( papeis == null){
+            return null;
+        }
+        
         for( model.beans.Papel papel : papeis ){
             if( nomePapel.equalsIgnoreCase(papel.getNome()))
                 return papel;
