@@ -52,7 +52,11 @@ public class TiposLicitacoes {
             throws SQLException, NamingException {
         if (tiposLicitacoes == null) {
             recuperar();
+            if (tiposLicitacoes == null) {
+                return null;
+            }
         }
+        
         for (TipoLicitacao tipo : tiposLicitacoes) {
             if (tipo.getNome().equalsIgnoreCase(nome)) {
                 return tipo;

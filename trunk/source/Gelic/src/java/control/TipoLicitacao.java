@@ -19,10 +19,10 @@ public class TipoLicitacao {
         view.BrowserTiposLicitacoes browser =
                 new view.BrowserTiposLicitacoes(
                 model.services.TiposLicitacoes.recuperar());
-        req.getSession().setAttribute("browserTiposLicitacoes", browser);
-        if( browser.getTiposLicitacoes().isEmpty()){
+        if( (browser.getTiposLicitacoes() == null) || (browser.getTiposLicitacoes().isEmpty())){
             return preparaCadastro(req);
         }
+        req.getSession().setAttribute("browserTiposLicitacoes", browser);
         return "/browserTiposLicitacoes.jsp";
 
     }
