@@ -20,13 +20,14 @@ public class TiposLicitacoes {
     final static String sqlContaTiposLicitacoes =
             "select count(*) from TIPOSLICITACOES";
     final static String sqlRecuperaTiposLicitacoes =
-            "select NOME from TIPOSLICITACOES";
+            "select NOME, SIGLA from TIPOSLICITACOES";
     final static String sqlIncluiTipoLicitacao =
-            "insert into TIPOSLICITACOES(NOME) values (?)";
+            "insert into TIPOSLICITACOES(NOME,SIGLA) values (?,?)";
     final static String sqlAlteraTipoLicitacao =
-            "update TIPOSLICITACOES set NOME= ? where NOME= ? ";
+            "update TIPOSLICITACOES set NOME= ?, SIGLA=? where NOME= ? ";
 
-    public static int alterar(String nomeAnterior, String novoNome)
+    public static int alterar(String nomeAnterior, String novoNome, 
+            String novaSigla )
             throws SQLException, NamingException {
         Connection gelic = model.services.Conexao.getConnection();
 
@@ -34,12 +35,13 @@ public class TiposLicitacoes {
 
 
         pstmt.setString(1, novoNome);
-        pstmt.setString(2, nomeAnterior);
-
+        pstmt.setString(2, novaSigla);
+        
+        pstmt.setString(3, nomeAnterior);
         return pstmt.executeUpdate();
     }
 
-    public static int incluir(String nome)
+    public static int incluir(String nome, String sigla)
             throws SQLException, NamingException {
         Connection gelic = model.services.Conexao.getConnection();
 
@@ -47,13 +49,16 @@ public class TiposLicitacoes {
                 sqlIncluiTipoLicitacao);
 
         pstmt.setString(1, nome);
+        pstmt.setString(2, sigla);
 
         return pstmt.executeUpdate();
     }
 
-    static private model.beans.TipoLicitacao criaTipoLicitacao(String nome) {
+    static private model.beans.TipoLicitacao criaTipoLicitacao(String nome, 
+            String sigla) {
         model.beans.TipoLicitacao tipo = new model.beans.TipoLicitacao();
         tipo.setNome(nome);
+        tipo.setSigla(sigla);
         return tipo;
     }
 
@@ -86,7 +91,8 @@ public class TiposLicitacoes {
                 tipos = new ArrayList<model.beans.TipoLicitacao>(quantidadeTipos);
             }
 
-            tipos.add(criaTipoLicitacao(rs.getString("NOME")));
+            tipos.add(criaTipoLicitacao(rs.getString("NOME"), 
+                    rs.getString("SIGLA")));
         }
         return tipos;
     }

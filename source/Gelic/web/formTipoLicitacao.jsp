@@ -57,6 +57,13 @@
                     ${sessionScope.formTipoLicitacao.erroNomeTipoLicitacao}
                 </font>
             </P>            
+            <P>Sigla:<br>
+                <input type="text" name="siglaTipoLicitacao" class="caixaTexto"
+                       value="${sessionScope.formTipoLicitacao.siglaTipoLicitacao}" />
+                <font class="erroCampo" >
+                    ${sessionScope.formTipoLicitacao.erroSiglaTipoLicitacao}
+                </font>
+            </P>            
             <p>
                 <input class="botao" type="submit" value="Gravar" 
                        name="executar"/>

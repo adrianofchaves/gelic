@@ -29,6 +29,7 @@ public class GravarTipoLicitacao implements Comando {
                     getAttribute("formTipoLicitacao");
             
             frm.setNomeTipoLicitacao(req.getParameter("nomeTipoLicitacao"));
+            frm.setSiglaTipoLicitacao(req.getParameter("siglaTipoLicitacao"));
             
             frm.valida();
             
@@ -38,11 +39,13 @@ public class GravarTipoLicitacao implements Comando {
             
             if(frm.isInclusao()){
                 model.services.TiposLicitacoes.incluir(
-                        frm.getNomeTipoLicitacao());
+                        frm.getNomeTipoLicitacao(), 
+                        frm.getSiglaTipoLicitacao());
             }else{
                 model.services.TiposLicitacoes.alterar(
                         frm.getTipoLicitacao().getNome(),
-                        frm.getNomeTipoLicitacao());
+                        frm.getNomeTipoLicitacao(),
+                        frm.getSiglaTipoLicitacao());
             }
                 
             return control.TipoLicitacao.preparaBrowser(req);

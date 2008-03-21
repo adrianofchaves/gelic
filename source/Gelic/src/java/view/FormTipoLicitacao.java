@@ -16,10 +16,16 @@ public class FormTipoLicitacao extends Form {
     private model.beans.TipoLicitacao tipoLicitacao;
     private String nomeTipoLicitacao;
     private String erroNomeTipoLicitacao;
+    private String siglaTipoLicitacao;
+    private String erroSiglaTipoLicitacao;
     private boolean inclusao = true;
 
     public void valida() throws SQLException, NamingException {
         apagaErros();
+        if( siglaTipoLicitacao.length()!=2){
+            erroSiglaTipoLicitacao = "Sigla deve ter 2 caracteres";
+            addErro("Sigla inválida!");
+        }
         if (isInclusao()) {
             /* críticas de inclusão */
             if (model.services.TiposLicitacoes.recuperar(
@@ -52,6 +58,7 @@ public class FormTipoLicitacao extends Form {
             return;
         }
         setNomeTipoLicitacao(tipoLicitacao.getNome());
+        setSiglaTipoLicitacao(tipoLicitacao.getSigla());
     }
 
     public model.beans.TipoLicitacao getTipoLicitacao() {
@@ -84,5 +91,21 @@ public class FormTipoLicitacao extends Form {
 
     public void setInclusao(boolean inclusao) {
         this.inclusao = inclusao;
+    }
+
+    public String getSiglaTipoLicitacao() {
+        return siglaTipoLicitacao;
+    }
+
+    public void setSiglaTipoLicitacao(String siglaTipoLicitacao) {
+        this.siglaTipoLicitacao = siglaTipoLicitacao;
+    }
+
+    public String getErroSiglaTipoLicitacao() {
+        return erroSiglaTipoLicitacao;
+    }
+
+    public void setErroSiglaTipoLicitacao(String erroSiglaTipoLicitacao) {
+        this.erroSiglaTipoLicitacao = erroSiglaTipoLicitacao;
     }
 }
