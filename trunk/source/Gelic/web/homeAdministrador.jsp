@@ -25,6 +25,9 @@
                     <a href="Gelic?comando=CadastroModalidades">Modalidades</a>                    
                 </th>
                 <th class="menuItem" >
+                    <a href="Gelic?comando=CadastroSistemas">Sistemas</a>                    
+                </th>
+                <th class="menuItem" >
                     <a href="Gelic?comando=Logout">Trocar usuário</a>
                 </th>                
             </tr>        

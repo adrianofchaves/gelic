@@ -39,6 +39,7 @@
         <table class="cadastro">            
             <tr class="cabecalho">
                 <td>Nome</td>
+                <td>Sigla</td>
                 <TD> </TD>
             </tr>
             <c:forEach 
@@ -49,6 +50,9 @@
                         <a href="Comercial?comando=AlterarTipoLicitacao&nome=${tipo.nome}">
                             ${tipo.nome}    
                         </a>                        
+                    </td>
+                    <td>
+                        ${tipo.sigla}
                     </td>
                     <td>
                         <a href="Comercial?comando=ExcluirTipoLicitacao&nome=${modalidade.sigla}">

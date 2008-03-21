@@ -17,10 +17,11 @@ public class TiposLicitacoes {
 
     static ArrayList<model.beans.TipoLicitacao> tiposLicitacoes = null;
 
-    public static void alterar(String nomeAnterior, String novoNome) 
+    public static void alterar(String nomeAnterior, String novoNome, 
+            String novaSigla ) 
             throws NamingException, SQLException {
         if (model.daos.TiposLicitacoes.alterar(
-                nomeAnterior, novoNome ) == 1) {
+                nomeAnterior, novoNome, novaSigla ) == 1) {
             model.services.Conexao.getConnection().commit();
             /* apaga cache */
             tiposLicitacoes = null;
@@ -29,9 +30,9 @@ public class TiposLicitacoes {
         }
     }
 
-    public static void incluir(String nome) 
+    public static void incluir(String nome, String sigla) 
             throws NamingException, SQLException {
-         if (model.daos.TiposLicitacoes.incluir(nome) == 1) {
+         if (model.daos.TiposLicitacoes.incluir(nome, sigla) == 1) {
             model.services.Conexao.getConnection().commit();
             /* apaga cache */
             tiposLicitacoes = null;
