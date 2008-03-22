@@ -1,11 +1,14 @@
 package control;
 
+import control.commands.AlterarTipoDocumento;
 import control.commands.AlterarTipoLicitacao;
 import control.commands.CadastroTiposDocumentos;
 import control.commands.CadastroTiposLicitacoes;
 import control.commands.Comando;
 import control.commands.ExcecaoComando;
+import control.commands.GravarTipoDocumento;
 import control.commands.GravarTipoLicitacao;
+import control.commands.NovoTipoDocumento;
 import control.commands.Nulo;
 import control.commands.NovoTipoLicitacao;
 import java.io.IOException;
@@ -39,6 +42,9 @@ public class ServletComercial extends HttpServlet {
         comandos.put("NovoTipoLicitacao", new NovoTipoLicitacao());
         comandos.put("GravarTipoLicitacao", new GravarTipoLicitacao());
         comandos.put("CadastroTiposDocumentos", new CadastroTiposDocumentos());
+        comandos.put("NovoTipoDocumento", new NovoTipoDocumento());
+        comandos.put("AlterarTipoDocumento", new AlterarTipoDocumento());
+        comandos.put("GravarTipoDocumento", new GravarTipoDocumento());
     }
 
     public void init() throws ServletException {
