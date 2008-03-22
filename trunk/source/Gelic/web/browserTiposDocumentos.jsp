@@ -1,6 +1,6 @@
 <%-- 
-    Document   : browserTiposLicitacoes
-    Created on : 14/03/2008, 22:59:34
+    Document   : browserTiposDocumentos
+    Created on : 22/03/2008, 00:33:02
     Author     : Adriano
 --%>
 
@@ -13,7 +13,7 @@
     <head>
         <link rel="STYLESHEET" href="estilos.css" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>GELIC--Cadastro de modalidades de licitações</title>          
+        <title>GELIC--Cadastro de tipos de documentos</title>          
         <table class="nomeSistema"><th>GELIC &nbsp;&nbsp;</th></table>
         
         <table class="menu"><tr>
@@ -22,50 +22,44 @@
                     Voltar</a>
                 </th>
                 <th class="menuItem" >
-                    <a href="Comercial?comando=NovoTipoLicitacao">
-                    Novo tipo de licitação</a>                    
+                    <a href="Comercial?comando=NovoTipoDocumento">
+                    Novo tipo de documento</a>                    
                 </th>
                 <th class="menuItem" >
                     <a href="Gelic?comando=Logout">
                     Trocar usuário</a>                    
                 </th>
-        </tr></table>
-        
+        </tr></table>        
     </head>
     <body>    
         <table class="cadastro"><TH class="cadastro">
-                Tipos de licitações
+                Tipos de documentos
         </TH></TABLE>
         <table class="cadastro">            
             <tr class="cabecalho">
-                <td>Nome</td>
-                <td>Sigla</td>
+                <td>Nome</td>                
                 <TD> </TD>
             </tr>
             <c:forEach 
                 var="tipo" 
-                items="${sessionScope.browserTiposLicitacoes.tiposLicitacoes}">                
+                items="${sessionScope.browserTiposDocumentos.tiposDocumentos}">                
                 <tr class="dados">
                     <td>
-                        <a href="Comercial?comando=AlterarTipoLicitacao&nome=${tipo.nome}">
+                        <a href="Comercial?comando=AlterarTipoDocumento&nome=${tipo.nome}">
                             ${tipo.nome}    
                         </a>                        
-                    </td>
+                    </td>                    
                     <td>
-                        ${tipo.sigla}
-                    </td>
-                    <td>
-                        <a href="Comercial?comando=ExcluirTipoLicitacao&nome=${modalidade.sigla}">
+                        <a href="Comercial?comando=ExcluirTipoDocumento&nome=${modalidade.sigla}">
                             <img src="img/trash.PNG"  width="16" height="16" 
                                  alt="trash"/>
                         </a>
                     </td>
-                </tr>
-                
+                </tr>                
             </c:forEach>
         </table>        
         <font class="mensagem">
-            <P>${sessionScope.browserTiposLicitacoes.mensagem}</P>
+            <P>${sessionScope.browserTiposDocumentos.mensagem}</P>
         </font>
     </body>
 </html>
