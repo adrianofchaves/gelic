@@ -26,7 +26,7 @@ public class Forms {
         String valor;
         
         if (req != null) {
-            valor = req.getParameter(nomeParametro);
+            valor = util.Request.getParameter(req, nomeParametro);
         } else {
             valor = "";
         }

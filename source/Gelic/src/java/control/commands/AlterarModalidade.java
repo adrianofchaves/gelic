@@ -19,7 +19,7 @@ public class AlterarModalidade implements Comando{
 
     public String executar(HttpServletRequest req) throws ExcecaoComando {
         try {
-            String sigla = req.getParameter("sigla");
+            String sigla = util.Request.getParameter(req,"sigla");
             if (sigla == null) {
                 throw new ExcecaoComando("Sigla de Modalidade inválida (nula)");
             }

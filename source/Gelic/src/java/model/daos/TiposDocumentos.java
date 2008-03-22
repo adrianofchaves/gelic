@@ -63,8 +63,9 @@ public class TiposDocumentos {
         PreparedStatement pstmt;
         int quantidadeTipos;
         ResultSet rs;
-
+        
         Connection gelic = model.services.Conexao.getPool().getConnection();
+        
         /* Conta quantidade de usuários cadastrados */
         pstmt = gelic.prepareStatement(sqlContaTiposDocumentos);
         rs = pstmt.executeQuery();
@@ -81,6 +82,7 @@ public class TiposDocumentos {
         /* Carrega usuários */
         pstmt = gelic.prepareStatement(sqlRecuperaTiposDocumentos);
         rs = pstmt.executeQuery();
+        
         while (rs.next()) {
             if (tipos == null) {
                 tipos = new ArrayList<model.beans.TipoDocumento>(

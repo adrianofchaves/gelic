@@ -5,12 +5,10 @@
 package control.commands;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
-import model.beans.Usuario;
 
 /**
  * O cadastro de usuários é o comando executado pelo administrador a partir de 

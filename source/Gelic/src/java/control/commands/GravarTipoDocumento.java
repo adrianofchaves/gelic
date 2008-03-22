@@ -27,7 +27,11 @@ public class GravarTipoDocumento implements Comando {
             view.FormTipoDocumento frm = (view.FormTipoDocumento) 
                     req.getSession().getAttribute("formTipoDocumento");
             
-            frm.setNomeTipoDocumento(req.getParameter("nomeTipoDocumento"));
+            String nomeTipoDocumento = util.Request.getParameter(req, 
+                    "nomeTipoDocumento");
+            
+            
+            frm.setNomeTipoDocumento(nomeTipoDocumento);
             
             frm.valida();
             

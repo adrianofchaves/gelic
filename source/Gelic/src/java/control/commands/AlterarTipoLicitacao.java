@@ -19,7 +19,7 @@ public class AlterarTipoLicitacao implements Comando {
 
     public String executar(HttpServletRequest req) throws ExcecaoComando {
         try {
-            String nome = req.getParameter("nome");
+            String nome = util.Request.getParameter(req,"nome");
             if (nome == null) {
                 throw new ExcecaoComando("Nome de tipo de licitação inválido (nula)");
             }
