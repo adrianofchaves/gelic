@@ -30,7 +30,7 @@ public class AlterarUsuario implements Comando{
                     model.services.Usuarios.recuperar());
             req.getSession().setAttribute("browserUsuarios", browser );
             
-            String login = req.getParameter("login").trim();
+            String login = util.Request.getParameter(req,"login").trim();
             view.FormUsuario frm = new view.FormUsuario();
             frm.setInclusao(false);
             model.beans.Usuario usuario = model.services.Usuarios.recuperar(

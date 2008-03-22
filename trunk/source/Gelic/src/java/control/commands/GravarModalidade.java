@@ -31,8 +31,10 @@ public class GravarModalidade implements Comando {
             /* "popula form */
             view.FormModalidade frm = (FormModalidade) req.getSession().
                     getAttribute("formModalidade");
-            frm.setNomeModalidade(req.getParameter("nomeModalidade"));
-            frm.setSiglaModalidade(req.getParameter("siglaModalidade"));
+            frm.setNomeModalidade(util.Request.getParameter(req,
+                    "nomeModalidade"));
+            frm.setSiglaModalidade(util.Request.getParameter(req,
+                    "siglaModalidade"));
             /* Executa críticas */
             frm.valida();
             /* Se tem erros sai */

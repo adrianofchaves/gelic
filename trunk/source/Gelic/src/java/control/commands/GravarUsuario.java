@@ -34,14 +34,14 @@ public class GravarUsuario implements Comando {
         view.FormUsuario frm = (view.FormUsuario) req.getSession().getAttribute(
                 "formUsuario");
         /* loginUsuario */
-        frm.setLoginUsuario(util.Forms.recuperaParametro(req, "loginUsuario"));
+        frm.setLoginUsuario(util.Request.getParameter(req, "loginUsuario"));
         /* senhaUsuario */
-        frm.setSenhaUsuario(util.Forms.recuperaParametro(req, "senhaUsuario"));
+        frm.setSenhaUsuario(util.Request.getParameter(req, "senhaUsuario"));
         /* confirmaSenhaUsuario */
         frm.setConfirmaSenhaUsuario(
-                util.Forms.recuperaParametro(req, "confirmaSenhaUsuario"));
+                util.Request.getParameter(req, "confirmaSenhaUsuario"));
         /* papelUsuario*/
-        frm.setPapelUsuario(util.Forms.recuperaParametro(req, "papelUsuario"));
+        frm.setPapelUsuario(util.Request.getParameter(req, "papelUsuario"));
 
         return frm;
     }

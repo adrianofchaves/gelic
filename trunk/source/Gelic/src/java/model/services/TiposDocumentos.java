@@ -56,9 +56,11 @@ public class TiposDocumentos {
         }
         
         for (model.beans.TipoDocumento tipo : tiposDocumentos) {
+            
             if (tipo.getNome().equalsIgnoreCase(nome)) {
                 return tipo;
-            }
+            }            
+            
         }
         return null;
     }

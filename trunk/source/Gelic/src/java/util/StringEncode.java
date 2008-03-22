@@ -12,7 +12,7 @@ import java.io.UnsupportedEncodingException;
  */
 public class StringEncode {
 
-    public String toUTF8(String isoString) {
+    static public String toUTF8(String isoString) {
         String utf8String = null;
         if (null != isoString && !isoString.equals("")) {
             try {

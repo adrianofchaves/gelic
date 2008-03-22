@@ -27,8 +27,10 @@ public class GravarTipoLicitacao implements Comando {
             view.FormTipoLicitacao frm = (view.FormTipoLicitacao) req.getSession().
                     getAttribute("formTipoLicitacao");
             
-            frm.setNomeTipoLicitacao(req.getParameter("nomeTipoLicitacao"));
-            frm.setSiglaTipoLicitacao(req.getParameter("siglaTipoLicitacao"));
+            frm.setNomeTipoLicitacao(util.Request.getParameter(req,
+                    "nomeTipoLicitacao"));
+            frm.setSiglaTipoLicitacao(util.Request.getParameter(req,
+                    "siglaTipoLicitacao"));
             
             frm.valida();
             

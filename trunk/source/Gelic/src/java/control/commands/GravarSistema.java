@@ -30,7 +30,7 @@ public class GravarSistema implements Comando {
             /* "popula form */
             view.FormSistema frm = (view.FormSistema) req.getSession().
                     getAttribute("formSistema");
-            frm.setNomeSistema(req.getParameter("nomeSistema"));
+            frm.setNomeSistema(util.Request.getParameter(req,"nomeSistema"));
             
             /* Executa críticas */
             frm.valida();

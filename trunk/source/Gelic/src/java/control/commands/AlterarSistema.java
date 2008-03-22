@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 public class AlterarSistema implements Comando{
     public String executar(HttpServletRequest req) throws ExcecaoComando {
         try {
-            String nome = req.getParameter("nome");
+            String nome = util.Request.getParameter(req,"nome");
             if (nome == null) {
                 throw new ExcecaoComando("Nome de sistema inválido (nulo)");
             }
