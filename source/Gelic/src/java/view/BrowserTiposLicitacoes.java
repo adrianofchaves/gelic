@@ -14,6 +14,9 @@ public class BrowserTiposLicitacoes extends Form{
 
     private ArrayList<model.beans.TipoLicitacao> tiposLicitacoes;
     
+    public BrowserTiposLicitacoes(){
+        
+    }
     public BrowserTiposLicitacoes(
             ArrayList<model.beans.TipoLicitacao> tiposLicitacoes ){
         this.tiposLicitacoes = tiposLicitacoes;

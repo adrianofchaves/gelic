@@ -1,6 +1,7 @@
 package control;
 
 import control.commands.AlterarTipoLicitacao;
+import control.commands.CadastroTiposDocumentos;
 import control.commands.CadastroTiposLicitacoes;
 import control.commands.Comando;
 import control.commands.ExcecaoComando;
@@ -37,6 +38,7 @@ public class ServletComercial extends HttpServlet {
         comandos.put("AlterarTipoLicitacao", new AlterarTipoLicitacao());
         comandos.put("NovoTipoLicitacao", new NovoTipoLicitacao());
         comandos.put("GravarTipoLicitacao", new GravarTipoLicitacao());
+        comandos.put("CadastroTiposDocumentos", new CadastroTiposDocumentos());
     }
 
     public void init() throws ServletException {

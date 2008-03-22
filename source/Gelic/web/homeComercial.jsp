@@ -30,7 +30,9 @@
                     Tipos de licitações</a>                    
                 </th>
                 <th class="menuItem" >
-                    <a href="homeComercial.jsp">Tipos de documento</a>
+                    <a href="Comercial?comando=CadastroTiposDocumentos">
+                        Tipos de documento
+                    </a>
                 </th>
                 <th class="menuItem" >
                     <a href="homeComercial.jsp">Produtos</a>
