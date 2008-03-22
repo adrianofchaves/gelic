@@ -42,12 +42,12 @@
                     Novo tipo de licitação
                 </c:if>
             </p>
-            <font class="erro" >
-                <c:forEach var="erro" 
-                           items="${sessionScope.formTipoLicitacao.erros}">
-                    <P>${erro}</P>
-                </c:forEach>
-            </font>
+            
+            <c:forEach var="erro" 
+                       items="${sessionScope.formTipoLicitacao.erros}">
+                <P class="erro">${erro}</P>
+            </c:forEach>
+            
             
             
             <P>Nome:<br>

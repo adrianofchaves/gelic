@@ -8,8 +8,8 @@ SET NAMES NONE;
 
 SET CLIENTLIB 'C:\Arquivos de programas\Firebird\Firebird_2_0\bin\fbclient.dll';
 
-CREATE DATABASE 'D:\Faculdade\8 periodo\Projeto Final II\bd\GELIC.FDB'
-USER 'sysdba' PASSWORD 'masterkey'
+CREATE DATABASE 'E:\Adriano\Estácio\ProFin2\bd\GELIC.FDB'
+USER 'sisgelic' PASSWORD 'gelic'
 PAGE_SIZE 8192
 DEFAULT CHARACTER SET NONE;
 
