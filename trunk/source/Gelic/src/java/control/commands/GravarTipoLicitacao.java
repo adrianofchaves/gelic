@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
-import view.FormTipoLicitacao;
 
 /**
  *
@@ -25,7 +24,7 @@ public class GravarTipoLicitacao implements Comando {
                 return control.TipoLicitacao.preparaBrowser(req);
             }
             /* popula form */
-            view.FormTipoLicitacao frm = (FormTipoLicitacao) req.getSession().
+            view.FormTipoLicitacao frm = (view.FormTipoLicitacao) req.getSession().
                     getAttribute("formTipoLicitacao");
             
             frm.setNomeTipoLicitacao(req.getParameter("nomeTipoLicitacao"));

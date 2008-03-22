@@ -27,7 +27,7 @@ public class TiposDocumentos {
         }
     }
 
-    public static void incluir(String nome, String sigla) 
+    public static void incluir(String nome) 
             throws NamingException, SQLException {
          if (model.daos.TiposDocumentos.incluir(nome) == 1) {
             model.services.Conexao.getConnection().commit();
