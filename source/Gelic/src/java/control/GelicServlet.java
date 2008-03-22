@@ -5,17 +5,21 @@
 package control;
 
 import control.commands.AlterarModalidade;
+import control.commands.AlterarSistema;
 import control.commands.AlterarUsuario;
 import control.commands.CadastroModalidades;
+import control.commands.CadastroSistemas;
 import control.commands.CadastroUsuarios;
 import control.commands.Comando;
 import control.commands.EfetuarLogin;
 import control.commands.ExcecaoComando;
 import control.commands.ExcluirUsuario;
 import control.commands.GravarModalidade;
+import control.commands.GravarSistema;
 import control.commands.GravarUsuario;
 import control.commands.Logout;
 import control.commands.NovaModalidade;
+import control.commands.NovoSistema;
 import control.commands.Nulo;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -57,6 +61,10 @@ public class GelicServlet extends HttpServlet {
         comandos.put("AlterarModalidade", new AlterarModalidade());
         comandos.put("NovaModalidade", new NovaModalidade());
         comandos.put("GravarModalidade", new GravarModalidade());
+        comandos.put("CadastroSistemas", new CadastroSistemas());
+        comandos.put("AlterarSistema", new AlterarSistema());
+        comandos.put("NovoSistema", new NovoSistema());
+        comandos.put("GravarSistema", new GravarSistema());
 
     }
 
