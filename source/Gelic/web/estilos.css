@@ -81,7 +81,12 @@ p.caption{
     font-style: normal;      
     font-size: large;
 }
-
+p.grupo{
+    font-weight: 600;
+    color: #666666;
+    font-style: normal;      
+    font-size: large;
+}
 table{
     background-color: #e0eef1;
     font-family: Arial,Helvetica,sans-serif;
