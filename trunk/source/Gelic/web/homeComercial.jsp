@@ -41,7 +41,7 @@
                     <a href="homeComercial.jsp">Órgãos Públicos</a>
                 </th>
                 <th class="menuItem" >
-                    <a href="homeComercial.jsp">Empresas</a>                    
+                    <a href="browserEmpresas.jsp">Empresas</a>                    
                 </th>
                 <th class="menuItem" >
                     <a href="Gelic?comando=Logout">Trocar usuário</a>
