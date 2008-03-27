@@ -48,15 +48,21 @@
                 items="${sessionScope.browserProdutos.produtos}">                
                 <tr class="dados">
                     <td>
-                        <a href="Gelic?comando=AlterarProduto&id=${produto.id}">
-                            ${produto.id}    
+                        <a href="Gelic?comando=AlterarProduto&codigo=${produto.codigo}">
+                            ${produto.codigo}    
                         </a>                        
                     </td>
                     <td>
-                        ${produto.codigo}
-                    </td>  
+                        ${produto.descricao}
+                    </td>
                     <td>
-                        <a href="Gelic?comando=ExcluirProduto&usuario=${produto.id}">
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        <a href="Gelic?comando=ExcluirProduto&produto=${produto.codigo}">
                             <img src="img/trash.PNG"  width="16" height="16" 
                                  alt="trash"/>
                         </a>
