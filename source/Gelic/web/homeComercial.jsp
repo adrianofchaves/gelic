@@ -35,7 +35,7 @@
                     </a>
                 </th>
                 <th class="menuItem" >
-                    <a href="browserProdutos.jsp">Produtos</a>
+                    <a href="Comercial?comando=CadastroProdutos">Produtos</a>
                 </th>
                 <th class="menuItem" >
                     <a href="homeComercial.jsp">Órgãos Públicos</a>
