@@ -35,7 +35,7 @@
                     </a>
                 </th>
                 <th class="menuItem" >
-                    <a href="homeComercial.jsp">Produtos</a>
+                    <a href="browserProdutos.jsp">Produtos</a>
                 </th>
                 <th class="menuItem" >
                     <a href="homeComercial.jsp">Órgãos Públicos</a>
