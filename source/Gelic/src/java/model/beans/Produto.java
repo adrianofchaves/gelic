@@ -14,7 +14,7 @@ public class Produto {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.6EAFF3B4-1FD7-305E-3E21-440DE008DB53]
     // </editor-fold> 
-    private int codigo;
+    private String codigo;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.021D513B-040A-7F17-531C-872853C1936D]
@@ -40,14 +40,14 @@ public class Produto {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.D2242089-637F-3BF7-EAE2-7AC16820ACA4]
     // </editor-fold> 
-    public int getCodigo () {
+    public String getCodigo () {
         return codigo;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.BC1005FC-E917-C8C6-8C41-607D838C7E89]
     // </editor-fold> 
-    public void setCodigo (int val) {
+    public void setCodigo (String val) {
         this.codigo = val;
     }
 
