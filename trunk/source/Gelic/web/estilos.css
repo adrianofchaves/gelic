@@ -60,15 +60,15 @@ form{
 
 input.caixaTexto{
     position: relative;
-    text-indent: 5%;
-    left: 5%;
+    text-indent: 0%;
+    left: 5%;    
 }
 input.botao{
     position: relative;
     left: 5%;
 }
 
-select {
+select.cadastro {
     position: relative;
     text-indent: 5%;
     left: 5%;
@@ -186,4 +186,31 @@ img {
     border-left-style: none;
     border-right-style: none;
 }
-
+table.tabelaErro{
+    
+    width: 90%;    
+    margin-left: 5%;
+    color: red;
+    font-weight: bold;
+    font-size: X-small;
+    margin-bottom: 10px;
+}
+td.tabelaErro{
+    padding-left: 5px;
+    padding-right: 5px;
+    vertical-align: top;
+}
+table.tabelaCadastro{
+    width: 90%;        
+    margin-left: 5%;
+}
+td.tabelaCadastro{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+input.tabelaCadastro{
+    width: 100%
+}
+select.tabelaCadastro {        
+    width: 100%;       
+}
