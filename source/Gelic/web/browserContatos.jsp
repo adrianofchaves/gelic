@@ -70,18 +70,12 @@
             
             <tr class="dados">
                 <td>
-                    <a href="formEmpresa.jsp">
-                        Nasajon Sistemas
+                    <a href="formContato.jsp">
+                        Adriano Fernandes Chaves
                     </a>                        
                 </td>                    
                 <td>                        
-                    27.915.735/0001-00
-                </td>                    
-                <td>
-                    Avenida Rio Branco, 45/18ºAndar - Rio de Janeiro - RJ
-                </td>                    
-                <td>
-                    21 22139300
+                    55 21 22139300
                 </td>                    
                 <td>
                     <a href="Comercial?comando=ExcluirEmpresa&cnpj=${empresa.cnpj}">
@@ -92,18 +86,12 @@
             </tr>
             <tr class="dados">
                 <td>
-                    <a href="formEmpresa.jsp">
-                        Nasajon Sistemas
+                    <a href="formContato.jsp">
+                        Adriano Fernandes Chaves
                     </a>                        
                 </td>                    
                 <td>                        
-                    27.915.735/0001-00
-                </td>                    
-                <td>
-                    Avenida Rio Branco, 45/18ºAndar - Rio de Janeiro - RJ
-                </td>                    
-                <td>
-                    21 22139300
+                    55 21 22139300
                 </td>                    
                 <td>
                     <a href="Comercial?comando=ExcluirEmpresa&cnpj=${empresa.cnpj}">
@@ -114,18 +102,12 @@
             </tr>
             <tr class="dados">
                 <td>
-                    <a href="formEmpresa.jsp">
-                        Nasajon Sistemas
+                    <a href="formContato.jsp">
+                        Adriano Fernandes Chaves
                     </a>                        
                 </td>                    
                 <td>                        
-                    27.915.735/0001-00
-                </td>                    
-                <td>
-                    Avenida Rio Branco, 45/18ºAndar - Rio de Janeiro - RJ
-                </td>                    
-                <td>
-                    21 22139300
+                    55 21 22139300
                 </td>                    
                 <td>
                     <a href="Comercial?comando=ExcluirEmpresa&cnpj=${empresa.cnpj}">
