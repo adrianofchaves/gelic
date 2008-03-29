@@ -7,8 +7,10 @@ import control.commands.CadastroTiposLicitacoes;
 import control.commands.CadastroProdutos;
 import control.commands.Comando;
 import control.commands.ExcecaoComando;
+import control.commands.GravarNovoProduto;
 import control.commands.GravarTipoDocumento;
 import control.commands.GravarTipoLicitacao;
+import control.commands.NovoProduto;
 import control.commands.NovoTipoDocumento;
 import control.commands.Nulo;
 import control.commands.NovoTipoLicitacao;
@@ -47,6 +49,8 @@ public class ServletComercial extends HttpServlet {
         comandos.put("AlterarTipoDocumento", new AlterarTipoDocumento());
         comandos.put("GravarTipoDocumento", new GravarTipoDocumento());
         comandos.put("CadastroProdutos", new CadastroProdutos());
+        comandos.put("NovoProduto",new NovoProduto());
+        comandos.put("GravarNovoProduto", new GravarNovoProduto());
     }
 
     public void init() throws ServletException {
