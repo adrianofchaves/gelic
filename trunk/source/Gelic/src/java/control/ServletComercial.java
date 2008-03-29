@@ -1,5 +1,6 @@
 package control;
 
+import control.commands.AlterarProduto;
 import control.commands.AlterarTipoDocumento;
 import control.commands.AlterarTipoLicitacao;
 import control.commands.CadastroTiposDocumentos;
@@ -51,6 +52,7 @@ public class ServletComercial extends HttpServlet {
         comandos.put("CadastroProdutos", new CadastroProdutos());
         comandos.put("NovoProduto",new NovoProduto());
         comandos.put("GravarNovoProduto", new GravarNovoProduto());
+        comandos.put("AlterarProduto", new AlterarProduto());
     }
 
     public void init() throws ServletException {
