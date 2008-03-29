@@ -1,5 +1,7 @@
 package model.beans;
 
+import java.util.ArrayList;
+
 
 /**
  *  <p style="margin-top: 0">
@@ -22,7 +24,8 @@ package model.beans;
 // #[regen=yes,id=DCE.E413090E-BDA9-411D-2941-6596971A8777]
 // </editor-fold> 
 public class Empresa {
-
+    
+    
     /**
      *  <p style="margin-top: 0">
      *        Endere&#231;o da empresa.
@@ -85,7 +88,7 @@ public class Empresa {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.A7D0A89B-961B-6912-51EF-CC55BB8BA62D]
     // </editor-fold> 
-    private String contato;
+    private ArrayList<Contato> contatos;
 
     /**
      *  <p style="margin-top: 0">
@@ -188,15 +191,15 @@ public class Empresa {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.91BFEDCA-E6EE-8B4C-3FEF-8D244D89FCA0]
     // </editor-fold> 
-    public String getContato () {
-        return contato;
+    public ArrayList<Contato> getContatos () {
+        return contatos;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.C801A376-F679-5466-D254-E091AEEC96A1]
     // </editor-fold> 
-    public void setContato (String val) {
-        this.contato = val;
+    public void setContatos (ArrayList<Contato> val) {
+        this.contatos = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

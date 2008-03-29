@@ -24,6 +24,9 @@ public class Enderecos {
 
   public static void recuperar(ArrayList<model.beans.Empresa> empresas) 
           throws NamingException, SQLException {
+    /* Essa forma de preencher os endereços de uma empresa pode ser otimizada
+     * executando um único comando sql para recuperar todos os endereços
+     * das empresas na lista passada pelo parâmetro.  */
     for (model.beans.Empresa empresa : empresas) {
       recuperar(empresa);
     }

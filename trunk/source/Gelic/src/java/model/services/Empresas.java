@@ -14,11 +14,14 @@ import javax.naming.NamingException;
  * @author Adriano
  */
 public class Empresas {
-  public static ArrayList<model.beans.Empresa> recuperar() throws NamingException, SQLException{
+  public static ArrayList<model.beans.Empresa> recuperar() 
+          throws NamingException, SQLException{
     ArrayList<model.beans.Empresa> empresas = model.daos.Empresas.recuperar();
-    model.daos.Telefones.recuperar(empresas);
+    /* NOTA: como o telefone fica no endereço é necessário fazer essa  
+     recuperação nesta ordem */
     model.daos.Enderecos.recuperar(empresas);
-    // todo: model.daos.Contatos.recuperar(empresas);
+    model.daos.Contatos.recuperar(empresas);
+    model.daos.Telefones.recuperar(empresas);
     return empresas;
   }
 
