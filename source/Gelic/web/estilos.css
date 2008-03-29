@@ -7,7 +7,6 @@ Purpose of the stylesheet follows.
 */
 
 /* 
-TODO customize this sample style
 Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 @charset "utf-8";
@@ -62,6 +61,7 @@ input.caixaTexto{
     position: relative;
     text-indent: 0%;
     left: 5%;    
+    width: 50%;
 }
 input.botao{
     position: relative;
@@ -80,12 +80,13 @@ p.caption{
     color: #f2f1f1;
     font-style: normal;      
     font-size: large;
+  background-position: left top;
 }
 p.grupo{
     font-weight: 600;
     color: #666666;
-    font-style: normal;      
-    font-size: large;
+    
+    
 }
 table{
     background-color: #e0eef1;
@@ -101,7 +102,7 @@ table.menu{
     background-color: #c9dee8;
     color: #666666;
     font-weight: bold;
-    font-size: large;
+    font-size: small;
 }
 th.cadastro{
     
@@ -209,7 +210,11 @@ td.tabelaCadastro{
     padding-right: 5px;
 }
 input.tabelaCadastro{
-    width: 100%
+    width: 100%;
+}
+td.caixaSelecaoTabelaCadastro{  
+    
+  text-align: right;
 }
 select.tabelaCadastro {        
     width: 100%;       

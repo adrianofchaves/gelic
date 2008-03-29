@@ -68,20 +68,8 @@ public class Empresa {
     // </editor-fold> 
     private String nomeFantasia;
 
-    /**
-     *  <p style="margin-top: 0">
-     *        Telefone da empresa.
-     *  <br>
-     *  <br>
-     *      </p>
-     *      <p style="margin-top: 0">
-     *        <b>Caso de uso</b>: Incluir Empresa
-     *      </p>
-     */
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.0D30CA81-53EB-8E7A-D67E-CEAF0B46CE81]
-    // </editor-fold> 
-    private TipoTelefone telefone;
+       
+    
 
     /**
      *  <p style="margin-top: 0">
@@ -308,20 +296,6 @@ public class Empresa {
     public void setRazaoSocial (String val) {
         this.razaoSocial = val;
     }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.C03B1561-A7BE-7284-4457-F1D7E616859F]
-    // </editor-fold> 
-    public TipoTelefone getTelefone () {
-        return telefone;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.1C7602BA-4131-AD5D-6C38-EF73EFC3028C]
-    // </editor-fold> 
-    public void setTelefone (TipoTelefone val) {
-        this.telefone = val;
-    }
-
+    
 }
 
