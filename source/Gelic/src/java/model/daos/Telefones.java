@@ -20,8 +20,9 @@ public class Telefones {
 
   static final String sqlRecuperarTelefonesEmpresas =
           "select " +
-          " CNPJ, CONTATOS.NOME, TELEFONES.DDI, TELEFONES.DDD, " +
-          " TELEFONES.NUMERO, TELEFONES.RAMAL " +
+          " CNPJ, CONTATOS.NOME NOMECONTATO, TELEFONES.DDI DDI, " +
+          " TELEFONES.DDD DDD, " +
+          " TELEFONES.NUMERO NUMEROTELEFONE, TELEFONES.RAMAL RAMAL " +
           "from " +
           " EMPRESAS " +
           " left outer join CONTATOS  on (CONTATOS.EMPRESA = EMPRESAS.CNPJ) " +
@@ -46,15 +47,57 @@ public class Telefones {
 
     for (model.beans.Empresa empresa : empresas) {
       mapEmpresas.put(empresa.getCnpj(), empresa);
-      for (model.beans.Contato contato : empresa.getContatos()) {
-        mapContatos.put(empresa.getCnpj() + contato.getNome(), contato);
+      if (empresa.getContatos() != null) {
+        for (model.beans.Contato contato : empresa.getContatos()) {
+          mapContatos.put(empresa.getCnpj() + contato.getNome(), contato);
+        }
       }
     }
-    
+
     Connection gelic = model.services.Conexao.getPool().getConnection();
-   // PreparedStatement pstmt = gelic.prepareStatement(
+    PreparedStatement pstmt = gelic.prepareStatement(
+            sqlRecuperarTelefonesEmpresas);
+    ResultSet rs = pstmt.executeQuery();
+    String cnpj;
+    String nomeContato;
+    model.beans.Empresa empresa;
+    model.beans.TipoEndereco endereco;
+    model.beans.Contato contato;
+
+    while (rs != null && rs.next()) {
+      model.beans.TipoTelefone telefone = criaTelefone(
+              rs.getString("DDI"),
+              rs.getString("DDD"),
+              rs.getString("NUMEROTELEFONE"),
+              rs.getString("RAMAL"));
+
+      cnpj = rs.getString("CNPJ");
+      nomeContato = rs.getString("NOMECONTATO");
+
+      if (nomeContato == null || nomeContato.isEmpty()) {
+        // telefone da empresa.
+        empresa = mapEmpresas.get(cnpj);
+        if (empresa != null) {
+          endereco = empresa.getEndereco();
+        } else {
+          endereco = null;
+        }
+
+        if (endereco != null) {
+          endereco.setTelefone(telefone);
+        }
+
+
+      } else {
+        // telefone de um contato
+        contato = mapContatos.get(cnpj + nomeContato);
+        if (contato != null) {
+          contato.setTelefone(telefone);
+        }
+      }
+    }
   }
-  static final String sqlRecuperaTelefoneEmpresa = 
+  static final String sqlRecuperaTelefoneEmpresa =
           "select DDI, DDD, TELEFONE, " +
           "RAMAL from  telefones  inner join enderecos on " +
           "(enderecos.telefone = telefones.id) inner join empresas on  " +

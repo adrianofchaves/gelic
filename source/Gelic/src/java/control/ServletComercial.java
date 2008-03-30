@@ -3,6 +3,7 @@ package control;
 import control.commands.AlterarProduto;
 import control.commands.AlterarTipoDocumento;
 import control.commands.AlterarTipoLicitacao;
+import control.commands.CadastroEmpresas;
 import control.commands.CadastroTiposDocumentos;
 import control.commands.CadastroTiposLicitacoes;
 import control.commands.CadastroProdutos;
@@ -53,6 +54,7 @@ public class ServletComercial extends HttpServlet {
         comandos.put("NovoProduto",new NovoProduto());
         comandos.put("GravarNovoProduto", new GravarNovoProduto());
         comandos.put("AlterarProduto", new AlterarProduto());
+        comandos.put("CadastroEmpresas", new CadastroEmpresas());
     }
 
     public void init() throws ServletException {
