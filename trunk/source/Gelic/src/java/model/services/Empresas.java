@@ -17,8 +17,8 @@ public class Empresas {
   public static ArrayList<model.beans.Empresa> recuperar() 
           throws NamingException, SQLException{
     ArrayList<model.beans.Empresa> empresas = model.daos.Empresas.recuperar();
-    /* NOTA: como o telefone fica no endereço é necessário fazer essa  
-     recuperação nesta ordem */
+    /* NOTA: como o telefone fica no endereço e há telefone no contato também,
+     é necessário fazer essa recuperação nesta ordem */
     model.daos.Enderecos.recuperar(empresas);
     model.daos.Contatos.recuperar(empresas);
     model.daos.Telefones.recuperar(empresas);

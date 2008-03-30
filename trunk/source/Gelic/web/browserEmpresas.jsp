@@ -48,20 +48,17 @@
         <tr class="dados">
           <td>
             <a href="Comercial?comando=AlterarEmpresa&cnpj=${empresa.cnpj}">
-              ${sistema.nomeFantasia}
+              ${empresa.nomeFantasia}
             </a>                        
           </td>                    
           <td>
             ${empresa.cnpj}
-            27.915.735/0001-00
           </td>                    
           <td>
             ${empresa.endereco}
-            Avenida Rio Branco, 45/18ºAndar - Rio de Janeiro - RJ
           </td>                    
           <td>
-            ${empresa.telefone}
-            21 22139300
+            ${empresa.endereco.telefone}
           </td>                    
           <td>
             <a href="Comercial?comando=ExcluirEmpresa&cnpj=${empresa.cnpj}">
@@ -72,72 +69,6 @@
         </tr>
       </c:forEach>
       
-      <tr class="dados">
-        <td>
-          <a href="formEmpresa.jsp">
-            Nasajon Sistemas
-          </a>                        
-        </td>                    
-        <td>                        
-          27.915.735/0001-00
-        </td>                    
-        <td>
-          Avenida Rio Branco, 45/18ºAndar - Rio de Janeiro - RJ
-        </td>                    
-        <td>
-          21 22139300
-        </td>                    
-        <td>
-          <a href="Comercial?comando=ExcluirEmpresa&cnpj=${empresa.cnpj}">
-            <img src="img/trash.PNG"  width="16" height="16" 
-                 alt="trash"/>
-          </a>
-        </td>
-      </tr>
-      <tr class="dados">
-        <td>
-          <a href="formEmpresa.jsp">
-            Nasajon Sistemas
-          </a>                        
-        </td>                    
-        <td>                        
-          27.915.735/0001-00
-        </td>                    
-        <td>
-          Avenida Rio Branco, 45/18ºAndar - Rio de Janeiro - RJ
-        </td>                    
-        <td>
-          21 22139300
-        </td>                    
-        <td>
-          <a href="Comercial?comando=ExcluirEmpresa&cnpj=${empresa.cnpj}">
-            <img src="img/trash.PNG"  width="16" height="16" 
-                 alt="trash"/>
-          </a>
-        </td>
-      </tr>
-      <tr class="dados">
-        <td>
-          <a href="formEmpresa.jsp">
-            Nasajon Sistemas
-          </a>                        
-        </td>                    
-        <td>                        
-          27.915.735/0001-00
-        </td>                    
-        <td>
-          Avenida Rio Branco, 45/18ºAndar - Rio de Janeiro - RJ
-        </td>                    
-        <td>
-          21 22139300
-        </td>                    
-        <td>
-          <a href="Comercial?comando=ExcluirEmpresa&cnpj=${empresa.cnpj}">
-            <img src="img/trash.PNG"  width="16" height="16" 
-                 alt="trash"/>
-          </a>
-        </td>
-      </tr>
       
       
       

@@ -14,6 +14,52 @@ public class TipoEndereco {
   private String tipo;
   private TipoTelefone telefone;
 
+  public String toString() {
+    String mComplemento = getComplemento();
+    if( mComplemento != null && !mComplemento.isEmpty()) {
+      mComplemento = "/" + mComplemento;
+    }else mComplemento = "";
+    
+    
+    String mCep = getCep();
+    if (mCep != null && !mCep.isEmpty()) {
+      mCep = "CEP: " + mCep;
+    } else {
+      mCep = "";
+    }
+
+    String mSite = getSite();
+    if (mSite != null && !mSite.isEmpty()) {
+      mSite = "Site:" + mSite;
+    } else {
+      mSite = "";
+    }
+
+    String mEmail = getEmail();
+    if (mEmail != null && !mEmail.isEmpty()) {
+      mEmail = "email:" + mEmail;
+    }
+    String buffer = mCep;
+    if(!mSite.isEmpty()){
+      if(!buffer.isEmpty()){
+        buffer = buffer + " - " + mSite;
+      }else buffer = mSite;
+    }
+    if(!mEmail.isEmpty()){
+      if(!buffer.isEmpty()){
+        buffer = buffer + " - " + mEmail;
+      }else buffer = mEmail;
+    }
+    if( !buffer.isEmpty()){
+      buffer = ". " + buffer;
+    }
+    return getTipo() + " " + getLogradouro() + ", " + getNumero() +
+            mComplemento+ ", " + getBairro() + " - " + getCidade() + "-" +
+            getUf() + buffer;
+
+
+  }
+
   // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
   // #[regen=yes,id=DCE.CCF11DD5-B9AE-88FD-A404-B02B26F60C85]
   // </editor-fold> 

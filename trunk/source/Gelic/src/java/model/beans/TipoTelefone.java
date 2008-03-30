@@ -10,6 +10,15 @@ package model.beans;
 // #[regen=yes,id=DCE.BAB00DA0-2043-E400-768E-6061FE9F4813]
 // </editor-fold> 
 public class TipoTelefone {
+    public String toString(){
+      String buffer = getRamal();
+      
+      if( buffer != null && !buffer.isEmpty() ){
+        return getDdi() + " " + getDdd() + " " + getTelefone() + " R:"  + 
+                buffer;
+      }
+      return getDdi() + " " + getDdd() + " " + getTelefone();
+    }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.0404D7C9-F090-E52C-50A9-E41FC67E3A3A]

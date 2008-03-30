@@ -22,7 +22,8 @@ public class Empresas {
           "EPORTADOR, EFORNECEDOR from EMPRESAS";
   final static String sqlContaEmpresas = "select  count(*) from EMPRESAS";
 
-  public static ArrayList<model.beans.Empresa> recuperar() throws NamingException, SQLException {
+  public static ArrayList<model.beans.Empresa> recuperar()
+          throws NamingException, SQLException {
     ArrayList<model.beans.Empresa> empresas = null;
     PreparedStatement pstmt;
     int quantidadeEmpresas;
@@ -63,7 +64,7 @@ public class Empresas {
   }
 
   private static model.beans.Empresa criaEmpresa(String cnpj, String ie,
-          String im, String razaoSocial, String nomeFantasia, String ePortador, 
+          String im, String razaoSocial, String nomeFantasia, String ePortador,
           String eFornecedor) {
 
     model.beans.Empresa empresa = new model.beans.Empresa();

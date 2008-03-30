@@ -20,14 +20,8 @@ public class CadastroEmpresas  implements Comando{
 
     public String executar(HttpServletRequest req) throws ExcecaoComando {
         try {
-          view.BrowserEmpresas browser = new view.BrowserEmpresas();
           
-          ArrayList<model.beans.Empresa> empresas = 
-                  model.services.Empresas.recuperar();
-          
-          browser.setEmpresas(empresas);
-          
-          return "/browserEmpresas.jsp";
+          return preparaBrowser(req);
         } catch (SQLException ex) {
             Logger.getLogger(CadastroModalidades.class.getName()).log(
                     Level.SEVERE, null, ex);
@@ -38,4 +32,16 @@ public class CadastroEmpresas  implements Comando{
              throw new ExcecaoComando(ex.getMessage());
         }
     }
+
+  private String preparaBrowser(HttpServletRequest req) 
+          throws NamingException, SQLException {
+    view.BrowserEmpresas browser = new view.BrowserEmpresas();
+
+    ArrayList<model.beans.Empresa> empresas = 
+            model.services.Empresas.recuperar();
+
+    browser.setEmpresas(empresas);
+    req.getSession().setAttribute("browserEmpresas", browser);
+    return "/browserEmpresas.jsp";
+  }
 }
