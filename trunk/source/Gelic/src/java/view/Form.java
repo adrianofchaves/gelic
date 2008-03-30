@@ -14,7 +14,7 @@ public class Form {
 
     private ArrayList<String> erros = null;
     private String mensagem;
-    private String caption;
+    private String titulo;
 
     protected void apagaErros() {
         erros = null;
@@ -47,11 +47,11 @@ public class Form {
         this.mensagem = mensagem;
     }
 
-  public String getCaption() {
-    return caption;
+  public String getTitulo() {
+    return titulo;
   }
 
-  public void setCaption(String caption) {
-    this.caption = caption;
+  public void setTitulo(String caption) {
+    this.titulo = caption;
   }
 }

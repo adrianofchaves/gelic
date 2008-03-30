@@ -14,6 +14,14 @@ import javax.naming.NamingException;
  * @author Adriano
  */
 public class Empresas {
+  public static model.beans.Empresa recuperar( String cnpj ) 
+          throws SQLException, NamingException{
+    model.beans.Empresa empresa = model.daos.Empresas.recuperar( cnpj );
+    model.daos.Enderecos.recuperar(empresa);
+    model.daos.Contatos.recuperar(empresa);
+    model.daos.Telefones.recuperar(empresa);
+    return empresa;
+  }
   public static ArrayList<model.beans.Empresa> recuperar() 
           throws NamingException, SQLException{
     ArrayList<model.beans.Empresa> empresas = model.daos.Empresas.recuperar();

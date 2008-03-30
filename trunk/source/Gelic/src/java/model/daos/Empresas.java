@@ -62,6 +62,31 @@ public class Empresas {
     }
     return empresas;
   }
+  static final String sqlRecuperaEmpresa =
+          "select CNPJ, IE, IM, RAZAOSOCIAL, NOMEFANTASIA, EPORTADOR, " +
+          "EFORNECEDOR from empresas where CNPJ = ?";
+
+  public static model.beans.Empresa recuperar(String cnpj) 
+          throws SQLException, NamingException {
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlRecuperaEmpresa);
+    pstmt.setString(1, cnpj);
+    ResultSet rs = pstmt.executeQuery();
+    if (rs == null) {
+      return null;
+    }
+    if (!rs.next()) {
+      return null;
+    }
+    return criaEmpresa(
+              rs.getString("CNPJ"),
+              rs.getString("IE"),
+              rs.getString("IM"),
+              rs.getString("RAZAOSOCIAL"),
+              rs.getString("NOMEFANTASIA"),
+              rs.getString("EPORTADOR"),
+              rs.getString("EFORNECEDOR"));
+  }
 
   private static model.beans.Empresa criaEmpresa(String cnpj, String ie,
           String im, String razaoSocial, String nomeFantasia, String ePortador,
