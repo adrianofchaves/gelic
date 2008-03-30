@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javax.naming.NamingException;
 
+
 /**
  *
  * @author Adriano
@@ -47,6 +48,37 @@ public class Contatos {
         empresa.getContatos().add(criaContato(rs.getString("NOME")));
       }
     }
+  }
+  static final String sqlRecuperaContatosEmpresa =
+          "select NOME from CONTATOS where EMPRESA = ? ";
+  static final String sqlContaContatosEmpresa =
+          "select count(*) from CONTATOS where EMPRESA = ? ";
+  public static void recuperar(model.beans.Empresa empresa) 
+          throws SQLException, NamingException {
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlContaContatosEmpresa);
+    pstmt.setString(1, empresa.getCnpj());
+    ResultSet rs = pstmt.executeQuery();
+    if( rs == null ){
+      return;
+    }
+    if( !rs.next()){
+      return;
+    }
+    int quantidadeContatos = rs.getInt(1);
+    ArrayList<model.beans.Contato> contatos = 
+            new ArrayList<model.beans.Contato>(quantidadeContatos);
+    rs.close();//precisa?
+    pstmt.close(); //precisa?
+    
+    pstmt = gelic.prepareStatement(sqlRecuperaContatosEmpresa);
+    pstmt.setString(1, empresa.getCnpj());
+    rs = pstmt.executeQuery();
+    while (rs.next() ){
+      contatos.add(criaContato(rs.getString("NOME")));
+    }
+    
+    
   }
   private static model.beans.Contato criaContato(String nome ){
     model.beans.Contato contato = new model.beans.Contato();

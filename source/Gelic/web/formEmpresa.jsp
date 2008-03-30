@@ -56,8 +56,9 @@
         </td>
         <td class="caixaSelecaoTabelaCadastro" style="width:20%;">
           Portador
+          
           <input type="checkbox" name="ePortadorEmpresa" 
-                 value="${sessionScope.formEmpresa.ePortadorEmpresa}" /> 
+                 value="ON" /> 
           
         </td>
       </table>
@@ -66,7 +67,7 @@
           ${sessionScope.formEmpresa.erroNomeFantasiaEmpresa}
         </td>
         <td class="tabelaErro" style="width:20%">
-          ${sessionScope.formEmpresa.erroEPortadorEmpresa}
+            ${sessionScope.formEmpresa.erroEPortadorEmpresa}
         </td>
       </table>
       <table class="tabelaCadastro">
@@ -79,8 +80,9 @@
         <td class="caixaSelecaoTabelaCadastro" 
             style="width:20%;">
           Fornecedor
-          <input type="checkbox" name="ePortadorEmpresa" 
-                 value="${sessionScope.formEmpresa.eFornecedorEmpresa}" />
+          
+          <input type="checkbox" name="eFornecedorEmpresa" 
+                 value="ON" />
           
         </td>
       </table>
@@ -192,7 +194,7 @@
         </TD>
         <TD class="tabelaCadastro"  style="width:15%" >
           CEP: <BR>
-          <input type="text" name="logradouroEmpresa" 
+          <input type="text" name="cepEmpresa" 
                  class="tabelaCadastro"
                  value="${sessionScope.formEmpresa.cepEmpresa}" />
         </TD>

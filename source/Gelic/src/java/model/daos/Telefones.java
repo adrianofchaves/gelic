@@ -103,7 +103,7 @@ public class Telefones {
           "(enderecos.telefone = telefones.id) inner join empresas on  " +
           "(empresas.endereco = enderecos.id) where empresas.cnpj=?";
 
-  protected static void recuperar(model.beans.Empresa empresa)
+  public static void recuperar(model.beans.Empresa empresa)
           throws NamingException, SQLException {
     if (empresa.getEndereco() == null) {
       return;
@@ -114,13 +114,19 @@ public class Telefones {
             sqlRecuperaTelefoneEmpresa);
     pstmt.setString(1, empresa.getCnpj());
     ResultSet rs = pstmt.executeQuery();
-    if (rs != null) {
-      empresa.getEndereco().setTelefone(criaTelefone(
-              rs.getString("DDI"),
-              rs.getString("DDD"),
-              rs.getString("TELEFONE"),
-              rs.getString("RAMAL")));
+    if (rs == null) {
+      return;
     }
+    if (!rs.next()) {
+      return;
+    }
+
+    empresa.getEndereco().setTelefone(criaTelefone(
+            rs.getString("DDI"),
+            rs.getString("DDD"),
+            rs.getString("TELEFONE"),
+            rs.getString("RAMAL")));
+
   }
 
   static model.beans.TipoTelefone criaTelefone(String ddi, String ddd,

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class BrowserEmpresas extends Form{
   private ArrayList<model.beans.Empresa> empresas;
   public BrowserEmpresas(){
-    super.setCaption("Empresas");
+    super.setTitulo("Empresas");
   }
 
   public ArrayList<model.beans.Empresa> getEmpresas() {
