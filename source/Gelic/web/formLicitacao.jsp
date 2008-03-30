@@ -19,7 +19,7 @@
     <table class="menu">
       <tr>
         <th class="menuItem" >
-          <a href="homeComercial.jsp">Voltar</a>
+          <a href="homeLicitacao.jsp">Voltar</a>
         </th>
         <c:if test="${!sessionScope.formLicitacao.inclusao}">
           <th class="menuItem" >
@@ -189,10 +189,75 @@
             <input type="text" class="tabelaCadastro"
             value="${sessionScope.formLicitacao.anosPrazoGarantiaLicitacao}"/>
         </td>
-
-        
     </table>    
     
+        <p class="grupo"> Diversos:</p>
+              <table class="tabelaCadastro">
+                  <td class="caixaSelecaoTabelaCadastro" style="width:10%;">
+                      Pede amostra?
+                      <input type="checkbox" name="pedeAmostraLicitacao" value="ON" /> 
+                  </td>
+
+                  <td class="tabelaCadastro" style="width:30%">
+                      Termos da amostra:<BR>
+                          <input type="text" name="termosAmostraLicitacao"
+                          class="tabelaCadastro"
+                          value="${sessionScope.formLicitacao.termosAmostraLicitacao}" />
+                  </td>
+                  <td class="tabelaCadastro" style="width:60%">
+                  </td>
+              </table>
+
+              <table class="tabelaCadastro">
+                  <td class="caixaSelecaoTabelaCadastro" style="width:10%;">
+                      Pede garantia de proposta?
+                      <input type="checkbox" name="pedeGarantiaLicitacao" value="ON" /> 
+                  </td>
+
+                  <td class="tabelaCadastro" style="width:30%">
+                      Termos da garatina:<BR>
+                          <input type="text" name="termosGarantiaLicitacao"
+                          class="tabelaCadastro"
+                          value="${sessionScope.formLicitacao.termosGarantiaLicitacao}" />
+                  </td>
+                  <td class="tabelaCadastro" style="width:60%">
+                  </td>
+              </table>
+
+              <table class="tabelaCadastro">
+                  <td class="caixaSelecaoTabelaCadastro" style="width:10%;">
+                      Prevê multa?
+                      <input type="checkbox" name="preveMultaLicitacao" value="ON" /> 
+                  </td>
+
+                  <td class="tabelaCadastro" style="width:30%">
+                      Termos da multa:<BR>
+                          <input type="text" name="termosGarantiaLicitacao"
+                          class="tabelaCadastro"
+                          value="${sessionScope.formLicitacao.termosMultaLicitacao}" />
+                  </td>
+                  <td class="tabelaCadastro" style="width:60%">
+                  </td>
+              </table>
+
+      <table class="tabelaCadastro">       
+        <td class="tabelaCadastro" style = "width:20%">
+          Status:<BR>
+          <select name="statusLicitacao" 
+                  class="tabelaCadastro"
+                  value="${sessionScope.formLicitacao.statusLicitacao}">
+            <option>Em aberto</option>
+            <option>Realizada</option>
+            <option>Perdida</option>
+            <option>Ganha</option>
+          </select>
+          </td>
+          <td class="tabelaCadastro" style="width:80%">
+          </td>
+          
+      </table>
+
+
       
       <BR><BR>
       <p>
