@@ -18,16 +18,12 @@
     </table>
     <table class="menu">
       <th class="menuItem" >
-        <a href="formLicitacao.jsp">Nova licitação</a>
+        <a href="homeLicitacao.jsp">Licitações</a>
       </th>
       <!-- <th class="menuItem" >
                     <a href="homeComercial.jsp">Todas licitações</a>
                     TODO: tela que lista todas as licitações com critérios 
                 </th> -->
-      <th class="menuItem" >
-        <a href="Comercial?comando=CadastroTiposLicitacoes">
-        Tipos de licitações</a>                    
-      </th>
       <th class="menuItem" >
         <a href="Comercial?comando=CadastroTiposDocumentos">
           Tipos de documento
