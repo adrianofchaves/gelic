@@ -13,14 +13,20 @@ import java.util.ArrayList;
 public class FormEmpresa extends Form {
 
   private model.beans.Empresa empresa;
+  
   private String nomeFantasiaEmpresa;
   private String erroNomeFantasiaEmpresa;
-  private String ePortadorEmpresa;
+  
+  
+  private boolean ePortadorEmpresa;
   private String erroEPortadorEmpresa;
+  
   private String razaoSocialEmpresa;
   private String erroRazaoSocialEmpresa;
-  private String eFornecedorEmpresa;
+  
+  private boolean eFornecedorEmpresa;
   private String erroEFornecedorEmpresa;
+  
   private String cnpjEmpresa;
   private String erroCnpjEmpresa;
   private String ieEmpresa;
@@ -64,15 +70,10 @@ public class FormEmpresa extends Form {
       return;
     }
     nomeFantasiaEmpresa = empresa.getNomeFantasia();
-    if (empresa.getEPortador()) {
-      ePortadorEmpresa = "ON";
-    }
-
+    eFornecedorEmpresa = empresa.getEFornecedor();
+    ePortadorEmpresa = empresa.getEPortador();
     razaoSocialEmpresa = empresa.getRazaoSocial();
-    if (empresa.getEFornecedor()) {
-      eFornecedorEmpresa = "ON";
-    }
-
+    
     cnpjEmpresa = empresa.getCnpj();
     ieEmpresa = empresa.getIe();
     imEmpresa = empresa.getIm();
@@ -124,15 +125,7 @@ public class FormEmpresa extends Form {
     this.erroNomeFantasiaEmpresa = erroNomeFantasiaEmpresa;
   }
 
-  public String getEPortadorEmpresa() {
-    return ePortadorEmpresa;
-  }
-
-  public void setEPortadorEmpresa(String ePortadorEmpresa) {
-    this.ePortadorEmpresa = ePortadorEmpresa;
-  }
-
-  public String getErroEPortadorEmpresa() {
+    public String getErroEPortadorEmpresa() {
     return erroEPortadorEmpresa;
   }
 
@@ -156,13 +149,7 @@ public class FormEmpresa extends Form {
     this.erroRazaoSocialEmpresa = erroRazaoSocialEmpresa;
   }
 
-  public String getEFornecedorEmpresa() {
-    return eFornecedorEmpresa;
-  }
-
-  public void setEFornecedorEmpresa(String eFornecedorEmpresa) {
-    this.eFornecedorEmpresa = eFornecedorEmpresa;
-  }
+  
 
   public String getErroEFornecedorEmpresa() {
     return erroEFornecedorEmpresa;
@@ -467,4 +454,29 @@ public class FormEmpresa extends Form {
   public void setInclusao(boolean inclusao) {
     this.inclusao = inclusao;
   }
+
+    public
+
+
+    boolean isEPortadorEmpresa() {
+        return ePortadorEmpresa;
+    }
+
+    public void setEPortadorEmpresa(boolean ePortadorEmpresa) {
+        this.ePortadorEmpresa = ePortadorEmpresa;
+    }
+
+    public
+
+    boolean isEFornecedorEmpresa() {
+        return eFornecedorEmpresa;
+    }
+
+    public void setEFornecedorEmpresa(boolean eFornecedorEmpresa) {
+        this.eFornecedorEmpresa = eFornecedorEmpresa;
+    }
+
+
+
+
 }
