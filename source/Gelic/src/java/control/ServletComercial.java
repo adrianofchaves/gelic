@@ -13,6 +13,7 @@ import control.commands.ExcecaoComando;
 import control.commands.GravarNovoProduto;
 import control.commands.GravarTipoDocumento;
 import control.commands.GravarTipoLicitacao;
+import control.commands.NovaEmpresa;
 import control.commands.NovoProduto;
 import control.commands.NovoTipoDocumento;
 import control.commands.Nulo;
@@ -57,6 +58,7 @@ public class ServletComercial extends HttpServlet {
         comandos.put("AlterarProduto", new AlterarProduto());
         comandos.put("CadastroEmpresas", new CadastroEmpresas());
         comandos.put("AlterarEmpresa", new AlterarEmpresa());
+        comandos.put("NovaEmpresa", new NovaEmpresa());
     }
 
     public void init() throws ServletException {
