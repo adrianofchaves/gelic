@@ -38,10 +38,9 @@ public class Usuarios {
             "  PAPEL = ?" +
             " where" +
             "  LOGIN = ?";
-    public static final String sqlIncluiUsuario = 
+    public static final String sqlIncluiUsuario =
             "insert into USUARIOS(LOGIN, SENHA, PAPEL) values (?,?,?)";
-    
-    
+
     /**
      * Altera o registro do usuário identificado pelo parâmetro login.
      * 
@@ -54,41 +53,54 @@ public class Usuarios {
      * @throws javax.naming.NamingException
      */
     public static int alterar(
-             String login, 
-             String novoLogin, 
-             String novaSenha, 
-             int novoPapel) throws SQLException, NamingException, NoSuchAlgorithmException {
-        
+            String login,
+            String novoLogin,
+            String novaSenha,
+            int novoPapel) throws SQLException, NamingException, NoSuchAlgorithmException {
+
         Connection gelic = model.services.Conexao.getConnection();
-        
+
         PreparedStatement pstmt = gelic.prepareStatement(sqlAlteraUsuario);
-        
+
         pstmt.setString(1, novoLogin);
         pstmt.setString(2, model.beans.Usuario.criptografaSenha(novaSenha));
         pstmt.setInt(3, novoPapel);
         pstmt.setString(4, login);
-        
-        return pstmt.executeUpdate();
-        
-        
+        int buffer = pstmt.executeUpdate();
+        /*
+         * Para aproveitar a conexão no pool é necessário fechar tudo...
+         * Não fecha o connection por causa do transaction.
+         */
+        pstmt.close();
+       
+
+        return buffer;
+
+
     }
 
     public static int incluir(
-            String login, 
-            String senha, 
-            int papel) 
+            String login,
+            String senha,
+            int papel)
             throws SQLException, NamingException, NoSuchAlgorithmException {
-        
+
         Connection gelic = model.services.Conexao.getConnection();
-        
+
         PreparedStatement pstmt = gelic.prepareStatement(sqlIncluiUsuario);
-        
+
         pstmt.setString(1, login);
         pstmt.setString(2, model.beans.Usuario.criptografaSenha(senha));
         pstmt.setInt(3, papel);
+
+        int buffer = pstmt.executeUpdate();
+        /*
+         * Para aproveitar a conexão no pool é necessário fechar tudo...
+         * Não fecha o connection por causa do transaction.
+         */
+        pstmt.close();
         
-        
-        return pstmt.executeUpdate();
+        return buffer;
     }
 
     /**
@@ -118,23 +130,28 @@ public class Usuarios {
             throws SQLException, NamingException {
         ArrayList<Usuario> usuarios = null;
         PreparedStatement pstmt;
-        int quantidadeUsuarios;
+        int quantidadeUsuarios = 0;
         ResultSet rs;
 
         Connection gelic = model.services.Conexao.getPool().getConnection();
         /* Conta quantidade de usuários cadastrados */
         pstmt = gelic.prepareStatement(sqlContaUsuarios);
         rs = pstmt.executeQuery();
-        if (rs == null) {
+        if (rs != null && rs.next()) {
+            /*
+             * Para aproveitar a conexão no pool é necessário fechar tudo...
+             */
+            quantidadeUsuarios = rs.getInt(1);
+            rs.close();
+            pstmt.close();
+        }
+        if (quantidadeUsuarios < 1) {
+            /*
+             * Para aproveitar a conexão no pool é necessário fechar tudo...
+             */
+            gelic.close();
             return null;
         }
-        if (!rs.next()) {
-            return null;
-        }
-        quantidadeUsuarios = rs.getInt(1);
-        // rs.close(); precisa?
-        pstmt.close(); //precisa?
-
         /* Carrega usuários */
         pstmt = gelic.prepareStatement(sqlRecuperarTodos);
         rs = pstmt.executeQuery();
@@ -149,6 +166,12 @@ public class Usuarios {
                     rs.getString("LOGIN"),
                     rs.getString("SENHA")));
         }
+        /*
+         * Para aproveitar a conexão no pool é necessário fechar tudo...
+         */
+        rs.close();
+        pstmt.close();
+        gelic.close();
         return usuarios;
     }
 
@@ -164,13 +187,20 @@ public class Usuarios {
         PreparedStatement pstmt = gelic.prepareStatement(sqlRecuperarLogin);
         pstmt.setString(1, login);
         ResultSet rs = pstmt.executeQuery();
-        if (!rs.next()) {
-            return null;
+        model.beans.Usuario usuario = null;
+        if (rs.next()) {
+            usuario = criaUsuario(
+                    rs.getInt("TIPO"),
+                    rs.getString("NOMEPAPEL"),
+                    rs.getString("LOGIN"),
+                    rs.getString("SENHA"));
         }
-        return criaUsuario(
-                rs.getInt("TIPO"),
-                rs.getString("NOMEPAPEL"),
-                rs.getString("LOGIN"),
-                rs.getString("SENHA"));
+        /*
+         * Para aproveitar a conexão no pool é necessário fechar tudo...
+         */
+        rs.close();
+        pstmt.close();
+        gelic.close();
+        return usuario;
     }
 }

@@ -2,6 +2,7 @@ package model.services;
 // #[regen=yes,id=DCE.4C280404-F5D8-E997-9B56-B559AAEA5A24]
 // </editor-fold> 
 import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
@@ -22,29 +23,32 @@ public class Usuarios {
             String senhaUsuario,
             int idPapel)
             throws SQLException, NamingException, NoSuchAlgorithmException {
+        Connection gelic = model.services.Conexao.getConnection();
         if (model.daos.Usuarios.alterar(
                 login,
                 loginUsuario,
                 senhaUsuario,
                 idPapel) == 1) {
-            model.services.Conexao.getConnection().commit();
+            gelic.commit();
         } else {
-            model.services.Conexao.getConnection().rollback();
+            gelic.rollback();
         }
+        gelic.close();
     }
 
     public static void incluir(
-            String loginUsuario, 
-            String senhaUsuario, 
-            int idPapel) 
+            String loginUsuario,
+            String senhaUsuario,
+            int idPapel)
             throws NamingException, SQLException, NoSuchAlgorithmException {
+        Connection gelic = model.services.Conexao.getConnection();
         if (model.daos.Usuarios.incluir(
                 loginUsuario,
                 senhaUsuario,
                 idPapel) == 1) {
-            model.services.Conexao.getConnection().commit();
+            gelic.commit();
         } else {
-            model.services.Conexao.getConnection().rollback();
+            gelic.rollback();
         }
     }
 

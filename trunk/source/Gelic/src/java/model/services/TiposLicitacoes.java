@@ -4,6 +4,7 @@
  */
 package model.services;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
@@ -20,25 +21,29 @@ public class TiposLicitacoes {
     public static void alterar(String nomeAnterior, String novoNome, 
             String novaSigla ) 
             throws NamingException, SQLException {
+        Connection gelic = model.services.Conexao.getConnection();
         if (model.daos.TiposLicitacoes.alterar(
                 nomeAnterior, novoNome, novaSigla ) == 1) {
-            model.services.Conexao.getConnection().commit();
+            gelic.commit();
             /* apaga cache */
             tiposLicitacoes = null;
         } else {
-            model.services.Conexao.getConnection().rollback();
+            gelic.rollback();
         }
+        gelic.close();
     }
 
     public static void incluir(String nome, String sigla) 
             throws NamingException, SQLException {
+        Connection gelic = model.services.Conexao.getConnection();
          if (model.daos.TiposLicitacoes.incluir(nome, sigla) == 1) {
-            model.services.Conexao.getConnection().commit();
+            gelic.commit();
             /* apaga cache */
             tiposLicitacoes = null;
         } else {
-            model.services.Conexao.getConnection().rollback();
+            gelic.rollback();
         }
+        gelic.close();
     }
 
     static public ArrayList<model.beans.TipoLicitacao> recuperar()

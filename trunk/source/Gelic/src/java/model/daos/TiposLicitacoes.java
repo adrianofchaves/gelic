@@ -26,8 +26,8 @@ public class TiposLicitacoes {
     final static String sqlAlteraTipoLicitacao =
             "update TIPOSLICITACOES set NOME= ?, SIGLA=? where NOME= ? ";
 
-    public static int alterar(String nomeAnterior, String novoNome, 
-            String novaSigla )
+    public static int alterar(String nomeAnterior, String novoNome,
+            String novaSigla)
             throws SQLException, NamingException {
         Connection gelic = model.services.Conexao.getConnection();
 
@@ -36,9 +36,16 @@ public class TiposLicitacoes {
 
         pstmt.setString(1, novoNome);
         pstmt.setString(2, novaSigla);
-        
+
         pstmt.setString(3, nomeAnterior);
-        return pstmt.executeUpdate();
+        int buffer = pstmt.executeUpdate();
+        /*
+         * Para aproveitar a conexão no pool é necessário fechar tudo...
+         * Não fecha o connection por causa do transaction.
+         */
+        pstmt.close();
+       
+        return buffer;
     }
 
     public static int incluir(String nome, String sigla)
@@ -50,11 +57,17 @@ public class TiposLicitacoes {
 
         pstmt.setString(1, nome);
         pstmt.setString(2, sigla);
-
-        return pstmt.executeUpdate();
+        int buffer = pstmt.executeUpdate();
+        /*
+         * Para aproveitar a conexão no pool é necessário fechar tudo...
+         * Não fecha o connection por causa do transaction.
+         */
+        pstmt.close();
+        
+        return buffer;
     }
 
-    static private model.beans.TipoLicitacao criaTipoLicitacao(String nome, 
+    static private model.beans.TipoLicitacao criaTipoLicitacao(String nome,
             String sigla) {
         model.beans.TipoLicitacao tipo = new model.beans.TipoLicitacao();
         tipo.setNome(nome);
@@ -66,23 +79,28 @@ public class TiposLicitacoes {
             throws SQLException, NamingException {
         ArrayList<model.beans.TipoLicitacao> tipos = null;
         PreparedStatement pstmt;
-        int quantidadeTipos;
+        int quantidadeTipos = 0;
         ResultSet rs;
 
         Connection gelic = model.services.Conexao.getPool().getConnection();
         /* Conta quantidade de usuários cadastrados */
         pstmt = gelic.prepareStatement(sqlContaTiposLicitacoes);
         rs = pstmt.executeQuery();
-        if (rs == null) {
+        if (rs != null && rs.next()) {
+            /*
+             * Para aproveitar a conexão no pool é necessário fechar tudo...
+             */
+            rs.close();
+            pstmt.close();
+            quantidadeTipos = rs.getInt(1);
+        }
+        if (quantidadeTipos < 1) {
+            /*
+             * Para aproveitar a conexão no pool é necessário fechar tudo...
+             */
+            gelic.close();
             return null;
         }
-        if (!rs.next()) {
-            return null;
-        }
-        quantidadeTipos = rs.getInt(1);
-        // rs.close(); precisa?
-        pstmt.close(); //precisa?
-
         /* Carrega usuários */
         pstmt = gelic.prepareStatement(sqlRecuperaTiposLicitacoes);
         rs = pstmt.executeQuery();
@@ -91,9 +109,16 @@ public class TiposLicitacoes {
                 tipos = new ArrayList<model.beans.TipoLicitacao>(quantidadeTipos);
             }
 
-            tipos.add(criaTipoLicitacao(rs.getString("NOME"), 
+            tipos.add(criaTipoLicitacao(rs.getString("NOME"),
                     rs.getString("SIGLA")));
         }
+        /*
+         * Para aproveitar a conexão no pool é necessário fechar tudo...
+         */
+        rs.close();
+        pstmt.close();
+        gelic.close();
+
         return tipos;
     }
 }
