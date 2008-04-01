@@ -40,7 +40,7 @@ public class Conexao {
      */
     private String getNomePool() {
         ResourceBundle prop = null;
-        
+
         try {
             /* Abre arquivo poolGelic.properties */
             prop = ResourceBundle.getBundle("Gelic");
@@ -66,7 +66,7 @@ public class Conexao {
         /* procura conexão no pull do Tomcat */
         InitialContext ic = new InitialContext();
         Context ambiente = (Context) ic.lookup("java:comp/env");
-        pool = (DataSource) ambiente.lookup(nomePool);        
+        pool = (DataSource) ambiente.lookup(nomePool);
     }
 
     /**
@@ -102,12 +102,14 @@ public class Conexao {
             servico = new Conexao();
         }
         if (servico.conexao == null) {
-            servico.conexao = new ThreadLocal<Connection>();            
+            servico.conexao = new ThreadLocal<Connection>();
         }
-        if( servico.conexao.get() == null){
+
+        if (servico.conexao.get() == null ||
+                servico.conexao.get().isClosed()) {
             Connection c = servico.pool.getConnection();
             c.setAutoCommit(false);
-           servico.conexao.set(c);    
+            servico.conexao.set(c);
         }
         return servico.conexao.get();
     }

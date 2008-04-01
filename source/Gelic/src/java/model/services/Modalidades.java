@@ -1,5 +1,6 @@
 package model.services;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
@@ -9,6 +10,7 @@ import javax.naming.NamingException;
  * @author Adriano
  */
 public class Modalidades {
+
     /**
      * Considera-se que o cadastro de modalidades não venha a alterar o tempo
      * todo.  Por isso faz-se um cache na classe servicos.Modalidades.  Para 
@@ -19,30 +21,34 @@ public class Modalidades {
 
     static public void alterar(String siglaAnterior, String novaSigla,
             String novoNome) throws SQLException, NamingException {
+        Connection gelic = model.services.Conexao.getConnection();
         if (model.daos.Modalidades.alterar(
                 siglaAnterior,
                 novaSigla,
                 novoNome) == 1) {
-            model.services.Conexao.getConnection().commit();
+            gelic.commit();
             /* apaga cache */
             modalidades = null;
         } else {
-            model.services.Conexao.getConnection().rollback();
+            gelic.rollback();
         }
+        gelic.close();
 
     }
 
     static public void incluir(String sigla, String nome)
             throws SQLException, NamingException {
+        Connection gelic = model.services.Conexao.getConnection();
         if (model.daos.Modalidades.incluir(sigla, nome) == 1) {
-            model.services.Conexao.getConnection().commit();
+            gelic.commit();
             /* apaga cache */
             modalidades = null;
         } else {
-            model.services.Conexao.getConnection().rollback();
+            gelic.rollback();
         }
-
+        gelic.close();
     }
+
     /**
      * Retorna as modalidades de seleções cadastradas.  
      * 
@@ -61,7 +67,7 @@ public class Modalidades {
         return modalidades;
     }
 
-    static public model.beans.Modalidade recuperar(String sigla) 
+    static public model.beans.Modalidade recuperar(String sigla)
             throws SQLException, NamingException {
         if (sigla == null) {
             return null;

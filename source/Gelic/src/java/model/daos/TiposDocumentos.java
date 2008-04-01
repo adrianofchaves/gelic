@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model.daos;
 
 import java.sql.Connection;
@@ -17,6 +16,7 @@ import javax.naming.NamingException;
  * @author Adriano
  */
 public class TiposDocumentos {
+
     final static String sqlContaTiposDocumentos =
             "select count(*) from TIPOSDOCUMENTOS";
     final static String sqlRecuperaTiposDocumentos =
@@ -26,7 +26,7 @@ public class TiposDocumentos {
     final static String sqlAlteraTipoDocumento =
             "update TIPOSDOCUMENTOS set NOME= ? where NOME= ? ";
 
-    public static int alterar(String nomeAnterior, String novoNome )
+    public static int alterar(String nomeAnterior, String novoNome)
             throws SQLException, NamingException {
         Connection gelic = model.services.Conexao.getConnection();
 
@@ -34,9 +34,16 @@ public class TiposDocumentos {
                 sqlAlteraTipoDocumento);
 
         pstmt.setString(1, novoNome);
-                
         pstmt.setString(2, nomeAnterior);
-        return pstmt.executeUpdate();
+        int buffer = pstmt.executeUpdate();
+        /*
+         * Para aproveitar a conexão no pool é necessário fechar tudo...
+         * Não fecha o connection por causa do transaction.
+         */
+        pstmt.close();
+        
+
+        return buffer;
     }
 
     public static int incluir(String nome)
@@ -47,8 +54,15 @@ public class TiposDocumentos {
                 sqlIncluiTipoDocumento);
 
         pstmt.setString(1, nome);
+        int buffer = pstmt.executeUpdate();
+        /*
+         * Para aproveitar a conexão no pool é necessário fechar tudo...
+         * Não fecha o connection por causa do transaction.
+         */
+        pstmt.close();
         
-        return pstmt.executeUpdate();
+
+        return buffer;
     }
 
     static private model.beans.TipoDocumento criaTipoDocumento(String nome) {
@@ -61,28 +75,33 @@ public class TiposDocumentos {
             throws SQLException, NamingException {
         ArrayList<model.beans.TipoDocumento> tipos = null;
         PreparedStatement pstmt;
-        int quantidadeTipos;
+        int quantidadeTipos = 0;
         ResultSet rs;
-        
+
         Connection gelic = model.services.Conexao.getPool().getConnection();
-        
+
         /* Conta quantidade de usuários cadastrados */
         pstmt = gelic.prepareStatement(sqlContaTiposDocumentos);
         rs = pstmt.executeQuery();
-        if (rs == null) {
+        if (rs != null && rs.next()) {
+            quantidadeTipos = rs.getInt(1);
+            /*
+             * Para aproveitar a conexão no pool é necessário fechar tudo...
+             */
+            rs.close();
+            pstmt.close();
+        }
+        if (quantidadeTipos < 1) {
+            /*
+             * Para aproveitar a conexão no pool é necessário fechar tudo...
+             */
+            gelic.close();
             return null;
         }
-        if (!rs.next()) {
-            return null;
-        }
-        quantidadeTipos = rs.getInt(1);
-        // rs.close(); precisa?
-        pstmt.close(); //precisa?
-
         /* Carrega usuários */
         pstmt = gelic.prepareStatement(sqlRecuperaTiposDocumentos);
         rs = pstmt.executeQuery();
-        
+
         while (rs.next()) {
             if (tipos == null) {
                 tipos = new ArrayList<model.beans.TipoDocumento>(
@@ -91,7 +110,12 @@ public class TiposDocumentos {
 
             tipos.add(criaTipoDocumento(rs.getString("NOME")));
         }
+        /*
+         * Para aproveitar a conexão no pool é necessário fechar tudo...
+         */
+        rs.close();
+        pstmt.close();
+        gelic.close();
         return tipos;
     }
-
 }

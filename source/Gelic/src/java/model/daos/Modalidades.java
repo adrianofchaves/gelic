@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
-import model.beans.Usuario;
 
 /**
  * DAO de Modalidades de Licitação
@@ -41,9 +40,16 @@ public class Modalidades {
 
         pstmt.setString(1, sigla);
         pstmt.setString(2, nome);
+        int buffer = pstmt.executeUpdate();
+        /*
+         * Para aproveitar a conexão no pool é necessário fechar tudo...
+         * Não fecha o connection por causa do transaction.
+         */
+        pstmt.close();
 
-        return pstmt.executeUpdate();
+        return buffer;
     }
+
     /**
      * Altera o registro no banco de uma modalidade de licitação.
      * @param siglaAnterior - sigla atual
@@ -64,51 +70,70 @@ public class Modalidades {
         pstmt.setString(1, sigla);
         pstmt.setString(2, nome);
         pstmt.setString(3, siglaAnterior);
+        int buffer = pstmt.executeUpdate();
+        /*
+         * Para aproveitar a conexão no pool é necessário fechar tudo...
+         * Não fecha o connection por causa do transaction.
+         */
+        pstmt.close();
+        
 
-        return pstmt.executeUpdate();
+        return buffer;
     }
-    
-    static private model.beans.Modalidade criaModalidade( String sigla, 
-            String nome ){
+
+    static private model.beans.Modalidade criaModalidade(String sigla,
+            String nome) {
         model.beans.Modalidade modalidade = new model.beans.Modalidade();
         modalidade.setSigla(sigla);
         modalidade.setNome(nome);
-        return modalidade;        
+        return modalidade;
     }
-    static public ArrayList<model.beans.Modalidade> recuperar() 
-            throws SQLException, NamingException{
+
+    static public ArrayList<model.beans.Modalidade> recuperar()
+            throws SQLException, NamingException {
         ArrayList<model.beans.Modalidade> modalidades = null;
         PreparedStatement pstmt;
-        int quantidadeModalidades;
+        int quantidadeModalidades = 0;
         ResultSet rs;
 
         Connection gelic = model.services.Conexao.getPool().getConnection();
         /* Conta quantidade de usuários cadastrados */
         pstmt = gelic.prepareStatement(sqlContaModalidades);
         rs = pstmt.executeQuery();
-        if (rs == null) {
+        if (rs != null && rs.next()) {
+            quantidadeModalidades = rs.getInt(1);
+            /*
+             * Para aproveitar a conexão no pool é necessário fechar tudo...
+             */
+            rs.close();
+            pstmt.close();
+        }
+        if (quantidadeModalidades < 1) {
+            /*
+             * Para aproveitar a conexão no pool é necessário fechar tudo...
+             */
+            gelic.close();
             return null;
         }
-        if (!rs.next()) {
-            return null;
-        }
-        quantidadeModalidades = rs.getInt(1);
-        // rs.close(); precisa?
-        pstmt.close(); //precisa?
-
         /* Carrega usuários */
         pstmt = gelic.prepareStatement(sqlRecuperaModalidades);
         rs = pstmt.executeQuery();
         while (rs.next()) {
             if (modalidades == null) {
-                modalidades = new ArrayList<model.beans.Modalidade>
-                        (quantidadeModalidades);
+                modalidades = new ArrayList<model.beans.Modalidade>(
+                        quantidadeModalidades);
             }
 
             modalidades.add(criaModalidade(
                     rs.getString("SIGLA"),
                     rs.getString("NOME")));
         }
+        /*
+         * Para aproveitar a conexão no pool é necessário fechar tudo...
+         */
+        rs.close();
+        pstmt.close();
+        gelic.close();
         return modalidades;
     }
 }

@@ -4,6 +4,7 @@
  */
 package model.services;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
@@ -18,26 +19,28 @@ public class Sistemas {
 
     static public void alterar(String nomeAnterior, String novoNome)
             throws SQLException, NamingException {
+        Connection gelic = model.services.Conexao.getConnection();
         if (model.daos.Sistemas.alterar(nomeAnterior, novoNome) == 1) {
-            model.services.Conexao.getConnection().commit();
+            gelic.commit();
             /* apaga cache */
             sistemas = null;
         } else {
-            model.services.Conexao.getConnection().rollback();
+            gelic.rollback();
         }
-
+        gelic.close();
     }
 
     static public void incluir(String nome)
             throws SQLException, NamingException {
+        Connection gelic = model.services.Conexao.getConnection();
         if (model.daos.Sistemas.incluir(nome) == 1) {
-            model.services.Conexao.getConnection().commit();
+            gelic.commit();
             /* apaga cache */
             sistemas = null;
         } else {
-            model.services.Conexao.getConnection().rollback();
+            gelic.rollback();
         }
-
+        gelic.close();
     }
 
     static public ArrayList<model.beans.Sistema> recuperar()

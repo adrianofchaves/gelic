@@ -48,6 +48,12 @@ public class Contatos {
         empresa.getContatos().add(criaContato(rs.getString("NOME")));
       }
     }
+    /*
+     * Para aproveitar a conexão no pool é necessário fechar tudo...
+     */
+    rs.close();
+    pstmt.close();
+    gelic.close();
   }
   static final String sqlRecuperaContatosEmpresa =
           "select NOME from CONTATOS where EMPRESA = ? ";
@@ -68,8 +74,12 @@ public class Contatos {
     int quantidadeContatos = rs.getInt(1);
     ArrayList<model.beans.Contato> contatos = 
             new ArrayList<model.beans.Contato>(quantidadeContatos);
-    rs.close();//precisa?
-    pstmt.close(); //precisa?
+    
+    /*
+     * Para aproveitar a conexão no pool é necessário fechar tudo...
+     */
+    rs.close();
+    pstmt.close();
     
     pstmt = gelic.prepareStatement(sqlRecuperaContatosEmpresa);
     pstmt.setString(1, empresa.getCnpj());
@@ -77,6 +87,12 @@ public class Contatos {
     while (rs.next() ){
       contatos.add(criaContato(rs.getString("NOME")));
     }
+    /*
+     * Para aproveitar a conexão no pool é necessário fechar tudo...
+     */
+    rs.close();
+    pstmt.close();
+    gelic.close();
     
     
   }
