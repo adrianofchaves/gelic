@@ -22,7 +22,7 @@
         Voltar</a>
       </th>
       <th class="menuItem" >
-        <a href="formEmpresa.jsp">
+        <a href="Comercial?comando=NovaEmpresa">
         Nova empresa</a>                    
       </th>
       <th class="menuItem" >
