@@ -68,32 +68,8 @@ public class GelicServlet extends HttpServlet {
 
     }
 
-    private void carregaPapeis() throws SQLException, NamingException {
-
-        /* Lista de papéis cadastrados */
-        ServletContext cntx = this.getServletContext();
-        cntx.setAttribute("papeis", model.services.Papeis.recuperar());
-    }
-
-    /**
-     * Carrega listas no contexto da aplicação.  Essas listas somente são 
-     * recarregadas quando o Servlet é iniciado.
-     */
-    private void carregaTabelasNoContexto() throws ServletException {
-        try {
-            carregaPapeis();
-        } catch (SQLException ex) {
-            Logger.getLogger(GelicServlet.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ServletException(ex.getClass().getName() + "." + ex.getMessage());
-        } catch (NamingException ex) {
-            Logger.getLogger(GelicServlet.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ServletException(ex.getClass().getName() + "." + ex.getMessage());
-        }
-    }
-
     public void init() throws ServletException {
         carregaComandos();
-        carregaTabelasNoContexto();
     }
 
     /**

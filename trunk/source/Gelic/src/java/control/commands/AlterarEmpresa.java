@@ -28,6 +28,7 @@ public class AlterarEmpresa implements Comando {
       frm.atualizaCampos();
       frm.setInclusao(false);
       frm.setTitulo("Alterando empresa");
+      frm.setUfs(control.UFs.getUFs(req));
       req.getSession().setAttribute("formEmpresa", frm);
       return "/formEmpresa.jsp";
     } catch (SQLException ex) {
