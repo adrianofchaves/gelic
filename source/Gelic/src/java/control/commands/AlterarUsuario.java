@@ -37,6 +37,7 @@ public class AlterarUsuario implements Comando{
                     login);
             frm.setUsuario(usuario);
             frm.atualizaCampos();
+            frm.setPapeis(control.Usuarios.getPapeis(req));
             req.getSession().setAttribute("formUsuario", frm);
             
             

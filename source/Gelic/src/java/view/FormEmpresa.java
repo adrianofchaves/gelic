@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @author Adriano
  */
 public class FormEmpresa extends Form {
+  private ArrayList <String> ufs;
 
   private model.beans.Empresa empresa;
   
@@ -475,6 +476,14 @@ public class FormEmpresa extends Form {
     public void setEFornecedorEmpresa(boolean eFornecedorEmpresa) {
         this.eFornecedorEmpresa = eFornecedorEmpresa;
     }
+
+  public ArrayList<String> getUfs() {
+    return ufs;
+  }
+
+  public void setUfs(ArrayList<String> ufs) {
+    this.ufs = ufs;
+  }
 
 
 

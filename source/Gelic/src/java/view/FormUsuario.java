@@ -5,6 +5,7 @@
 package view;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.naming.NamingException;
 
 /**
@@ -14,148 +15,155 @@ import javax.naming.NamingException;
  */
 public class FormUsuario extends Form {
 
-    private model.beans.Usuario usuario;
-    
-    private boolean inclusao = true;
-    
-    private String loginUsuario;
-    private String erroLoginUsuario;
+  private ArrayList<model.beans.Papel> papeis;
+  
+  private model.beans.Usuario usuario;
+  private boolean inclusao = true;
+  private String loginUsuario;
+  private String erroLoginUsuario;
+  private String senhaUsuario;
+  private String erroSenhaUsuario;
+  private String confirmaSenhaUsuario;
+  private String erroConfirmaSenhaUsuario;
+  private String papelUsuario;
+  private String erroPapelUsuario;
+  private int idPapel;
 
-    private String senhaUsuario;
-    private String erroSenhaUsuario;
-    
-    private String confirmaSenhaUsuario;
-    private String erroConfirmaSenhaUsuario;
+  protected void apagaErros() {
+    super.apagaErros();
+    erroConfirmaSenhaUsuario = null;
+    erroLoginUsuario = null;
+    erroPapelUsuario = null;
+  }
 
-    private String papelUsuario;
-    private String erroPapelUsuario;
-    private int idPapel;
-
-    protected void apagaErros() {
-        super.apagaErros();
-        erroConfirmaSenhaUsuario = null;
-        erroLoginUsuario = null;
-        erroPapelUsuario = null;                
+  public void valida() throws SQLException, NamingException {
+    apagaErros();
+    /* Executa críticas */
+    if (!getSenhaUsuario().equals(getConfirmaSenhaUsuario())) {
+      setErroConfirmaSenhaUsuario("Está diferente da informada em Senha");
+      addErro("As senhas informadas são diferentes");
     }
-    
-    public void valida() throws SQLException, NamingException {
-        apagaErros();
-        /* Executa críticas */
-        if (!getSenhaUsuario().equals(getConfirmaSenhaUsuario())) {
-            setErroConfirmaSenhaUsuario("Está diferente da informada em Senha");
-            addErro("As senhas informadas são diferentes");
-        }
-        model.beans.Papel papel = model.services.Papeis.recuperar(
-                getPapelUsuario());
-        if (model.services.Papeis.recuperar(getPapelUsuario()) == null) {
-            setErroPapelUsuario("Papel inválido.");
-            addErro("O papel informado não é válido.");
-        } else {
-            setIdPapel(papel.getId());
-        }
-        if (isInclusao() && model.services.Usuarios.recuperar(
-                getLoginUsuario()) != null) {
-            setErroLoginUsuario("Login já existe.");
-            addErro("Login inválido.");
-        }
-
+    model.beans.Papel papel = model.services.Papeis.recuperar(
+            getPapelUsuario());
+    if (model.services.Papeis.recuperar(getPapelUsuario()) == null) {
+      setErroPapelUsuario("Papel inválido.");
+      addErro("O papel informado não é válido.");
+    } else {
+      setIdPapel(papel.getId());
+    }
+    if (isInclusao() && model.services.Usuarios.recuperar(
+            getLoginUsuario()) != null) {
+      setErroLoginUsuario("Login já existe.");
+      addErro("Login inválido.");
     }
 
-    public void atualizaCampos() {
-        setLoginUsuario(getUsuario().getLogin());
-        setPapelUsuario(getUsuario().getPapel().getNome());
-        setIdPapel(getUsuario().getPapel().getId());
-    }
+  }
 
-    public model.beans.Usuario getUsuario() {
-        return usuario;
-    }
+  public void atualizaCampos() {
+    setLoginUsuario(getUsuario().getLogin());
+    setPapelUsuario(getUsuario().getPapel().getNome());
+    setIdPapel(getUsuario().getPapel().getId());
+  }
 
-    public void setUsuario(model.beans.Usuario usuario) {
-        this.usuario = usuario;
-    }
+  public model.beans.Usuario getUsuario() {
+    return usuario;
+  }
 
-    public boolean getInclusao() {
-        return isInclusao();
-    }
+  public void setUsuario(model.beans.Usuario usuario) {
+    this.usuario = usuario;
+  }
 
-    public boolean isInclusao() {
-        return inclusao;
-    }
+  public boolean getInclusao() {
+    return isInclusao();
+  }
 
-    public void setInclusao(boolean inclusao) {
-        this.inclusao = inclusao;
-    }
+  public boolean isInclusao() {
+    return inclusao;
+  }
 
-    public String getLoginUsuario() {
-        return loginUsuario;
-    }
+  public void setInclusao(boolean inclusao) {
+    this.inclusao = inclusao;
+  }
 
-    public void setLoginUsuario(String nome) {
-        this.loginUsuario = nome;
-    }
+  public String getLoginUsuario() {
+    return loginUsuario;
+  }
 
-    public String getSenhaUsuario() {
-        return senhaUsuario;
-    }
+  public void setLoginUsuario(String nome) {
+    this.loginUsuario = nome;
+  }
 
-    public void setSenhaUsuario(String senhaUsuario) {
-        this.senhaUsuario = senhaUsuario;
-    }
+  public String getSenhaUsuario() {
+    return senhaUsuario;
+  }
 
-    public String getConfirmaSenhaUsuario() {
-        return confirmaSenhaUsuario;
-    }
+  public void setSenhaUsuario(String senhaUsuario) {
+    this.senhaUsuario = senhaUsuario;
+  }
 
-    public void setConfirmaSenhaUsuario(String confirmaSenhaUsuario) {
-        this.confirmaSenhaUsuario = confirmaSenhaUsuario;
-    }
+  public String getConfirmaSenhaUsuario() {
+    return confirmaSenhaUsuario;
+  }
 
-    public String getPapelUsuario() {
-        return papelUsuario;
-    }
+  public void setConfirmaSenhaUsuario(String confirmaSenhaUsuario) {
+    this.confirmaSenhaUsuario = confirmaSenhaUsuario;
+  }
 
-    public void setPapelUsuario(String papelUsuario) {
-        this.papelUsuario = papelUsuario;
-    }
+  public String getPapelUsuario() {
+    return papelUsuario;
+  }
 
-    public int getIdPapel() {
-        return idPapel;
-    }
+  public void setPapelUsuario(String papelUsuario) {
+    this.papelUsuario = papelUsuario;
+  }
 
-    public void setIdPapel(int idPapel) {
-        this.idPapel = idPapel;
-    }
+  public int getIdPapel() {
+    return idPapel;
+  }
 
-    public String getErroPapelUsuario() {
-        return erroPapelUsuario;
-    }
+  public void setIdPapel(int idPapel) {
+    this.idPapel = idPapel;
+  }
 
-    private void setErroPapelUsuario(String erroPapelUsuario) {
-        this.erroPapelUsuario = erroPapelUsuario;
-    }
+  public String getErroPapelUsuario() {
+    return erroPapelUsuario;
+  }
 
-    public String getErroConfirmaSenhaUsuario() {
-        return erroConfirmaSenhaUsuario;
-    }
+  private void setErroPapelUsuario(String erroPapelUsuario) {
+    this.erroPapelUsuario = erroPapelUsuario;
+  }
 
-    private void setErroConfirmaSenhaUsuario(String erroConfirmaSenhaUsuario) {
-        this.erroConfirmaSenhaUsuario = erroConfirmaSenhaUsuario;
-    }
+  public String getErroConfirmaSenhaUsuario() {
+    return erroConfirmaSenhaUsuario;
+  }
 
-    public String getErroLoginUsuario() {
-        return erroLoginUsuario;
-    }
+  private void setErroConfirmaSenhaUsuario(String erroConfirmaSenhaUsuario) {
+    this.erroConfirmaSenhaUsuario = erroConfirmaSenhaUsuario;
+  }
 
-    private void setErroLoginUsuario(String erroLoginUsuario) {
-        this.erroLoginUsuario = erroLoginUsuario;
-    }
+  public String getErroLoginUsuario() {
+    return erroLoginUsuario;
+  }
 
-    public String getErroSenhaUsuario() {
-        return erroSenhaUsuario;
-    }
+  private void setErroLoginUsuario(String erroLoginUsuario) {
+    this.erroLoginUsuario = erroLoginUsuario;
+  }
 
-    private void setErroSenhaUsuario(String erroSenhaUsuario) {
-        this.erroSenhaUsuario = erroSenhaUsuario;
-    }
+  public String getErroSenhaUsuario() {
+    return erroSenhaUsuario;
+  }
+
+  private void setErroSenhaUsuario(String erroSenhaUsuario) {
+    this.erroSenhaUsuario = erroSenhaUsuario;
+  }
+
+  public
+
+  ArrayList<model.beans.Papel> getPapeis() {
+    return papeis;
+  }
+
+  public void setPapeis(ArrayList<model.beans.Papel> papeis) {
+    this.papeis = papeis;
+  }
 }
