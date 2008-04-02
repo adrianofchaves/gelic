@@ -21,6 +21,7 @@ public class NovaEmpresa implements Comando {
       view.FormEmpresa frm = new view.FormEmpresa();
       frm.setInclusao(true);
       frm.setUfs(control.UFs.getUFs(req));
+      frm.setTiposLogradouros(control.Enderecos.getTiposLogradouros(req));
       req.getSession().setAttribute("formEmpresa", frm);
       return "/formEmpresa.jsp";
     } catch (NamingException ex) {
