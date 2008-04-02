@@ -135,10 +135,11 @@
           Tipo<BR>
           <select name="tipoLogradouroEmpresa" 
                   class="tabelaCadastro"
-                  value="${sessionScope.formEmpresa.tipoLogradouroEmpresa}">
-            <option>Rua</option>
-            <option>Praça</option>
-            <option>Avenida</option>                    
+                  value="${sessionScope.formEmpresa.tipoLogradouroEmpresa}">                  
+            <c:forEach var="tipoLogradouro" 
+                       items="${sessionScope.formEmpresa.tiposLogradouros}">
+              <option>${tipoLogradouro}</option>
+            </c:forEach>      
           </select>                        
         </TD>
         <TD class="tabelaCadastro" style="width:55%">

@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class FormEmpresa extends Form {
   private ArrayList <String> ufs;
+  private ArrayList <model.beans.TipoLogradouro> tiposLogradouros;
 
   private model.beans.Empresa empresa;
   
@@ -484,6 +485,14 @@ public class FormEmpresa extends Form {
   public void setUfs(ArrayList<String> ufs) {
     this.ufs = ufs;
   }
+
+    public ArrayList<model.beans.TipoLogradouro> getTiposLogradouros() {
+        return tiposLogradouros;
+    }
+
+    public void setTiposLogradouros(ArrayList<model.beans.TipoLogradouro> tiposLogradouros) {
+        this.tiposLogradouros = tiposLogradouros;
+    }
 
 
 
