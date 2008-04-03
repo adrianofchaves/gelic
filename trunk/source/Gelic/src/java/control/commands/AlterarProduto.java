@@ -19,23 +19,23 @@ public class AlterarProduto implements Comando {
     
         public String executar(HttpServletRequest req) throws ExcecaoComando {
         try {
-            String nome = util.Request.getParameter(req,"nome");
-            if (nome == null) {
-                throw new ExcecaoComando("Nome de tipo de licitação inválido (nula)");
+            String codigo = util.Request.getParameter(req,"codigo");
+            if (codigo == null) {
+                throw new ExcecaoComando("Código inválido (nulo)");
             }
-            model.beans.TipoLicitacao tipo = model.services.TiposLicitacoes.recuperar(nome);
-            view.FormTipoLicitacao frm = new view.FormTipoLicitacao();
-            frm.setTipoLicitacao(tipo);
+            model.beans.Produto produto = model.services.Produtos.recuperar(codigo);
+            view.FormProduto frm = new view.FormProduto();
+            frm.setProduto(produto);
             frm.atualizaCampos();
             frm.setInclusao(false);
-            req.getSession().setAttribute("formTipoLicitacao", frm);
-            return "/formTipoLicitacao.jsp";
+            req.getSession().setAttribute("formProduto", frm);
+            return "/formProduto.jsp";
         } catch (SQLException ex) {
-            Logger.getLogger(AlterarTipoLicitacao.class.getName()).log(
+            Logger.getLogger(AlterarProduto.class.getName()).log(
                     Level.SEVERE, null, ex);
             throw new ExcecaoComando(ex.getMessage());
         } catch (NamingException ex) {
-            Logger.getLogger(AlterarTipoLicitacao.class.getName()).log(
+            Logger.getLogger(AlterarProduto.class.getName()).log(
                     Level.SEVERE, null, ex);
             throw new ExcecaoComando(ex.getMessage());
         }

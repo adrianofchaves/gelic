@@ -32,7 +32,7 @@
     </head>
     <body>
         <form name="frmProduto" 
-              action="Gelic?comando=GravarNovoProduto" 
+              action="Comercial?comando=GravarNovoProduto" 
               method="POST">
         <p class="caption">
             <c:if test="${!sessionScope.formProduto.inclusao}">
