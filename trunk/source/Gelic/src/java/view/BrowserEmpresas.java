@@ -17,6 +17,10 @@ public class BrowserEmpresas extends Form{
     super.setTitulo("Empresas");
   }
 
+  public BrowserEmpresas(ArrayList<model.beans.Empresa> empresas) {
+    this.empresas = empresas;
+  }
+
   public ArrayList<model.beans.Empresa> getEmpresas() {
     return empresas;
   }

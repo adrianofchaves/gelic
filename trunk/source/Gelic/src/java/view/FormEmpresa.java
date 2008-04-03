@@ -11,24 +11,18 @@ import java.util.ArrayList;
  * @author Adriano
  */
 public class FormEmpresa extends Form {
-  private ArrayList <String> ufs;
-  private ArrayList <model.beans.TipoLogradouro> tiposLogradouros;
 
+  private ArrayList<String> ufs;
+  private ArrayList<model.beans.TipoLogradouro> tiposLogradouros;
   private model.beans.Empresa empresa;
-  
   private String nomeFantasiaEmpresa;
   private String erroNomeFantasiaEmpresa;
-  
-  
   private boolean ePortadorEmpresa;
   private String erroEPortadorEmpresa;
-  
   private String razaoSocialEmpresa;
   private String erroRazaoSocialEmpresa;
-  
   private boolean eFornecedorEmpresa;
   private String erroEFornecedorEmpresa;
-  
   private String cnpjEmpresa;
   private String erroCnpjEmpresa;
   private String ieEmpresa;
@@ -65,7 +59,10 @@ public class FormEmpresa extends Form {
   private String erroNumeroTelefoneEmpresa;
   private String ramalEmpresa;
   private String erroRamalEmpresa;
+  /* Modo do form: default é alteração */
   private boolean inclusao;
+  private boolean exclusao;
+  private boolean alteracao = true;
 
   public void atualizaCampos() {
     if (empresa == null) {
@@ -75,7 +72,7 @@ public class FormEmpresa extends Form {
     eFornecedorEmpresa = empresa.getEFornecedor();
     ePortadorEmpresa = empresa.getEPortador();
     razaoSocialEmpresa = empresa.getRazaoSocial();
-    
+
     cnpjEmpresa = empresa.getCnpj();
     ieEmpresa = empresa.getIe();
     imEmpresa = empresa.getIm();
@@ -107,6 +104,10 @@ public class FormEmpresa extends Form {
     return empresa;
   }
 
+  public boolean isAlteracao() {
+    return alteracao;
+  }
+
   public void setEmpresa(model.beans.Empresa empresa) {
     this.empresa = empresa;
   }
@@ -127,7 +128,7 @@ public class FormEmpresa extends Form {
     this.erroNomeFantasiaEmpresa = erroNomeFantasiaEmpresa;
   }
 
-    public String getErroEPortadorEmpresa() {
+  public String getErroEPortadorEmpresa() {
     return erroEPortadorEmpresa;
   }
 
@@ -150,8 +151,6 @@ public class FormEmpresa extends Form {
   public void setErroRazaoSocialEmpresa(String erroRazaoSocialEmpresa) {
     this.erroRazaoSocialEmpresa = erroRazaoSocialEmpresa;
   }
-
-  
 
   public String getErroEFornecedorEmpresa() {
     return erroEFornecedorEmpresa;
@@ -455,28 +454,27 @@ public class FormEmpresa extends Form {
 
   public void setInclusao(boolean inclusao) {
     this.inclusao = inclusao;
+    if (inclusao) {
+      alteracao = false;
+      exclusao = false;
+    }
   }
 
-    public
+  public boolean isEPortadorEmpresa() {
+    return ePortadorEmpresa;
+  }
 
+  public void setEPortadorEmpresa(boolean ePortadorEmpresa) {
+    this.ePortadorEmpresa = ePortadorEmpresa;
+  }
 
-    boolean isEPortadorEmpresa() {
-        return ePortadorEmpresa;
-    }
+  public boolean isEFornecedorEmpresa() {
+    return eFornecedorEmpresa;
+  }
 
-    public void setEPortadorEmpresa(boolean ePortadorEmpresa) {
-        this.ePortadorEmpresa = ePortadorEmpresa;
-    }
-
-    public
-
-    boolean isEFornecedorEmpresa() {
-        return eFornecedorEmpresa;
-    }
-
-    public void setEFornecedorEmpresa(boolean eFornecedorEmpresa) {
-        this.eFornecedorEmpresa = eFornecedorEmpresa;
-    }
+  public void setEFornecedorEmpresa(boolean eFornecedorEmpresa) {
+    this.eFornecedorEmpresa = eFornecedorEmpresa;
+  }
 
   public ArrayList<String> getUfs() {
     return ufs;
@@ -486,15 +484,55 @@ public class FormEmpresa extends Form {
     this.ufs = ufs;
   }
 
-    public ArrayList<model.beans.TipoLogradouro> getTiposLogradouros() {
-        return tiposLogradouros;
+  public ArrayList<model.beans.TipoLogradouro> getTiposLogradouros() {
+    return tiposLogradouros;
+  }
+
+  public void setTiposLogradouros(ArrayList<model.beans.TipoLogradouro> 
+          tiposLogradouros) {
+    this.tiposLogradouros = tiposLogradouros;
+  }
+
+  public void valida() {
+    
+    if(isExclusao()){
+      validaExclusao();
+      return;
     }
+    /**
+     * Valida alteração/inclusão
+     */
+    /* validar cnpj */
+    /* validar uf */
+    /* validar ie */
+    /* validar tipoLogradouro */
+    /* validar email */
+    /* validar site */
+    /* validar telefone*/
+    
+  }
 
-    public void setTiposLogradouros(ArrayList<model.beans.TipoLogradouro> tiposLogradouros) {
-        this.tiposLogradouros = tiposLogradouros;
+  public boolean isExclusao() {
+    return exclusao;
+  }
+
+  public void setExclusao(boolean exclusao) {
+    this.exclusao = exclusao;
+    if (exclusao) {
+      alteracao = false;
+      inclusao = false;
     }
+  }
 
+  public void setAlteracao(boolean alteracao) {
+    this.alteracao = alteracao;
+    if (alteracao) {
+      exclusao = false;
+      inclusao = false;
+    }
+  }
 
-
-
+  private void validaExclusao() {
+    throw new UnsupportedOperationException("Not yet implemented");
+  }
 }

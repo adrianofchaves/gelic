@@ -99,7 +99,7 @@ public class Produtos {
             throws SQLException, NamingException {
         Connection gelic = model.services.Conexao.getConnection();
 
-        PreparedStatement pstmt = gelic.prepareStatement(sqlAlteraProduto);
+        PreparedStatement pstmt = gelic.prepareStatement(sqlRecuperarProduto);
 
         pstmt.setString(1, codigo);
         ResultSet rs = pstmt.executeQuery();

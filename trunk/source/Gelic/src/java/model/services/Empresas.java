@@ -14,6 +14,10 @@ import javax.naming.NamingException;
  * @author Adriano
  */
 public class Empresas {
+
+  public static void excluir(String cnpj) {
+    throw new UnsupportedOperationException("Not yet implemented");
+  }
   public static model.beans.Empresa recuperar( String cnpj ) 
           throws SQLException, NamingException{
     model.beans.Empresa empresa = model.daos.Empresas.recuperar( cnpj );
