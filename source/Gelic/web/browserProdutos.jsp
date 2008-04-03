@@ -48,7 +48,7 @@
                 items="${sessionScope.browserProdutos.produtos}">                
                 <tr class="dados">
                     <td>
-                        <a href="Gelic?comando=AlterarProduto&codigo=${produto.codigo}">
+                        <a href="Comercial?comando=AlterarProduto&codigo=${produto.codigo}">
                             ${produto.codigo}    
                         </a>                        
                     </td>

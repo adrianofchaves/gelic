@@ -26,8 +26,8 @@ public class FormProduto extends Form {
     
     public void valida() throws SQLException, NamingException {
         apagaErros();
-        if( getCodigoProduto().length()!=4){
-            setErroCodigoProduto("Código deve ter 4 caracteres");
+        if( getCodigoProduto().length() ==0){
+            setErroCodigoProduto("Código não pode ser vazio");
             addErro("Código inválido!");
         }
     }

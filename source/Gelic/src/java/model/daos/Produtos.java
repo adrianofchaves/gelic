@@ -17,7 +17,7 @@ public class Produtos {
     final static String sqlIncluiProduto =
             "insert into PRODUTOS(CODIGO, DESCRICAO, PRECOVENDA, PRECOCOMPRA) values (?,?,?,?)";
     final static String sqlAlteraProduto =
-            "update PRODUTOS set codigo = ?, descricao = ?, precovenda = ?, precocompra = ?, where id = ? ";
+            "update PRODUTOS set codigo = ?, descricao = ?, precovenda = ?, precocompra = ? where codigo = ? ";
     final static String sqlContaProdutos =
             "select count(*) from PRODUTOS";
     final static String sqlRecuperaProdutos =
