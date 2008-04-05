@@ -13,6 +13,7 @@ public class TipoEndereco {
   private String bairro;
   private String tipo;
   private TipoTelefone telefone;
+  private int id;
 
   public String toString() {
     String mComplemento = getComplemento();
@@ -240,6 +241,14 @@ public class TipoEndereco {
 
   public void setTelefone(TipoTelefone telefone) {
     this.telefone = telefone;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 }
 

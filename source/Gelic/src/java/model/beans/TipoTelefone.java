@@ -19,6 +19,8 @@ public class TipoTelefone {
       }
       return getDdi() + " " + getDdd() + " " + getTelefone();
     }
+    
+    private int id;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.0404D7C9-F090-E52C-50A9-E41FC67E3A3A]
@@ -101,6 +103,16 @@ public class TipoTelefone {
     public void setTelefone (String val) {
         this.telefone = val;
     }
+
+  public
+
+  int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
 
 }
 
