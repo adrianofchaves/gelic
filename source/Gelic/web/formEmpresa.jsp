@@ -21,7 +21,7 @@
         <th class="menuItem" >
           <a href="browserEmpresas.jsp">Voltar</a>
         </th>
-        <c:if test="${!sessionScope.formSistema.inclusao}">
+        <c:if test="${sessionScope.formEmpresa.alteracao}">
           <th class="menuItem" >
             <a href="browserContatos.jsp">Contatos</a>
           </th>
@@ -37,7 +37,7 @@
   </head>
   <body>
     <form name="frmEmpresa" 
-          action="Comercial?comando=GravarEmpresa" 
+          action="Comercial?comando=GravarEmpresa"           
           method="POST">
       <p class="caption">
         ${sessionScope.formEmpresa.titulo}
@@ -49,7 +49,10 @@
       <table class="tabelaCadastro">
         <td class="tabelaCadastro" style="width:80%">
           Nome fantasia:<BR>                    
-          <input type="text" name="nomeFantasiaEmpresa" 
+          <input type="text" name="nomeFantasiaEmpresa"           
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  class="tabelaCadastro" 
                  value="${sessionScope.formEmpresa.nomeFantasiaEmpresa}" />
         </td>
@@ -57,6 +60,9 @@
         Portador
         <input type="checkbox" name="ePortadorEmpresa" 
                value="ON" 
+               <c:if test="${sessionScope.formEmpresa.exclusao}">
+                 disabled
+               </c:if>
                <c:if test="${sessionScope.formEmpresa.EPortadorEmpresa=='true'}">
                  checked
                </c:if>
@@ -77,12 +83,18 @@
           Razão social:<BR>
           <input type="text" class="tabelaCadastro" 
                  name="razaoSocialEmpresa" 
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  value="${sessionScope.formEmpresa.razaoSocialEmpresa}"/>
         </td>
         <td class="caixaSelecaoTabelaCadastro" 
             style="width:20%;">
           Fornecedor
           <input type="checkbox" name="eFornecedorEmpresa" 
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  <c:if test="${sessionScope.formEmpresa.EFornecedorEmpresa=='true'}">
                    checked
                  </c:if>
@@ -103,16 +115,25 @@
         <td class="tabelaCadastro" style = "width:40%">
           CNPJ:<BR>
           <input type="text" class="tabelaCadastro"
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  name="${sessionScope.formEmpresa.cnpjEmpresa}" />
         </td>                
         <td class="tabelaCadastro" style="width:30%">
           IE:<BR>
           <input type="text" class="tabelaCadastro"
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  value="${sessionScope.formEmpresa.ieEmpresa}"/>
         </td>
         <td class="tabelaCadastro" style="width: 30%">
           IM:<BR>
           <input type="text" name="imEmpresa" class="tabelaCadastro"
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  value="${sessionScope.formEmpresa.imEmpresa}" />
         </td>
       </table>
@@ -135,6 +156,9 @@
           Tipo<BR>
           <select name="tipoLogradouroEmpresa" 
                   class="tabelaCadastro"
+                  <c:if test="${sessionScope.formEmpresa.exclusao}">
+                    disabled
+                  </c:if>
                   value="${sessionScope.formEmpresa.tipoLogradouroEmpresa}">                  
             <c:forEach var="tipoLogradouro" 
                        items="${sessionScope.formEmpresa.tiposLogradouros}">
@@ -146,18 +170,27 @@
           Logradouro: <BR>
           <input type="text" name="logradouroEmpresa" 
                  class="tabelaCadastro"
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  value="${sessionScope.formEmpresa.logradouroEmpresa}" />
         </TD>
         <TD class="tabelaCadastro"  style="width:20%" >
           Numero: <BR>
           <input type="text" name="numeroEmpresa" 
                  class="tabelaCadastro"
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  value="${sessionScope.formEmpresa.numeroEmpresa}" />
         </TD>
         <TD class="tabelaCadastro"  style="width:15%" >
           Complemento: <BR>
           <input type="text" name="complementoEmpresa" 
                  class="tabelaCadastro"
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  value="${sessionScope.formEmpresa.complementoEmpresa}" />
         </TD>
       </TABLE>
@@ -180,17 +213,26 @@
           Bairro: <BR>
           <input type="text" name="logradouroEmpresa" 
                  class="tabelaCadastro"
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  value="${sessionScope.formEmpresa.bairroEmpresa}" />
         </TD>
         <TD class="tabelaCadastro"  style="width:30%" >
           Cidade: <BR>
           <input type="text" name="logradouroEmpresa" 
                  class="tabelaCadastro"
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  value="${sessionScope.formEmpresa.cidadeEmpresa}" />
         </TD>
         <TD class="tabelaCadastro"  style="width:10%" >
           Estado<BR>
           <select name="tipoLogradouroEmpresa" 
+                  <c:if test="${sessionScope.formEmpresa.exclusao}">
+                    disabled
+                  </c:if>
                   class="tabelaCadastro"
                   value="${sessionScope.formEmpresa.estadoEmpresa}">
             <c:forEach var="uf" 
@@ -203,6 +245,9 @@
           CEP: <BR>
           <input type="text" name="cepEmpresa" 
                  class="tabelaCadastro"
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  value="${sessionScope.formEmpresa.cepEmpresa}" />
         </TD>
       </TABLE>
@@ -225,19 +270,24 @@
           Site: <BR>
           <input type="text" name="siteEmpresa" 
                  class="tabelaCadastro"                               
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  value="${sessionScope.formEmpresa.siteEmpresa}" />
         </TD>
         <TD class="tabelaCadastro" style="width: 45%">
           Email: <BR>
           <input type="text" name="emailEmpresa" 
                  class="tabelaCadastro"                               
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  value="${sessionScope.formEmpresa.emailEmpresa}" />
         </TD>
       </TABLE>
       <table class = "tabelaErro">
         <TD class="tabelaErro" style="width:30%" >
-          ${sessionScope.formEmpresa.erroSiteEmpresa}
-          
+          ${sessionScope.formEmpresa.erroSiteEmpresa}          
         </TD>
         <TD class="tabelaErro" style="width:30%" >
           ${sessionScope.formEmpresa.erroEmailEmpresa}
@@ -249,21 +299,33 @@
         <TD class="tabelaCadastro" style="width: 10%">
           DDI: <BR>
           <input type="text" name="ddiEmpresa" class="tabelaCadastro"
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  value="${sessionScope.formEmpresa.ddiEmpresa}" />
         </TD>
         <TD class="tabelaCadastro" style="width: 10%">
           DDD: <BR>
           <input type="text" name="dddEmpresa" class="tabelaCadastro"
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  value="${sessionScope.formEmpresa.dddEmpresa}" />
         </TD>
         <TD class="tabelaCadastro" style="width: 50%">
           Número: <BR>
           <input type="text" name="numeroTelefoneEmpresa" class="tabelaCadastro"
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  value="${sessionScope.formEmpresa.numeroTelefoneEmpresa}" />
         </TD>
         <TD class="tabelaCadastro" style="width: 30%">
           Ramal: <BR>
           <input type="text" name="ramalEmpresa" class="tabelaCadastro"
+                 <c:if test="${sessionScope.formEmpresa.exclusao}">
+                   disabled
+                 </c:if>
                  value="${sessionScope.formEmpresa.ramalEmpresa}" />
         </TD>
       </TABLE>
@@ -284,10 +346,14 @@
       
       <BR><BR>
       <p>
-        <input class="botao" type="submit" value="Salvar" 
-               name="executar"/>
-        <input class="botao" type="submit" value="Excluir" 
-               name="excluir"/>
+        <c:if test="${sessionScope.formEmpresa.exclusao}">
+          <input class="botao" type="submit" value="Excluir" 
+                 name="excluir"/>
+        </c:if>
+        <c:if test="${!sessionScope.formEmpresa.exclusao}">
+          <input class="botao" type="submit" value="Salvar" 
+                 name="executar"/>
+        </c:if>
         <INPUT class="botao" TYPE="submit" value="Cancelar" 
                name="cancelar"/>                
       </p>
