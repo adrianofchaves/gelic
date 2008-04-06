@@ -19,7 +19,7 @@
     <table class="menu">
       <tr>
         <th class="menuItem" >
-          <a href="homeLicitacao.jsp">Voltar</a>
+          <a href="homeComercial.jsp">Voltar</a>
         </th>
         <c:if test="${!sessionScope.formLicitacao.inclusao}">
           <th class="menuItem" >
@@ -29,6 +29,15 @@
         <th class="menuItem" >
           <a href="browserDocumentos.jsp">Documentos</a>
         </th>
+        <th class="menuItem" >
+          <a href="formLote.jsp">Incluir Lote</a>                    
+        </th>
+        <th class="menuItem" >
+         <a href="formItemLote.jsp">Incluir Item de Lote</a>                    
+        </th>
+        <th class="menuItem" >
+         <a href="formProposta.jsp">Cadastrar Proposta</a>                    
+        </th>        
         <th class="menuItem" >
           <a href="homeComercial.jsp">Início</a>
         </th>
