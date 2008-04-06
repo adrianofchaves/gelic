@@ -18,7 +18,7 @@
         
         <table class="menu"><tr>
                 <th class="menuItem" >
-                    <a href="homeLicitacao.jsp">
+                    <a href="homeComercial.jsp">
                     Voltar</a>
                 </th>
                 <th class="menuItem" >

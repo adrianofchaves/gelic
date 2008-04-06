@@ -17,8 +17,12 @@
       <th>GELIC &nbsp;&nbsp;</th>        
     </table>
     <table class="menu">
+        <th class="menuItem" >
+                    <a href="formLicitacao.jsp">Nova Licitação</a>
+                </th>
       <th class="menuItem" >
-        <a href="homeLicitacao.jsp">Licitações</a>
+        <a href="Comercial?comando=CadastroTiposLicitacoes">
+                    Tipos de licitações</a>
       </th>
       <!-- <th class="menuItem" >
                     <a href="homeComercial.jsp">Todas licitações</a>
