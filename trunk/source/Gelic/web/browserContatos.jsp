@@ -13,11 +13,11 @@
     <head>
         <link rel="STYLESHEET" href="estilos.css" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>GELIC--Cadastro de modalidades de licitações</title>          
+        <title>GELIC--Cadastro de contatos</title>          
         <table class="nomeSistema"><th>GELIC &nbsp;&nbsp;</th></table>
         
         <table class="menu"><tr>
-                <th class="menuItem" >
+                <th class="menuItem" >                
                     <a href="formEmpresa.jsp">
                     Voltar</a>
                 </th>
@@ -32,35 +32,28 @@
         </tr></table>        
     </head>
     <body>    
-        <table class="cadastro"><TH class="cadastro">Contatos</TH></TABLE>
+        <table class="cadastro"><TH class="cadastro">
+          ${sessionScope.browserContatos.titulo}
+        </TH></TABLE>
         <table class="cadastro">
             <tr class="cabecalho">
                 <td>Nome</td>
                 <td>Telefone</td>                    
             </tr>
             <c:forEach 
-                var="empresa" 
-                items="${sessionScope.browserEmpresas.empresas}">                
+                var="contato" 
+                items="${sessionScope.browserContatos.contatos}">                
                 <tr class="dados">
                     <td>
-                        <a href="Comercial?comando=AlterarEmpresa&cnpj=${empresa.cnpj}">
-                            ${sistema.nomeFantasia}
+                        <a href="Comercial?comando=AlterarContato&id=${contato.id}">
+                            ${contato.nome}
                         </a>                        
                     </td>                    
                     <td>
-                        ${empresa.cnpj}
-                        27.915.735/0001-00
+                        ${contato.telefone}                        
                     </td>                    
                     <td>
-                        ${empresa.endereco}
-                        Avenida Rio Branco, 45/18ºAndar - Rio de Janeiro - RJ
-                    </td>                    
-                    <td>
-                        ${empresa.telefone}
-                        21 22139300
-                    </td>                    
-                    <td>
-                        <a href="Comercial?comando=ExcluirEmpresa&cnpj=${empresa.cnpj}">
+                        <a href="Comercial?comando=ExcluirContato&id=${contato.id}">
                             <img src="img/trash.PNG"  width="16" height="16" 
                                  alt="trash"/>
                         </a>

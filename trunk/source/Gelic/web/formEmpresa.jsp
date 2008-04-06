@@ -23,7 +23,7 @@
         </th>
         <c:if test="${sessionScope.formEmpresa.alteracao}">
           <th class="menuItem" >
-            <a href="browserContatos.jsp">Contatos</a>
+            <a href="Comercial?comando=CadastroContatos&empresa=${sessionScope.formEmpresa.empresa.cnpj}">Contatos</a>
           </th>
         </c:if>
         <th class="menuItem" >
