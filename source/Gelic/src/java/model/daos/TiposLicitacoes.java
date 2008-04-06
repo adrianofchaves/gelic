@@ -87,12 +87,12 @@ public class TiposLicitacoes {
         pstmt = gelic.prepareStatement(sqlContaTiposLicitacoes);
         rs = pstmt.executeQuery();
         if (rs != null && rs.next()) {
+            quantidadeTipos = rs.getInt(1);
             /*
              * Para aproveitar a conexão no pool é necessário fechar tudo...
              */
             rs.close();
             pstmt.close();
-            quantidadeTipos = rs.getInt(1);
         }
         if (quantidadeTipos < 1) {
             /*
