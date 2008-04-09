@@ -494,7 +494,9 @@ public class FormEmpresa extends Form {
   }
 
   public void valida() {
-    
+     
+    apagaErros();
+     
     if(isExclusao()){
       validaExclusao();
       return;
@@ -503,6 +505,11 @@ public class FormEmpresa extends Form {
      * Valida alteração/inclusão
      */
     /* validar cnpj */
+    if( cnpjEmpresa == null || cnpjEmpresa.isEmpty() ){
+      erroCnpjEmpresa = "Cnpj inválido!";
+      super.addErro("O campo cnpj deve ser preenchido!");
+    }
+    
     /* validar uf */
     /* validar ie */
     /* validar tipoLogradouro */

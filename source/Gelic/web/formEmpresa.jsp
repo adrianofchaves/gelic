@@ -118,11 +118,12 @@
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
-                 name="${sessionScope.formEmpresa.cnpjEmpresa}" />
+                 name = "cnpjEmpresa"
+                 value="${sessionScope.formEmpresa.cnpjEmpresa}" />
         </td>                
         <td class="tabelaCadastro" style="width:30%">
           IE:<BR>
-          <input type="text" class="tabelaCadastro"
+          <input type="text" class="tabelaCadastro" name = "ieEmpresa"
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
@@ -220,7 +221,7 @@
         </TD>
         <TD class="tabelaCadastro"  style="width:30%" >
           Cidade: <BR>
-          <input type="text" name="logradouroEmpresa" 
+          <input type="text" name="cidadeEmpresa" 
                  class="tabelaCadastro"
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
@@ -229,7 +230,7 @@
         </TD>
         <TD class="tabelaCadastro"  style="width:10%" >
           Estado<BR>
-          <select name="tipoLogradouroEmpresa" 
+          <select name="estadoEmpresa" 
                   <c:if test="${sessionScope.formEmpresa.exclusao}">
                     disabled
                   </c:if>

@@ -22,7 +22,7 @@ public class Empresas {
           boolean ePortadorEmpresa, String razaoSocialEmpresa,
           boolean eFornecedorEmpresa, String cnpjEmpresa, String ieEmpresa,
           String imEmpresa) throws SQLException, NamingException {
-    final String sqlAlterar = "update EMPRESAS set CNPJ ?, IE = ?, IM = ?, " +
+    final String sqlAlterar = "update EMPRESAS set CNPJ = ?, IE = ?, IM = ?, " +
             "RAZAOSOCIAL = ?, NOMEFANTASIA = ?, EPORTADOR = ?, " +
             "EFORNECEDOR = ?  where CNPJ = ?";
     Connection gelic = model.services.Conexao.getConnection();
