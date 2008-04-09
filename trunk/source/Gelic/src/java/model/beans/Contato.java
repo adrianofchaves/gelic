@@ -12,6 +12,7 @@ package model.beans;
 public class Contato {
   private String nome;
   private TipoTelefone telefone;
+  private int id;
   
   public Contato(){
     
@@ -31,5 +32,13 @@ public class Contato {
 
   public void setTelefone(TipoTelefone telefone) {
     this.telefone = telefone;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 }

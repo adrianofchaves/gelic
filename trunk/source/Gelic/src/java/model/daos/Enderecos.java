@@ -67,16 +67,13 @@ public class Enderecos {
           TipoTelefone tel) throws SQLException, NamingException {
     final String sqlCalculaId =
             "select gen_id(GEN_ENDERECOS_ID, 1) from rdb$database";
-    final String sqlIncluiEndereco =
-            "insert into ENDERECOS( ID,TIPO, LOGRADOURO, NUMERO, COMPLEMENTO, " +
-            "BAIRRO, MUNICIPIO, UF, CEP, SITE, EMAIL, TELEFONE) " +
-            "values (?,?,?,?,?,?,?,?,?,?,?,?)";
     
     Connection gelic = model.services.Conexao.getConnection();
 
     model.beans.TipoEndereco end = new model.beans.TipoEndereco();
     end.setBairro(bairro);
     end.setCep(cep);
+    end.setUf(estado);
     end.setCidade(cidade);
     end.setComplemento(complemento);
     end.setEmail(email);
@@ -93,11 +90,15 @@ public class Enderecos {
     rs.close();
     pstmt.close();
     
+    final String sqlIncluiEndereco =
+            "insert into ENDERECOS( ID,TIPO, LOGRADOURO, NUMERO, " +
+            "COMPLEMENTO, BAIRRO, MUNICIPIO, UF, CEP, SITE, EMAIL, TELEFONE) " +
+            "values (?,?,?,?,?,?,?,?,?,?,?,?)";
     pstmt = gelic.prepareStatement(sqlIncluiEndereco);
     
     pstmt.setInt(1, end.getId());
     pstmt.setString(2, end.getTipo());
-    pstmt.setString(3, end.getLogradouro());
+    pstmt.setString(3, end.getLogradouro());    
     pstmt.setString(4, end.getNumero());
     pstmt.setString(5, end.getComplemento());
     pstmt.setString(6, end.getBairro());
@@ -105,8 +106,8 @@ public class Enderecos {
     pstmt.setString(8, end.getUf());
     pstmt.setString(9, end.getCep());
     pstmt.setString(10, end.getSite());
-    pstmt.setString(10, end.getEmail());
-    pstmt.setInt(11, end.getTelefone().getId());
+    pstmt.setString(11, end.getEmail());
+    pstmt.setInt(12, end.getTelefone().getId());
     
     pstmt.execute();
     

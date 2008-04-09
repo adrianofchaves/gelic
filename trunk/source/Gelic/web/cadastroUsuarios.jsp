@@ -108,11 +108,14 @@
         </font>
       </P>
       <P>Papel do usuário:<BR>
-        <select name="papelUsuario" class="cadastro" style = "width: 30%"
-                tabindex="${sessionScope.formUsuario.idPapel}" >
+        <select name="papelUsuario" class="cadastro" style = "width: 30%">
           <c:forEach var="papel" 
                      items="${sessionScope.formUsuario.papeis}">
-            <option>${papel.nome}</option>                
+            <option
+              <c:if test="${papel.nome==sessionScope.formUsuario.papelUsuario}">
+                selected
+              </c:if>
+            >${papel.nome}</option>                
           </c:forEach>    
         </select>
         <font class="erroCampo">

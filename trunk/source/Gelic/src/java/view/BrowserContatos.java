@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class BrowserContatos extends Form{
   private ArrayList <model.beans.Contato> contatos;
+  private String origem;
 
   public ArrayList<model.beans.Contato> getContatos() {
     return contatos;
@@ -20,6 +21,14 @@ public class BrowserContatos extends Form{
 
   public void setContatos(ArrayList<model.beans.Contato> contatos) {
     this.contatos = contatos;
+  }
+
+  public String getOrigem() {
+    return origem;
+  }
+
+  public void setOrigem(String origem) {
+    this.origem = origem;
   }
 
 }
