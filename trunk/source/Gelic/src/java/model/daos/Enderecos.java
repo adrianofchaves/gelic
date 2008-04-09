@@ -38,7 +38,7 @@ public class Enderecos {
             "UF = ?, " +
             "CEP = ?,  " +
             "SITE = ?,  " +
-            "EMAIL = ?, " +
+            "EMAIL = ? " +
             "where ID = (SELECT ENDERECO FROM EMPRESAS WHERE CNPJ=?)";
     Connection gelic = model.services.Conexao.getConnection();
     PreparedStatement pstmt = gelic.prepareStatement(sqlAlterarEnderecoEmpresa);

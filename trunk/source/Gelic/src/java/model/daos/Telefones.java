@@ -36,9 +36,9 @@ public class Telefones {
     pstmt.setString(1, ddiEmpresa);
     pstmt.setString(2, dddEmpresa);
     pstmt.setString(3, numeroTelefoneEmpresa);
-    pstmt.setString(3, ramalEmpresa);
+    pstmt.setString(4, ramalEmpresa);
     
-    pstmt.setString(4, empresa.getCnpj());
+    pstmt.setString(5, empresa.getCnpj());
     
     int regs = pstmt.executeUpdate();
     pstmt.close();

@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 public class GravarEmpresa implements Comando {
 
   static final String chaveForm = "formEmpresa";
+  static final String chaveBrowser = "browserEmpresas";
   static final String uriForm = "/formEmpresa.jsp";
   static final String uriBrowser = "/browserEmpresas.jsp";
   static final String msgInclusao = "Nova empresa cadastrada.";
@@ -25,6 +26,9 @@ public class GravarEmpresa implements Comando {
 
   public String executar(HttpServletRequest req) throws ExcecaoComando {
     try {
+      if( req.getParameter("cancelar") != null ){
+        return executaBrowser(req, null);
+      }
       view.FormEmpresa frm = (view.FormEmpresa) req.getSession().getAttribute(
               chaveForm);
       if (frm == null) {
@@ -35,7 +39,7 @@ public class GravarEmpresa implements Comando {
 
       frm.valida();
 
-      if (frm.getErros().size() > 0) {
+      if (frm.temErros()) {
         return uriForm;
       }
       String mensagem = null;
@@ -61,10 +65,8 @@ public class GravarEmpresa implements Comando {
                 frm.getNumeroTelefoneEmpresa(), frm.getRamalEmpresa());
         mensagem = msgAlteracao;
       }
-      view.BrowserEmpresas browser = new view.BrowserEmpresas(
-              model.services.Empresas.recuperar());
-      browser.setMensagem(mensagem);
-      return uriBrowser;
+      
+      return executaBrowser(req, mensagem);
     } catch (NamingException ex) {
       Logger.getLogger(GravarEmpresa.class.getName()).log(
               Level.SEVERE, null, ex);
@@ -74,6 +76,15 @@ public class GravarEmpresa implements Comando {
               Level.SEVERE, null, ex);
       throw new ExcecaoComando(ex.getMessage());
     }
+  }
+
+  private String executaBrowser(HttpServletRequest req, String mensagem) 
+          throws NamingException, SQLException {
+    view.BrowserEmpresas browser = new view.BrowserEmpresas(
+            model.services.Empresas.recuperar());
+    browser.setMensagem(mensagem);
+    req.getSession().setAttribute(chaveBrowser, browser);
+    return uriBrowser;
   }
 
   private void incluiEmpresa(view.FormEmpresa frm) {
@@ -90,7 +101,7 @@ public class GravarEmpresa implements Comando {
 
 
     frm.setRazaoSocialEmpresa(
-            util.Request.getParameter(req, "nomeFantasiaEmpresa"));
+            util.Request.getParameter(req, "razaoSocialEmpresa"));
 
     if (req.getParameter("eFornecedorEmpresa") != null) {
       frm.setEFornecedorEmpresa(true);
