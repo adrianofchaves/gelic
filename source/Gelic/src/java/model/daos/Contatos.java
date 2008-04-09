@@ -20,7 +20,7 @@ import javax.naming.NamingException;
 public class Contatos {
 
   private static final String sqlRecuperarContatosEmpresas =
-          "select  EMPRESA, NOME from  contatos   " +
+          "select  EMPRESA, NOME, ID from  contatos   " +
           "inner join empresas on   (contatos.empresa = empresas.cnpj)";
 
   public static void recuperar(ArrayList<model.beans.Empresa> empresas)
@@ -45,7 +45,9 @@ public class Contatos {
         if( empresa.getContatos() == null ){
           empresa.setContatos(new ArrayList<model.beans.Contato>());
         }
-        empresa.getContatos().add(criaContato(rs.getString("NOME")));
+        empresa.getContatos().add(criaContato(
+                rs.getInt( "ID"),
+                rs.getString("NOME")));
       }
     }
     /*
@@ -56,7 +58,7 @@ public class Contatos {
     gelic.close();
   }
   static final String sqlRecuperaContatosEmpresa =
-          "select NOME from CONTATOS where EMPRESA = ? ";
+          "select ID, NOME from CONTATOS where EMPRESA = ? ";
   static final String sqlContaContatosEmpresa =
           "select count(*) from CONTATOS where EMPRESA = ? ";
   public static void recuperar(model.beans.Empresa empresa) 
@@ -85,7 +87,9 @@ public class Contatos {
     pstmt.setString(1, empresa.getCnpj());
     rs = pstmt.executeQuery();
     while (rs.next() ){
-      contatos.add(criaContato(rs.getString("NOME")));
+      contatos.add(criaContato(
+              rs.getInt("ID"),
+              rs.getString("NOME")));
     }
     /*
      * Para aproveitar a conexão no pool é necessário fechar tudo...
@@ -93,12 +97,13 @@ public class Contatos {
     rs.close();
     pstmt.close();
     gelic.close();
-    
+    empresa.setContatos(contatos);
     
   }
-  private static model.beans.Contato criaContato(String nome ){
+  private static model.beans.Contato criaContato(int id, String nome ){
     model.beans.Contato contato = new model.beans.Contato();
     contato.setNome(nome);
+    contato.setId(id);
     return contato;
   }  
 }

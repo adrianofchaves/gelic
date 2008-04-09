@@ -540,6 +540,6 @@ public class FormEmpresa extends Form {
   }
 
   private void validaExclusao() {
-    throw new UnsupportedOperationException("Not yet implemented");
+    
   }
 }

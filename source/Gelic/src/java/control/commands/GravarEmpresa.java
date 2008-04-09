@@ -44,7 +44,18 @@ public class GravarEmpresa implements Comando {
       }
       String mensagem = null;
       if (frm.isInclusao()) {
-        incluiEmpresa(frm);
+        model.services.Empresas.incluiEmpresa( frm.getNomeFantasiaEmpresa(), 
+                frm.isEPortadorEmpresa(),
+                frm.getRazaoSocialEmpresa(), frm.isEFornecedorEmpresa(),
+                frm.getCnpjEmpresa(), frm.getIeEmpresa(), frm.getImEmpresa(),
+                frm.getTipoLogradouroEmpresa(), frm.getLogradouroEmpresa(),
+                frm.getNumeroEmpresa(), frm.getComplementoEmpresa(),
+                frm.getBairroEmpresa(), frm.getCidadeEmpresa(),
+                frm.getEstadoEmpresa(), frm.getCepEmpresa(), 
+                frm.getSiteEmpresa(), frm.getEmailEmpresa(), 
+                frm.getDdiEmpresa(), frm.getDddEmpresa(),
+                frm.getNumeroTelefoneEmpresa(), frm.getRamalEmpresa()
+                );
         mensagem = msgInclusao;
       }
       if (frm.isExclusao()) {
@@ -87,11 +98,7 @@ public class GravarEmpresa implements Comando {
     return uriBrowser;
   }
 
-  private void incluiEmpresa(view.FormEmpresa frm) {
-    throw new UnsupportedOperationException("Not yet implemented");
-  }
-
-  private void populaForm(view.FormEmpresa frm, HttpServletRequest req) {
+   private void populaForm(view.FormEmpresa frm, HttpServletRequest req) {
 
     frm.setNomeFantasiaEmpresa(
             util.Request.getParameter(req, "nomeFantasiaEmpresa"));

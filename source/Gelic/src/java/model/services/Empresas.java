@@ -27,18 +27,18 @@ public class Empresas {
           String ramalEmpresa) throws SQLException, NamingException {
     Connection gelic = model.services.Conexao.getConnection();
     try {
-      model.beans.TipoTelefone tel = model.daos.Telefones.incluir(ddiEmpresa, 
+      model.beans.TipoTelefone tel = model.daos.Telefones.incluir(ddiEmpresa,
               dddEmpresa, numeroTelefoneEmpresa, ramalEmpresa);
-      
+
       model.beans.TipoEndereco end = model.daos.Enderecos.incluir(
               tipoLogradouroEmpresa, logradouroEmpresa, numeroEmpresa,
               complementoEmpresa, bairroEmpresa, cidadeEmpresa, estadoEmpresa,
               cepEmpresa, siteEmpresa, emailEmpresa, tel);
-      
+
       model.daos.Empresas.incluir(nomeFantasiaEmpresa, ePortadorEmpresa,
               razaoSocialEmpresa, eFornecedorEmpresa, cnpjEmpresa, ieEmpresa,
               imEmpresa, end);
-      
+
       gelic.commit();
       gelic.close();
     } catch (SQLException e) {
@@ -85,8 +85,17 @@ public class Empresas {
 
   }
 
-  public static void excluir(String cnpj) {
-    throw new UnsupportedOperationException("Not yet implemented");
+  public static void excluir(String cnpj) throws SQLException, NamingException {
+    Connection gelic = model.services.Conexao.getConnection();
+    try {
+      model.daos.Empresas.excluir(cnpj);
+      gelic.commit();
+      gelic.close();
+    } catch (SQLException e) {
+      gelic.rollback();
+      gelic.close();
+      throw e;
+    }
   }
 
   public static model.beans.Empresa recuperar(String cnpj)

@@ -51,6 +51,16 @@ public class Empresas {
     return regs;
   }
 
+  public static int excluir(String cnpj) throws SQLException, NamingException {
+    final String sqlExcluiEmpresa = "delete from EMPRESAS where CNPJ = ?";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlExcluiEmpresa);
+    pstmt.setString(1, cnpj);
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
+  }
+
   public static int incluir(String nomeFantasiaEmpresa, 
           boolean ePortadorEmpresa, String razaoSocialEmpresa, 
           boolean eFornecedorEmpresa, String cnpjEmpresa, String ieEmpresa, 
@@ -58,7 +68,7 @@ public class Empresas {
           throws SQLException, NamingException {
     final String sqlIncluir = "insert into EMPRESAS(CNPJ, IE, IM, " +
             "RAZAOSOCIAL, NOMEFANTASIA, EPORTADOR, EFORNECEDOR, ENDERECO) " +
-            "values (?, ?, ?, ?, ?, ?, ?)";
+            "values (?, ?, ?, ?, ?, ?, ?, ?)";
     Connection gelic = model.services.Conexao.getConnection();
     PreparedStatement pstmt = gelic.prepareStatement(sqlIncluir);
     
@@ -75,7 +85,7 @@ public class Empresas {
       pstmt.setBoolean(7, true);
     else
       pstmt.setBoolean(7, false);
-    pstmt.setInt(5, end.getId());
+    pstmt.setInt(8, end.getId());
     
     int regs = pstmt.executeUpdate();
     

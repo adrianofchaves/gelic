@@ -15,9 +15,10 @@ import view.FormEmpresa;
 public class CadastroContatos implements Comando{
 
   public String executar(HttpServletRequest req) throws ExcecaoComando {
-    final String comandoEmpresa = "empresa";
-    final String uriBrowserContatos = "/browserContatos.jsp";
-    
+    final String comandoEmpresa = "empresa";    
+    final String chaveBrowser = "browserContatos";
+    final String uriBrowserContatos = "/" + chaveBrowser + ".jsp";
+    final String formEmpresa = "formEmpresa.jsp";
     String comando;
     comando = util.Request.getParameter(req, comandoEmpresa );
     if( comando != null && !comando.isEmpty()){
@@ -28,9 +29,13 @@ public class CadastroContatos implements Comando{
               req.getSession().getAttribute("formEmpresa");
       
       view.BrowserContatos browser = new view.BrowserContatos();
+      
       browser.setTitulo("Contatos da empresa \"" + 
               frm.getEmpresa().getNomeFantasia() + "\"");
       browser.setContatos(frm.getEmpresa().getContatos());
+      browser.setOrigem(formEmpresa);
+      
+      req.getSession().setAttribute(chaveBrowser, browser);
       
       return uriBrowserContatos;      
     }

@@ -27,7 +27,7 @@
           </th>
         </c:if>
         <th class="menuItem" >
-          <a href="homeAdministrador.jsp">Início</a>
+          <a href="homeComercial.jsp">Início</a>
         </th>
         <th class="menuItem" >
           <a href="Gelic?comando=Logout">Trocar usuário</a>                    
@@ -163,7 +163,11 @@
                   value="${sessionScope.formEmpresa.tipoLogradouroEmpresa}">                  
             <c:forEach var="tipoLogradouro" 
                        items="${sessionScope.formEmpresa.tiposLogradouros}">
-              <option>${tipoLogradouro}</option>
+              <option
+                <c:if test="${tipoLogradouro==sessionScope.formEmpresa.tipoLogradouroEmpresa}">
+                selected 
+                </c:if>
+                >${tipoLogradouro}</option>
             </c:forEach>      
           </select>                        
         </TD>
@@ -212,7 +216,7 @@
       <table class = "tabelaCadastro">
         <TD class="tabelaCadastro"  style="width:30%" >
           Bairro: <BR>
-          <input type="text" name="logradouroEmpresa" 
+          <input type="text" name="bairroEmpresa" 
                  class="tabelaCadastro"
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
@@ -236,9 +240,13 @@
                   </c:if>
                   class="tabelaCadastro"
                   value="${sessionScope.formEmpresa.estadoEmpresa}">
-            <c:forEach var="uf" 
-                       items="${sessionScope.formEmpresa.ufs}">
-              <option>${uf}</option>
+            <c:forEach var="uf"  
+                       items="${sessionScope.formEmpresa.ufs}">              
+              <option
+                <c:if test="${uf==sessionScope.formEmpresa.estadoEmpresa}">
+                  selected
+                </c:if>
+                >${uf}</option>
             </c:forEach>            
           </select>
         </TD>

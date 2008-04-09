@@ -10,108 +10,60 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
-    <head>
-        <link rel="STYLESHEET" href="estilos.css" type="text/css">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>GELIC--Cadastro de contatos</title>          
-        <table class="nomeSistema"><th>GELIC &nbsp;&nbsp;</th></table>
-        
-        <table class="menu"><tr>
-                <th class="menuItem" >                
-                    <a href="formEmpresa.jsp">
-                    Voltar</a>
-                </th>
-                <th class="menuItem" >
-                    <a href="Gelic?comando=NovaContato">
-                    Novo contato</a>                    
-                </th>
-                <th class="menuItem" >
-                    <a href="Gelic?comando=Logout">
-                    Trocar usuário</a>                    
-                </th>
-        </tr></table>        
-    </head>
-    <body>    
-        <table class="cadastro"><TH class="cadastro">
-          ${sessionScope.browserContatos.titulo}
-        </TH></TABLE>
-        <table class="cadastro">
-            <tr class="cabecalho">
-                <td>Nome</td>
-                <td>Telefone</td>                    
-            </tr>
-            <c:forEach 
-                var="contato" 
-                items="${sessionScope.browserContatos.contatos}">                
-                <tr class="dados">
-                    <td>
-                        <a href="Comercial?comando=AlterarContato&id=${contato.id}">
-                            ${contato.nome}
-                        </a>                        
-                    </td>                    
-                    <td>
-                        ${contato.telefone}                        
-                    </td>                    
-                    <td>
-                        <a href="Comercial?comando=ExcluirContato&id=${contato.id}">
-                            <img src="img/trash.PNG"  width="16" height="16" 
-                                 alt="trash"/>
-                        </a>
-                    </td>
-                </tr>
-            </c:forEach>
-            
-            <tr class="dados">
-                <td>
-                    <a href="formContato.jsp">
-                        Adriano Fernandes Chaves
-                    </a>                        
-                </td>                    
-                <td>                        
-                    55 21 22139300
-                </td>                    
-                <td>
-                    <a href="Comercial?comando=ExcluirEmpresa&cnpj=${empresa.cnpj}">
-                        <img src="img/trash.PNG"  width="16" height="16" 
-                             alt="trash"/>
-                    </a>
-                </td>
-            </tr>
-            <tr class="dados">
-                <td>
-                    <a href="formContato.jsp">
-                        Adriano Fernandes Chaves
-                    </a>                        
-                </td>                    
-                <td>                        
-                    55 21 22139300
-                </td>                    
-                <td>
-                    <a href="Comercial?comando=ExcluirEmpresa&cnpj=${empresa.cnpj}">
-                        <img src="img/trash.PNG"  width="16" height="16" 
-                             alt="trash"/>
-                    </a>
-                </td>
-            </tr>
-            <tr class="dados">
-                <td>
-                    <a href="formContato.jsp">
-                        Adriano Fernandes Chaves
-                    </a>                        
-                </td>                    
-                <td>                        
-                    55 21 22139300
-                </td>                    
-                <td>
-                    <a href="Comercial?comando=ExcluirEmpresa&cnpj=${empresa.cnpj}">
-                        <img src="img/trash.PNG"  width="16" height="16" 
-                             alt="trash"/>
-                    </a>
-                </td>
-            </tr>
-        </table>        
-        <font class="mensagem">
-            <P>${sessionScope.browserModalidades.mensagem}</P>
-        </font>
-    </body>
+  <head>
+    <link rel="STYLESHEET" href="estilos.css" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>GELIC--Cadastro de contatos</title>          
+    <table class="nomeSistema"><th>GELIC &nbsp;&nbsp;</th></table>
+    
+    <table class="menu"><tr>
+        <th class="menuItem" >                
+        <a href="${sessionScope.browserContatos.origem}">
+          Voltar</a>
+        </th>
+        <th class="menuItem" >
+          <a href="Comercial?comando=NovoContato">
+          Novo contato</a>                    
+        </th>
+        <th class="menuItem" >
+          <a href="Gelic?comando=Logout">
+          Trocar usuário</a>                    
+        </th>
+    </tr></table>        
+  </head>
+  <body>    
+    <table class="cadastro"><TH class="cadastro">
+        ${sessionScope.browserContatos.titulo}
+    </TH></TABLE>
+    <table class="cadastro">
+      <tr class="cabecalho">
+        <td>Nome</td>
+        <td>Telefone</td>                    
+      </tr>
+      
+      <c:forEach 
+        var="contato" 
+        items="${sessionScope.browserContatos.contatos}">                
+        <tr class="dados">
+          <td>
+            <a href="Comercial?comando=AlterarContato&id=${contato.id}">
+              ${contato.nome}
+            </a>                        
+          </td>                    
+          <td>
+            ${contato.telefone}                        
+          </td>                    
+          <td>
+            <a href="Comercial?comando=ExcluirContato&id=${contato.id}">
+              <img src="img/trash.PNG"  width="16" height="16" 
+                   alt="trash"/>
+            </a>
+          </td>
+        </tr>
+      </c:forEach>      
+    </table>        
+    <font class="mensagem">
+      <P>${sessionScope.browserModalidades.mensagem}</P>
+    </font>
+  </body>
 </html>
