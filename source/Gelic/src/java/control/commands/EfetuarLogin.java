@@ -77,7 +77,7 @@ public class EfetuarLogin implements Comando {
             case model.beans.Usuario.ANALISTA:
                 return "homeAnalista.jsp";
             case model.beans.Usuario.COMERCIAL:
-                return "homeComercial.jsp";
+                return control.Licitacoes.preparaBrowser(req);                        
             case model.beans.Usuario.FINANCEIRO:
                 return "homeFinanceiro.jsp";
             case model.beans.Usuario.GERENTECOMERCIAL:
