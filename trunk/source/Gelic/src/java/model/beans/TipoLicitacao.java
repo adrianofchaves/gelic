@@ -11,6 +11,13 @@ public class TipoLicitacao {
     // </editor-fold> 
     private String nome;
     private String sigla;
+    private int id;
+
+  public TipoLicitacao(String nome, String sigla, int id) {
+    this.nome = nome;
+    this.sigla = sigla;
+    this.id = id;
+  }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.840F2D76-51E7-E850-261A-9FFE3693974F]
@@ -39,6 +46,14 @@ public class TipoLicitacao {
     public void setSigla(String sigla) {
         this.sigla = sigla;
     }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
 
 }
 

@@ -4,227 +4,304 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 public class Licitacao {
-    
-    private int tipolicitacao;
-    private String numero;
-    private int ano;
-    private model.beans.Modalidade modalidade;
-    private int sistema;
-    private String orgao;
-    private String numeroProcesso;
-    private String objeto;
-    private Date dataDocumentacao;
-    private Date dataProposta;
-    private Date dataRealizacao;
-    private int diasValidadeProposta;
-    private int diasPrazoEntrega;
-    private int diasPrazoPagamento;
-    private int diasVigencia;
-    private int anosPrazoGarantia;
-    private boolean pedeAmostra;
-    private String termosAmostra;
-    private boolean pedeGarantia;
-    private String termosGarantia;
-    private boolean preveMulta;
-    private String termosMulta;
-    private int status;
-    private ArrayList<Lote> mLote;
-    
-    
-    public Licitacao () {
-    }
 
-    public int getTipolicitacao() {
-        return tipolicitacao;
-    }
+  private int id;
+  private int idTipoLicitacao;
+  private TipoLicitacao tipoLicitacao;
+  private String numero;
+  private int ano;
+  private int idModalidade;
+  private model.beans.Modalidade modalidade;
+  private int idSistema;
+  private Sistema sistema;
+  private String idorgao;
+  private Orgao orgao;
+  private String numeroProcesso;
+  private String objeto;
+  private Date dataDocumentacao;
+  private Date dataProposta;
+  private Date dataRealizacao;
+  private int diasValidadeProposta;
+  private int diasPrazoEntrega;
+  private int diasPrazoPagamento;
+  private int diasVigencia;
+  private int anosPrazoGarantia;
+  private boolean pedeAmostra;
+  private String termosAmostra;
+  private boolean pedeGarantia;
+  private String termosGarantia;
+  private boolean preveMulta;
+  private String termosMulta;
+  private int status;
+  private ArrayList<Lote> mLote;
 
-    public void setTipolicitacao(int tipolicitacao) {
-        this.tipolicitacao = tipolicitacao;
-    }
+  public Licitacao() {
 
-    public String getNumero() {
-        return numero;
-    }
+  }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
+  public Licitacao(int id, int idTipoLicitacao, String numero, int ano, 
+          int idModalidade, String idorgao, String numeroProcesso, 
+          String objeto, Date dataDocumentacao, Date dataProposta, 
+          Date dataRealizacao, int diasValidadeProposta, int diasPrazoEntrega, 
+          int diasPrazoPagamento, int diasVigencia, int anosPrazoGarantia, 
+          boolean pedeAmostra, String termosAmostra, boolean pedeGarantia, 
+          String termosGarantia, boolean preveMulta, String termosMulta, 
+          int status) {
+    this.id = id;
+    this.idTipoLicitacao = idTipoLicitacao;
+    this.numero = numero;
+    this.ano = ano;
+    this.idModalidade = idModalidade;
+    this.idorgao = idorgao;
+    this.numeroProcesso = numeroProcesso;
+    this.objeto = objeto;
+    this.dataDocumentacao = dataDocumentacao;
+    this.dataProposta = dataProposta;
+    this.dataRealizacao = dataRealizacao;
+    this.diasValidadeProposta = diasValidadeProposta;
+    this.diasPrazoEntrega = diasPrazoEntrega;
+    this.diasPrazoPagamento = diasPrazoPagamento;
+    this.diasVigencia = diasVigencia;
+    this.anosPrazoGarantia = anosPrazoGarantia;
+    this.pedeAmostra = pedeAmostra;
+    this.termosAmostra = termosAmostra;
+    this.pedeGarantia = pedeGarantia;
+    this.termosGarantia = termosGarantia;
+    this.preveMulta = preveMulta;
+    this.termosMulta = termosMulta;
+    this.status = status;
+  }
 
-    public int getAno() {
-        return ano;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public model.beans.Modalidade getModalidade() {
-        return modalidade;
-    }
+  public String getNumero() {
+    return numero;
+  }
 
-    public void setModalidade(model.beans.Modalidade modalidade) {
-        this.modalidade = modalidade;
-    }
+  public void setNumero(String numero) {
+    this.numero = numero;
+  }
 
-    public int getSistema() {
-        return sistema;
-    }
+  public int getAno() {
+    return ano;
+  }
 
-    public void setSistema(int sistema) {
-        this.sistema = sistema;
-    }
+  public void setAno(int ano) {
+    this.ano = ano;
+  }
 
-    public String getOrgao() {
-        return orgao;
-    }
+  public int getIdModalidade() {
+    return idModalidade;
+  }
 
-    public void setOrgao(String orgao) {
-        this.orgao = orgao;
-    }
+  public void setIdModalidade(int idModalidade) {
+    this.idModalidade = idModalidade;
+  }
 
-    public String getNumeroProcesso() {
-        return numeroProcesso;
-    }
+  public model.beans.Modalidade getModalidade() {
+    return modalidade;
+  }
 
-    public void setNumeroProcesso(String numeroProcesso) {
-        this.numeroProcesso = numeroProcesso;
-    }
+  public void setModalidade(model.beans.Modalidade modalidade) {
+    this.modalidade = modalidade;
+  }
 
-    public String getObjeto() {
-        return objeto;
-    }
+  public int getIdSistema() {
+    return idSistema;
+  }
 
-    public void setObjeto(String objeto) {
-        this.objeto = objeto;
-    }
+  public void setIdSistema(int idSistema) {
+    this.idSistema = idSistema;
+  }
 
-    public Date getDataDocumentacao() {
-        return dataDocumentacao;
-    }
+  public Sistema getSistema() {
+    return sistema;
+  }
 
-    public void setDataDocumentacao(Date dataDocumentacao) {
-        this.dataDocumentacao = dataDocumentacao;
-    }
+  public void setSistema(Sistema sistema) {
+    this.sistema = sistema;
+  }
 
-    public Date getDataProposta() {
-        return dataProposta;
-    }
+  public String getIdorgao() {
+    return idorgao;
+  }
 
-    public void setDataProposta(Date dataProposta) {
-        this.dataProposta = dataProposta;
-    }
+  public void setIdorgao(String idorgao) {
+    this.idorgao = idorgao;
+  }
 
-    public Date getDataRealizacao() {
-        return dataRealizacao;
-    }
+  public Orgao getOrgao() {
+    return orgao;
+  }
 
-    public void setDataRealizacao(Date dataRealizacao) {
-        this.dataRealizacao = dataRealizacao;
-    }
+  public void setOrgao(Orgao orgao) {
+    this.orgao = orgao;
+  }
 
-    public int getDiasValidadeProposta() {
-        return diasValidadeProposta;
-    }
+  public String getNumeroProcesso() {
+    return numeroProcesso;
+  }
 
-    public void setDiasValidadeProposta(int diasValidadeProposta) {
-        this.diasValidadeProposta = diasValidadeProposta;
-    }
+  public void setNumeroProcesso(String numeroProcesso) {
+    this.numeroProcesso = numeroProcesso;
+  }
 
-    public int getDiasPrazoEntrega() {
-        return diasPrazoEntrega;
-    }
+  public String getObjeto() {
+    return objeto;
+  }
 
-    public void setDiasPrazoEntrega(int diasPrazoEntrega) {
-        this.diasPrazoEntrega = diasPrazoEntrega;
-    }
+  public void setObjeto(String objeto) {
+    this.objeto = objeto;
+  }
 
-    public int getDiasPrazoPagamento() {
-        return diasPrazoPagamento;
-    }
+  public Date getDataDocumentacao() {
+    return dataDocumentacao;
+  }
 
-    public void setDiasPrazoPagamento(int diasPrazoPagamento) {
-        this.diasPrazoPagamento = diasPrazoPagamento;
-    }
+  public void setDataDocumentacao(Date dataDocumentacao) {
+    this.dataDocumentacao = dataDocumentacao;
+  }
 
-    public int getDiasVigencia() {
-        return diasVigencia;
-    }
+  public Date getDataProposta() {
+    return dataProposta;
+  }
 
-    public void setDiasVigencia(int diasVigencia) {
-        this.diasVigencia = diasVigencia;
-    }
+  public void setDataProposta(Date dataProposta) {
+    this.dataProposta = dataProposta;
+  }
 
-    public int getAnosPrazoGarantia() {
-        return anosPrazoGarantia;
-    }
+  public Date getDataRealizacao() {
+    return dataRealizacao;
+  }
 
-    public void setAnosPrazoGarantia(int anosPrazoGarantia) {
-        this.anosPrazoGarantia = anosPrazoGarantia;
-    }
+  public void setDataRealizacao(Date dataRealizacao) {
+    this.dataRealizacao = dataRealizacao;
+  }
 
-    public boolean isPedeAmostra() {
-        return pedeAmostra;
-    }
+  public int getDiasValidadeProposta() {
+    return diasValidadeProposta;
+  }
 
-    public void setPedeAmostra(boolean pedeAmostra) {
-        this.pedeAmostra = pedeAmostra;
-    }
+  public void setDiasValidadeProposta(int diasValidadeProposta) {
+    this.diasValidadeProposta = diasValidadeProposta;
+  }
 
-    public String getTermosAmostra() {
-        return termosAmostra;
-    }
+  public int getDiasPrazoEntrega() {
+    return diasPrazoEntrega;
+  }
 
-    public void setTermosAmostra(String termosAmostra) {
-        this.termosAmostra = termosAmostra;
-    }
+  public void setDiasPrazoEntrega(int diasPrazoEntrega) {
+    this.diasPrazoEntrega = diasPrazoEntrega;
+  }
 
-    public boolean isPedeGarantia() {
-        return pedeGarantia;
-    }
+  public int getDiasPrazoPagamento() {
+    return diasPrazoPagamento;
+  }
 
-    public void setPedeGarantia(boolean pedeGarantia) {
-        this.pedeGarantia = pedeGarantia;
-    }
+  public void setDiasPrazoPagamento(int diasPrazoPagamento) {
+    this.diasPrazoPagamento = diasPrazoPagamento;
+  }
 
-    public String getTermosGarantia() {
-        return termosGarantia;
-    }
+  public int getDiasVigencia() {
+    return diasVigencia;
+  }
 
-    public void setTermosGarantia(String termosGarantia) {
-        this.termosGarantia = termosGarantia;
-    }
+  public void setDiasVigencia(int diasVigencia) {
+    this.diasVigencia = diasVigencia;
+  }
 
-    public boolean isPreveMulta() {
-        return preveMulta;
-    }
+  public int getAnosPrazoGarantia() {
+    return anosPrazoGarantia;
+  }
 
-    public void setPreveMulta(boolean preveMulta) {
-        this.preveMulta = preveMulta;
-    }
+  public void setAnosPrazoGarantia(int anosPrazoGarantia) {
+    this.anosPrazoGarantia = anosPrazoGarantia;
+  }
 
-    public String getTermosMulta() {
-        return termosMulta;
-    }
+  public boolean isPedeAmostra() {
+    return pedeAmostra;
+  }
 
-    public void setTermosMulta(String termosMulta) {
-        this.termosMulta = termosMulta;
-    }
+  public void setPedeAmostra(boolean pedeAmostra) {
+    this.pedeAmostra = pedeAmostra;
+  }
 
-    public int getStatus() {
-        return status;
-    }
+  public String getTermosAmostra() {
+    return termosAmostra;
+  }
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
+  public void setTermosAmostra(String termosAmostra) {
+    this.termosAmostra = termosAmostra;
+  }
 
-    public ArrayList<Lote> getMLote() {
-        return mLote;
-    }
+  public boolean isPedeGarantia() {
+    return pedeGarantia;
+  }
 
-    public void setMLote(ArrayList<Lote> mLote) {
-        this.mLote = mLote;
-    }
+  public void setPedeGarantia(boolean pedeGarantia) {
+    this.pedeGarantia = pedeGarantia;
+  }
 
+  public String getTermosGarantia() {
+    return termosGarantia;
+  }
+
+  public void setTermosGarantia(String termosGarantia) {
+    this.termosGarantia = termosGarantia;
+  }
+
+  public boolean isPreveMulta() {
+    return preveMulta;
+  }
+
+  public void setPreveMulta(boolean preveMulta) {
+    this.preveMulta = preveMulta;
+  }
+
+  public String getTermosMulta() {
+    return termosMulta;
+  }
+
+  public void setTermosMulta(String termosMulta) {
+    this.termosMulta = termosMulta;
+  }
+
+  public int getStatus() {
+    return status;
+  }
+
+  public void setStatus(int status) {
+    this.status = status;
+  }
+
+  public ArrayList<Lote> getMLote() {
+    return mLote;
+  }
+
+  public void setMLote(ArrayList<Lote> mLote) {
+    this.mLote = mLote;
+  }
+
+  public int getIdTipoLicitacao() {
+    return idTipoLicitacao;
+  }
+
+  public void setIdTipoLicitacao(int idTipoLicitacao) {
+    this.idTipoLicitacao = idTipoLicitacao;
+  }
+
+  public TipoLicitacao getTipoLicitacao() {
+    return tipoLicitacao;
+  }
+
+  public void setTipoLicitacao(TipoLicitacao tipoLicitacao) {
+    this.tipoLicitacao = tipoLicitacao;
+  }
 }
 

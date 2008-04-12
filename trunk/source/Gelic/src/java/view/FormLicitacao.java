@@ -46,10 +46,10 @@ public class FormLicitacao extends Form {
         if (getLicitacao() == null) {
             return;
         }
-        setTipoLicitacaoLicitacao(licitacao.getTipolicitacao());
+        //setTipoLicitacaoLicitacao(licitacao.getTipolicitacao());
         setNumeroLicitacao(licitacao.getNumero());
         setAnoLicitacao(licitacao.getAno());
-        setOrgaoLicitacao(licitacao.getOrgao());
+        //setOrgaoLicitacao(licitacao.getOrgao());
         setObjetoLicitacao(licitacao.getObjeto());
     }
 

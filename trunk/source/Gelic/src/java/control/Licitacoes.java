@@ -19,10 +19,11 @@ public class Licitacoes {
         view.BrowserLicitacoes browser =
                 new view.BrowserLicitacoes(
                 model.services.Licitacoes.recuperar());
-        if( (browser.getLicitacoes() == null) || (browser.getLicitacoes().isEmpty())){
+        if( (browser.getLicitacoes() == null) || 
+                (browser.getLicitacoes().isEmpty())){
             return preparaCadastro(req);
         }
-        req.getSession().setAttribute("BrowserLicitacoes", browser);
+        req.getSession().setAttribute("browserLicitacoes", browser);
         return "/homeComercial.jsp";
 
     }
