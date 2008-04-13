@@ -24,7 +24,7 @@ public class Sistemas {
     final static String sqlContaModalidades =
             "select count(*) from SISTEMAS";
     final static String sqlRecuperaSistemas =
-            "select NOME from SISTEMAS";
+            "select ID, NOME from SISTEMAS";
 
     static public int incluir(String nome)
             throws SQLException, NamingException {
@@ -61,13 +61,6 @@ public class Sistemas {
         return buffer;
     }
 
-    static private model.beans.Sistema criaSistema(String nome) {
-        model.beans.Sistema sistema = new model.beans.Sistema();
-
-        sistema.setNome(nome);
-
-        return sistema;
-    }
 
     static public ArrayList<model.beans.Sistema> recuperar()
             throws SQLException, NamingException {
@@ -106,7 +99,8 @@ public class Sistemas {
                         quantidadeSistemas);
             }
 
-            sistemas.add(criaSistema(rs.getString("NOME")));
+            sistemas.add(new model.beans.Sistema( rs.getString("NOME"),
+                    rs.getInt("ID")));
         }
         /*
          * Para aproveitar a conexão no pool é necessário fechar tudo...

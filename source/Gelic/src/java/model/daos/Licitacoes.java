@@ -178,6 +178,7 @@ public class Licitacoes {
     String numero = rs.getString("NUMERO");
     int ano = rs.getInt("ANO");
     int idModalidade = rs.getInt("MODALIDADE");
+    int idSistema = rs.getInt("SISTEMA");
     String idorgao = rs.getString("ORGAO");
     String numeroProcesso = rs.getString("NUMEROPROCESSO");
     String objeto = rs.getString("OBJETO");
@@ -201,11 +202,12 @@ public class Licitacoes {
     int status = rs.getInt("STATUS");
 
     licitacao = new model.beans.Licitacao(id, idTipoLicitacao, numero, ano, 
-            idModalidade, idorgao, numeroProcesso, objeto, dataDocumentacao, 
-            dataProposta, dataRealizacao, diasValidadeProposta, 
-            diasPrazoEntrega, diasPrazoPagamento, diasVigencia, 
-            anosPrazoGarantia, pedeAmostra, termosAmostra, pedeGarantia, 
-            termosGarantia, preveMulta, termosMulta, status);
+            idModalidade, idSistema, idorgao, numeroProcesso, objeto, 
+            dataDocumentacao,  dataProposta, dataRealizacao, 
+            diasValidadeProposta, diasPrazoEntrega, diasPrazoPagamento, 
+            diasVigencia, anosPrazoGarantia, pedeAmostra, termosAmostra, 
+            pedeGarantia, termosGarantia, preveMulta, termosMulta, status);
+    
     return licitacao;
   }
 }

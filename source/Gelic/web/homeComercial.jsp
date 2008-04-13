@@ -56,7 +56,7 @@
       <tr class = "cabecalho">
         <td>Licitação</td>
         <td>Processo</td>
-        <td>Ano</td>
+        <td>Sistema</td>
         <td>Órgão</td>
         <td>Objeto</td>
         <td> </td>
@@ -67,17 +67,18 @@
         <tr class="dados">
           <td>
             <a href="Comercial?comando=AlterarLicitacao&numero=${licitacao.numero}">
-              ${licitacao.tipoLicitacao.sigla} ${licitacao.numero}
+              ${licitacao.tipoLicitacao.sigla}
+              ${licitacao.numero}/${licitacao.ano}
             </a>
           </td>
           <td>
             ${licitacao.numeroProcesso}
           </td>
           <td>
-            ${licitacao.ano}
+            ${licitacao.sistema.nome}
           </td>
           <td>
-            ${licitacao.orgao}
+            ${licitacao.orgao.apelido}
           </td>
           <td>
             ${licitacao.objeto}

@@ -46,7 +46,8 @@ public class Licitacoes {
     ArrayList<model.beans.Licitacao> licitacoes = 
             model.daos.Licitacoes.recuperar();
     model.services.TiposLicitacoes.recuperar(licitacoes);
-        
+    model.daos.Orgaos.recuperar( licitacoes );   
+    model.services.Sistemas.recuperar(licitacoes);
     return licitacoes;
   }
 

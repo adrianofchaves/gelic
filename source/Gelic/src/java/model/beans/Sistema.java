@@ -11,6 +11,12 @@ package model.beans;
  */
 public class Sistema {
     private String nome;
+    private int id;
+
+  public Sistema(String nome, int id) {
+    this.nome = nome;
+    this.id = id;
+  }
     
     public Sistema(){
         
@@ -22,6 +28,14 @@ public class Sistema {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
     
 
 }

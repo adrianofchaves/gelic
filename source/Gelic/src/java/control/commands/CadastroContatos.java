@@ -18,7 +18,7 @@ public class CadastroContatos implements Comando{
     final String comandoEmpresa = "empresa";    
     final String chaveBrowser = "browserContatos";
     final String uriBrowserContatos = "/" + chaveBrowser + ".jsp";
-    final String formEmpresa = "formEmpresa.jsp";
+    
     String comando;
     comando = util.Request.getParameter(req, comandoEmpresa );
     if( comando != null && !comando.isEmpty()){
@@ -29,11 +29,12 @@ public class CadastroContatos implements Comando{
               req.getSession().getAttribute("formEmpresa");
       
       view.BrowserContatos browser = new view.BrowserContatos();
-      
+      browser.setOrigem(frm);
       browser.setTitulo("Contatos da empresa \"" + 
               frm.getEmpresa().getNomeFantasia() + "\"");
       browser.setContatos(frm.getEmpresa().getContatos());
-      browser.setOrigem(formEmpresa);
+      browser.setOrigem(frm);
+      browser.setNome(uriBrowserContatos);
       
       req.getSession().setAttribute(chaveBrowser, browser);
       

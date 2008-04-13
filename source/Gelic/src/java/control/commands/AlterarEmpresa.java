@@ -30,8 +30,10 @@ public class AlterarEmpresa implements Comando {
       frm.setTitulo("Alterando empresa");
       frm.setUfs(control.UFs.getUFs(req));
       frm.setTiposLogradouros(control.Enderecos.getTiposLogradouros(req));
+      frm.setNome("formEmpresa.jsp");
+      
       req.getSession().setAttribute("formEmpresa", frm);
-      return "/formEmpresa.jsp";
+      return frm.getNome();
     } catch (SQLException ex) {
       Logger.getLogger(AlterarEmpresa.class.getName()).log(
               Level.SEVERE, null, ex);
