@@ -19,6 +19,15 @@ public class TipoTelefone {
       }
       return getDdi() + " " + getDdd() + " " + getTelefone();
     }
+
+  public TipoTelefone(int id, String ddi, String ddd, String telefone, 
+          String ramal) {
+    this.id = id;
+    this.ddi = ddi;
+    this.ddd = ddd;
+    this.telefone = telefone;
+    this.ramal = ramal;
+  }
     
     private int id;
 

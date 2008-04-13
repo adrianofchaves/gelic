@@ -18,7 +18,7 @@
     
     <table class="menu"><tr>
         <th class="menuItem" >                
-        <a href="${sessionScope.browserContatos.origem}">
+        <a href="${sessionScope.browserContatos.origem.nome}">
           Voltar</a>
         </th>
         <th class="menuItem" >

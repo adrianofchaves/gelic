@@ -1,5 +1,7 @@
 package model.beans;
 
+import java.util.ArrayList;
+
 
 /**
  *  <p style="margin-top: 0">
@@ -10,6 +12,7 @@ package model.beans;
 // #[regen=yes,id=DCE.BCBEDA24-3258-895B-6ABA-2FB01F80EE75]
 // </editor-fold> 
 public class Orgao {
+    private ArrayList<model.beans.Contato> contatos;
 
     /**
      *  <p style="margin-top: 0">
@@ -51,31 +54,7 @@ public class Orgao {
     // </editor-fold> 
     private String ie;
 
-    /**
-     *  <p style="margin-top: 0">
-     *    Telefone do &#243;rg&#227;o p&#250;blico.
-     *      </p>
-     */
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.2B97C62F-2479-3A45-C687-F49A31237607]
-    // </editor-fold> 
-    private TipoTelefone telefone;
-
-    /**
-     *  <p style="margin-top: 0">
-     *    Nome da pessoa de contato no &#243;rg&#227;o p&#250;blico.
-     *      </p>
-     */
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.B65682E5-666B-1AD6-6D48-DCA8542D4FD0]
-    // </editor-fold> 
-    private String contato;
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.D0136B10-C587-3E13-59DE-E350FBCEBB77]
-    // </editor-fold> 
-    private String numero;
-
+    private int idEndereco;
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.D165704F-BEFB-A53B-95B1-310F9237A24A]
     // </editor-fold> 
@@ -86,6 +65,15 @@ public class Orgao {
     // </editor-fold> 
     public Orgao () {
     }
+
+  public Orgao(String razaoSocial, String apelido, String cnpj, String ie, 
+          int idEndereco) {
+    this.razaoSocial = razaoSocial;
+    this.apelido = apelido;
+    this.cnpj = cnpj;
+    this.ie = ie;
+    this.idEndereco = idEndereco;
+  }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.1FB80F18-F010-5331-5B0E-F4F6837BD967]
@@ -115,19 +103,6 @@ public class Orgao {
         this.cnpj = val;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.3CFB5C3B-1FC8-83E5-B87B-28D5E36B1F31]
-    // </editor-fold> 
-    public String getContato () {
-        return contato;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.3FF63249-75F5-0752-0023-76B8C1FE4A1D]
-    // </editor-fold> 
-    public void setContato (String val) {
-        this.contato = val;
-    }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.8AF38383-69DE-BA67-B736-9EB867600326]
@@ -158,20 +133,6 @@ public class Orgao {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.C0723DEE-4B6B-29B5-D24C-69624FA79516]
-    // </editor-fold> 
-    public String getNumero () {
-        return numero;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.4A9F386E-B8A7-B2B1-A56E-E5DB44BDB5A1]
-    // </editor-fold> 
-    public void setNumero (String val) {
-        this.numero = val;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.91607366-819F-3E81-7DBA-6E1970358F5C]
     // </editor-fold> 
     public String getRazaoSocial () {
@@ -185,19 +146,23 @@ public class Orgao {
         this.razaoSocial = val;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.DD5EF47C-6579-38BF-0A35-677F81D78329]
-    // </editor-fold> 
-    public TipoTelefone getTelefone () {
-        return telefone;
-    }
+  public ArrayList<model.beans.Contato> getContatos() {
+    return contatos;
+  }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.CAAC94DF-DB70-67ED-715F-FBDCBBBF179A]
-    // </editor-fold> 
-    public void setTelefone (TipoTelefone val) {
-        this.telefone = val;
-    }
+  public void setContatos(ArrayList<model.beans.Contato> contatos) {
+    this.contatos = contatos;
+  }
+
+  public
+
+  int getIdEndereco() {
+    return idEndereco;
+  }
+
+  public void setIdEndereco(int idEndereco) {
+    this.idEndereco = idEndereco;
+  }
 
 }
 

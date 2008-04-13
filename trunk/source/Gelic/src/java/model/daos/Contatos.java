@@ -12,84 +12,125 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javax.naming.NamingException;
 
-
 /**
  *
  * @author Adriano
  */
 public class Contatos {
 
-  private static final String sqlRecuperarContatosEmpresas =
-          "select  EMPRESA, NOME, ID from  contatos   " +
-          "inner join empresas on   (contatos.empresa = empresas.cnpj)";
+  public static int alterar(model.beans.Contato contato, String nomeContato)
+          throws SQLException, NamingException {
+    final String sqlAlteraContato = "update CONTATOS set NOME=? where ID=?";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlAlteraContato);
+    pstmt.setString(1, nomeContato);
+    pstmt.setInt(2, contato.getId());
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
+  }
+
+  public static model.beans.Contato recuperar(int id)
+          throws SQLException, NamingException {
+    final String sqlRecuperarContato =
+            "select ID, NOME, TELEFONE from CONTATOS where ID=?";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlRecuperarContato);
+    pstmt.setInt(1, id);
+    ResultSet rs = pstmt.executeQuery();
+    model.beans.Contato contato = null;
+    if (rs.next()) {
+      contato = new model.beans.Contato(
+              rs.getString("NOME"),
+              rs.getInt("TELEFONE"),
+              rs.getInt("ID"));
+    }
+    rs.close();
+    pstmt.close();
+    gelic.close();
+    return contato;
+  }
 
   public static void recuperar(ArrayList<model.beans.Empresa> empresas)
           throws NamingException, SQLException {
 
-  /* Para otimizar a busca, reorganiza as empresas em um HashMap */
+    final String sqlRecuperarContatosEmpresas =
+            "select  EMPRESA, NOME, ID, TELEFONE from  contatos   " +
+            "inner join empresas on   (contatos.empresa = empresas.cnpj)";
+    /* Para otimizar a busca, reorganiza as empresas em um HashMap */
     HashMap<String, model.beans.Empresa> map;
     map = new HashMap<String, model.beans.Empresa>();
-
     for (model.beans.Empresa empresa : empresas) {
       map.put(empresa.getCnpj(), empresa);
     }
-    
+
     model.beans.Empresa empresa;
     Connection gelic = model.services.Conexao.getConnection();
     PreparedStatement pstmt = gelic.prepareStatement(
             sqlRecuperarContatosEmpresas);
     ResultSet rs = pstmt.executeQuery();
+
     while (rs.next()) {
       empresa = map.get(rs.getString("EMPRESA"));
       if (empresa != null) {
-        if( empresa.getContatos() == null ){
+        if (empresa.getContatos() == null) {
           empresa.setContatos(new ArrayList<model.beans.Contato>());
         }
-        empresa.getContatos().add(criaContato(
-                rs.getInt( "ID"),
-                rs.getString("NOME")));
+        empresa.getContatos().add(new model.beans.Contato(
+                rs.getString("NOME"),
+                rs.getInt("TELEFONE"),
+                rs.getInt("ID")));
       }
     }
     /*
      * Para aproveitar a conexão no pool é necessário fechar tudo...
      */
+
     rs.close();
+
     pstmt.close();
+
     gelic.close();
   }
-  static final String sqlRecuperaContatosEmpresa =
-          "select ID, NOME from CONTATOS where EMPRESA = ? ";
-  static final String sqlContaContatosEmpresa =
-          "select count(*) from CONTATOS where EMPRESA = ? ";
-  public static void recuperar(model.beans.Empresa empresa) 
+
+  public static void recuperar(model.beans.Empresa empresa)
           throws SQLException, NamingException {
+    final String sqlRecuperaContatosEmpresa =
+            "select ID, NOME, TELEFONE from CONTATOS where EMPRESA = ? ";
+    final String sqlContaContatosEmpresa =
+            "select count(*) from CONTATOS where EMPRESA = ? ";
     Connection gelic = model.services.Conexao.getConnection();
     PreparedStatement pstmt = gelic.prepareStatement(sqlContaContatosEmpresa);
     pstmt.setString(1, empresa.getCnpj());
     ResultSet rs = pstmt.executeQuery();
-    if( rs == null ){
+    if (rs == null) {
       return;
     }
-    if( !rs.next()){
+
+    if (!rs.next()) {
       return;
     }
+
     int quantidadeContatos = rs.getInt(1);
-    ArrayList<model.beans.Contato> contatos = 
+    ArrayList<model.beans.Contato> contatos =
             new ArrayList<model.beans.Contato>(quantidadeContatos);
-    
+
     /*
      * Para aproveitar a conexão no pool é necessário fechar tudo...
      */
     rs.close();
     pstmt.close();
-    
-    pstmt = gelic.prepareStatement(sqlRecuperaContatosEmpresa);
+
+    pstmt =
+            gelic.prepareStatement(sqlRecuperaContatosEmpresa);
     pstmt.setString(1, empresa.getCnpj());
-    rs = pstmt.executeQuery();
-    while (rs.next() ){
-      contatos.add(criaContato(
-              rs.getInt("ID"),
-              rs.getString("NOME")));
+    rs =
+            pstmt.executeQuery();
+    while (rs.next()) {
+      contatos.add(new model.beans.Contato(
+              rs.getString("NOME"),
+              rs.getInt("TELEFONE"),
+              rs.getInt("ID")));
     }
     /*
      * Para aproveitar a conexão no pool é necessário fechar tudo...
@@ -98,14 +139,8 @@ public class Contatos {
     pstmt.close();
     gelic.close();
     empresa.setContatos(contatos);
-    
+
   }
-  private static model.beans.Contato criaContato(int id, String nome ){
-    model.beans.Contato contato = new model.beans.Contato();
-    contato.setNome(nome);
-    contato.setId(id);
-    return contato;
-  }  
 }
 
 

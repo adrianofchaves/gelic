@@ -15,6 +15,8 @@ public class Form {
     private ArrayList<String> erros = null;
     private String mensagem;
     private String titulo;
+    private String nome;
+    private Form Origem;
 
     protected void apagaErros() {
         erros = null;
@@ -53,5 +55,21 @@ public class Form {
 
   public void setTitulo(String caption) {
     this.titulo = caption;
+  }
+
+  public String getNome() {
+    return nome;
+  }
+
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
+
+  public Form getOrigem() {
+    return Origem;
+  }
+
+  public void setOrigem(Form Origem) {
+    this.Origem = Origem;
   }
 }

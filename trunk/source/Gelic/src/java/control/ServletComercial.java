@@ -1,5 +1,6 @@
 package control;
 
+import control.commands.AlterarContato;
 import control.commands.AlterarEmpresa;
 import control.commands.AlterarProduto;
 import control.commands.AlterarTipoDocumento;
@@ -11,12 +12,15 @@ import control.commands.CadastroTiposLicitacoes;
 import control.commands.CadastroProdutos;
 import control.commands.Comando;
 import control.commands.ExcecaoComando;
+import control.commands.ExcluirContato;
 import control.commands.ExcluirEmpresa;
+import control.commands.GravarContato;
 import control.commands.GravarEmpresa;
 import control.commands.GravarNovoProduto;
 import control.commands.GravarTipoDocumento;
 import control.commands.GravarTipoLicitacao;
 import control.commands.NovaEmpresa;
+import control.commands.NovoContato;
 import control.commands.NovoProduto;
 import control.commands.NovoTipoDocumento;
 import control.commands.Nulo;
@@ -65,6 +69,10 @@ public class ServletComercial extends HttpServlet {
         comandos.put("GravarEmpresa", new GravarEmpresa());
         comandos.put("ExcluirEmpresa", new ExcluirEmpresa());
         comandos.put("CadastroContatos", new CadastroContatos());
+        comandos.put("AlterarContato", new AlterarContato());
+        comandos.put("ExcluirContato", new ExcluirContato());
+        comandos.put("NovoContato", new NovoContato());
+        comandos.put("GravarContato", new GravarContato());
         
     }
 

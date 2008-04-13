@@ -38,20 +38,49 @@ public class Licitacao {
   public Licitacao() {
 
   }
-
+  /**
+   * Cria uma nova instância da classe apenas com os atributos "atômicos", isto
+   * é, os que não estão relacionados à outras classes.
+   * 
+   * @param id
+   * @param idTipoLicitacao
+   * @param numero
+   * @param ano
+   * @param idModalidade
+   * @param idSistema
+   * @param idorgao
+   * @param numeroProcesso
+   * @param objeto
+   * @param dataDocumentacao
+   * @param dataProposta
+   * @param dataRealizacao
+   * @param diasValidadeProposta
+   * @param diasPrazoEntrega
+   * @param diasPrazoPagamento
+   * @param diasVigencia
+   * @param anosPrazoGarantia
+   * @param pedeAmostra
+   * @param termosAmostra
+   * @param pedeGarantia
+   * @param termosGarantia
+   * @param preveMulta
+   * @param termosMulta
+   * @param status
+   */
   public Licitacao(int id, int idTipoLicitacao, String numero, int ano, 
-          int idModalidade, String idorgao, String numeroProcesso, 
-          String objeto, Date dataDocumentacao, Date dataProposta, 
-          Date dataRealizacao, int diasValidadeProposta, int diasPrazoEntrega, 
-          int diasPrazoPagamento, int diasVigencia, int anosPrazoGarantia, 
-          boolean pedeAmostra, String termosAmostra, boolean pedeGarantia, 
-          String termosGarantia, boolean preveMulta, String termosMulta, 
-          int status) {
+          int idModalidade, int idSistema, String idorgao, 
+          String numeroProcesso, String objeto, Date dataDocumentacao, 
+          Date dataProposta, Date dataRealizacao, int diasValidadeProposta, 
+          int diasPrazoEntrega, int diasPrazoPagamento, int diasVigencia, 
+          int anosPrazoGarantia, boolean pedeAmostra, String termosAmostra, 
+          boolean pedeGarantia, String termosGarantia, boolean preveMulta, 
+          String termosMulta, int status) {
     this.id = id;
     this.idTipoLicitacao = idTipoLicitacao;
     this.numero = numero;
     this.ano = ano;
     this.idModalidade = idModalidade;
+    this.idSistema = idSistema;
     this.idorgao = idorgao;
     this.numeroProcesso = numeroProcesso;
     this.objeto = objeto;
@@ -71,6 +100,8 @@ public class Licitacao {
     this.termosMulta = termosMulta;
     this.status = status;
   }
+
+ 
 
   public int getId() {
     return id;

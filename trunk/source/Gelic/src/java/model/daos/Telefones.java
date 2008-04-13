@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.naming.NamingException;
-import model.beans.Empresa;
+import model.beans.TipoTelefone;
 
 /**
  *
@@ -19,10 +19,10 @@ import model.beans.Empresa;
  */
 public class Telefones {
 
-  public static int alterar(Empresa empresa, String ddiEmpresa, 
-          String dddEmpresa, String numeroTelefoneEmpresa, String ramalEmpresa) 
+  public static int alterar(model.beans.Empresa empresa, String ddiEmpresa,
+          String dddEmpresa, String numeroTelefoneEmpresa, String ramalEmpresa)
           throws SQLException, NamingException {
-    final String sqlAlterarTelefoneEmpresa = 
+    final String sqlAlterarTelefoneEmpresa =
             "update TELEFONES set " +
             "DDI = ?, " +
             "DDD = ?, " +
@@ -32,53 +32,73 @@ public class Telefones {
             " (select ENDERECO from EMPRESAS where CNPJ = ? ) )";
     Connection gelic = model.services.Conexao.getConnection();
     PreparedStatement pstmt = gelic.prepareStatement(sqlAlterarTelefoneEmpresa);
-    
+
     pstmt.setString(1, ddiEmpresa);
     pstmt.setString(2, dddEmpresa);
     pstmt.setString(3, numeroTelefoneEmpresa);
     pstmt.setString(4, ramalEmpresa);
-    
+
     pstmt.setString(5, empresa.getCnpj());
-    
+
     int regs = pstmt.executeUpdate();
     pstmt.close();
-    return regs;    
+    return regs;
   }
 
-  public static model.beans.TipoTelefone incluir(String ddi, 
-          String ddd, String numero, String ramal) 
+  public static int alterar(TipoTelefone telefone, String ddiContato, 
+          String dddContato, String numeroTelefoneContato, String ramalContato) 
+          throws SQLException, NamingException {
+    final String sqlAlteraTelefone = "update TELEFONES set DDI = ?," +
+            "DDD = ?, " +
+            "NUMERO = ?, " +
+            "RAMAL = ? " +
+            "where ID = ? ";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlAlteraTelefone);
+    pstmt.setString(1, dddContato);
+    pstmt.setString(2, ddiContato);
+    pstmt.setString(3, numeroTelefoneContato);
+    pstmt.setString(4, ramalContato);
+    pstmt.setInt(5, telefone.getId());
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;    
+  }
+
+  public static model.beans.TipoTelefone incluir(String ddi,
+          String ddd, String numero, String ramal)
           throws SQLException, NamingException {
     final String sqlCalculaId =
             "select gen_id(GEN_TELEFONES_ID, 1) from rdb$database";
-    final String sqlIncluiEndereco = 
-            "insert into TELEFONES( ID, DDI, DDD, NUMERO, RAMAL) " +    
+    final String sqlIncluiEndereco =
+            "insert into TELEFONES( ID, DDI, DDD, NUMERO, RAMAL) " +
             "values (?,?,?,?,?)";
-    
+
     Connection gelic = model.services.Conexao.getConnection();
-    
+
     model.beans.TipoTelefone tel = new model.beans.TipoTelefone();
     tel.setDdd(ddd);
     tel.setDdi(ddi);
     tel.setTelefone(numero);
-    tel.setRamal(ramal);    
-    
+    tel.setRamal(ramal);
+
     PreparedStatement pstmt = gelic.prepareStatement(sqlCalculaId);
     ResultSet rs = pstmt.executeQuery();
     rs.next();
     tel.setId(rs.getInt(1));
     rs.close();
     pstmt.close();
-    
+
     pstmt = gelic.prepareStatement(sqlIncluiEndereco);
     pstmt.setInt(1, tel.getId());
     pstmt.setString(2, tel.getDdi());
     pstmt.setString(3, tel.getDdd());
     pstmt.setString(4, tel.getTelefone());
     pstmt.setString(5, tel.getRamal());
-    
-    pstmt.execute();    
+
+    pstmt.execute();
     pstmt.close();
-    
+
     return tel;
   }
 
@@ -86,7 +106,8 @@ public class Telefones {
           throws SQLException, NamingException {
     final String sqlRecuperarTelefonesEmpresas =
             "select " +
-            " CNPJ, CONTATOS.NOME NOMECONTATO, TELEFONES.DDI DDI, " +
+            " CNPJ, CONTATOS.NOME NOMECONTATO, " +
+            " TELEFONES.ID IDTELEFONE, TELEFONES.DDI DDI, " +
             " TELEFONES.DDD DDD, " +
             " TELEFONES.NUMERO NUMEROTELEFONE, TELEFONES.RAMAL RAMAL " +
             "from " +
@@ -95,8 +116,8 @@ public class Telefones {
             " inner join TELEFONES on (TELEFONES.ID = CONTATOS.TELEFONE) " +
             "union " +
             "select " +
-            " CNPJ, null, TELEFONES.DDI, TELEFONES.DDD, TELEFONES.NUMERO, " +
-            " TELEFONES.RAMAL " +
+            " CNPJ, null, TELEFONES.ID IDTELEFONE, TELEFONES.DDI, " +
+            " TELEFONES.DDD, TELEFONES.NUMERO, TELEFONES.RAMAL " +
             "from " +
             " EMPRESAS " +
             " inner join ENDERECOS on (EMPRESAS.ENDERECO = ENDERECOS.ID) " +
@@ -128,7 +149,8 @@ public class Telefones {
     model.beans.Contato contato;
 
     while (rs != null && rs.next()) {
-      model.beans.TipoTelefone telefone = criaTelefone(
+      model.beans.TipoTelefone telefone = new model.beans.TipoTelefone(
+              rs.getInt("IDTELEFONE"),
               rs.getString("DDI"),
               rs.getString("DDD"),
               rs.getString("NUMEROTELEFONE"),
@@ -166,14 +188,19 @@ public class Telefones {
     pstmt.close();
     gelic.close();
   }
-  static final String sqlRecuperaTelefoneEmpresa =
-          "select DDI, DDD, TELEFONE, " +
-          "RAMAL from  telefones  inner join enderecos on " +
-          "(enderecos.telefone = telefones.id) inner join empresas on  " +
-          "(empresas.endereco = enderecos.id) where empresas.cnpj=?";
+
+  public static void recuperar(model.beans.Contato contato) 
+          throws SQLException, NamingException {
+    contato.setTelefone(recuperar(contato.getIdTelefone()));
+  }
 
   public static void recuperar(model.beans.Empresa empresa)
           throws NamingException, SQLException {
+    final String sqlRecuperaTelefoneEmpresa =
+            "select TELEFONES.ID IDTELEFONE, DDI, DDD, TELEFONE, RAMAL " +
+            "from  telefones  inner join enderecos on " +
+            "(enderecos.telefone = telefones.id) inner join empresas on  " +
+            "(empresas.endereco = enderecos.id) where empresas.cnpj=?";
     if (empresa.getEndereco() == null) {
       return;
     }
@@ -184,7 +211,8 @@ public class Telefones {
     pstmt.setString(1, empresa.getCnpj());
     ResultSet rs = pstmt.executeQuery();
     if (rs != null && rs.next()) {
-      empresa.getEndereco().setTelefone(criaTelefone(
+      empresa.getEndereco().setTelefone( new model.beans.TipoTelefone(
+              rs.getInt("IDTELEFONE"),
               rs.getString("DDI"),
               rs.getString("DDD"),
               rs.getString("TELEFONE"),
@@ -198,13 +226,29 @@ public class Telefones {
     gelic.close();
   }
 
-  static model.beans.TipoTelefone criaTelefone(String ddi, String ddd,
-          String numero, String ramal) {
-    model.beans.TipoTelefone telefone = new model.beans.TipoTelefone();
-    telefone.setDdd(ddd);
-    telefone.setDdi(ddi);
-    telefone.setTelefone(numero);
-    telefone.setRamal(ramal);
+  private static model.beans.TipoTelefone recuperar(int idTelefone) 
+          throws SQLException, NamingException {
+    final String sqlRecuperaTelefone = "select ID, DDI, DDD, NUMERO, RAMAL " +
+            "from TELEFONES WHERE ID = ?";
+    model.beans.TipoTelefone telefone = null;
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlRecuperaTelefone);
+    pstmt.setInt(1, idTelefone);
+    ResultSet rs = pstmt.executeQuery();
+    if (rs.next()) {
+      telefone = new model.beans.TipoTelefone(
+              rs.getInt("ID"),
+              rs.getString("DDI"),
+              rs.getString("DDD"),
+              rs.getString("NUMERO"),
+              rs.getString("RAMAL"));
+
+    }
+    rs.close();
+    pstmt.close();
+    gelic.close();
+
     return telefone;
+
   }
 }
