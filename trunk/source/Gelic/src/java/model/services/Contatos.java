@@ -32,8 +32,17 @@ public class Contatos {
 
   }
 
-  public static void excluir(model.beans.Contato contato) {
-    throw new UnsupportedOperationException("Not yet implemented");
+  public static void excluir(int idContato) throws SQLException, NamingException {
+    Connection gelic = model.services.Conexao.getConnection();
+    try{
+        model.daos.Contatos.excluir(idContato);
+        gelic.commit();
+        gelic.close();        
+    }catch (SQLException e){
+        gelic.rollback();
+        gelic.close();
+        throw e;
+    }
   }
 
   public static void incluir(model.beans.Empresa empresa, String nomeContato,

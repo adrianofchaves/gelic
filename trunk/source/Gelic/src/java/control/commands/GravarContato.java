@@ -72,7 +72,7 @@ public class GravarContato implements Comando {
       mensagem = msgInclusao;
     }
     if (form.isExclusao()) {
-      model.services.Contatos.excluir(form.getContato());
+      model.services.Contatos.excluir(form.getContato().getId());
       mensagem = msgExclusao;
     }
     if (form.isAlteracao()) {

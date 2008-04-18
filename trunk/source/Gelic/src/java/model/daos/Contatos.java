@@ -141,6 +141,16 @@ public class Contatos {
     empresa.setContatos(contatos);
 
   }
+  
+  public static int excluir(int idContato) throws SQLException, NamingException{
+      final String sqlExcluirContato = "delete from CONTATOS where ID=?";
+      Connection gelic = model.services.Conexao.getConnection();
+      PreparedStatement pstmt = gelic.prepareStatement(sqlExcluirContato);
+      pstmt.setInt(1,idContato);
+      int buffer = pstmt.executeUpdate();
+      pstmt.close();
+      return buffer;
+  }
 }
 
 
