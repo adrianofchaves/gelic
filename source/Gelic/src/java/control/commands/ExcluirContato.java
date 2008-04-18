@@ -32,14 +32,14 @@ public class ExcluirContato implements Comando {
       form.atualizaCampos();
       form.setTitulo("Excluindo contato");
       req.getSession().setAttribute("formContato", form);
-
       return form.getNome();
+      
     } catch (SQLException ex) {
-      Logger.getLogger(AlterarContato.class.getName()).log(
+      Logger.getLogger(ExcluirContato.class.getName()).log(
               Level.SEVERE, null, ex);
       throw new ExcecaoComando(ex.getMessage());
     } catch (NamingException ex) {
-      Logger.getLogger(AlterarContato.class.getName()).log(
+      Logger.getLogger(ExcluirContato.class.getName()).log(
               Level.SEVERE, null, ex);
       throw new ExcecaoComando(ex.getMessage());
     }
