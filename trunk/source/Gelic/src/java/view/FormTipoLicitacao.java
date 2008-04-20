@@ -19,6 +19,8 @@ public class FormTipoLicitacao extends Form {
     private String siglaTipoLicitacao;
     private String erroSiglaTipoLicitacao;
     private boolean inclusao = true;
+    private boolean exclusao;
+    private boolean alteracao;
 
     public void valida() throws SQLException, NamingException {
         apagaErros();
@@ -107,5 +109,29 @@ public class FormTipoLicitacao extends Form {
 
     public void setErroSiglaTipoLicitacao(String erroSiglaTipoLicitacao) {
         this.erroSiglaTipoLicitacao = erroSiglaTipoLicitacao;
+    }
+
+    public boolean isExclusao() {
+        return exclusao;
+    }
+
+    public void setExclusao(boolean exclusao) {
+        this.exclusao = exclusao;
+    if (exclusao) {
+      alteracao = false;
+      inclusao = false;
+    }
+    }
+
+    public boolean isAlteracao() {
+        return alteracao;
+    }
+
+    public void setAlteracao(boolean alteracao) {
+        this.alteracao = alteracao;
+    if (alteracao) {
+      exclusao = false;
+      inclusao = false;
+    }
     }
 }

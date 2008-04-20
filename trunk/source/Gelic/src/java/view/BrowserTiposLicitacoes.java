@@ -15,12 +15,14 @@ public class BrowserTiposLicitacoes extends Form{
     private ArrayList<model.beans.TipoLicitacao> tiposLicitacoes;
     
     public BrowserTiposLicitacoes(){
+        super.setTitulo("Tipos de Licitações");
         
     }
     public BrowserTiposLicitacoes(
             ArrayList<model.beans.TipoLicitacao> tiposLicitacoes ){
         this.tiposLicitacoes = tiposLicitacoes;
     }
+    
     public ArrayList<model.beans.TipoLicitacao> getTiposLicitacoes() {
         return tiposLicitacoes;
     }

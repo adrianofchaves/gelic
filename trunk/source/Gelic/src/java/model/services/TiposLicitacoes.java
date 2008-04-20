@@ -53,7 +53,7 @@ public class TiposLicitacoes {
     return tiposLicitacoes;
   }
 
-  public static model.beans.TipoLicitacao recuperar(String nome)
+  public static model.beans.TipoLicitacao recuperar(String sigla)
           throws SQLException, NamingException {
     if (tiposLicitacoes == null) {
       recuperar();
@@ -63,7 +63,7 @@ public class TiposLicitacoes {
     }
 
     for (model.beans.TipoLicitacao tipo : tiposLicitacoes) {
-      if (tipo.getNome().equalsIgnoreCase(nome)) {
+      if (tipo.getSigla().equalsIgnoreCase(sigla)) {
         return tipo;
       }
     }
@@ -88,4 +88,17 @@ public class TiposLicitacoes {
     
 
   }
+  
+    public static void excluir(String sigla) throws SQLException, NamingException {
+    Connection gelic = model.services.Conexao.getConnection();
+    try {
+      model.daos.TiposLicitacoes.excluir(sigla);
+      gelic.commit();
+      gelic.close();
+     }catch (SQLException e) {
+      gelic.rollback();
+      gelic.close();
+      throw e;
+    }
+   }
 }
