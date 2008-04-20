@@ -35,12 +35,7 @@
               action="Comercial?comando=GravarTipoLicitacao" 
               method="POST" accept-charset="utf-8">
             <p class="caption">
-                <c:if test="${!sessionScope.formTipoLicitacao.inclusao}">
-                    Alterando tipo de licitação
-                </c:if>
-                <c:if test="${sessionScope.formTipoLicitacao.inclusao}">
-                    Novo tipo de licitação
-                </c:if>
+                ${sessionScope.formTipoLicitacao.titulo}
             </p>
             
             <c:forEach var="erro" 
@@ -65,10 +60,16 @@
                 </font>
             </P>            
             <p>
-                <input class="botao" type="submit" value="Gravar" 
-                       name="executar"/>
-                <INPUT class="botao" TYPE="submit" value="Cancelar" 
-                       name="cancelar"/>                
+        <c:if test="${sessionScope.formTipoLicitacao.exclusao}">
+          <input class="botao" type="submit" value="Excluir" 
+                 name="excluir"/>
+        </c:if>
+        <c:if test="${!sessionScope.formTipoLicitacao.exclusao}">
+          <input class="botao" type="submit" value="Salvar" 
+                 name="executar"/>
+        </c:if>
+          <input class="botao" TYPE="submit" value="Cancelar" 
+                 name="cancelar"/>                
             </p>
         </form>       
     </body>

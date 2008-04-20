@@ -19,15 +19,16 @@ public class AlterarTipoLicitacao implements Comando {
 
     public String executar(HttpServletRequest req) throws ExcecaoComando {
         try {
-            String nome = util.Request.getParameter(req,"nome");
-            if (nome == null) {
-                throw new ExcecaoComando("Nome de tipo de licitação inválido (nula)");
+            String sigla = util.Request.getParameter(req,"sigla");
+            if (sigla == null) {
+                throw new ExcecaoComando("Sigla de tipo de licitação inválido (nula)");
             }
-            model.beans.TipoLicitacao tipo = model.services.TiposLicitacoes.recuperar(nome);
+            model.beans.TipoLicitacao tipo = model.services.TiposLicitacoes.recuperar(sigla);
             view.FormTipoLicitacao frm = new view.FormTipoLicitacao();
             frm.setTipoLicitacao(tipo);
             frm.atualizaCampos();
             frm.setInclusao(false);
+            frm.setTitulo("Alterando tipo de licitacao");            
             req.getSession().setAttribute("formTipoLicitacao", frm);
             return "/formTipoLicitacao.jsp";
         } catch (SQLException ex) {

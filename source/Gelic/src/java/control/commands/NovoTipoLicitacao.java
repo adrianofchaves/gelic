@@ -16,6 +16,7 @@ public class NovoTipoLicitacao implements Comando{
     public String executar(HttpServletRequest req) throws ExcecaoComando {
         view.FormTipoLicitacao frm = new view.FormTipoLicitacao();
         frm.setInclusao(true);
+        frm.setTitulo("Novo tipo de licitacao");
         req.getSession().setAttribute("formTipoLicitacao", frm);
         return "/formTipoLicitacao.jsp";
     }

@@ -34,7 +34,7 @@
     </head>
     <body>    
         <table class="cadastro"><TH class="cadastro">
-                Tipos de licitações
+                Tipos de Licitações
         </TH></TABLE>
         <table class="cadastro">            
             <tr class="cabecalho">
@@ -47,7 +47,7 @@
                 items="${sessionScope.browserTiposLicitacoes.tiposLicitacoes}">                
                 <tr class="dados">
                     <td>
-                        <a href="Comercial?comando=AlterarTipoLicitacao&nome=${tipo.nome}">
+                        <a href="Comercial?comando=AlterarTipoLicitacao&sigla=${tipo.sigla}">
                             ${tipo.nome}    
                         </a>                        
                     </td>
@@ -55,7 +55,7 @@
                         ${tipo.sigla}
                     </td>
                     <td>
-                        <a href="Comercial?comando=ExcluirTipoLicitacao&nome=${modalidade.sigla}">
+                        <a href="Comercial?comando=ExcluirTipoLicitacao&sigla=${tipo.sigla}">
                             <img src="img/trash.PNG"  width="16" height="16" 
                                  alt="trash"/>
                         </a>
