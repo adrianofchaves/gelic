@@ -129,9 +129,9 @@ public class FormTipoLicitacao extends Form {
 
     public void setAlteracao(boolean alteracao) {
         this.alteracao = alteracao;
-    if (alteracao) {
-      exclusao = false;
-      inclusao = false;
-    }
+        if (alteracao) {
+            exclusao = false;
+            inclusao = false;
+        }
     }
 }

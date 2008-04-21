@@ -59,13 +59,24 @@ public class TiposDocumentos {
                 return null;
             }
         }
-
         for (model.beans.TipoDocumento tipo : tiposDocumentos) {
-
             if (tipo.getNome().equalsIgnoreCase(nome)) {
                 return tipo;
             }
         }
         return null;
     }
+    
+    public static void excluir(String nome) throws SQLException, NamingException {
+        Connection gelic = model.services.Conexao.getConnection();
+        try {
+            model.daos.TiposDocumentos.excluir(nome);
+            gelic.commit();
+            gelic.close();
+            }catch (SQLException e) {
+                gelic.rollback();
+                gelic.close();
+                throw e;
+                }
+        }
 }

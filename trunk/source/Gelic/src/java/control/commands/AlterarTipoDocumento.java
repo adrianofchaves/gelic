@@ -30,14 +30,16 @@ public class AlterarTipoDocumento  implements Comando {
             frm.setTipoDocumento(tipo);
             frm.atualizaCampos();
             frm.setInclusao(false);
+            frm.setAlteracao(true);
+            frm.setTitulo("Alterando tipo de documento");  
             req.getSession().setAttribute("formTipoDocumento", frm);
             return "/formTipoDocumento.jsp";
         } catch (SQLException ex) {
-            Logger.getLogger(AlterarTipoLicitacao.class.getName()).log(
+            Logger.getLogger(AlterarTipoDocumento.class.getName()).log(
                     Level.SEVERE, null, ex);
             throw new ExcecaoComando(ex.getMessage());
         } catch (NamingException ex) {
-            Logger.getLogger(AlterarTipoLicitacao.class.getName()).log(
+            Logger.getLogger(AlterarTipoDocumento.class.getName()).log(
                     Level.SEVERE, null, ex);
             throw new ExcecaoComando(ex.getMessage());
         }

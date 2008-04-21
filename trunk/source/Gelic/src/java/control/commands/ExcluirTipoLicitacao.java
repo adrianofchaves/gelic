@@ -33,11 +33,11 @@ public class ExcluirTipoLicitacao implements Comando {
       req.getSession().setAttribute("formTipoLicitacao", frm);
       return "/formTipoLicitacao.jsp";
     } catch (SQLException ex) {
-      Logger.getLogger(ExcluirEmpresa.class.getName()).log(
+      Logger.getLogger(ExcluirTipoLicitacao.class.getName()).log(
               Level.SEVERE, null, ex);
       throw new ExcecaoComando( ex.getMessage());
     } catch (NamingException ex) {
-      Logger.getLogger(ExcluirEmpresa.class.getName()).log(
+      Logger.getLogger(ExcluirTipoLicitacao.class.getName()).log(
               Level.SEVERE, null, ex);
       throw new ExcecaoComando( ex.getMessage());
     }
