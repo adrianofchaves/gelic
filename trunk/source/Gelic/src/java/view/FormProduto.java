@@ -21,8 +21,10 @@ public class FormProduto extends Form {
     private String erroDescricaoProduto;
     private float precovendaProduto;
     private float precocompraProduto;
-    
     private boolean inclusao = true;
+    private boolean exclusao;
+    private boolean alteracao;
+    
     
     public void valida() throws SQLException, NamingException {
         apagaErros();
@@ -113,4 +115,27 @@ public class FormProduto extends Form {
         this.precocompraProduto = precocompraProduto;
     }
 
+    public boolean isExclusao() {
+        return exclusao;
+    }
+
+    public void setExclusao(boolean exclusao) {
+        this.exclusao = exclusao;
+        if (exclusao) {
+            alteracao = false;
+            inclusao = false;
+        }
+    }
+
+    public boolean isAlteracao() {
+        return alteracao;
+    }
+
+    public void setAlteracao(boolean alteracao) {
+        this.alteracao = alteracao;
+        if (alteracao) {
+            exclusao = false;
+            inclusao = false;
+        }
+    }
 }

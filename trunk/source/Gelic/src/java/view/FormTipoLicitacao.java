@@ -117,10 +117,10 @@ public class FormTipoLicitacao extends Form {
 
     public void setExclusao(boolean exclusao) {
         this.exclusao = exclusao;
-    if (exclusao) {
-      alteracao = false;
-      inclusao = false;
-    }
+        if (exclusao) {
+            alteracao = false;
+            inclusao = false;
+        }
     }
 
     public boolean isAlteracao() {

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -35,12 +36,7 @@
               action="Comercial?comando=GravarNovoProduto" 
               method="POST">
         <p class="caption">
-            <c:if test="${!sessionScope.formProduto.inclusao}">
-                Alterando produto:
-            </c:if>
-            <c:if test="${sessionScope.formProduto.inclusao}">
-                Novo produto:
-            </c:if>
+            ${sessionScope.formProduto.titulo}
         </p>
             <font class="erro" >
                 <c:forEach var="erro" items="${sessionScope.formProduto.erros}">
@@ -88,10 +84,14 @@
       </table>
       
             <p>
-        <input class="botao" type="submit" value="Salvar" 
-               name="executar"/>
-        <input class="botao" type="submit" value="Excluir" 
-               name="excluir"/>
+        <c:if test="${sessionScope.formProduto.exclusao}">
+          <input class="botao" type="submit" value="Excluir" 
+                 name="excluir"/>
+        </c:if>
+        <c:if test="${!sessionScope.formProduto.exclusao}">
+          <input class="botao" type="submit" value="Salvar" 
+                 name="executar"/>
+        </c:if>
         <INPUT class="botao" TYPE="submit" value="Cancelar" 
                name="cancelar"/>            
             </p>
