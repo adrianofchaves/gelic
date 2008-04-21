@@ -37,12 +37,7 @@
               action="Comercial?comando=GravarTipoDocumento" 
               method="POST" accept-charset="utf-8">
             <p class="caption">
-                <c:if test="${!sessionScope.formTipoDocumento.inclusao}">
-                    Alterando tipo de documento
-                </c:if>
-                <c:if test="${sessionScope.formTipoDocumento.inclusao}">
-                    Novo tipo de documento
-                </c:if>
+                ${sessionScope.formTipoDocumento.titulo}
             </p>
             
             <c:forEach var="erro" 
@@ -60,8 +55,14 @@
                 </font>
             </P>            
             <p>
-                <input class="botao" type="submit" value="Gravar" 
-                       name="executar"/>
+        <c:if test="${sessionScope.formTipoDocumento.exclusao}">
+          <input class="botao" type="submit" value="Excluir" 
+                 name="excluir"/>
+        </c:if>
+        <c:if test="${!sessionScope.formTipoDocumento.exclusao}">
+          <input class="botao" type="submit" value="Salvar" 
+                 name="executar"/>
+        </c:if>
                 <INPUT class="botao" TYPE="submit" value="Cancelar" 
                        name="cancelar"/>                
             </p>

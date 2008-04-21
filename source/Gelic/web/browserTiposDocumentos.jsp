@@ -50,7 +50,7 @@
                         </a>                        
                     </td>                    
                     <td>
-                        <a href="Comercial?comando=ExcluirTipoDocumento&nome=${modalidade.sigla}">
+                        <a href="Comercial?comando=ExcluirTipoDocumento&nome=${tipo.nome}">
                             <img src="img/trash.PNG"  width="16" height="16" 
                                  alt="trash"/>
                         </a>

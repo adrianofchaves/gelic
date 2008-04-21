@@ -118,4 +118,14 @@ public class TiposDocumentos {
         gelic.close();
         return tipos;
     }
+    
+  public static int excluir(String nome) throws SQLException, NamingException {
+    final String sqlExcluiTipoDocumento = "delete from TIPOSDOCUMENTOS where NOME = ?";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlExcluiTipoDocumento);
+    pstmt.setString(1, nome);
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
+  }
 }
