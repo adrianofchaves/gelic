@@ -14,6 +14,9 @@ public class Produto {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.6EAFF3B4-1FD7-305E-3E21-440DE008DB53]
     // </editor-fold> 
+    
+    private String id;
+    
     private String codigo;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -93,5 +96,11 @@ public class Produto {
         this.precoVenda = val;
     }
 
-}
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+}

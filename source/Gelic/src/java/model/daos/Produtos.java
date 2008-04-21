@@ -177,4 +177,14 @@ public class Produtos {
         
         return produtos;
     }
+    
+   public static int excluir(String id) throws SQLException, NamingException {
+       final String sqlExcluiProduto = "delete from PRODUTOS where ID = ?";
+       Connection gelic = model.services.Conexao.getConnection();
+       PreparedStatement pstmt = gelic.prepareStatement(sqlExcluiProduto);
+       pstmt.setString(1, id);
+       int buffer = pstmt.executeUpdate();
+       pstmt.close();
+    return buffer;
+  }
 }

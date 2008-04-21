@@ -14,6 +14,7 @@ import control.commands.Comando;
 import control.commands.ExcecaoComando;
 import control.commands.ExcluirContato;
 import control.commands.ExcluirEmpresa;
+import control.commands.ExcluirProduto;
 import control.commands.ExcluirTipoDocumento;
 import control.commands.ExcluirTipoLicitacao;
 import control.commands.GravarContato;
@@ -67,6 +68,7 @@ public class ServletComercial extends HttpServlet {
         comandos.put("NovoProduto",new NovoProduto());
         comandos.put("GravarNovoProduto", new GravarNovoProduto());
         comandos.put("AlterarProduto", new AlterarProduto());
+        comandos.put("ExcluirProduto", new ExcluirProduto());
         comandos.put("CadastroEmpresas", new CadastroEmpresas());
         comandos.put("AlterarEmpresa", new AlterarEmpresa());
         comandos.put("NovaEmpresa", new NovaEmpresa());
