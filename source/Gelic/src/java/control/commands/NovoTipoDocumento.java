@@ -16,6 +16,7 @@ public class NovoTipoDocumento  implements Comando{
     public String executar(HttpServletRequest req) throws ExcecaoComando {
         view.FormTipoDocumento frm = new view.FormTipoDocumento();
         frm.setInclusao(true);
+        frm.setTitulo("Novo Tipo de Documento");
         req.getSession().setAttribute("formTipoDocumento", frm);
         return "/formTipoDocumento.jsp";
     }

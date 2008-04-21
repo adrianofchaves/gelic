@@ -28,6 +28,7 @@ public class AlterarProduto implements Comando {
             frm.setProduto(produto);
             frm.atualizaCampos();
             frm.setInclusao(false);
+            frm.setTitulo("Alterando Produto");
             req.getSession().setAttribute("formProduto", frm);
             return "/formProduto.jsp";
         } catch (SQLException ex) {

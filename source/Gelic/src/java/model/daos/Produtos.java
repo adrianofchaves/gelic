@@ -107,8 +107,8 @@ public class Produtos {
         if( rs != null && rs.next()){
             produto = criaProduto( rs.getString("CODIGO"),
                     rs.getString("DESCRICAO"),
-                    rs.getFloat("PRECOCOMPRA"),
-                    rs.getFloat("PRECOVENDA"));
+                    rs.getFloat("PRECOVENDA"),
+                    rs.getFloat("PRECOCOMPRA"));
         }
         rs.close();
         pstmt.close();

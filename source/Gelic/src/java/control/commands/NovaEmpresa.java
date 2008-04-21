@@ -20,6 +20,7 @@ public class NovaEmpresa implements Comando {
     try {
       view.FormEmpresa frm = new view.FormEmpresa();
       frm.setInclusao(true);
+      frm.setTitulo("Nova Empresa");
       frm.setUfs(control.UFs.getUFs(req));     
       frm.setTiposLogradouros(control.Enderecos.getTiposLogradouros(req));
       req.getSession().setAttribute("formEmpresa", frm);

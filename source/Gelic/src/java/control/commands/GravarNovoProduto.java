@@ -5,7 +5,6 @@
 
 package control.commands;
 
-import control.commands.Comando;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,10 +23,10 @@ public class GravarNovoProduto implements Comando {
             if (req.getParameter("cancelar") != null) {
                 return control.Produto.preparaBrowser(req);
             }
-            /* popula form */
+
             view.FormProduto frm = (view.FormProduto) req.getSession().
                     getAttribute("formProduto");
-            
+            /* popula form */            
             frm.setCodigoProduto(util.Request.getParameter(req,
                     "codigoProduto"));
             frm.setDescricaoProduto(util.Request.getParameter(req,
@@ -37,6 +36,7 @@ public class GravarNovoProduto implements Comando {
             frm.setPrecocompraProduto(util.Request.getParameter(req,
                     "precocompraProduto"));**/
             frm.valida();
+            frm.setTitulo("Novo Produto");
             
             if( frm.temErros() ){
                 return "/formProduto.jsp";
