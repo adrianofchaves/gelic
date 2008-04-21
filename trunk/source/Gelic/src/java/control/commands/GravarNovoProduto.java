@@ -17,6 +17,14 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class GravarNovoProduto implements Comando {
     
+  static final String chaveForm = "formProduto";
+  static final String chaveBrowser = "browserProdutos";
+  static final String uriForm = "/formProduto.jsp";
+  static final String uriBrowser = "/browserProdutos.jsp";
+  static final String msgInclusao = "Novo produto cadastrado.";
+  static final String msgExclusao = "Produto excluído.";
+  static final String msgAlteracao = "Produto alterado.";    
+    
         public String executar(HttpServletRequest req) throws ExcecaoComando {
 
         try {
@@ -25,7 +33,12 @@ public class GravarNovoProduto implements Comando {
             }
 
             view.FormProduto frm = (view.FormProduto) req.getSession().
-                    getAttribute("formProduto");
+                    getAttribute(chaveForm);
+            
+            if (frm==null){
+                frm = new view.FormProduto();
+            }
+
             /* popula form */            
             frm.setCodigoProduto(util.Request.getParameter(req,
                     "codigoProduto"));
@@ -36,11 +49,12 @@ public class GravarNovoProduto implements Comando {
             frm.setPrecocompraProduto(util.Request.getParameter(req,
                     "precocompraProduto"));**/
             frm.valida();
-            frm.setTitulo("Novo Produto");
             
             if( frm.temErros() ){
-                return "/formProduto.jsp";
+                return uriForm;
             }
+            
+            String mensagem = null;
             
             if(frm.isInclusao()){
                 model.services.Produtos.incluir(
@@ -48,16 +62,25 @@ public class GravarNovoProduto implements Comando {
                         frm.getDescricaoProduto(),
                         frm.getPrecovendaProduto(),
                         frm.getPrecocompraProduto());
-            }else{
+                mensagem = msgInclusao;
+            }
+            
+            if (frm.isAlteracao()){
                 model.services.Produtos.alterar(
                         frm.getProduto().getCodigo(),
                         frm.getCodigoProduto(), 
                         frm.getDescricaoProduto(),
                         frm.getPrecovendaProduto(),
                         frm.getPrecocompraProduto());
+                mensagem = msgAlteracao;
+            }
+            
+            if (frm.isExclusao()){
+                model.services.Produtos.excluir(frm.getProduto().getId());
+                mensagem = msgExclusao;
             }
                 
-            return control.Produto.preparaBrowser(req);
+            return executaBrowser(req, mensagem);
         } catch (NamingException ex) {
             Logger.getLogger(GravarNovoProduto.class.getName()).log(
                     Level.SEVERE, null, ex);
@@ -67,5 +90,13 @@ public class GravarNovoProduto implements Comando {
                     Level.SEVERE, null, ex);
             throw new ExcecaoComando(ex.getMessage());
         }
+    }
+
+    private String executaBrowser(HttpServletRequest req, String mensagem) 
+        throws NamingException, SQLException {
+        view.BrowserProdutos browser = new view.BrowserProdutos(model.services.Produtos.recuperar());
+        browser.setMensagem(mensagem);
+        req.getSession().setAttribute(chaveBrowser, browser);
+        return uriBrowser;
     }
 }

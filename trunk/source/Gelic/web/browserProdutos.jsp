@@ -62,7 +62,7 @@
                         
                     </td>
                     <td>
-                        <a href="Gelic?comando=ExcluirProduto&produto=${produto.codigo}">
+                        <a href="Comercial?comando=ExcluirProduto&id=${produto.id}">
                             <img src="img/trash.PNG"  width="16" height="16" 
                                  alt="trash"/>
                         </a>

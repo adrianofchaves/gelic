@@ -24,7 +24,7 @@ public class FormProduto extends Form {
     private boolean inclusao = true;
     private boolean exclusao;
     private boolean alteracao;
-    
+        
     
     public void valida() throws SQLException, NamingException {
         apagaErros();

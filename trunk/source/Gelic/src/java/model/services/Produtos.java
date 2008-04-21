@@ -50,4 +50,17 @@ public class Produtos {
             throws SQLException, NamingException {
         return model.daos.Produtos.recuperar(codigo);
     }
+    
+    public static void excluir(String id) throws SQLException, NamingException {
+    Connection gelic = model.services.Conexao.getConnection();
+    try {
+        model.daos.Produtos.excluir(id);
+        gelic.commit();
+        gelic.close();
+        }catch (SQLException e) {
+            gelic.rollback();
+            gelic.close();
+            throw e;
+            }
+    }
 }
