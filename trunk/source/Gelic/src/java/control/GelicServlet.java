@@ -20,14 +20,12 @@ import control.commands.GravarUsuario;
 import control.commands.Logout;
 import control.commands.NovaModalidade;
 import control.commands.NovoSistema;
+import control.commands.NovoUsuario;
 import control.commands.Nulo;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.NamingException;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -65,6 +63,7 @@ public class GelicServlet extends HttpServlet {
         comandos.put("AlterarSistema", new AlterarSistema());
         comandos.put("NovoSistema", new NovoSistema());
         comandos.put("GravarSistema", new GravarSistema());
+        comandos.put("NovoUsuario", new NovoUsuario());
 
     }
 
