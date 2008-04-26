@@ -16,9 +16,10 @@ import javax.naming.NamingException;
 public class FormUsuario extends Form {
 
   private ArrayList<model.beans.Papel> papeis;
-  
   private model.beans.Usuario usuario;
   private boolean inclusao = true;
+  private boolean exclusao = false;
+  private boolean alteracao = false;
   private String loginUsuario;
   private String erroLoginUsuario;
   private String senhaUsuario;
@@ -63,6 +64,8 @@ public class FormUsuario extends Form {
     setLoginUsuario(getUsuario().getLogin());
     setPapelUsuario(getUsuario().getPapel().getNome());
     setIdPapel(getUsuario().getPapel().getId());
+    setSenhaUsuario(getUsuario().getSenha());
+    setConfirmaSenhaUsuario(getSenhaUsuario());
   }
 
   public model.beans.Usuario getUsuario() {
@@ -83,6 +86,12 @@ public class FormUsuario extends Form {
 
   public void setInclusao(boolean inclusao) {
     this.inclusao = inclusao;
+
+    if (inclusao) {
+      setAlteracao(false);
+      setExclusao(false);
+    }
+
   }
 
   public String getLoginUsuario() {
@@ -157,13 +166,35 @@ public class FormUsuario extends Form {
     this.erroSenhaUsuario = erroSenhaUsuario;
   }
 
-  public
-
-  ArrayList<model.beans.Papel> getPapeis() {
+  public ArrayList<model.beans.Papel> getPapeis() {
     return papeis;
   }
 
   public void setPapeis(ArrayList<model.beans.Papel> papeis) {
     this.papeis = papeis;
+  }
+
+  public boolean isExclusao() {
+    return exclusao;
+  }
+
+  public void setExclusao(boolean exclusao) {
+    this.exclusao = exclusao;
+    if (exclusao) {
+      setInclusao(false);
+      setAlteracao(false);
+    }
+  }
+
+  public boolean isAlteracao() {
+    return alteracao;
+  }
+
+  public void setAlteracao(boolean alteracao) {
+    this.alteracao = alteracao;
+    if (alteracao) {
+      setInclusao(false);
+      setExclusao(false);
+    }
   }
 }
