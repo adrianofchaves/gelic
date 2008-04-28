@@ -19,6 +19,37 @@ import javax.naming.NamingException;
  */
 public class Orgaos {
 
+  public static ArrayList<model.beans.Orgao> recuperar() 
+          throws NamingException, SQLException {
+    
+    final String sqlRecuperarOrgaos = "select CNPJ, RAZAOSOCIAL, APELIDO, " +
+            "IE, ENDERECO from ORGAOS";
+    final String sqlContaOrgaos = "select count(*) from ORGAOS";
+    
+    Connection gelic = model.services.Conexao.getPool().getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlContaOrgaos);
+    ResultSet rs = pstmt.executeQuery();
+    rs.next();
+    int quantidadeOrgaos = rs.getInt(1);
+    rs.close();
+    pstmt.close();
+    pstmt = gelic.prepareStatement(sqlRecuperarOrgaos);
+    rs = pstmt.executeQuery();
+    ArrayList<model.beans.Orgao> orgaos = null;
+    while(rs.next()){
+      if(orgaos == null){
+        orgaos = new ArrayList<model.beans.Orgao>(quantidadeOrgaos);
+      }
+      orgaos.add(new model.beans.Orgao(
+              rs.getString("RAZAOSOCIAL"),
+              rs.getString( "APELIDO"), 
+              rs.getString("CNPJ"),
+              rs.getString("IE"),
+              rs.getInt("ENDERECO") ));
+    }            
+    return orgaos;
+  }
+
   public static void recuperar(ArrayList<model.beans.Licitacao> licitacoes) 
           throws SQLException, NamingException {
     final String sqlRecuperarOrgaosDeLicitacoes =  "select " +
