@@ -29,6 +29,38 @@ public class Contatos {
     pstmt.close();
     return buffer;
   }
+  
+  private static int getNextID() throws SQLException, NamingException{
+    final String sqlCalculaId =
+            "select gen_id(GEN_CONTATOS_ID, 1) from rdb$database";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlCalculaId);
+    ResultSet rs = pstmt.executeQuery();
+    rs.next();
+    int buffer = rs.getInt(1);
+    rs.close();
+    pstmt.close();
+    return buffer;
+            
+   
+  }
+
+  public static int incluir(model.beans.Empresa empresa, String nomeContato,
+          model.beans.TipoTelefone telefone) 
+          throws SQLException, NamingException {
+    final String sqlIncluirContatoEmpresa = "insert into " +
+            "CONTATOS(ID, NOME, TELEFONE, EMPRESA) values (?,?,?,?)";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlIncluirContatoEmpresa);
+    pstmt.setInt(1, getNextID());
+    pstmt.setString(2, nomeContato);
+    pstmt.setInt(3, telefone.getId());
+    pstmt.setString(4, empresa.getCnpj());
+    
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;    
+  }
 
   public static model.beans.Contato recuperar(int id)
           throws SQLException, NamingException {
@@ -121,11 +153,9 @@ public class Contatos {
     rs.close();
     pstmt.close();
 
-    pstmt =
-            gelic.prepareStatement(sqlRecuperaContatosEmpresa);
+    pstmt = gelic.prepareStatement(sqlRecuperaContatosEmpresa);
     pstmt.setString(1, empresa.getCnpj());
-    rs =
-            pstmt.executeQuery();
+    rs = pstmt.executeQuery();
     while (rs.next()) {
       contatos.add(new model.beans.Contato(
               rs.getString("NOME"),
@@ -141,15 +171,15 @@ public class Contatos {
     empresa.setContatos(contatos);
 
   }
-  
-  public static int excluir(int idContato) throws SQLException, NamingException{
-      final String sqlExcluirContato = "delete from CONTATOS where ID=?";
-      Connection gelic = model.services.Conexao.getConnection();
-      PreparedStatement pstmt = gelic.prepareStatement(sqlExcluirContato);
-      pstmt.setInt(1,idContato);
-      int buffer = pstmt.executeUpdate();
-      pstmt.close();
-      return buffer;
+
+  public static int excluir(int idContato) throws SQLException, NamingException {
+    final String sqlExcluirContato = "delete from CONTATOS where ID=?";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlExcluirContato);
+    pstmt.setInt(1, idContato);
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
   }
 }
 

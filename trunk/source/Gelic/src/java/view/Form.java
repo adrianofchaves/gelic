@@ -18,6 +18,10 @@ public class Form {
     private String nome;
     private Form Origem;
 
+  public void refresh() throws ExcecaoForm {
+    
+  }
+
     protected void apagaErros() {
         erros = null;
     }
