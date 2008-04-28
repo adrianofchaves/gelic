@@ -45,8 +45,8 @@ public class Telefones {
     return regs;
   }
 
-  public static int alterar(TipoTelefone telefone, String ddiContato, 
-          String dddContato, String numeroTelefoneContato, String ramalContato) 
+  public static int alterar(TipoTelefone telefone, String ddiContato,
+          String dddContato, String numeroTelefoneContato, String ramalContato)
           throws SQLException, NamingException {
     final String sqlAlteraTelefone = "update TELEFONES set DDI = ?," +
             "DDD = ?, " +
@@ -62,7 +62,7 @@ public class Telefones {
     pstmt.setInt(5, telefone.getId());
     int buffer = pstmt.executeUpdate();
     pstmt.close();
-    return buffer;    
+    return buffer;
   }
 
   public static model.beans.TipoTelefone incluir(String ddi,
@@ -189,34 +189,78 @@ public class Telefones {
     gelic.close();
   }
 
-  public static void recuperar(model.beans.Contato contato) 
+  public static void recuperar(model.beans.Contato contato)
           throws SQLException, NamingException {
     contato.setTelefone(recuperar(contato.getIdTelefone()));
   }
 
+  /**
+   * Recupera todos os telefones de uma empresa.  O telefone poderá ser de um 
+   * endereço ou de um dos seus contatos.
+   * 
+   * @param empresa - as listas de telefones do contato e o contato do endereço
+   * do objeto passado como parâmetro serão preenchidos por esta rotina.
+   * 
+   * @throws javax.naming.NamingException
+   * @throws java.sql.SQLException
+   */
   public static void recuperar(model.beans.Empresa empresa)
           throws NamingException, SQLException {
+
     final String sqlRecuperaTelefoneEmpresa =
-            "select TELEFONES.ID IDTELEFONE, DDI, DDD, TELEFONE, RAMAL " +
-            "from  telefones  inner join enderecos on " +
-            "(enderecos.telefone = telefones.id) inner join empresas on  " +
-            "(empresas.endereco = enderecos.id) where empresas.cnpj=?";
-    if (empresa.getEndereco() == null) {
-      return;
-    }
+            "select " +
+            " TELEFONES.ID TELEFONE,  DDI, DDD, NUMERO,  RAMAL, " +
+            " CONTATOS.ID CONTATO,  CNPJ,  null ENDERECO " +
+            "from " +
+            " TELEFONES" +
+            " inner join CONTATOS on (CONTATOS.TELEFONE = TELEFONES.ID)" +
+            " inner join EMPRESAS on (CONTATOS.EMPRESA = EMPRESAS.CNPJ) " +
+            "where " +
+            " EMPRESAS.CNPJ = ? " +
+            "union all " +
+            "select " +
+            " TELEFONES.ID TELEFONE, DDI, DDD, TELEFONES.NUMERO NUMERO, " +
+            " RAMAL, null CONTATO, CNPJ, ENDERECOS.ID ENDERECO " +
+            "from " +
+            " TELEFONES" +
+            " inner join ENDERECOS on (TELEFONES.ID = ENDERECOS.TELEFONE)" +
+            " inner join EMPRESAS on (EMPRESAS.ENDERECO = ENDERECOS.ID) " +
+            "where " +
+            " EMPRESAS.CNPJ = ? ";
     Connection gelic = model.services.Conexao.getPool().getConnection();
-    /* Conta quantidade de usuários cadastrados */
     PreparedStatement pstmt = gelic.prepareStatement(
             sqlRecuperaTelefoneEmpresa);
     pstmt.setString(1, empresa.getCnpj());
+    pstmt.setString(2, empresa.getCnpj());
     ResultSet rs = pstmt.executeQuery();
-    if (rs != null && rs.next()) {
-      empresa.getEndereco().setTelefone( new model.beans.TipoTelefone(
-              rs.getInt("IDTELEFONE"),
-              rs.getString("DDI"),
-              rs.getString("DDD"),
-              rs.getString("TELEFONE"),
-              rs.getString("RAMAL")));
+    while (rs.next()) {
+      int idEndereco = rs.getInt("ENDERECO");
+      if (rs.wasNull()) {
+        // telefone de algum contato
+        int idContato = rs.getInt("CONTATO");
+        for (model.beans.Contato contato : empresa.getContatos()) {
+          if (contato.getId() == idContato) {
+            //achou!
+            contato.setTelefone(new model.beans.TipoTelefone(
+                    rs.getInt("ID"),
+                    rs.getString("DDI"),
+                    rs.getString("DDD"),
+                    rs.getString("NUMERO"),
+                    rs.getString("RAMAL")));
+          }
+        }
+      } else {
+        //Telefone de algum endereço
+        if (empresa.getEndereco().getId() == idEndereco) {
+          //achou!
+          empresa.getEndereco().setTelefone(new model.beans.TipoTelefone(
+                  rs.getInt("ID"),
+                  rs.getString("DDI"),
+                  rs.getString("DDD"),
+                  rs.getString("NUMERO"),
+                  rs.getString("RAMAL")));
+        }
+      }
     }
     /*
      * Para aproveitar a conexão no pool é necessário fechar tudo...
@@ -226,7 +270,7 @@ public class Telefones {
     gelic.close();
   }
 
-  private static model.beans.TipoTelefone recuperar(int idTelefone) 
+  private static model.beans.TipoTelefone recuperar(int idTelefone)
           throws SQLException, NamingException {
     final String sqlRecuperaTelefone = "select ID, DDI, DDD, NUMERO, RAMAL " +
             "from TELEFONES WHERE ID = ?";

@@ -24,7 +24,7 @@
         <th class="menuItem" >
           <a href="Comercial?comando=NovoContato">
           Novo contato</a>                    
-        </th>
+        </th>        
         <th class="menuItem" >
           <a href="Gelic?comando=Logout">
           Trocar usuário</a>                    

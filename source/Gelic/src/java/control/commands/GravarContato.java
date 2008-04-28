@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import view.BrowserContatos;
+import view.ExcecaoForm;
 import view.FormContato;
 
 /**
@@ -20,8 +21,7 @@ public class GravarContato implements Comando {
 
   public String executar(HttpServletRequest req) throws ExcecaoComando {
     try {
-      view.FormContato form = (view.FormContato)
-              req.getSession().getAttribute("formContato");
+      view.FormContato form = (view.FormContato) req.getSession().getAttribute("formContato");
       if (req.getParameter("cancelar") != null) {
         return form.getOrigem().getNome();
       }
@@ -30,24 +30,28 @@ public class GravarContato implements Comando {
         return form.getNome();
       }
       return form.getOrigem().getNome();
+    } catch (ExcecaoForm ex) {
+      Logger.getLogger(GravarContato.class.getName()).log(
+              Level.SEVERE, null, ex);
+      throw new ExcecaoComando(ex.getMessage());
     } catch (NamingException ex) {
       Logger.getLogger(GravarContato.class.getName()).log(
               Level.SEVERE, null, ex);
-      throw new ExcecaoComando( ex.getMessage());
+      throw new ExcecaoComando(ex.getMessage());
     } catch (SQLException ex) {
       Logger.getLogger(GravarContato.class.getName()).log(
               Level.SEVERE, null, ex);
-      throw new ExcecaoComando( ex.getMessage());
+      throw new ExcecaoComando(ex.getMessage());
     }
   }
 
-  private void processa(HttpServletRequest req, FormContato form) 
-          throws NamingException, SQLException {
+  private void processa(HttpServletRequest req, FormContato form)
+          throws NamingException, SQLException, ExcecaoForm {
     /* popula form */
     form.setNomeContato(util.Request.getParameter(req, "nomeContato"));
     form.setDdiContato(util.Request.getParameter(req, "ddiContato"));
     form.setDddContato(util.Request.getParameter(req, "dddContato"));
-    form.setNumeroTelefoneContato(util.Request.getParameter(req, 
+    form.setNumeroTelefoneContato(util.Request.getParameter(req,
             "numeroTelefoneContato"));
     form.setRamalContato(util.Request.getParameter(req, "ramalContato"));
 
@@ -65,8 +69,8 @@ public class GravarContato implements Comando {
         view.FormEmpresa formEmpresa = (view.FormEmpresa) 
                 form.getOrigem().getOrigem();
         model.beans.Empresa empresa = formEmpresa.getEmpresa();
-        model.services.Contatos.incluir(empresa, form.getNomeContato(), 
-                form.getDdiContato(), form.getDddContato(), 
+        model.services.Contatos.incluir(empresa, form.getNomeContato(),
+                form.getDdiContato(), form.getDddContato(),
                 form.getNumeroTelefoneContato(), form.getRamalContato());
       }
       mensagem = msgInclusao;
@@ -76,13 +80,12 @@ public class GravarContato implements Comando {
       mensagem = msgExclusao;
     }
     if (form.isAlteracao()) {
-      model.services.Contatos.alterar(form.getContato(), form.getNomeContato(), 
-              form.getDdiContato(), form.getDddContato(), 
+      model.services.Contatos.alterar(form.getContato(), form.getNomeContato(),
+              form.getDdiContato(), form.getDddContato(),
               form.getNumeroTelefoneContato(), form.getRamalContato());
       mensagem = msgAlteracao;
     }
-    
-            
+    form.getOrigem().refresh();
     form.getOrigem().setMensagem(mensagem);
   }
 }

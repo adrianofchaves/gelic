@@ -102,7 +102,7 @@ public class Empresas {
           throws SQLException, NamingException {
     model.beans.Empresa empresa = model.daos.Empresas.recuperar(cnpj);
     model.daos.Enderecos.recuperar(empresa);
-    model.daos.Contatos.recuperar(empresa);
+    model.services.Contatos.recuperar(empresa);
     model.daos.Telefones.recuperar(empresa);
     return empresa;
   }
