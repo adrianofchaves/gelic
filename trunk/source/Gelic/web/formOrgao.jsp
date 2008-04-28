@@ -41,7 +41,6 @@
           method="POST">
       <p class="caption">
         ${sessionScope.formOrgao.titulo}
-        FormOrgao.JSP
       </p>            
       <c:forEach var="erro" items="${sessionScope.formOrgao.erros}">
         <P class="erro" >${erro}</P>
