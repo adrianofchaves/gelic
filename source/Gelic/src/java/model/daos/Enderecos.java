@@ -63,11 +63,11 @@ public class Enderecos {
 
   public static TipoEndereco incluir(String tipoLogradouro,
           String logradouro, String numero, String complemento, String bairro,
-          String cidade, String estado, String cep, String site, String email, 
+          String cidade, String estado, String cep, String site, String email,
           TipoTelefone tel) throws SQLException, NamingException {
     final String sqlCalculaId =
             "select gen_id(GEN_ENDERECOS_ID, 1) from rdb$database";
-    
+
     Connection gelic = model.services.Conexao.getConnection();
 
     model.beans.TipoEndereco end = new model.beans.TipoEndereco();
@@ -81,24 +81,24 @@ public class Enderecos {
     end.setNumero(numero);
     end.setSite(site);
     end.setTelefone(tel);
-    end.setTipo(tipoLogradouro);  
-    
+    end.setTipo(tipoLogradouro);
+
     PreparedStatement pstmt = gelic.prepareStatement(sqlCalculaId);
     ResultSet rs = pstmt.executeQuery();
     rs.next();
     end.setId(rs.getInt(1));
     rs.close();
     pstmt.close();
-    
+
     final String sqlIncluiEndereco =
             "insert into ENDERECOS( ID,TIPO, LOGRADOURO, NUMERO, " +
             "COMPLEMENTO, BAIRRO, MUNICIPIO, UF, CEP, SITE, EMAIL, TELEFONE) " +
             "values (?,?,?,?,?,?,?,?,?,?,?,?)";
     pstmt = gelic.prepareStatement(sqlIncluiEndereco);
-    
+
     pstmt.setInt(1, end.getId());
     pstmt.setString(2, end.getTipo());
-    pstmt.setString(3, end.getLogradouro());    
+    pstmt.setString(3, end.getLogradouro());
     pstmt.setString(4, end.getNumero());
     pstmt.setString(5, end.getComplemento());
     pstmt.setString(6, end.getBairro());
@@ -108,11 +108,11 @@ public class Enderecos {
     pstmt.setString(10, end.getSite());
     pstmt.setString(11, end.getEmail());
     pstmt.setInt(12, end.getTelefone().getId());
-    
+
     pstmt.execute();
-    
+
     pstmt.close();
-    
+
     return end;
   }
 
@@ -141,6 +141,49 @@ public class Enderecos {
       tipos.add(cria(rs.getString(1)));
     }
     return tipos;
+  }
+
+  public static void recuperarDeOrgaos(ArrayList<model.beans.Orgao> orgaos)
+          throws NamingException, SQLException {
+    HashMap<String, model.beans.Orgao> mOrgaos =
+            new HashMap<String, model.beans.Orgao>(orgaos.size());
+    for (model.beans.Orgao orgao : orgaos) {
+      mOrgaos.put(orgao.getCnpj(), orgao);
+    }
+    final String sqlRecuperaEnderecosOrgaos =
+            "select  CNPJ, ID, TIPO, LOGRADOURO, NUMERO, COMPLEMENTO, " +
+            "BAIRRO, MUNICIPIO, UF, CEP, SITE, EMAIL, TELEFONE " +
+            "from  " +
+            " ENDERECOS " +
+            "inner join " +
+            " ORGAOS on (ORGAOS.ENDERECO = ENDERECOS.ID)";
+    Connection gelic = model.services.Conexao.getPool().getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(
+            sqlRecuperaEnderecosOrgaos);
+    ResultSet rs = pstmt.executeQuery();
+    model.beans.Orgao orgao;
+    while (rs.next()) {
+      orgao = mOrgaos.get(rs.getString("CNPJ"));
+      if (orgao != null) {
+        orgao.setEndereco(
+                new model.beans.TipoEndereco(
+                rs.getString("BAIRRO"),
+                rs.getString("TIPO"),
+                rs.getInt("ID"),
+                rs.getInt("TELEFONE"),
+                rs.getString("LOGRADOURO"),
+                rs.getString("COMPLEMENTO"),
+                rs.getString("CEP"),
+                rs.getString("NUMERO"),
+                rs.getString("UF"),
+                rs.getString("EMAIL"),
+                rs.getString("SITE")));
+
+      }
+    }
+    rs.close();
+    pstmt.close();
+    gelic.close();
   }
 
   static private model.beans.TipoLogradouro cria(String nome) {

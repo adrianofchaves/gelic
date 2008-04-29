@@ -14,14 +14,33 @@ public class TipoEndereco {
   private String tipo;
   private TipoTelefone telefone;
   private int id;
+  private int idTelefone;
+
+  public TipoEndereco(String bairro, String tipo, int id, int idTelefone, 
+          String logradouro, String complemento, String cep, String numero, 
+          String uf, String email, String site) {
+    this.bairro = bairro;
+    this.tipo = tipo;
+    this.id = id;
+    this.idTelefone = idTelefone;
+    this.logradouro = logradouro;
+    this.complemento = complemento;
+    this.cep = cep;
+    this.numero = numero;
+    this.uf = uf;
+    this.email = email;
+    this.site = site;
+  }
 
   public String toString() {
     String mComplemento = getComplemento();
-    if( mComplemento != null && !mComplemento.isEmpty()) {
+    if (mComplemento != null && !mComplemento.isEmpty()) {
       mComplemento = "/" + mComplemento;
-    }else mComplemento = "";
-    
-    
+    } else {
+      mComplemento = "";
+    }
+
+
     String mCep = getCep();
     if (mCep != null && !mCep.isEmpty()) {
       mCep = "CEP: " + mCep;
@@ -41,21 +60,25 @@ public class TipoEndereco {
       mEmail = "email:" + mEmail;
     }
     String buffer = mCep;
-    if(!mSite.isEmpty()){
-      if(!buffer.isEmpty()){
+    if (!mSite.isEmpty()) {
+      if (!buffer.isEmpty()) {
         buffer = buffer + " - " + mSite;
-      }else buffer = mSite;
+      } else {
+        buffer = mSite;
+      }
     }
-    if(!mEmail.isEmpty()){
-      if(!buffer.isEmpty()){
+    if (!mEmail.isEmpty()) {
+      if (!buffer.isEmpty()) {
         buffer = buffer + " - " + mEmail;
-      }else buffer = mEmail;
+      } else {
+        buffer = mEmail;
+      }
     }
-    if( !buffer.isEmpty()){
+    if (!buffer.isEmpty()) {
       buffer = ". " + buffer;
     }
     return getTipo() + " " + getLogradouro() + ", " + getNumero() +
-            mComplemento+ ", " + getBairro() + " - " + getCidade() + "-" +
+            mComplemento + ", " + getBairro() + " - " + getCidade() + "-" +
             getUf() + buffer;
 
 
@@ -249,6 +272,14 @@ public class TipoEndereco {
 
   public void setId(int id) {
     this.id = id;
+  }
+
+  public int getIdTelefone() {
+    return idTelefone;
+  }
+
+  public void setIdTelefone(int idTelefone) {
+    this.idTelefone = idTelefone;
   }
 }
 

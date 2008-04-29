@@ -7,6 +7,7 @@ import control.commands.AlterarTipoDocumento;
 import control.commands.AlterarTipoLicitacao;
 import control.commands.CadastroContatos;
 import control.commands.CadastroEmpresas;
+import control.commands.CadastroOrgaos;
 import control.commands.CadastroTiposDocumentos;
 import control.commands.CadastroTiposLicitacoes;
 import control.commands.CadastroProdutos;
@@ -79,6 +80,7 @@ public class ServletComercial extends HttpServlet {
         comandos.put("ExcluirContato", new ExcluirContato());
         comandos.put("NovoContato", new NovoContato());
         comandos.put("GravarContato", new GravarContato());
+        comandos.put("CadastroOrgaos", new CadastroOrgaos());
         
     }
 

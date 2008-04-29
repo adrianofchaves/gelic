@@ -16,6 +16,12 @@ public class Orgaos {
 
   static public ArrayList<model.beans.Orgao> recuperar() 
           throws NamingException, SQLException {
-    return model.daos.Orgaos.recuperar();
+    ArrayList<model.beans.Orgao> orgaos = model.daos.Orgaos.recuperar();
+    
+    model.daos.Enderecos.recuperarDeOrgaos(orgaos);
+    model.daos.Contatos.recuperarDeOrgaos(orgaos);
+    model.daos.Telefones.recuperarDeOrgaos(orgaos);
+    
+    return orgaos;
   }
 }

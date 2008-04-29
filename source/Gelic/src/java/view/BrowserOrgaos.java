@@ -38,7 +38,7 @@ public class BrowserOrgaos extends Form{
   public BrowserOrgaos(){
     setNome(nomeJSP);
     setTitulo(caption);    
-    setNome(nome);    
+    setNomeAtributo(nome);    
   }
 
   public ArrayList<model.beans.Orgao> getOrgaos() {
