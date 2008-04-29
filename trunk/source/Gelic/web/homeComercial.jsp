@@ -38,7 +38,7 @@
         <a href="Comercial?comando=CadastroProdutos">Produtos</a>
       </th>
       <th class="menuItem" >
-        <a href="browserOrgaos.jsp">Órgãos Públicos</a>
+        <a href="Comercial?comando=CadastroOrgaos">Órgãos Públicos</a>
       </th>
       <th class="menuItem" >
         <a href="Comercial?comando=CadastroEmpresas">Empresas</a>                    

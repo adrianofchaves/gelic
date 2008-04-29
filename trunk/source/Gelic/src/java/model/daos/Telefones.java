@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.naming.NamingException;
+import model.beans.Orgao;
 import model.beans.TipoTelefone;
 
 /**
@@ -100,6 +101,75 @@ public class Telefones {
     pstmt.close();
 
     return tel;
+  }
+
+  public static void recuperarDeOrgaos(ArrayList<Orgao> orgaos) 
+          throws NamingException, SQLException {
+    HashMap<String, model.beans.Orgao> mOrgaos =
+            new HashMap<String, model.beans.Orgao>(orgaos.size());
+    for (model.beans.Orgao orgao : orgaos) {
+      mOrgaos.put(orgao.getCnpj(), orgao);
+    }
+
+    final String sqlRecuperarTelefones =
+            "select " +
+            " TELEFONES.ID TELEFONE, DDI, DDD, NUMERO, RAMAL, " +
+            " CONTATOS.ID CONTATO, ORGAOS.CNPJ ORGAO," +
+            " null ENDERECO " +
+            "from " +
+            " TELEFONES" +
+            " inner join CONTATOS on (CONTATOS.TELEFONE = TELEFONES.ID)" +
+            " inner join ORGAOS on (CONTATOS.ORGAO = ORGAOS.CNPJ) " +
+            "union all " +
+            "select" +
+            " TELEFONES.ID TELEFONE, DDI, DDD, TELEFONES.NUMERO NUMERO, " +
+            " RAMAL," +
+            " null CONTATO, ORGAOS.CNPJ ORGAO, " +
+            " ENDERECOS.ID ENDERECO " +
+            "from" +
+            " TELEFONES" +
+            " inner join ENDERECOS on (ENDERECOS.TELEFONE = TELEFONES.ID)" +
+            " inner join ORGAOS on (ORGAOS.ENDERECO = ENDERECOS.ID)";
+    
+    Connection gelic = model.services.Conexao.getPool().getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlRecuperarTelefones);
+    ResultSet rs = pstmt.executeQuery();
+    model.beans.Orgao orgao;
+    int idEndereco;
+    int idContato;
+    while (rs.next()) {
+      orgao = mOrgaos.get(rs.getString("ORGAO"));
+      if( orgao != null ){
+        idEndereco = rs.getInt( "ENDERECO");        
+        if( !rs.wasNull()){
+          // É um telefone de endereço 
+          orgao.getEndereco().setTelefone( new model.beans.TipoTelefone(
+                  rs.getInt( "TELEFONE"),
+                  rs.getString("DDI"),
+                  rs.getString("DDD"),
+                  rs.getString("NUMERO"),
+                  rs.getString("RAMAL")));
+        }else{
+          idContato = rs.getInt("CONTATO");
+          if(!rs.wasNull()){
+            for(model.beans.Contato contato : orgao.getContatos()){
+              if( contato.getId() == idContato ){
+                contato.setTelefone(new model.beans.TipoTelefone(
+                  rs.getInt( "TELEFONE"),
+                  rs.getString("DDI"),
+                  rs.getString("DDD"),
+                  rs.getString("NUMERO"),
+                  rs.getString("RAMAL")));
+              }
+            }
+          }
+        }
+        
+      }
+    }
+    rs.close();
+    pstmt.close();
+    gelic.close();
   }
 
   public static void recuperar(ArrayList<model.beans.Empresa> empresas)

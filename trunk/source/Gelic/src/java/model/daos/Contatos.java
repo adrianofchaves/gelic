@@ -29,8 +29,43 @@ public class Contatos {
     pstmt.close();
     return buffer;
   }
-  
-  private static int getNextID() throws SQLException, NamingException{
+
+  public static void recuperarDeOrgaos(ArrayList<model.beans.Orgao> orgaos)
+          throws NamingException, SQLException {
+
+    HashMap<String, model.beans.Orgao> mOrgaos =
+            new HashMap<String, model.beans.Orgao>(orgaos.size());
+    for (model.beans.Orgao orgao : orgaos) {
+      mOrgaos.put(orgao.getCnpj(), orgao);
+    }
+
+    final String sqlRecuperaContatosOrgaos =
+            "select  ORGAO, ID, NOME, TELEFONE " +
+            "from  " +
+            "CONTATOS inner join ORGAOS on (ORGAOS.CNPJ = CONTATOS.ORGAO)";
+    Connection gelic = model.services.Conexao.getPool().getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlRecuperaContatosOrgaos);
+    ResultSet rs = pstmt.executeQuery();
+    model.beans.Orgao orgao;
+    while (rs.next()) {
+      orgao = mOrgaos.get(rs.getString("ORGAO"));
+      if (orgao != null) {
+        if (orgao.getContatos() == null) {
+          orgao.setContatos(new ArrayList<model.beans.Contato>());
+        }
+        orgao.getContatos().add(new model.beans.Contato(
+                rs.getString("NOME"),
+                rs.getInt("TELEFONE"),
+                rs.getInt("ID")));
+      }
+    }
+    rs.close();
+    pstmt.close();
+    gelic.close();
+    
+  }
+
+  private static int getNextID() throws SQLException, NamingException {
     final String sqlCalculaId =
             "select gen_id(GEN_CONTATOS_ID, 1) from rdb$database";
     Connection gelic = model.services.Conexao.getConnection();
@@ -41,12 +76,12 @@ public class Contatos {
     rs.close();
     pstmt.close();
     return buffer;
-            
-   
+
+
   }
 
   public static int incluir(model.beans.Empresa empresa, String nomeContato,
-          model.beans.TipoTelefone telefone) 
+          model.beans.TipoTelefone telefone)
           throws SQLException, NamingException {
     final String sqlIncluirContatoEmpresa = "insert into " +
             "CONTATOS(ID, NOME, TELEFONE, EMPRESA) values (?,?,?,?)";
@@ -56,10 +91,10 @@ public class Contatos {
     pstmt.setString(2, nomeContato);
     pstmt.setInt(3, telefone.getId());
     pstmt.setString(4, empresa.getCnpj());
-    
+
     int buffer = pstmt.executeUpdate();
     pstmt.close();
-    return buffer;    
+    return buffer;
   }
 
   public static model.beans.Contato recuperar(int id)
