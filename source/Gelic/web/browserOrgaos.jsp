@@ -46,7 +46,7 @@
         items="${sessionScope.browserOrgaos.orgaos}">                
         <tr class="dados">
           <td>
-            <a href="Gelic?comando=AlterarOrgao&cnpj=${orgao.cnpj}">
+            <a href="Comercial?comando=AlterarOrgao&cnpj=${orgao.cnpj}">
               ${orgao.cnpj}                            
             </a>                        
           </td>
@@ -57,7 +57,7 @@
             ${orgao.endereco.telefone}            
           </td>
           <td>
-            <a href="Gelic?comando=ExcluirOrgao&orgado=${orgao.cnpj}">
+            <a href="Comercial?comando=ExcluirOrgao&orgado=${orgao.cnpj}">
               <img src="img/trash.PNG"  width="16" height="16" 
                    alt="trash"/>
             </a>
