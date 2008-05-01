@@ -11,9 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.naming.NamingException;
-import model.beans.Empresa;
-import model.beans.TipoEndereco;
-import model.beans.TipoTelefone;
 
 /**
  *
@@ -21,7 +18,7 @@ import model.beans.TipoTelefone;
  */
 public class Enderecos {
 
-  public static int alterar(Empresa empresa, String tipoLogradouroEmpresa,
+  public static int alterar(model.beans.Empresa empresa, String tipoLogradouroEmpresa,
           String logradouroEmpresa, String numeroEmpresa,
           String complementoEmpresa, String bairroEmpresa,
           String cidadeEmpresa, String estadoEmpresa, String cepEmpresa,
@@ -61,10 +58,10 @@ public class Enderecos {
     return regs;
   }
 
-  public static TipoEndereco incluir(String tipoLogradouro,
+  public static model.beans.TipoEndereco incluir(String tipoLogradouro,
           String logradouro, String numero, String complemento, String bairro,
           String cidade, String estado, String cep, String site, String email,
-          TipoTelefone tel) throws SQLException, NamingException {
+          model.beans.TipoTelefone tel) throws SQLException, NamingException {
     final String sqlCalculaId =
             "select gen_id(GEN_ENDERECOS_ID, 1) from rdb$database";
 
@@ -116,7 +113,8 @@ public class Enderecos {
     return end;
   }
 
-  public static ArrayList<model.beans.TipoLogradouro> recuperar() throws NamingException, SQLException {
+  public static ArrayList<model.beans.TipoLogradouro> recuperar()
+          throws NamingException, SQLException {
     final String sqlRecuperaTipos = "select TIPO from TIPOSLOGRADOUROS";
     final String sqlContaTipos = "select count(*) from TIPOSLOGRADOUROS";
 
@@ -184,6 +182,36 @@ public class Enderecos {
     rs.close();
     pstmt.close();
     gelic.close();
+  }
+
+  public static model.beans.TipoEndereco recuperar(int id) 
+          throws NamingException, SQLException {
+    final String sqlRecuperaEndereco =
+            "select  ID, TIPO, LOGRADOURO, NUMERO, COMPLEMENTO, " +
+            "BAIRRO, MUNICIPIO, UF, CEP, SITE, EMAIL, TELEFONE " +
+            "from  " +
+            " ENDERECOS " +
+            "where " +
+            "  ID = ?";
+    Connection gelic = model.services.Conexao.getPool().getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlRecuperaEndereco);
+    pstmt.setInt(1, id);
+    ResultSet rs = pstmt.executeQuery();
+    if(rs.next()){
+      return new model.beans.TipoEndereco(
+              rs.getString("BAIRRO"), 
+              rs.getString("TIPO"), 
+              rs.getInt("ID"),
+              rs.getInt("TELEFONE"),
+              rs.getString("LOGRADOURO"),
+              rs.getString("COMPLEMENTO"),
+              rs.getString("CEP"), 
+              rs.getString("NUMERO"), 
+              rs.getString("UF"), 
+              rs.getString("EMAIL"), 
+              rs.getString("SITE") );
+    }
+    return null;    
   }
 
   static private model.beans.TipoLogradouro cria(String nome) {

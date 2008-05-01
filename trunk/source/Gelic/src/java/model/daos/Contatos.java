@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.naming.NamingException;
+import model.beans.Orgao;
 
 /**
  *
@@ -28,6 +29,34 @@ public class Contatos {
     int buffer = pstmt.executeUpdate();
     pstmt.close();
     return buffer;
+  }
+
+  public static void recuperar(Orgao orgao) throws NamingException, SQLException {
+    final String sqlContaContatosOrgao = 
+            "select count(*) from CONTATOS where ORGAO = ?";
+    final String sqlRecuperaContatosOrgao =
+            "select  ORGAO, ID, NOME, TELEFONE " +
+            "from  CONTATOS where ORGAO = ?";
+    Connection gelic = model.services.Conexao.getPool().getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlContaContatosOrgao);
+    pstmt.setString(1, orgao.getCnpj());
+    ResultSet rs = pstmt.executeQuery();
+    if(!rs.next()){
+      return;
+    }
+    int quantidadeContatos = rs.getInt(1);
+    rs.close();
+    pstmt.close();
+    pstmt = gelic.prepareStatement(sqlRecuperaContatosOrgao);
+    pstmt.setString(1, orgao.getCnpj());
+    rs = pstmt.executeQuery();
+    orgao.setContatos(new ArrayList<model.beans.Contato>(quantidadeContatos));
+    while(rs.next()){
+      orgao.getContatos().add(new model.beans.Contato(
+              rs.getString("NOME"),
+              rs.getInt("TELEFONE"), 
+              rs.getInt("ID")));      
+    }    
   }
 
   public static void recuperarDeOrgaos(ArrayList<model.beans.Orgao> orgaos)
