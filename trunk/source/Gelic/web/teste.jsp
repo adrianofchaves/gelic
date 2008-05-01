@@ -27,21 +27,26 @@
     </head>
     <body>
     <table class="cadastro">
-      <TH class="cadastro"> PE/003/07 CEF/CT</TH>
+      <TH class="cadastro"> Pregão Eletronico nº 003/07 CEF/CT</TH>
     </table>
     <table class="cadastro">
       <tr class = "cabecalho">
         <td>Empresa</td>
         <td>Lote</td>
         <td>ValorTotalProposta</td>
-        <td>Ganha?</td>
+        <td>Status</td>
       </tr>
         <tr class="dados">
           <td>SÓLIO</td>
           <td>1</td>
           <td>150.000,00</td>
           <td> 
-            <input type="checkbox" name="ganha">
+          <select name="status" 
+                  class="tabelaCadastro">
+            <option>Ganha</option>
+            <option>Perdida</option>
+            <option>Encerrada</option>                    
+          </select>
           </td>
         </tr>
         <tr class="dados">
@@ -49,7 +54,12 @@
           <td>1</td>
           <td>180.000,00</td>
           <td> 
-            <input type="checkbox" name="ganha">
+          <select name="status" 
+                  class="tabelaCadastro">
+            <option>Ganha</option>
+            <option>Perdida</option>
+            <option>Encerrada</option>                    
+          </select>
           </td>
         </tr>
         <tr class="dados">
@@ -57,7 +67,12 @@
           <td>2</td>
           <td>256.350,00</td>
           <td> 
-            <input type="checkbox" name="ganha">
+          <select name="status" 
+                  class="tabelaCadastro">
+            <option>Ganha</option>
+            <option>Perdida</option>
+            <option>Encerrada</option>                    
+          </select>
           </td>
         </tr>
         <tr class="dados">
@@ -65,7 +80,12 @@
           <td>2</td>
           <td>300.000,00</td>
           <td> 
-            <input type="checkbox" name="ganha">
+          <select name="status" 
+                  class="tabelaCadastro">
+            <option>Ganha</option>
+            <option>Perdida</option>
+            <option>Encerrada</option>                    
+          </select>
           </td>
         </tr>
     </table>
