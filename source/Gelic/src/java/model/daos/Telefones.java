@@ -11,8 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.naming.NamingException;
-import model.beans.Orgao;
-import model.beans.TipoTelefone;
 
 /**
  *
@@ -46,8 +44,9 @@ public class Telefones {
     return regs;
   }
 
-  public static int alterar(TipoTelefone telefone, String ddiContato,
-          String dddContato, String numeroTelefoneContato, String ramalContato)
+  public static int alterar(model.beans.TipoTelefone telefone, 
+          String ddiContato, String dddContato, String numeroTelefoneContato, 
+          String ramalContato)
           throws SQLException, NamingException {
     final String sqlAlteraTelefone = "update TELEFONES set DDI = ?," +
             "DDD = ?, " +
@@ -103,7 +102,7 @@ public class Telefones {
     return tel;
   }
 
-  public static void recuperarDeOrgaos(ArrayList<Orgao> orgaos) 
+  public static void recuperarDeOrgaos(ArrayList<model.beans.Orgao> orgaos) 
           throws NamingException, SQLException {
     HashMap<String, model.beans.Orgao> mOrgaos =
             new HashMap<String, model.beans.Orgao>(orgaos.size());
@@ -258,7 +257,12 @@ public class Telefones {
     pstmt.close();
     gelic.close();
   }
-
+  /**
+   * Recupera o telefone de um contato.
+   * @param contato
+   * @throws java.sql.SQLException
+   * @throws javax.naming.NamingException
+   */
   public static void recuperar(model.beans.Contato contato)
           throws SQLException, NamingException {
     contato.setTelefone(recuperar(contato.getIdTelefone()));
@@ -340,7 +344,7 @@ public class Telefones {
     gelic.close();
   }
 
-  private static model.beans.TipoTelefone recuperar(int idTelefone)
+  public static model.beans.TipoTelefone recuperar(int idTelefone)
           throws SQLException, NamingException {
     final String sqlRecuperaTelefone = "select ID, DDI, DDD, NUMERO, RAMAL " +
             "from TELEFONES WHERE ID = ?";

@@ -46,7 +46,7 @@
         <P class="erro" >${erro}</P>
       </c:forEach>           
       <p class="grupo">Dados Gerais:</p>
-
+      
       <table class="tabelaCadastro">
         <td class="tabelaCadastro" style = "width:20%">
           Apelido:<BR>
@@ -59,8 +59,8 @@
                  value="${sessionScope.formOrgao.razaoSocialOrgao}"/>
         </td>
       </table>
-
-
+      
+      
       <table class="tabelaErro">
         <td class="tabelaErro" style="width: 20%">
           ${sessionScope.formOrgao.erroApelidoOrgao}
@@ -69,7 +69,7 @@
           ${sessionScope.formOrgao.erroRazaoSocialOrgao}
         </td>
       </table>
-
+      
       <table class="tabelaCadastro">
         <td class="tabelaCadastro" style = "width:50%">
           CNPJ:<BR>
@@ -82,7 +82,7 @@
                  value="${sessionScope.formOrgao.ieOrgao}"/>
         </td>
       </table>
-
+      
       <table class="tabelaErros">
         <td class="tabelaErros" style="width: 50%">
           ${sessionScope.formOrgao.erroCnpjOrgao}
@@ -100,9 +100,14 @@
           <select name="tipoLogradouroOrgao" 
                   class="tabelaCadastro"
                   value="${sessionScope.formOrgao.tipoLogradouroOrgao}">
-            <option>Rua</option>
-            <option>Praça</option>
-            <option>Avenida</option>                    
+            <c:forEach var="tipoLogradouro" 
+                       items="${sessionScope.formOrgao.tiposLogradouros}">
+              <option
+                <c:if test="${tipoLogradouro==sessionScope.formOrgao.tipoLogradouroOrgao}">
+                  selected 
+                </c:if>
+                >${tipoLogradouro}</option>
+            </c:forEach>      
           </select>                        
         </TD>
         <TD class="tabelaCadastro" style="width:55%">
@@ -156,9 +161,14 @@
           <select name="estadoOrgao" 
                   class="tabelaCadastro"
                   value="${sessionScope.formOrgao.estadoOrgao}">
-            <option>RJ</option>
-            <option>SP</option>
-            <option>BA</option>                    
+            <c:forEach var="uf"  
+                       items="${sessionScope.formOrgao.estados}">              
+              <option
+                <c:if test="${uf==sessionScope.formOrgao.estadoOrgao}">
+                  selected
+                </c:if>
+                >${uf}</option>
+            </c:forEach>            
           </select>
         </TD>
         <TD class="tabelaCadastro"  style="width:15%" >
@@ -246,10 +256,14 @@
       
       <BR><BR>
       <p>
-        <input class="botao" type="submit" value="Salvar" 
-               name="executar"/>
-        <input class="botao" type="submit" value="Excluir" 
-               name="excluir"/>
+        <c:if test="${sessionScope.formOrgao.exclusao}">
+          <input class="botao" type="submit" value="Excluir" 
+                 name="excluir"/>
+        </c:if>
+        <c:if test="${!sessionScope.formOrgao.exclusao}">
+          <input class="botao" type="submit" value="Salvar" 
+                 name="executar"/>
+        </c:if>
         <INPUT class="botao" TYPE="submit" value="Cancelar" 
                name="cancelar"/>                
       </p>
