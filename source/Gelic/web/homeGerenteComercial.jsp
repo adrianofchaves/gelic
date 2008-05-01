@@ -20,12 +20,6 @@
         <table class="menu">
             <tr>
                 <th class="menuItem" >
-                    <a href="Gelic?comando=CadastroUsuarios">Encerrar Licitações</a>
-                </th>
-                <th class="menuItem" >
-                    <a href="registrar.jsp">Registrar Proposta Vencedora</a>                    
-                </th>
-                <th class="menuItem" >
                     <a href="Gelic?comando=Logout">Trocar usuario</a>
                 </th>                
             </tr>        
@@ -33,69 +27,49 @@
     </head>
     <body>
     <table class="cadastro">
-      <TH class="cadastro"> LICITAÇÕES ABERTAS</TH>
+      <TH class="cadastro"> LICITAÇÕES PARTICIPADAS</TH>
     </table>
     <table class="cadastro">
       <tr class = "cabecalho">
         <td>Licitação</td>
         <td>Processo</td>
         <td>Sistema</td>
+        <td>Empresas</td>
         <td>Órgão</td>
         <td>Objeto</td>
-        <td>Encerrar</td>
       </tr>
         <tr class="dados">
             <td><a href="teste.jsp">
             PE/003/07</a></td>
           <td>185.148/2007</td>
           <td>Registro de Preços</td>
+          <td>Sólio<br>Tecnitubo<br>Savordelli<br>Werolli</td>
           <td>CEF/CT</td>
           <td>Cadeiras</td>
-          <td>
-            <a href="Comercial?comando=ExcluirLicitacao&licitacao=${licitacao.numero}">
-              <img src="img/trash.PNG"  width="16" height="16" 
-                   alt="trash"/>
-            </a>
-          </td>
         </tr>
         <tr class="dados">
           <td>PP/028/07</td>
           <td>235.963/2007</td>
           <td>Registro de Preços</td>
+          <td>Tecnitubo<br>Primomondo</td>
           <td>CEF/RJ</td>
           <td>Mesas e Armários</td>
-          <td>
-            <a href="Comercial?comando=ExcluirLicitacao&licitacao=${licitacao.numero}">
-              <img src="img/trash.PNG"  width="16" height="16" 
-                   alt="trash"/>
-            </a>
-          </td>
         </tr>
         <tr class="dados">
           <td>PE/001/08</td>
           <td>000.256/2008</td>
           <td>Fornecimento</td>
+          <td>Global<br>Scheffer</td>
           <td>CEF/DF</td>
           <td>Arquivos de aço</td>
-          <td>
-            <a href="Comercial?comando=ExcluirLicitacao&licitacao=${licitacao.numero}">
-              <img src="img/trash.PNG"  width="16" height="16" 
-                   alt="trash"/>
-            </a>
-          </td>
         </tr>
         <tr class="dados">
           <td>TP/055/07</td>
           <td>985.635/2007</td>
           <td>Fornecimento</td>
+          <td>Casa Cruz</td>
           <td>CEF/SP</td>
           <td>Papel A4</td>
-          <td>
-            <a href="Comercial?comando=ExcluirLicitacao&licitacao=${licitacao.numero}">
-              <img src="img/trash.PNG"  width="16" height="16" 
-                   alt="trash"/>
-            </a>
-          </td>
         </tr>
     </table>
     <font class="mensagem">
