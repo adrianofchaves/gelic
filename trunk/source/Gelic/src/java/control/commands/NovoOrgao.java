@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package control.commands;
 
 import java.sql.SQLException;
@@ -15,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author adriano
  */
-public class AlterarOrgao implements Comando{
-  final String nomeParametro = "cnpj";
+public class NovoOrgao implements Comando {
+
   public String executar(HttpServletRequest req) throws ExcecaoComando {
     try {
       view.FormOrgao form = new view.FormOrgao();
@@ -31,20 +30,15 @@ public class AlterarOrgao implements Comando{
       //preenche listas
       form.setEstados(control.UFs.getUFs(req));
       form.setTiposLogradouros(control.Enderecos.getTiposLogradouros(req));
-      //executa form
-      String cnpj = util.Request.getParameter(req, nomeParametro);
-      form.alterar(cnpj);      
       
+      form.setInclusao(true);
       return form.getNome();
     } catch (NamingException ex) {
-      Logger.getLogger(AlterarOrgao.class.getName()).log(
-              Level.SEVERE, null, ex);
+      Logger.getLogger(NovoOrgao.class.getName()).log(Level.SEVERE, null, ex);
       throw new ExcecaoComando(ex.getMessage());
     } catch (SQLException ex) {
-      Logger.getLogger(AlterarOrgao.class.getName()).log(
-              Level.SEVERE, null, ex);
+      Logger.getLogger(NovoOrgao.class.getName()).log(Level.SEVERE, null, ex);
       throw new ExcecaoComando(ex.getMessage());
     }
   }
-
 }
