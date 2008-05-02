@@ -22,7 +22,7 @@
           Voltar</a>
         </th>
         <th class="menuItem" >
-          <a href="formOrgao.jsp">
+          <a href="Comercial?comando=NovoOrgao">
           Novo Órgão</a>                    
         </th>
         <th class="menuItem" >

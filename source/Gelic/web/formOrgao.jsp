@@ -1,4 +1,4 @@
-<%-- 
+  <%-- 
     Document   : formOrgao
     Created on : 29/03/2008, 18:26:42
     Author     : Paulo
@@ -50,12 +50,12 @@
       <table class="tabelaCadastro">
         <td class="tabelaCadastro" style = "width:20%">
           Apelido:<BR>
-          <input type="text" class="tabelaCadastro"
-                 name="${sessionScope.formOrgao.apelidoOrgao}" />
+          <input type="text" class="tabelaCadastro" name = "apelidoOrgao"
+                 value="${sessionScope.formOrgao.apelidoOrgao}" />
         </td>                
         <td class="tabelaCadastro" style="width:80%">
           Razão Social:<BR>
-          <input type="text" class="tabelaCadastro"
+          <input type="text" class="tabelaCadastro" name="razaoSocialOrgao"
                  value="${sessionScope.formOrgao.razaoSocialOrgao}"/>
         </td>
       </table>
@@ -73,12 +73,12 @@
       <table class="tabelaCadastro">
         <td class="tabelaCadastro" style = "width:50%">
           CNPJ:<BR>
-          <input type="text" class="tabelaCadastro"
-                 name="${sessionScope.formOrgao.cnpjOrgao}" />
+          <input type="text" class="tabelaCadastro" name="cnpjOrgao"
+                 value="${sessionScope.formOrgao.cnpjOrgao}" />
         </td>                
         <td class="tabelaCadastro" style="width:50%">
           IE:<BR>
-          <input type="text" class="tabelaCadastro"
+          <input type="text" class="tabelaCadastro" name="ieOrgao"
                  value="${sessionScope.formOrgao.ieOrgao}"/>
         </td>
       </table>

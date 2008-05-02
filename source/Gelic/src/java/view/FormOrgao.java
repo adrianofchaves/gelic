@@ -447,8 +447,9 @@ public class FormOrgao extends Form {
 
     cnpjOrgao = orgao.getCnpj();
     ieOrgao = orgao.getIe();
+    apelidoOrgao = orgao.getApelido();
 
-    if (orgao.getEndereco() != null) {
+    if (orgao.getEndereco() != null) {      
       tipoLogradouroOrgao = orgao.getEndereco().getTipo();
       logradouroOrgao = orgao.getEndereco().getLogradouro();
       numeroOrgao = orgao.getEndereco().getNumero();
