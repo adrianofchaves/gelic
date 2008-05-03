@@ -44,14 +44,14 @@
         <td>Valor</td>        
       </tr>
         <tr class="dados">
-          <td>PE/018/07</td>
+            <td><a href="testeContrato.jsp">PE/002-7051/05</a></td>
           <td>Registro de Preços</td>
-          <td>CEF/CT</td>
-          <td>135/2007</td>
-          <td>01/04/2007</td>
-          <td>Mesas e Armários</td>
-          <td>Sólio Comercial Brasileira Ltda.</td>
-          <td>1.456.185,00</td>
+          <td>CEF/BH</td>
+          <td>135/2006</td>
+          <td>16/06/2006</td>
+          <td>Mesas e Acessórios de informatica</td>
+          <td>Tecnitubo Indústria de Móveis Ltda.</td>
+          <td>527.000,00</td>
         </tr>
         <tr class="dados">
           <td>TP/125/06</td>

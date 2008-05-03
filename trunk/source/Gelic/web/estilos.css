@@ -142,6 +142,42 @@ tr.dados{
     font-family: Arial,Helvetica,sans-serif;
     color: #666666;
 }
+tr.contrato{    
+    background-color: white;    
+    font-family: Arial,Helvetica,sans-serif;
+    color: black;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-color: black;
+    border-bottom-color: black;
+    border-left-color: black;
+    border-right-color: black;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    text-align: right;
+}
+tr.contratoCenter{    
+    background-color: white;    
+    font-family: Arial,Helvetica,sans-serif;
+    color: black;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-color: black;
+    border-bottom-color: black;
+    border-left-color: black;
+    border-right-color: black;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    text-align: center;
+}
 tr.cabecalho{
     
     font-weight: 600;    
