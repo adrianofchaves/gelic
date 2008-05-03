@@ -65,6 +65,16 @@ public class Telefones {
     return buffer;
   }
 
+  public static int excluir(int id) throws SQLException, NamingException {
+    final String sqlExcluiTelefone = "delete from TELEFONES where ID = ?";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlExcluiTelefone);
+    pstmt.setInt(1, id);
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
+  }
+
   public static model.beans.TipoTelefone incluir(String ddi,
           String ddd, String numero, String ramal)
           throws SQLException, NamingException {

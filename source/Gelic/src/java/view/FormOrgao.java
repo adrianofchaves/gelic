@@ -74,10 +74,70 @@ public class FormOrgao extends Form {
 
   }
 
+  /**
+   * Executa ações necessárias por conta do cancelamento
+   */
+  public void cancelar() {
+
+  }
+
+  /**
+   * Prepara exclusão do órgão.
+   * @param cnpj - identificador do órgão que será excluído.
+   */
+  public void excluir(String cnpj) throws NamingException, SQLException {
+    setOrgao(model.services.Orgaos.recuperar(cnpj));
+    setExclusao(true);
+    atualizaCampos();
+
+  }
+
+  public String gravar() throws ExcecaoForm, SQLException, NamingException {
+    executarCriticas();
+    if (temErros()) {
+      return getNome();
+    }
+    
+    String mensagem = null;
+    if (isInclusao()) {
+      model.services.Orgaos.novoOrgao(cnpjOrgao, razaoSocialOrgao, apelidoOrgao, 
+              ieOrgao, tipoLogradouroOrgao, logradouroOrgao, numeroOrgao, 
+              complementoOrgao, bairroOrgao, cidadeOrgao, estadoOrgao, cepOrgao, 
+              siteOrgao, emailOrgao, ddiOrgao, dddOrgao, numeroTelefoneOrgao, 
+              ramalOrgao);
+              
+      mensagem = "Novo órgão incluido.";
+    }
+    if (isAlteracao()) {
+      mensagem = "Órgão alterado.";
+    }
+    if (isExclusao()) {
+      mensagem = "Órgão excluído.";
+    }
+
+    getOrigem().setMensagem(mensagem);
+    getOrigem().refresh();
+    return getOrigem().getNome();
+  }
+
+  /**
+   * Prepara form para inclusão de um novo órgão.
+   */
+  public void incluir() {
+    setOrgao(null);
+    setInclusao(true);
+  }
+
+  /**
+   * Prepara o form para alteração.  
+   * @param cnpj - identificador do órgão que será alterado
+   * @throws java.sql.SQLException
+   * @throws javax.naming.NamingException
+   */
   public void alterar(String cnpj) throws SQLException, NamingException {
     setOrgao(model.services.Orgaos.recuperar(cnpj));
     atualizaCampos();
-    setAlteracao(true);    
+    setAlteracao(true);
   }
 
   public String getNomeAtributo() {
@@ -440,7 +500,7 @@ public class FormOrgao extends Form {
   }
 
   private void atualizaCampos() {
-        if (orgao == null) {
+    if (orgao == null) {
       return;
     }
     razaoSocialOrgao = orgao.getRazaoSocial();
@@ -449,7 +509,7 @@ public class FormOrgao extends Form {
     ieOrgao = orgao.getIe();
     apelidoOrgao = orgao.getApelido();
 
-    if (orgao.getEndereco() != null) {      
+    if (orgao.getEndereco() != null) {
       tipoLogradouroOrgao = orgao.getEndereco().getTipo();
       logradouroOrgao = orgao.getEndereco().getLogradouro();
       numeroOrgao = orgao.getEndereco().getNumero();
@@ -470,5 +530,17 @@ public class FormOrgao extends Form {
       }
     }
 
+  }
+
+  private void executarCriticas() {
+     if( isExclusao()){
+       executarCriticasExclusao();
+       return;
+     }
+     /* ... */
+  }
+
+  private void executarCriticasExclusao() {
+    
   }
 }

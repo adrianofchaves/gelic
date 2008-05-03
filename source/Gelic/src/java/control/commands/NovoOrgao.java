@@ -31,7 +31,7 @@ public class NovoOrgao implements Comando {
       form.setEstados(control.UFs.getUFs(req));
       form.setTiposLogradouros(control.Enderecos.getTiposLogradouros(req));
       
-      form.setInclusao(true);
+      form.incluir();
       return form.getNome();
     } catch (NamingException ex) {
       Logger.getLogger(NovoOrgao.class.getName()).log(Level.SEVERE, null, ex);

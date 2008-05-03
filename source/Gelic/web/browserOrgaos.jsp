@@ -57,7 +57,7 @@
             ${orgao.endereco.telefone}            
           </td>
           <td>
-            <a href="Comercial?comando=ExcluirOrgao&orgado=${orgao.cnpj}">
+            <a href="Comercial?comando=ExcluirOrgao&cnpj=${orgao.cnpj}">
               <img src="img/trash.PNG"  width="16" height="16" 
                    alt="trash"/>
             </a>

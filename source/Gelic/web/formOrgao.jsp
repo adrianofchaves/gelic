@@ -1,4 +1,4 @@
-  <%-- 
+<%-- 
     Document   : formOrgao
     Created on : 29/03/2008, 18:26:42
     Author     : Paulo
@@ -51,11 +51,17 @@
         <td class="tabelaCadastro" style = "width:20%">
           Apelido:<BR>
           <input type="text" class="tabelaCadastro" name = "apelidoOrgao"
+                 <c:if test="${sessionScope.formOrgao.exclusao}">
+                   disabled
+                 </c:if>                 
                  value="${sessionScope.formOrgao.apelidoOrgao}" />
         </td>                
         <td class="tabelaCadastro" style="width:80%">
           Razão Social:<BR>
           <input type="text" class="tabelaCadastro" name="razaoSocialOrgao"
+                 <c:if test="${sessionScope.formOrgao.exclusao}">
+                   disabled
+                 </c:if>                 
                  value="${sessionScope.formOrgao.razaoSocialOrgao}"/>
         </td>
       </table>
@@ -74,11 +80,17 @@
         <td class="tabelaCadastro" style = "width:50%">
           CNPJ:<BR>
           <input type="text" class="tabelaCadastro" name="cnpjOrgao"
+                 <c:if test="${sessionScope.formOrgao.exclusao}">
+                   disabled
+                 </c:if>                 
                  value="${sessionScope.formOrgao.cnpjOrgao}" />
         </td>                
         <td class="tabelaCadastro" style="width:50%">
           IE:<BR>
           <input type="text" class="tabelaCadastro" name="ieOrgao"
+                 <c:if test="${sessionScope.formOrgao.exclusao}">
+                   disabled
+                 </c:if>                 
                  value="${sessionScope.formOrgao.ieOrgao}"/>
         </td>
       </table>
@@ -99,6 +111,9 @@
           Tipo<BR>
           <select name="tipoLogradouroOrgao" 
                   class="tabelaCadastro"
+                  <c:if test="${sessionScope.formOrgao.exclusao}">
+                    disabled
+                  </c:if>                  
                   value="${sessionScope.formOrgao.tipoLogradouroOrgao}">
             <c:forEach var="tipoLogradouro" 
                        items="${sessionScope.formOrgao.tiposLogradouros}">
@@ -113,6 +128,9 @@
         <TD class="tabelaCadastro" style="width:55%">
           Logradouro: <BR>
           <input type="text" name="logradouroOrgao" 
+                 <c:if test="${sessionScope.formOrgao.exclusao}">
+                   disabled
+                 </c:if>                 
                  class="tabelaCadastro"
                  value="${sessionScope.formOrgao.logradouroOrgao}" />
         </TD>
@@ -120,12 +138,18 @@
           Numero: <BR>
           <input type="text" name="numeroOrgao" 
                  class="tabelaCadastro"
+                 <c:if test="${sessionScope.formOrgao.exclusao}">
+                   disabled
+                 </c:if>                 
                  value="${sessionScope.formOrgao.numeroOrgao}" />
         </TD>
         <TD class="tabelaCadastro"  style="width:15%" >
           Complemento: <BR>
           <input type="text" name="complementoOrgao" 
                  class="tabelaCadastro"
+                 <c:if test="${sessionScope.formOrgao.exclusao}">
+                   disabled
+                 </c:if>                 
                  value="${sessionScope.formOrgao.complementoOrgao}" />
         </TD>
       </TABLE>
@@ -148,18 +172,27 @@
           Bairro: <BR>
           <input type="text" name="bairroOrgao" 
                  class="tabelaCadastro"
+                 <c:if test="${sessionScope.formOrgao.exclusao}">
+                   disabled
+                 </c:if>                 
                  value="${sessionScope.formOrgao.bairroOrgao}" />
         </TD>
         <TD class="tabelaCadastro"  style="width:30%" >
           Cidade: <BR>
           <input type="text" name="cidadeOrgao" 
                  class="tabelaCadastro"
+                 <c:if test="${sessionScope.formOrgao.exclusao}">
+                   disabled
+                 </c:if>                 
                  value="${sessionScope.formOrgao.cidadeOrgao}" />
         </TD>
         <TD class="tabelaCadastro"  style="width:10%" >
           Estado<BR>
           <select name="estadoOrgao" 
                   class="tabelaCadastro"
+                  <c:if test="${sessionScope.formOrgao.exclusao}">
+                    disabled
+                  </c:if>                  
                   value="${sessionScope.formOrgao.estadoOrgao}">
             <c:forEach var="uf"  
                        items="${sessionScope.formOrgao.estados}">              
@@ -175,6 +208,9 @@
           CEP: <BR>
           <input type="text" name="cepOrgao" 
                  class="tabelaCadastro"
+                 <c:if test="${sessionScope.formOrgao.exclusao}">
+                   disabled
+                 </c:if>                 
                  value="${sessionScope.formOrgao.cepOrgao}" />
         </TD>
       </TABLE>
@@ -196,13 +232,19 @@
         <TD class="tabelaCadastro" style="width: 45%">
           Site: <BR>
           <input type="text" name="siteOrgao" 
-                 class="tabelaCadastro"                               
+                 class="tabelaCadastro"
+                 <c:if test="${sessionScope.formOrgao.exclusao}">
+                   disabled
+                 </c:if>                 
                  value="${sessionScope.formOrgao.siteOrgao}" />
         </TD>
         <TD class="tabelaCadastro" style="width: 45%">
           Email: <BR>
           <input type="text" name="emailOrgao" 
                  class="tabelaCadastro"                               
+                 <c:if test="${sessionScope.formOrgao.exclusao}">
+                   disabled
+                 </c:if>                 
                  value="${sessionScope.formOrgao.emailOrgao}" />
         </TD>
       </TABLE>
@@ -221,21 +263,33 @@
         <TD class="tabelaCadastro" style="width: 10%">
           DDI: <BR>
           <input type="text" name="ddiOrgao" class="tabelaCadastro"
+                 <c:if test="${sessionScope.formOrgao.exclusao}">
+                   disabled
+                 </c:if>                 
                  value="${sessionScope.formOrgao.ddiOrgao}" />
         </TD>
         <TD class="tabelaCadastro" style="width: 10%">
           DDD: <BR>
           <input type="text" name="dddOrgao" class="tabelaCadastro"
+                 <c:if test="${sessionScope.formOrgao.exclusao}">
+                   disabled
+                 </c:if>                 
                  value="${sessionScope.formOrgao.dddOrgao}" />
         </TD>
         <TD class="tabelaCadastro" style="width: 50%">
           Número: <BR>
           <input type="text" name="numeroTelefoneOrgao" class="tabelaCadastro"
+                 <c:if test="${sessionScope.formOrgao.exclusao}">
+                   disabled
+                 </c:if>                 
                  value="${sessionScope.formOrgao.numeroTelefoneOrgao}" />
         </TD>
         <TD class="tabelaCadastro" style="width: 30%">
           Ramal: <BR>
           <input type="text" name="ramalOrgao" class="tabelaCadastro"
+                 <c:if test="${sessionScope.formOrgao.exclusao}">
+                   disabled
+                 </c:if>                 
                  value="${sessionScope.formOrgao.ramalOrgao}" />
         </TD>
       </TABLE>
