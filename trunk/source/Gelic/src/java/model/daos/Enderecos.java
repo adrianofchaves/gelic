@@ -58,6 +58,16 @@ public class Enderecos {
     return regs;
   }
 
+  public static int excluir(int id) throws SQLException, NamingException {
+    final String sqlExcluir = "delete from ENDERECOS where ID=?";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlExcluir);
+    pstmt.setInt(1, id);
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
+  }
+
   public static model.beans.TipoEndereco incluir(String tipoLogradouro,
           String logradouro, String numero, String complemento, String bairro,
           String cidade, String estado, String cep, String site, String email,
@@ -175,7 +185,8 @@ public class Enderecos {
                 rs.getString("NUMERO"),
                 rs.getString("UF"),
                 rs.getString("EMAIL"),
-                rs.getString("SITE")));
+                rs.getString("SITE"),
+                rs.getString("MUNICIPIO")));
 
       }
     }
@@ -184,7 +195,7 @@ public class Enderecos {
     gelic.close();
   }
 
-  public static model.beans.TipoEndereco recuperar(int id) 
+  public static model.beans.TipoEndereco recuperar(int id)
           throws NamingException, SQLException {
     final String sqlRecuperaEndereco =
             "select  ID, TIPO, LOGRADOURO, NUMERO, COMPLEMENTO, " +
@@ -197,21 +208,22 @@ public class Enderecos {
     PreparedStatement pstmt = gelic.prepareStatement(sqlRecuperaEndereco);
     pstmt.setInt(1, id);
     ResultSet rs = pstmt.executeQuery();
-    if(rs.next()){
+    if (rs.next()) {
       return new model.beans.TipoEndereco(
-              rs.getString("BAIRRO"), 
-              rs.getString("TIPO"), 
+              rs.getString("BAIRRO"),
+              rs.getString("TIPO"),
               rs.getInt("ID"),
               rs.getInt("TELEFONE"),
               rs.getString("LOGRADOURO"),
               rs.getString("COMPLEMENTO"),
-              rs.getString("CEP"), 
-              rs.getString("NUMERO"), 
-              rs.getString("UF"), 
-              rs.getString("EMAIL"), 
-              rs.getString("SITE") );
+              rs.getString("CEP"),
+              rs.getString("NUMERO"),
+              rs.getString("UF"),
+              rs.getString("EMAIL"),
+              rs.getString("SITE"),
+              rs.getString("MUNICIPIO"));
     }
-    return null;    
+    return null;
   }
 
   static private model.beans.TipoLogradouro cria(String nome) {
@@ -225,7 +237,7 @@ public class Enderecos {
 
     final String sqlRecuperaEnderecosEmpresas =
             "select CNPJ, TIPO, LOGRADOURO, NUMERO, COMPLEMENTO, BAIRRO, " +
-            "MUNICIPIO, UF, CEP, SITE, EMAIL " +
+            "MUNICIPIO, UF, CEP, SITE, ID, TELEFONE, EMAIL " +
             "from ENDERECOS inner join EMPRESAS " +
             "on (EMPRESAS.ENDERECO = ENDERECOS.ID)";
 
@@ -246,17 +258,19 @@ public class Enderecos {
       String cnpj = rs.getString("CNPJ");
       empresa = map.get(cnpj);
       if (empresa != null) {
-        empresa.setEndereco(cria(
-                rs.getString("TIPO"),
-                rs.getString("LOGRADOURO"),
-                rs.getString("NUMERO"),
-                rs.getString("COMPLEMENTO"),
-                rs.getString("BAIRRO"),
-                rs.getString("MUNICIPIO"),
-                rs.getString("UF"),
-                rs.getString("CEP"),
-                rs.getString("SITE"),
-                rs.getString("EMAIL")));
+        empresa.setEndereco(new model.beans.TipoEndereco(
+              rs.getString("BAIRRO"),
+              rs.getString("TIPO"),
+              rs.getInt("ID"),
+              rs.getInt("TELEFONE"),
+              rs.getString("LOGRADOURO"),
+              rs.getString("COMPLEMENTO"),
+              rs.getString("CEP"),
+              rs.getString("NUMERO"),
+              rs.getString("UF"),
+              rs.getString("EMAIL"),
+              rs.getString("SITE"),
+              rs.getString("MUNICIPIO")));
       }
     }
     /*
@@ -273,7 +287,8 @@ public class Enderecos {
   public static void recuperar(model.beans.Empresa empresa)
           throws NamingException, SQLException {
     final String sqlRecuperaEnderecoEmpresa =
-            "select TIPO, LOGRADOURO, NUMERO, COMPLEMENTO, BAIRRO, MUNICIPIO, " +
+            "select TIPO, LOGRADOURO, NUMERO, COMPLEMENTO, BAIRRO, " +
+            "MUNICIPIO, TELEFONE, ID, " +
             "UF, CEP, SITE, EMAIL from enderecos where id = " +
             "(select endereco from empresas where cnpj=? )";
     Connection gelic = model.services.Conexao.getPool().getConnection();
@@ -282,17 +297,19 @@ public class Enderecos {
     pstmt.setString(1, empresa.getCnpj());
     ResultSet rs = pstmt.executeQuery();
     if (rs != null && rs.next()) {
-      empresa.setEndereco(cria(
-              rs.getString("TIPO"),
-              rs.getString("LOGRADOURO"),
-              rs.getString("NUMERO"),
-              rs.getString("COMPLEMENTO"),
+      empresa.setEndereco(new model.beans.TipoEndereco(
               rs.getString("BAIRRO"),
-              rs.getString("MUNICIPIO"),
-              rs.getString("UF"),
+              rs.getString("TIPO"),
+              rs.getInt("ID"),
+              rs.getInt("TELEFONE"),
+              rs.getString("LOGRADOURO"),
+              rs.getString("COMPLEMENTO"),
               rs.getString("CEP"),
+              rs.getString("NUMERO"),
+              rs.getString("UF"),
+              rs.getString("EMAIL"),
               rs.getString("SITE"),
-              rs.getString("EMAIL")));
+              rs.getString("MUNICIPIO")));
     }
     /*
      * Para aproveitar a conexão no pool é necessário fechar tudo...
@@ -301,24 +318,5 @@ public class Enderecos {
     rs.close();
     pstmt.close();
     gelic.close();
-  }
-
-  private static model.beans.TipoEndereco cria(String tipo,
-          String logradouro, String numero, String complemento, String bairro,
-          String municipio, String uf, String cep, String site, String email) {
-    model.beans.TipoEndereco endereco = new model.beans.TipoEndereco();
-
-    endereco.setCep(cep);
-    endereco.setCidade(municipio);
-    endereco.setComplemento(complemento);
-    endereco.setEmail(email);
-    endereco.setLogradouro(logradouro);
-    endereco.setNumero(numero);
-    endereco.setSite(site);
-    endereco.setUf(uf);
-    endereco.setBairro(bairro);
-    endereco.setTipo(tipo);
-
-    return endereco;
   }
 }

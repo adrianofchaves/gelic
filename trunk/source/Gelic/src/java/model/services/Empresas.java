@@ -86,9 +86,17 @@ public class Empresas {
   }
 
   public static void excluir(String cnpj) throws SQLException, NamingException {
+    model.beans.Empresa empresa = recuperar(cnpj);
     Connection gelic = model.services.Conexao.getConnection();
     try {
+      for (model.beans.Contato contato : empresa.getContatos()) {
+        model.daos.Contatos.excluir(contato.getId());
+        model.daos.Telefones.excluir(contato.getTelefone().getId());
+      }
       model.daos.Empresas.excluir(cnpj);
+      model.daos.Enderecos.excluir(empresa.getEndereco().getId());
+      model.daos.Telefones.excluir(empresa.getEndereco().getTelefone().getId());
+
       gelic.commit();
       gelic.close();
     } catch (SQLException e) {

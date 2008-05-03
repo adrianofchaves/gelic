@@ -17,6 +17,25 @@ import javax.naming.NamingException;
  */
 public class Orgaos {
 
+  public static int incluir(String cnpj, String razaoSocial, String apelido, 
+          String ie, model.beans.TipoEndereco end) 
+          throws SQLException, NamingException {
+    final String sqlIncluiOrgao = "insert into " +
+            "ORGAOS(CNPJ, RAZAOSOCIAL, APELIDO, IE, ENDERECO) " +
+            "values " +
+            "(?,?,?,?,?)";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlIncluiOrgao);
+    pstmt.setString(1, cnpj);
+    pstmt.setString(2, razaoSocial);
+    pstmt.setString(3, apelido);
+    pstmt.setString(4, ie);
+    pstmt.setInt(5, end.getId());
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;    
+  }
+
   public static ArrayList<model.beans.Orgao> recuperar()
           throws NamingException, SQLException {
 

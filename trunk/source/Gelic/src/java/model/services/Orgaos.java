@@ -4,6 +4,7 @@
  */
 package model.services;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
@@ -12,8 +13,34 @@ import javax.naming.NamingException;
  *
  * @author adriano
  */
-public class Orgaos {
+public class Orgaos {  
+  static public void novoOrgao( 
+          String cnpj, String razaoSocial, String apelido, String ie,
+          
+          String tipoLogradouro, String logradouro, String numero, 
+          String complemento, String bairro, String municipio, String uf, 
+          String cep, String site, String email,
+          
+          String ddi, String ddd, String numeroTelefone, String ramal ) 
+          throws SQLException, NamingException{
+    Connection gelic = model.services.Conexao.getConnection();
+    try {
+      model.beans.TipoTelefone tel = model.daos.Telefones.incluir(
+              ddi, ddd, numeroTelefone, ramal);
+      model.beans.TipoEndereco end = model.daos.Enderecos.incluir(
+              tipoLogradouro, logradouro, numero, complemento, bairro,
+              municipio, uf, cep, site, email, tel);
+      model.daos.Orgaos.incluir( cnpj, razaoSocial, apelido, ie, end );
+      gelic.commit();
+      gelic.close();
+    } catch (SQLException ex) {
+      gelic.rollback();
+      gelic.close();
+      throw ex;
+    }
 
+    
+  }
   static public model.beans.Orgao recuperar(String cnpj)
           throws NamingException, SQLException {
     model.beans.Orgao orgao = model.daos.Orgaos.recuperar(cnpj);

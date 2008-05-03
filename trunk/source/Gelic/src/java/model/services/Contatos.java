@@ -36,6 +36,8 @@ public class Contatos {
   public static void excluir(int idContato) throws SQLException, NamingException {
     Connection gelic = model.services.Conexao.getConnection();
     try {
+      model.beans.Contato contato = model.daos.Contatos.recuperar(idContato);
+      model.daos.Telefones.excluir(contato.getTelefone().getId());
       model.daos.Contatos.excluir(idContato);
       gelic.commit();
       gelic.close();

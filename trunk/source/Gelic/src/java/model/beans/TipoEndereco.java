@@ -18,7 +18,7 @@ public class TipoEndereco {
 
   public TipoEndereco(String bairro, String tipo, int id, int idTelefone, 
           String logradouro, String complemento, String cep, String numero, 
-          String uf, String email, String site) {
+          String uf, String email, String site, String cidade) {
     this.bairro = bairro;
     this.tipo = tipo;
     this.id = id;
@@ -30,6 +30,7 @@ public class TipoEndereco {
     this.uf = uf;
     this.email = email;
     this.site = site;
+    this.cidade = cidade;
   }
 
   public String toString() {

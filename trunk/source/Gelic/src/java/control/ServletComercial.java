@@ -16,12 +16,14 @@ import control.commands.Comando;
 import control.commands.ExcecaoComando;
 import control.commands.ExcluirContato;
 import control.commands.ExcluirEmpresa;
+import control.commands.ExcluirOrgao;
 import control.commands.ExcluirProduto;
 import control.commands.ExcluirTipoDocumento;
 import control.commands.ExcluirTipoLicitacao;
 import control.commands.GravarContato;
 import control.commands.GravarEmpresa;
 import control.commands.GravarNovoProduto;
+import control.commands.GravarOrgao;
 import control.commands.GravarTipoDocumento;
 import control.commands.GravarTipoLicitacao;
 import control.commands.NovaEmpresa;
@@ -85,6 +87,8 @@ public class ServletComercial extends HttpServlet {
         comandos.put("CadastroOrgaos", new CadastroOrgaos());
         comandos.put("AlterarOrgao", new AlterarOrgao());
         comandos.put("NovoOrgao", new NovoOrgao());
+        comandos.put("GravarOrgao", new GravarOrgao());
+        comandos.put("ExcluirOrgao", new ExcluirOrgao());
         
     }
 
