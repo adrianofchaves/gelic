@@ -17,8 +17,9 @@ import javax.naming.NamingException;
  * @author Adriano
  */
 public class Enderecos {
-
-  public static int alterar(model.beans.Empresa empresa, String tipoLogradouroEmpresa,
+  
+  public static int alterar(model.beans.TipoEndereco endereco, 
+          String tipoLogradouroEmpresa,
           String logradouroEmpresa, String numeroEmpresa,
           String complementoEmpresa, String bairroEmpresa,
           String cidadeEmpresa, String estadoEmpresa, String cepEmpresa,
@@ -36,7 +37,7 @@ public class Enderecos {
             "CEP = ?,  " +
             "SITE = ?,  " +
             "EMAIL = ? " +
-            "where ID = (SELECT ENDERECO FROM EMPRESAS WHERE CNPJ=?)";
+            "where ID = ?";
     Connection gelic = model.services.Conexao.getConnection();
     PreparedStatement pstmt = gelic.prepareStatement(sqlAlterarEnderecoEmpresa);
 
@@ -51,7 +52,7 @@ public class Enderecos {
     pstmt.setString(9, siteEmpresa);
     pstmt.setString(10, emailEmpresa);
 
-    pstmt.setString(11, empresa.getCnpj());
+    pstmt.setInt(11, endereco.getId());
 
     int regs = pstmt.executeUpdate();
     pstmt.close();

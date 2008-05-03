@@ -15,7 +15,7 @@ import javax.naming.NamingException;
  */
 public class Empresas {
 
-  public static void incluiEmpresa(String nomeFantasiaEmpresa, boolean ePortadorEmpresa,
+  public static void incluir(String nomeFantasiaEmpresa, boolean ePortadorEmpresa,
           String razaoSocialEmpresa, boolean eFornecedorEmpresa,
           String cnpjEmpresa, String ieEmpresa,
           String imEmpresa, String tipoLogradouroEmpresa,
@@ -49,7 +49,7 @@ public class Empresas {
 
   }
 
-  public static void alteraEmpresa(model.beans.Empresa empresa,
+  public static void alterar(model.beans.Empresa empresa,
           String nomeFantasiaEmpresa, boolean ePortadorEmpresa,
           String razaoSocialEmpresa, boolean eFornecedorEmpresa,
           String cnpjEmpresa, String ieEmpresa,
@@ -67,13 +67,13 @@ public class Empresas {
       model.daos.Empresas.alterar(empresa.getCnpj(),
               nomeFantasiaEmpresa, ePortadorEmpresa, razaoSocialEmpresa,
               eFornecedorEmpresa, cnpjEmpresa, ieEmpresa, imEmpresa);
-      model.daos.Enderecos.alterar(empresa, tipoLogradouroEmpresa,
+      model.daos.Enderecos.alterar(empresa.getEndereco(), tipoLogradouroEmpresa,
               logradouroEmpresa, numeroEmpresa,
               complementoEmpresa, bairroEmpresa,
               cidadeEmpresa, estadoEmpresa, cepEmpresa,
               siteEmpresa, emailEmpresa);
-      model.daos.Telefones.alterar(empresa, ddiEmpresa, dddEmpresa,
-              numeroTelefoneEmpresa, ramalEmpresa);
+      model.daos.Telefones.alterar(empresa.getEndereco().getTelefone(), 
+              ddiEmpresa, dddEmpresa, numeroTelefoneEmpresa, ramalEmpresa);
       gelic.commit();
       gelic.close();
     } catch (SQLException e) {

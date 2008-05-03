@@ -100,7 +100,7 @@ public class FormOrgao extends Form {
     
     String mensagem = null;
     if (isInclusao()) {
-      model.services.Orgaos.novoOrgao(cnpjOrgao, razaoSocialOrgao, apelidoOrgao, 
+      model.services.Orgaos.incluir(cnpjOrgao, razaoSocialOrgao, apelidoOrgao, 
               ieOrgao, tipoLogradouroOrgao, logradouroOrgao, numeroOrgao, 
               complementoOrgao, bairroOrgao, cidadeOrgao, estadoOrgao, cepOrgao, 
               siteOrgao, emailOrgao, ddiOrgao, dddOrgao, numeroTelefoneOrgao, 
@@ -109,9 +109,16 @@ public class FormOrgao extends Form {
       mensagem = "Novo órgão incluido.";
     }
     if (isAlteracao()) {
+      model.services.Orgaos.alterar(getOrgao(),
+              cnpjOrgao, razaoSocialOrgao, apelidoOrgao, 
+              ieOrgao, tipoLogradouroOrgao, logradouroOrgao, numeroOrgao, 
+              complementoOrgao, bairroOrgao, cidadeOrgao, estadoOrgao, cepOrgao, 
+              siteOrgao, emailOrgao, ddiOrgao, dddOrgao, numeroTelefoneOrgao, 
+              ramalOrgao);
       mensagem = "Órgão alterado.";
     }
     if (isExclusao()) {
+      model.services.Orgaos.excluir(getOrgao());
       mensagem = "Órgão excluído.";
     }
 

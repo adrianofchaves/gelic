@@ -18,32 +18,6 @@ import javax.naming.NamingException;
  */
 public class Telefones {
 
-  public static int alterar(model.beans.Empresa empresa, String ddiEmpresa,
-          String dddEmpresa, String numeroTelefoneEmpresa, String ramalEmpresa)
-          throws SQLException, NamingException {
-    final String sqlAlterarTelefoneEmpresa =
-            "update TELEFONES set " +
-            "DDI = ?, " +
-            "DDD = ?, " +
-            "NUMERO = ?, " +
-            "RAMAL = ? " +
-            "where ID = (select TELEFONE from ENDERECOS where ID = " +
-            " (select ENDERECO from EMPRESAS where CNPJ = ? ) )";
-    Connection gelic = model.services.Conexao.getConnection();
-    PreparedStatement pstmt = gelic.prepareStatement(sqlAlterarTelefoneEmpresa);
-
-    pstmt.setString(1, ddiEmpresa);
-    pstmt.setString(2, dddEmpresa);
-    pstmt.setString(3, numeroTelefoneEmpresa);
-    pstmt.setString(4, ramalEmpresa);
-
-    pstmt.setString(5, empresa.getCnpj());
-
-    int regs = pstmt.executeUpdate();
-    pstmt.close();
-    return regs;
-  }
-
   public static int alterar(model.beans.TipoTelefone telefone, 
           String ddiContato, String dddContato, String numeroTelefoneContato, 
           String ramalContato)
