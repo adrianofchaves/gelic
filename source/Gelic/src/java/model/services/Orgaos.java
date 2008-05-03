@@ -13,8 +13,59 @@ import javax.naming.NamingException;
  *
  * @author adriano
  */
-public class Orgaos {  
-  static public void novoOrgao( 
+public class Orgaos {
+
+  public static void excluir(model.beans.Orgao orgao ) 
+          throws NamingException, SQLException {
+    orgao = recuperar(orgao.getCnpj());
+    Connection gelic = model.services.Conexao.getConnection();
+    try {
+      for (model.beans.Contato contato : orgao.getContatos()) {
+        model.daos.Contatos.excluir(contato.getId());
+        model.daos.Telefones.excluir(contato.getTelefone().getId());
+      }
+      model.daos.Orgaos.excluir(orgao.getCnpj());
+      model.daos.Enderecos.excluir(orgao.getEndereco().getId());
+      model.daos.Telefones.excluir(orgao.getEndereco().getTelefone().getId());
+
+      gelic.commit();
+      gelic.close();
+    } catch (SQLException e) {
+      gelic.rollback();
+      gelic.close();
+      throw e;
+    }
+
+  }
+  static public void alterar(  model.beans.Orgao orgao,
+          String cnpj, String razaoSocial, String apelido, String ie,
+          
+          String tipoLogradouro, String logradouro, String numero, 
+          String complemento, String bairro, String municipio, String uf, 
+          String cep, String site, String email,
+          
+          String ddi, String ddd, String numeroTelefone, String ramal ) throws SQLException, NamingException {
+    
+    Connection gelic = model.services.Conexao.getConnection();
+    try {
+      model.daos.Orgaos.alterar(orgao, cnpj, razaoSocial, apelido, ie );
+              
+      model.daos.Enderecos.alterar(orgao.getEndereco(), tipoLogradouro,
+              logradouro, numero, complemento, bairro, municipio, uf, cep,
+              site, email);
+      model.daos.Telefones.alterar(orgao.getEndereco().getTelefone(), 
+              ddi, ddd, numeroTelefone, ramal);
+      gelic.commit();
+      gelic.close();
+    } catch (SQLException e) {
+      gelic.rollback();
+      gelic.close();
+      throw e;
+    }
+    
+    
+  }
+  static public void incluir( 
           String cnpj, String razaoSocial, String apelido, String ie,
           
           String tipoLogradouro, String logradouro, String numero, 

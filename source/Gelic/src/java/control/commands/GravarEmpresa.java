@@ -44,7 +44,7 @@ public class GravarEmpresa implements Comando {
       }
       String mensagem = null;
       if (frm.isInclusao()) {
-        model.services.Empresas.incluiEmpresa( frm.getNomeFantasiaEmpresa(), 
+        model.services.Empresas.incluir( frm.getNomeFantasiaEmpresa(), 
                 frm.isEPortadorEmpresa(),
                 frm.getRazaoSocialEmpresa(), frm.isEFornecedorEmpresa(),
                 frm.getCnpjEmpresa(), frm.getIeEmpresa(), frm.getImEmpresa(),
@@ -63,7 +63,7 @@ public class GravarEmpresa implements Comando {
         mensagem = msgExclusao;
       }
       if (frm.isAlteracao()) {
-        model.services.Empresas.alteraEmpresa(frm.getEmpresa(),
+        model.services.Empresas.alterar(frm.getEmpresa(),
                 frm.getNomeFantasiaEmpresa(), frm.isEPortadorEmpresa(),
                 frm.getRazaoSocialEmpresa(), frm.isEFornecedorEmpresa(),
                 frm.getCnpjEmpresa(), frm.getIeEmpresa(), frm.getImEmpresa(),

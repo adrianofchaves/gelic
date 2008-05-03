@@ -10,12 +10,40 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
+import model.beans.Orgao;
 
 /**
  *
  * @author Adriano
  */
 public class Orgaos {
+
+  public static int alterar(Orgao orgao, String cnpj, String razaoSocial, 
+          String apelido, String ie) throws SQLException, NamingException {
+    final String sqlAlterar = "update ORGAOS set " +
+            "CNPJ = ?, RAZAOSOCIAL = ?, APELIDO = ?, IE = ? " +
+            "where CNPJ = ?";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlAlterar);
+    pstmt.setString(1, cnpj);
+    pstmt.setString(2, razaoSocial);
+    pstmt.setString(3, apelido);
+    pstmt.setString(4, ie);
+    pstmt.setString(5, orgao.getCnpj());
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
+  }
+
+  public static int excluir(String cnpj) throws SQLException, NamingException {
+    final String sqlExcluir = "delete from ORGAOS where CNPJ=?";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlExcluir);
+    pstmt.setString(1, cnpj);
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
+  }
 
   public static int incluir(String cnpj, String razaoSocial, String apelido, 
           String ie, model.beans.TipoEndereco end) 
