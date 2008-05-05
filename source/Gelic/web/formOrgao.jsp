@@ -23,7 +23,7 @@
         </th>
         <c:if test="${!sessionScope.formSistema.inclusao}">
           <th class="menuItem" >
-            <a href="browserContatos.jsp">Contatos</a>
+          <a href="Comercial?comando=CadastroContatos&orgao=${sessionScope.formOrgao.orgao.cnpj}">Contatos</a>
           </th>
         </c:if>
         <th class="menuItem" >
