@@ -5,7 +5,6 @@
 package control.commands;
 
 import javax.servlet.http.HttpServletRequest;
-import view.FormEmpresa;
 
 /**
  *
@@ -25,7 +24,8 @@ public class CadastroContatos implements Comando {
      */
     comando = util.Request.getParameter(req, comandoEmpresa);
     if (comando != null && !comando.isEmpty()) {
-      view.FormEmpresa frm = (view.FormEmpresa) req.getSession().getAttribute("formEmpresa");
+      view.FormEmpresa frm = (view.FormEmpresa) 
+              req.getSession().getAttribute("formEmpresa");
 
       view.BrowserContatos browser = new view.BrowserContatos();
       browser.setOrigem(frm);

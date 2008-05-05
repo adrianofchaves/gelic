@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import javax.naming.NamingException;
 
 
+
 /**
  *
  * @author Adriano
@@ -34,11 +35,11 @@ public class Contatos {
   }
 
   public static void excluir(int idContato) throws SQLException, NamingException {
+    model.beans.Contato contato = model.daos.Contatos.recuperar(idContato);
     Connection gelic = model.services.Conexao.getConnection();
     try {
-      model.beans.Contato contato = model.daos.Contatos.recuperar(idContato);
-      model.daos.Telefones.excluir(contato.getTelefone().getId());
       model.daos.Contatos.excluir(idContato);
+      model.daos.Telefones.excluir(contato.getIdTelefone());
       gelic.commit();
       gelic.close();
     } catch (SQLException e) {
@@ -56,6 +57,25 @@ public class Contatos {
       model.beans.TipoTelefone telefone = model.daos.Telefones.incluir(
               ddiContato, dddContato, numeroTelefoneContato, ramalContato);
       model.daos.Contatos.incluir(empresa, nomeContato, telefone);
+      gelic.commit();
+      gelic.close();
+    } catch (SQLException e) {
+      gelic.rollback();
+      gelic.close();
+      throw e;
+    }
+  }
+
+  public static void incluir(model.beans.Orgao orgao, String nomeContato, 
+          String ddiContato, String dddContato, String numeroTelefoneContato, 
+          String ramalContato) throws SQLException, NamingException {
+    Connection gelic = model.services.Conexao.getConnection();
+    try {
+      model.beans.TipoTelefone telefone = model.daos.Telefones.incluir(
+              ddiContato, dddContato, numeroTelefoneContato, ramalContato);
+      
+      model.daos.Contatos.incluir(orgao, nomeContato, telefone);
+      
       gelic.commit();
       gelic.close();
     } catch (SQLException e) {

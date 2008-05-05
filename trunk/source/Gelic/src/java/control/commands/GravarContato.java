@@ -21,7 +21,8 @@ public class GravarContato implements Comando {
 
   public String executar(HttpServletRequest req) throws ExcecaoComando {
     try {
-      view.FormContato form = (view.FormContato) req.getSession().getAttribute("formContato");
+      view.FormContato form = (view.FormContato) 
+              req.getSession().getAttribute("formContato");
       if (req.getParameter("cancelar") != null) {
         return form.getOrigem().getNome();
       }
@@ -54,7 +55,6 @@ public class GravarContato implements Comando {
     form.setNumeroTelefoneContato(util.Request.getParameter(req,
             "numeroTelefoneContato"));
     form.setRamalContato(util.Request.getParameter(req, "ramalContato"));
-
     form.valida();
     final String msgInclusao = "Contato incluído";
     final String msgExclusao = "Contato excluído";
@@ -73,6 +73,15 @@ public class GravarContato implements Comando {
                 form.getDdiContato(), form.getDddContato(),
                 form.getNumeroTelefoneContato(), form.getRamalContato());
       }
+      if (form.getOrigem().getOrigem() instanceof view.FormOrgao) {
+        /* Cadastro de contatos de uma empresa */
+        view.FormOrgao formOrgao = (view.FormOrgao) 
+                form.getOrigem().getOrigem();
+        model.beans.Orgao orgao = formOrgao.getOrgao();
+        model.services.Contatos.incluir(orgao, form.getNomeContato(),
+                form.getDdiContato(), form.getDddContato(),
+                form.getNumeroTelefoneContato(), form.getRamalContato());
+      }      
       mensagem = msgInclusao;
     }
     if (form.isExclusao()) {

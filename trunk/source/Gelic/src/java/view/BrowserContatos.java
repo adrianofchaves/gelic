@@ -26,8 +26,14 @@ public class BrowserContatos extends Form {
       if (getOrigem() instanceof view.FormEmpresa) {
         view.FormEmpresa form = (FormEmpresa) getOrigem();
         model.services.Contatos.recuperar(form.getEmpresa());
-        
         setContatos(form.getEmpresa().getContatos());
+      }
+      if( getOrigem() instanceof view.FormOrgao){
+        view.FormOrgao form = (FormOrgao) getOrigem();
+        model.beans.Orgao orgao = model.services.Orgaos.recuperar(
+                form.getOrgao().getCnpj());
+        form.setOrgao(orgao);
+        setContatos(form.getOrgao().getContatos());
       }
     } catch (SQLException ex) {
       Logger.getLogger(BrowserContatos.class.getName()).log(

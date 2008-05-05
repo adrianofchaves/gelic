@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.naming.NamingException;
-import model.beans.Orgao;
 
 /**
  *
@@ -31,7 +30,25 @@ public class Contatos {
     return buffer;
   }
 
-  public static void recuperar(Orgao orgao) throws NamingException, SQLException {
+  public static int incluir(model.beans.Orgao orgao, String nomeContato, 
+          model.beans.TipoTelefone telefone) 
+          throws SQLException, NamingException {
+    final String sqlIncluirContatoEmpresa = "insert into " +
+            "CONTATOS(ID, NOME, TELEFONE, ORGAO) values (?,?,?,?)";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlIncluirContatoEmpresa);
+    pstmt.setInt(1, getNextID());
+    pstmt.setString(2, nomeContato);
+    pstmt.setInt(3, telefone.getId());
+    pstmt.setString(4, orgao.getCnpj());
+
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
+  }
+
+  public static void recuperar(model.beans.Orgao orgao) 
+          throws NamingException, SQLException {
     final String sqlContaContatosOrgao = 
             "select count(*) from CONTATOS where ORGAO = ?";
     final String sqlRecuperaContatosOrgao =
