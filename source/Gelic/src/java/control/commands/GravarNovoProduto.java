@@ -44,10 +44,10 @@ public class GravarNovoProduto implements Comando {
                     "codigoProduto"));
             frm.setDescricaoProduto(util.Request.getParameter(req,
                     "descricaoProduto"));
-            /**frm.setPrecovendaProduto(util.Request.getParameter(req,
-                    "precovendaProduto"));
-            frm.setPrecocompraProduto(util.Request.getParameter(req,
-                    "precocompraProduto"));**/
+            frm.setPrecovendaProduto(Float.parseFloat(
+                    util.Request.getParameter(req,"precovendaProduto")));
+            frm.setPrecocompraProduto(Float.parseFloat(
+                    util.Request.getParameter(req,"precocompraProduto")));
             frm.valida();
             
             if( frm.temErros() ){

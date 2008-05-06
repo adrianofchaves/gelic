@@ -56,10 +56,10 @@
                         ${produto.descricao}
                     </td>
                     <td>
-                        
+                        ${produto.precoVenda}
                     </td>
                     <td>
-                        
+                        ${produto.precoCompra}
                     </td>
                     <td>
                         <a href="Comercial?comando=ExcluirProduto&id=${produto.id}">
