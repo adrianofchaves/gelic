@@ -18,10 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 public class ExcluirProduto implements Comando {
    public String executar(HttpServletRequest req) throws ExcecaoComando {
     try {
-      String id = util.Request.getParameter(req, "id");
-      if (id == null) {
-        throw new ExcecaoComando("Produto inválido (nulo)");
-      }
+      int id = Integer.parseInt( util.Request.getParameter(req, "id") );
+      
       model.beans.Produto produto = model.services.Produtos.recuperar(id);
       view.FormProduto frm = new view.FormProduto();
       frm.setProduto(produto);
