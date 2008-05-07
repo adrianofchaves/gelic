@@ -22,7 +22,7 @@
                 <th class="menuItem" ><a href="homeAnalista.jsp">Voltar</a></th>
                 <th class="menuItem" ><a href="homeAnalista.jsp">Gerar Pedido Mãe</a></th>
                 <th class="menuItem" ><a href="formOFM.jsp">Incluir OFM</a></th>
-                <th class="menuItem" ><a href="homeAnalista.jsp">Exibir OFM</a></th>
+                <th class="menuItem" ><a href="browserOFM.jsp">Exibir OFM</a></th>
                 <th class="menuItem" ><a href="Gelic?comando=Logout">Trocar usuario</a>                        
                 </th>
             </tr>        

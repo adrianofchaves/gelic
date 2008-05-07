@@ -19,7 +19,7 @@
         </table>        
         <table class="menu">
             <tr>
-                <th class="menuItem" ><a href="homeAnalista.jsp">Voltar</a></th>
+                <th class="menuItem" ><a href="testeContrato.jsp">Voltar</a></th>
                 <th class="menuItem" ><a href="homeAnalista.jsp">Incluir Local de Entrega</a></th>
                 <th class="menuItem" ><a href="Gelic?comando=Logout">Trocar usuario</a>                        
                 </th>
