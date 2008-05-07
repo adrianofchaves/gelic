@@ -18,7 +18,7 @@
     
     <table class="menu"><tr>
         <th class="menuItem" >
-          <a href="browserProdutos.jsp">
+          <a href="Comercial?comando=CadastroProdutos">
           Voltar</a>
         </th>
         <th class="menuItem" >
