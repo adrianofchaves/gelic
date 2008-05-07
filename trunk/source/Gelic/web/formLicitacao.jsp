@@ -25,19 +25,13 @@
           <th class="menuItem" >
             <a href="browserContatos.jsp">Contatos</a>
           </th>
+          <th class="menuItem" >
+            <a href="browserDocumentos.jsp">Documentos</a>
+          </th>
+          <th class="menuItem" >
+            <a href="formLote.jsp">Lotes</a>                    
+          </th>
         </c:if>
-        <th class="menuItem" >
-          <a href="browserDocumentos.jsp">Documentos</a>
-        </th>
-        <th class="menuItem" >
-          <a href="formLote.jsp">Incluir Lote</a>                    
-        </th>
-        <th class="menuItem" >
-         <a href="formItemLote.jsp">Incluir Item de Lote</a>                    
-        </th>
-        <th class="menuItem" >
-         <a href="formProposta.jsp">Cadastrar Proposta</a>                    
-        </th>        
         <th class="menuItem" >
           <a href="homeComercial.jsp">Início</a>
         </th>
@@ -47,8 +41,8 @@
       </tr>
     </table>
   </head>
-    <body>
-
+  <body>
+    
     <form name="frmOrgao" 
           action="Comercial?comando=GravarLicitacao" 
           method="POST">
@@ -56,34 +50,39 @@
         ${sessionScope.formLicitacao.titulo}
         formLicitacao.JSP
       </p>            
-
+      
       <c:forEach var="erro" items="${sessionScope.formLicitacao.erros}">
         <P class="erro" >${erro}</P>
       </c:forEach>           
-
-    <p class="grupo">Identificação:</p>
-
+      
+      <p class="grupo">Identificação:</p>
+      
       <table class="tabelaCadastro">
-        <td class="tabelaCadastro" style = "width:100%">
+        <td class="tabelaCadastro" style = "width:30%">
           Órgão:<BR>
           <select name="razaoSocialOrgao" 
                   class="tabelaCadastro"
                   value="${sessionScope.formLicitacao.razaoSocialOrgao}">
-            <option>Banco do Brasil</option>
-            <option>Caixa Eocnomica Federal</option>
-            <option>PCRJ-Secretaria Municipal de Obras</option>                    
+            <option>pcrj</option>
+            <option>bb</option>
+            <option>cef-df</option>
+            <option>cef-rj</option>
           </select>
-          </td>
-
-        <td class="tabelaCadastro" style="width:10%">
-            <BR>
-            <input class="botao" type="submit" value="Novo" 
-               name="executar"/>
+        </td>
+        <td class="tabelaCadastro" style = "width:40%">
+          Número:<BR>
+          <input type="text" class="tabelaCadastro"
+                 name="${sessionScope.formLicitacao.numeroLicitacao}" />
+        </td>
+        <td class="tabelaCadastro" style="width:40">
+          Processo:<BR>
+          <input type="text" class="tabelaCadastro"
+                 value="${sessionScope.formLicitacao.processoLicitacao}"/>
         </td>
       </table>
       
       <table class="tabelaCadastro">
-        <td class="tabelaCadastro" style = "width:10%">
+        <td class="tabelaCadastro" style = "width:30%">
           Modalidade:<BR>
           <select name="modalidadeLicitacao" 
                   class="tabelaCadastro"
@@ -91,9 +90,9 @@
             <option>Por Lote</option>
             <option>Por Item</option>
           </select>
-          </td>
-    
-        <td class="tabelaCadastro" style = "width:10%">
+        </td>
+        
+        <td class="tabelaCadastro" style = "width:40%">
           Tipo:<BR>
           <select name="tipoLicitacao" 
                   class="tabelaCadastro"
@@ -102,9 +101,9 @@
             <option>Tomada de Preços</option>
             <option>Pregão Eletronico</option>
           </select>
-          </td>
-
-        <td class="tabelaCadastro" style = "width:10%">
+        </td>
+        
+        <td class="tabelaCadastro" style = "width:40%">
           Sistema:<BR>
           <select name="sistemaLicitacao" 
                   class="tabelaCadastro"
@@ -112,163 +111,100 @@
             <option>Registro de Preços</option>
             <option>Fornecimento</option>
           </select>
-          </td>
-
-        <td class="tabelaCadastro" style = "width:35%">
-          Número:<BR>
-          <input type="text" class="tabelaCadastro"
-                 name="${sessionScope.formLicitacao.numeroLicitacao}" />
-        </td>                
-
-        <td class="tabelaCadastro" style="width:35%">
-          Processo:<BR>
-          <input type="text" class="tabelaCadastro"
-                 value="${sessionScope.formLicitacao.processoLicitacao}"/>
         </td>
-
       </table>
       
       <p class="grupo">Datas:</p>
-
+      
       <table class="tabelaCadastro">
-          
-        <td class="tabelaCadastro" style="width: 20%">
-            Documentação:<BR>
-            <input type="text" class="tabelaCadastro"
-            value="${sessionScope.formLicitacao.dataDocumentacaoLicitacao}"/>
-        </td>
-
-        <td class="tabelaCadastro" style="width: 20%">
-            Proposta:<BR>
-            <input type="text" class="tabelaCadastro"
-            value="${sessionScope.formLicitacao.dataPropostaLicitacao}"/>
-        </td>
-
-        <td class="tabelaCadastro" style="width: 20%">
-            Realização:<BR>
-            <input type="text" class="tabelaCadastro"
-            value="${sessionScope.formLicitacao.dataRealizacaoLicitacao}"/>
-        </td>
         
-        <td class="tabelaCadastro" style="width: 40%">
-        </td>
-        
-    </table>
-
-    <p class="grupo"> Objeto:</p>
-
+        <td class="tabelaCadastro" style="width: 33%">
+          Documentação:<BR>
+          <input type="text" class="tabelaCadastro"
+                 value="${sessionScope.formLicitacao.dataDocumentacaoLicitacao}"/>
+        </td>        
+        <td class="tabelaCadastro" style="width: 34%">
+          Proposta:<BR>
+          <input type="text" class="tabelaCadastro"
+                 value="${sessionScope.formLicitacao.dataPropostaLicitacao}"/>
+        </td>        
+        <td class="tabelaCadastro" style="width: 33%">
+          Realização:<BR>
+          <input type="text" class="tabelaCadastro"
+                 value="${sessionScope.formLicitacao.dataRealizacaoLicitacao}"/>
+        </td>        
+      </table>
+      
+      <p class="grupo"> Objeto:</p>
       <table class="tabelaCadastro">
-        <td class="tabelaCadastro" style="width: 100%">
-            Descriçao: <BR>
-            <input type="text" class="tabelaCadastro"
-            value="${sessionScope.formLicitacao.objetoLicitacao}"/>
+        <td class="tabelaCadastro" style="width: 100%" >          
+          <textarea name="objetoLicitacao" style="width:100%" rows="4">
+            ${sessionScope.formLicitacao.objetoLicitacao}
+          </textarea>
         </td>
       </table>
       
-    <p class="grupo"> Prazos:</p>
-
-      <table class="tabelaCadastro">
-          
-        <td class="tabelaCadastro" style="width: 20%">
-            Validade da Proposta: (dias)<BR>
-            <input type="text" class="tabelaCadastro"
-            value="${sessionScope.formLicitacao.diasValidadePropostaLicitacao}"/>
-        </td>
-
-        <td class="tabelaCadastro" style="width: 20%">
-            Prazo de Entrega: (dias) <BR>
-            <input type="text" class="tabelaCadastro"
-            value="${sessionScope.formLicitacao.diasPrazoEntregaLicitacao}"/>
-        </td>
-
-        <td class="tabelaCadastro" style="width: 20%">
-            Prazo de Pagamento: (dias)<BR>
-            <input type="text" class="tabelaCadastro"
-            value="${sessionScope.formLicitacao.diasPrazoPagamentoLicitacao}"/>
-        </td>
-        
-        <td class="tabelaCadastro" style="width: 20%">
-            Vigência do Contrato: (dias)<BR>
-            <input type="text" class="tabelaCadastro"
-            value="${sessionScope.formLicitacao.diasVigenciaLicitacao}"/>
-        </td>
-        
-        <td class="tabelaCadastro" style="width: 20%">
-            Prazo de Garantia: (Anos)<BR>
-            <input type="text" class="tabelaCadastro"
-            value="${sessionScope.formLicitacao.anosPrazoGarantiaLicitacao}"/>
-        </td>
-    </table>    
-    
-        <p class="grupo"> Diversos:</p>
-              <table class="tabelaCadastro">
-                  <td class="caixaSelecaoTabelaCadastro" style="width:10%;">
-                      Pede amostra?
-                      <input type="checkbox" name="pedeAmostraLicitacao" value="ON" /> 
-                  </td>
-
-                  <td class="tabelaCadastro" style="width:30%">
-                      Termos da amostra:<BR>
-                          <input type="text" name="termosAmostraLicitacao"
-                          class="tabelaCadastro"
-                          value="${sessionScope.formLicitacao.termosAmostraLicitacao}" />
-                  </td>
-                  <td class="tabelaCadastro" style="width:60%">
-                  </td>
-              </table>
-
-              <table class="tabelaCadastro">
-                  <td class="caixaSelecaoTabelaCadastro" style="width:10%;">
-                      Pede garantia de proposta?
-                      <input type="checkbox" name="pedeGarantiaLicitacao" value="ON" /> 
-                  </td>
-
-                  <td class="tabelaCadastro" style="width:30%">
-                      Termos da garatina:<BR>
-                          <input type="text" name="termosGarantiaLicitacao"
-                          class="tabelaCadastro"
-                          value="${sessionScope.formLicitacao.termosGarantiaLicitacao}" />
-                  </td>
-                  <td class="tabelaCadastro" style="width:60%">
-                  </td>
-              </table>
-
-              <table class="tabelaCadastro">
-                  <td class="caixaSelecaoTabelaCadastro" style="width:10%;">
-                      Prevê multa?
-                      <input type="checkbox" name="preveMultaLicitacao" value="ON" /> 
-                  </td>
-
-                  <td class="tabelaCadastro" style="width:30%">
-                      Termos da multa:<BR>
-                          <input type="text" name="termosGarantiaLicitacao"
-                          class="tabelaCadastro"
-                          value="${sessionScope.formLicitacao.termosMultaLicitacao}" />
-                  </td>
-                  <td class="tabelaCadastro" style="width:60%">
-                  </td>
-              </table>
-
-      <table class="tabelaCadastro">       
-        <td class="tabelaCadastro" style = "width:20%">
-          Status:<BR>
-          <select name="statusLicitacao" 
-                  class="tabelaCadastro"
-                  value="${sessionScope.formLicitacao.statusLicitacao}">
-            <option>Em aberto</option>
-            <option>Realizada</option>
-            <option>Perdida</option>
-            <option>Ganha</option>
-          </select>
-          </td>
-          <td class="tabelaCadastro" style="width:80%">
-          </td>
-          
-      </table>
-
-
+      <p class="grupo"> Prazos:</p>
       
-      <BR><BR>
+      <table class="tabelaCadastro">
+        
+        <td class="tabelaCadastro" style="width: 20%">
+          Validade da Proposta: (dias)<BR>
+          <input type="text" class="tabelaCadastro"
+                 value="${sessionScope.formLicitacao.diasValidadePropostaLicitacao}"/>
+        </td>
+        
+        <td class="tabelaCadastro" style="width: 20%">
+          Prazo de Entrega: (dias) <BR>
+          <input type="text" class="tabelaCadastro"
+                 value="${sessionScope.formLicitacao.diasPrazoEntregaLicitacao}"/>
+        </td>
+        
+        <td class="tabelaCadastro" style="width: 20%">
+          Prazo de Pagamento: (dias)<BR>
+          <input type="text" class="tabelaCadastro"
+                 value="${sessionScope.formLicitacao.diasPrazoPagamentoLicitacao}"/>
+        </td>
+        
+        <td class="tabelaCadastro" style="width: 20%">
+          Vigência do Contrato: (dias)<BR>
+          <input type="text" class="tabelaCadastro"
+                 value="${sessionScope.formLicitacao.diasVigenciaLicitacao}"/>
+        </td>
+        
+        <td class="tabelaCadastro" style="width: 20%">
+          Prazo de Garantia: (Anos)<BR>
+          <input type="text" class="tabelaCadastro"
+                 value="${sessionScope.formLicitacao.anosPrazoGarantiaLicitacao}"/>
+        </td>
+      </table>    
+      
+      <p class="grupo"> Termos:</p>
+      <table class="tabelaCadastro">
+        <td class="tabelaCadastro" style="width:33%">
+          Amostra:<BR>
+          <textarea name="ad" rows="4" style="width:100%" 
+                    name="termosAmostraLicitacao">
+                    ${sessionScope.formLicitacao.termosAmostraLicitacao} 
+          </textarea>                   
+        </td>
+        <td class="tabelaCadastro" style="width:34%">
+          Garantia:<BR>
+          <textarea rows="4" cols="20" 
+                    style="width:100%" 
+                    name="termosGarantiaLicitacao">
+                      ${sessionScope.formLicitacao.termosGarantiaLicitacao}
+          </textarea>  
+        </td>
+        <td class="tabelaCadastro" style="width:33%">
+          Multa:<BR>
+          <textarea rows="4" cols="20" 
+                    style="width:100%" 
+                    name="termosMultaLicitacao">
+                      ${sessionScope.formLicitacao.termosMultaLicitacao}
+          </textarea>  
+        </td>
+      </table>
       <p>
         <input class="botao" type="submit" value="Salvar" 
                name="executar"/>
