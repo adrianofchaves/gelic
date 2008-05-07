@@ -19,7 +19,7 @@
     <table class="menu">
       <tr>
         <th class="menuItem" >
-          <a href="browserEmpresas.jsp">Voltar</a>
+          <a href="Comercial?comando=CadastroEmpresas">Voltar</a>
         </th>
         <c:if test="${sessionScope.formEmpresa.alteracao}">
           <th class="menuItem" >

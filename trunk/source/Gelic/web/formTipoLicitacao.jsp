@@ -19,7 +19,7 @@
         <table class="menu">
             <tr>
                 <th class="menuItem" >
-                    <a href="homeLicitacao.jsp">Voltar</a>
+                    <a href="Comercial?comando=CadastroTiposLicitacoes">Voltar</a>
                 </th>
                 <th class="menuItem" >
                     <a href="homeComercial.jsp">Início</a>

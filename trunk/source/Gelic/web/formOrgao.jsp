@@ -19,7 +19,7 @@
     <table class="menu">
       <tr>
         <th class="menuItem" >
-          <a href="browserOrgaos.jsp">Voltar</a>
+          <a href="Comercial?comando=CadastroOrgaos">Voltar</a>
         </th>
         <c:if test="${!sessionScope.formSistema.inclusao}">
           <th class="menuItem" >
