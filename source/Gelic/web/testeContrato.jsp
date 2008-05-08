@@ -22,7 +22,6 @@
                 <th class="menuItem" ><a href="homeAnalista.jsp">Voltar</a></th>
                 <th class="menuItem" ><a href="homeAnalista.jsp">Gerar Pedido Mãe</a></th>
                 <th class="menuItem" ><a href="formOFM.jsp">Incluir OFM</a></th>
-                <th class="menuItem" ><a href="browserOFM.jsp">Exibir OFM</a></th>
                 <th class="menuItem" ><a href="Gelic?comando=Logout">Trocar usuario</a>                        
                 </th>
             </tr>        
@@ -171,5 +170,80 @@
            <td>134.412,30</td>
        </tr>
     </table>
+    <p>
+    <table>
+       <tr class="contrato">
+           <th>UF</th>
+           <th>MUN</th>
+           <th>Agencias</th>
+           <th>MI1</th>
+           <th>MI2</th>
+           <th>MI3</th>
+           <th>AP1</th>
+           <th>AP2</th>
+           <th>ST</th>
+           <th>SV</th>
+           <th>Valor</th>
+           <th>OFM</th>
+           <th>Data</th>
+           <th>Limite</th>
+           <th>Emissao</th>
+           <th>NFV</th>
+           <th>Emissao</th>
+           <th>NFR</th>
+           <th>AF</th>
+           <th>N</th>
+           <th></th>
+       </tr>
+       <tr class="contrato">
+           <td>MG</td>
+           <td>Belo Horizonte</td>
+           <td>Juiz de Fora</td>
+           <td>0</td>
+           <td>19</td>
+           <td>7</td>
+           <td>0</td>
+           <td>0</td>
+           <td>5</td>
+           <td>0</td>
+           <td>15.977,97</td>
+           <td><a href="testeOFM.jsp">002.1</a>
+           </td>
+           <td>07/07/06</td>
+           <td>06/08/06</td>
+           <td>21/07/06</td>
+           <td>33.360</td>
+           <td>21/07/06</td>
+           <td>33.361</td>
+           <td>740</td>
+           <td>1</td>
+           <td><img src="img/trash.PNG"  width="16" height="16" 
+                   alt="trash"/></td>
+       </tr>
+       <tr class="contrato">
+           <td>MG</td>
+           <td>Belo Horizonte</td>
+           <td>Olegario Maciel</td>
+           <td>0</td>
+           <td>5</td>
+           <td>0</td>
+           <td>0</td>
+           <td>13</td>
+           <td>0</td>
+           <td>0</td>
+           <td>4.396,76</td>
+           <td>002.1</td>
+           <td>07/07/06</td>
+           <td>06/08/06</td>
+           <td>21/07/06</td>
+           <td>33.407</td>
+           <td>21/07/06</td>
+           <td>33.408</td>
+           <td>740</td>
+           <td>2</td>
+           <td><img src="img/trash.PNG"  width="16" height="16" 
+                   alt="trash"/></td>
+       </tr>       
+    </table>        
     </body>
 </html>
