@@ -1,6 +1,6 @@
 <%-- 
-    Document   : formOFM
-    Created on : 04/05/2008, 18:24:05
+    Document   : testeOFM
+    Created on : 07/05/2008, 23:18:27
     Author     : Paulo
 --%>
 
@@ -20,7 +20,7 @@
         <table class="menu">
             <tr>
                 <th class="menuItem" ><a href="testeContrato.jsp">Voltar</a></th>
-                <th class="menuItem" ><a href="formLocalEntrega.jsp">Incluir Local de Entrega</a></th>
+                <th class="menuItem" ><a href="homeAnalista.jsp">Pedido de Compra</a></th>
                 <th class="menuItem" ><a href="Gelic?comando=Logout">Trocar usuario</a>                        
                 </th>
             </tr>        
@@ -31,10 +31,10 @@
       <TH class="cadastro"> Pregão Eletronico nº 002-7051/05 CEF/BH</TH>
       <p>
       <tr>
-          <td>OFM: <input type="textbox" name="ofm"></td>
+          <td>OFM: <input type="textbox" name="ofm" value="002.1"></td>
       </tr>
       <tr>
-          <td>Data: <input type="textbox" name="recbto"></td>
+          <td>Data: <input type="textbox" name="recbto" value="07/07/06"></td>
       </tr>
       <tr>
           <td>Observações: <input type="textbox" name="obs"></td>
@@ -45,10 +45,6 @@
               Local de entrega:
               <select name="entrega">
                   <option> AG. Juiz de Fora </option>
-                  <option> AG. Olegario Maciel </option>
-                  <option> AG. Santa Rita </option>
-                  <option> GIMAT/BH </option>
-                  <option> GIFUG/BH </option>
               </select>
           </td>
       </tr>
@@ -64,56 +60,32 @@
           <tr>
               <td>
                   <select name="item1">
-                      <option> </option>
-                      <option>MI1-Mesa de terminal de video</option>
                       <option>MI2-Mesa de microcomputador</option>
-                      <option>MI3-Mesa de impressora</option>
-                      <option>AP1 - Apoio de punho</option>
-                      <option>AP2 - Apoio de pé</option>
-                      <option>ST - Suporte de teclado</option>
-                      <option>SV - Suporte de video</option>
-                      <option> </option>
                   </select>
               </td>
-              <td><input type="textbox" name="quantItem1" value="0"></td>
-              <td><input type="textbox" name="unitItem1" value="0"></td>
-              <td><input type="textbox" name="totalItem1" value="0"></td>
+              <td><input type="textbox" name="quantItem1" value="19"></td>
+              <td><input type="textbox" name="unitItem1" value="710,43"></td>
+              <td><input type="textbox" name="totalItem1" value="13498,17"></td>
           </tr>
           <tr>
               <td>
                   <select name="item2">
-                      <option> </option>
-                      <option>MI1-Mesa de terminal de video</option>
-                      <option>MI2-Mesa de microcomputador</option>
                       <option>MI3-Mesa de impressora</option>
-                      <option>AP1 - Apoio de punho</option>
-                      <option>AP2 - Apoio de pé</option>
-                      <option>ST - Suporte de teclado</option>
-                      <option>SV - Suporte de video</option>
-                      <option> </option>                      
                   </select>
               </td>
-              <td><input type="textbox" name="quantItem2" value="0"></td>
-              <td><input type="textbox" name="unitItem2" value="0"></td>
-              <td><input type="textbox" name="totalItem2" value="0"></td>
+              <td><input type="textbox" name="quantItem2" value="7"></td>
+              <td><input type="textbox" name="unitItem2" value="297,00"></td>
+              <td><input type="textbox" name="totalItem2" value="2079,00"></td>
           </tr>
           <tr>
               <td>
                   <select name="item3">
-                      <option> </option>
-                      <option>MI1-Mesa de terminal de video</option>
-                      <option>MI2-Mesa de microcomputador</option>
-                      <option>MI3-Mesa de impressora</option>
-                      <option>AP1 - Apoio de punho</option>
-                      <option>AP2 - Apoio de pé</option>
                       <option>ST - Suporte de teclado</option>
-                      <option>SV - Suporte de video</option>
-                      <option> </option>                      
                   </select>
               </td>
-              <td><input type="textbox" name="quantItem3" value="0"></td>
-              <td><input type="textbox" name="unitItem3" value="0"></td>
-              <td><input type="textbox" name="totalItem3" value="0"></td>
+              <td><input type="textbox" name="quantItem3" value="5"></td>
+              <td><input type="textbox" name="unitItem3" value="80,16"></td>
+              <td><input type="textbox" name="totalItem3" value="400,80"></td>
           </tr>
           <tr>
               <td>
@@ -190,11 +162,29 @@
               <td> </td>
               <td> </td>
               <td> </td>
-              <td><input type="textbox" name="totalOFM" value="0"></td>
+              <td><input type="textbox" name="totalOFM" value="15.977,97"></td>
           </tr>
           
     </table>
     <p>
+        AF: <input type="textbox" name="AF" value="740"><br>
+         N:<input type="textbox" name="N" value="1"><br>
+    
+    <p>
+        Nota fiscal de compra:<br>
+        Emissão: <input type="textbox" name="dataEmissaoNFCompra"><br>
+             Nº: <input type="textbox" name="numeroNFCompra"><br>
+    <p>
+        Nota fiscal de venda:<br>
+        Emissão: <input type="textbox" name="dataEmissaoNFVenda"><br>
+             Nº: <input type="textbox" name="numeroNFVenda"><br>
+    <p>
+        Data de Entrega: <input type="textbox" name="dataEntrega"><br>
+        Nome do recebedor: <input type="textbox" name="nomeRecebedor"><br>
+        Matricula: <input type="textbox" name="matricula"><br>
+            Cargo: <input type="textbox" name="cargo"><br>
+            <p>
+        
         <input class="botao" type="submit" value="Salvar" 
                name="executar"/>
         <INPUT class="botao" TYPE="submit" value="Cancelar" 
