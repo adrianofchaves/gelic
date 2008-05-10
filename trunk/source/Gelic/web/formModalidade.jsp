@@ -35,12 +35,15 @@
               action="Gelic?comando=GravarModalidade" 
               method="POST">
         <p class="caption">
-            <c:if test="${!sessionScope.formModalidade.inclusao}">
-                Alterando modalidade
-            </c:if>
-            <c:if test="${sessionScope.formModalidade.inclusao}">
-                Nova modalidade:
-            </c:if>
+        <c:if test="${sessionScope.formModalidade.alteracao}">
+          Alterando Modalidade
+        </c:if>
+        <c:if test="${sessionScope.formModalidade.exclusao}">
+          Excluindo Modalidade
+        </c:if>
+        <c:if test="${sessionScope.formModalidade.inclusao}">
+          Nova Modalidade
+        </c:if>
         </p>
             <font class="erro" >
                 <c:forEach var="erro" items="${sessionScope.formModalidade.erros}">
@@ -50,6 +53,9 @@
             
             <P>Sigla:<br>
                 <input type="text" name="siglaModalidade" class="caixaTexto"
+                       <c:if test="${sessionScope.formModalidade.exclusao}">
+                            disabled
+                       </c:if>
                        value="${sessionScope.formModalidade.siglaModalidade}" />
                 <font class="erroCampo" >
                     ${sessionScope.formModalidade.erroSiglaModalidade}
@@ -57,16 +63,25 @@
             </P>
             <P>Nome:<br>
                 <input type="text" name="nomeModalidade" class="caixaTexto"
+                       <c:if test="${sessionScope.formModalidade.exclusao}">
+                            disabled
+                       </c:if>
                        value="${sessionScope.formModalidade.nomeModalidade}" />
                 <font class="erroCampo" >
                     ${sessionScope.formModalidade.erroNomeModalidade}
                 </font>
             </P>            
             <p>
-                <input class="botao" type="submit" value="Gravar" 
-                       name="executar"/>
-                <INPUT class="botao" TYPE="submit" value="Cancelar" 
-                       name="cancelar"/>                
+        <c:if test="${sessionScope.formModalidade.exclusao}">
+          <input class="botao" type="submit" value="Excluir" 
+                 name="excluir"/>
+        </c:if>
+        <c:if test="${!sessionScope.formModalidade.exclusao}">
+          <input class="botao" type="submit" value="Salvar" 
+                 name="executar"/>
+        </c:if>
+          <input class="botao" TYPE="submit" value="Cancelar" 
+                 name="cancelar"/>                
             </p>
         </form>       
     </body>

@@ -4,6 +4,9 @@
  */
 package view;
 
+import java.sql.SQLException;
+import javax.naming.NamingException;
+
 /**
  *
  * @author Adriano
@@ -15,7 +18,10 @@ public class FormModalidade extends Form {
     private String errosiglaModalidade;
     private String nomeModalidade;
     private String erroNomeModalidade;
-    private Boolean inclusao = true;
+    private boolean inclusao = true;
+    private boolean exclusao;
+    private boolean alteracao;
+    
 
     public void apagaErros() {
         super.apagaErros();
@@ -23,13 +29,12 @@ public class FormModalidade extends Form {
         errosiglaModalidade = "";
     }
 
-    public void valida() {
+    public void valida() throws SQLException, NamingException {
         apagaErros();
         if (getSiglaModalidade().length() > 3) {
-            setErroSiglaModalidade("Sigla deve ter no máxim 3 caracteres");
+            setErroSiglaModalidade("Sigla deve ter no máximo 3 caracteres");
             addErro("Sigla inválida");
         }
-
     }
 
     public void atualizaCampos() {
@@ -81,11 +86,35 @@ public class FormModalidade extends Form {
         this.erroNomeModalidade = erroNomeModalidade;
     }
 
-    public Boolean getInclusao() {
+    public boolean isInclusao() {
         return inclusao;
     }
 
     public void setInclusao(Boolean inclusao) {
         this.inclusao = inclusao;
+    }
+
+    public boolean isExclusao() {
+        return exclusao;
+    }
+
+    public void setExclusao(boolean exclusao) {
+        this.exclusao = exclusao;
+        if (exclusao) {
+            alteracao = false;
+            inclusao = false;
+        }
+    }
+
+    public boolean isAlteracao() {
+        return alteracao;
+    }
+
+    public void setAlteracao(boolean alteracao) {
+        this.alteracao = alteracao;
+        if (alteracao) {
+            exclusao = false;
+            inclusao = false;
+        }
     }
 }

@@ -80,4 +80,17 @@ public class Modalidades {
         }
         return null;
     }
+    
+    public static void excluir(String sigla) throws SQLException, NamingException {
+    Connection gelic = model.services.Conexao.getConnection();
+    try {
+      model.daos.Modalidades.excluir(sigla);
+      gelic.commit();
+      gelic.close();
+     }catch (SQLException e) {
+      gelic.rollback();
+      gelic.close();
+      throw e;
+    }
+   }    
 }

@@ -29,6 +29,8 @@ public class AlterarModalidade implements Comando{
             frm.setModalidade(modalidade);
             frm.atualizaCampos();
             frm.setInclusao(false);
+            frm.setAlteracao(true);
+            frm.setTitulo("Alterando modalidade");
             req.getSession().setAttribute("formModalidade", frm);
             return "/formModalidade.jsp";
         } catch (SQLException ex) {

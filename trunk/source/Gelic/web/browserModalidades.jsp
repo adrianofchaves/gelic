@@ -53,7 +53,7 @@
                         ${modalidade.nome}
                     </td>  
                     <td>
-                        <a href="Gelic?comando=ExcluirModalidade&usuario=${modalidade.sigla}">
+                        <a href="Gelic?comando=ExcluirModalidade&sigla=${modalidade.sigla}">
                             <img src="img/trash.PNG"  width="16" height="16" 
                                  alt="trash"/>
                         </a>
