@@ -136,4 +136,14 @@ public class Modalidades {
         gelic.close();
         return modalidades;
     }
+    
+    public static int excluir(String sigla) throws SQLException, NamingException {
+    final String sqlExcluiModalidade = "delete from MODALIDADES where SIGLA = ?";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlExcluiModalidade);
+    pstmt.setString(1, sigla);
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
+  }    
 }

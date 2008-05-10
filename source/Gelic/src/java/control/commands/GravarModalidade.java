@@ -13,9 +13,18 @@ import view.FormModalidade;
 
 /**
  *
- * @author Adriano
+ * @author Adriano alterado por Paulo
  */
 public class GravarModalidade implements Comando {
+    
+  static final String chaveForm = "formModalidade";
+  static final String chaveBrowser = "browserModalidades";
+  static final String uriForm = "/formModalidade.jsp";
+  static final String uriBrowser = "/browserModalidades.jsp";
+  static final String msgInclusao = "Nova modalidade cadastrada.";
+  static final String msgExclusao = "Modalidade excluída.";
+  static final String msgAlteracao = "Modalidade alterada.";
+    
 
     private String executaCancelar(HttpServletRequest req)
             throws SQLException, NamingException {
@@ -30,7 +39,7 @@ public class GravarModalidade implements Comando {
             }
             /* "popula form */
             view.FormModalidade frm = (FormModalidade) req.getSession().
-                    getAttribute("formModalidade");
+                    getAttribute(chaveForm);
             frm.setNomeModalidade(util.Request.getParameter(req,
                     "nomeModalidade"));
             frm.setSiglaModalidade(util.Request.getParameter(req,
@@ -39,22 +48,31 @@ public class GravarModalidade implements Comando {
             frm.valida();
             /* Se tem erros sai */
             if( frm.temErros()){
-                return "/formModalidade.jsp";
+                return uriForm;
             }
             /* Grava e volta para o browser atualizado */
-            view.BrowserModalidades browser = new view.BrowserModalidades();
-            if (frm.getInclusao()) {
+            //view.BrowserModalidades browser = new view.BrowserModalidades();
+            String mensagem = null;
+            if (frm.isInclusao()){
                 model.services.Modalidades.incluir(frm.getSiglaModalidade(),
                         frm.getNomeModalidade());
-                browser.setMensagem("Modalidade incluída com sucesso");
-            } else {
+                mensagem = msgInclusao;
+            }
+            
+            if (frm.isAlteracao()){
                 model.services.Modalidades.alterar(
                         frm.getModalidade().getSigla(),
                         frm.getSiglaModalidade(),
                         frm.getNomeModalidade());
-                browser.setMensagem("Modalidade alterada com sucesso");
+                mensagem = msgAlteracao;
             }
-            return control.Modalidades.preparaBrowser(req);            
+            
+            if(frm.isExclusao()){
+                model.services.Modalidades.excluir(frm.getModalidade().getSigla());
+                mensagem = msgExclusao;
+            }
+            
+            return executaBrowser(req,mensagem);
         } catch (SQLException ex) {
             Logger.getLogger(GravarModalidade.class.getName()).log(
                     Level.SEVERE, null, ex);
@@ -64,6 +82,13 @@ public class GravarModalidade implements Comando {
                     Level.SEVERE, null, ex);
             throw new ExcecaoComando(ex.getMessage());
         }
-
     }
+    private String executaBrowser(HttpServletRequest req, String mensagem) 
+          throws NamingException, SQLException {
+    view.BrowserModalidades browser = new view.BrowserModalidades(
+            model.services.Modalidades.recuperar());
+    browser.setMensagem(mensagem);
+    req.getSession().setAttribute(chaveBrowser, browser);
+    return uriBrowser;
+  }    
 }
