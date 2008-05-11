@@ -35,12 +35,16 @@
               action="Gelic?comando=GravarSistema" 
               method="POST">
             <p class="caption">
-                <c:if test="${!sessionScope.formSistema.inclusao}">
+                <c:if test="${sessionScope.formSistema.alteracao}">
                     Alterando sistema
                 </c:if>
                 <c:if test="${sessionScope.formSistema.inclusao}">
                     Novo sistema:
                 </c:if>
+                <c:if test="${sessionScope.formSistema.exclusao}">
+                    Excluindo sistema:
+                </c:if>
+                
             </p>            
             <c:forEach var="erro" items="${sessionScope.formSistema.erros}">
                 <P class="erro" >${erro}</P>
@@ -48,16 +52,25 @@
             
             <P>Nome:<br>
                 <input type="text" name="nomeSistema" class="caixaTexto"
+                       <c:if test="${sessionScope.formSistema.exclusao}">
+                            disabled
+                       </c:if>
                        value="${sessionScope.formSistema.nomeSistema}" />
                 <font class="erroCampo" >
                     ${sessionScope.formSistema.erroNomeSistema}
                 </font>
             </P>
             <p>
-                <input class="botao" type="submit" value="Gravar" 
-                       name="executar"/>
-                <INPUT class="botao" TYPE="submit" value="Cancelar" 
-                       name="cancelar"/>                
+        <c:if test="${sessionScope.formSistema.exclusao}">
+          <input class="botao" type="submit" value="Excluir" 
+                 name="excluir"/>
+        </c:if>
+        <c:if test="${!sessionScope.formSistema.exclusao}">
+          <input class="botao" type="submit" value="Salvar" 
+                 name="executar"/>
+        </c:if>
+          <input class="botao" TYPE="submit" value="Cancelar" 
+                 name="cancelar"/>                
             </p>
         </form>       
     </body>
