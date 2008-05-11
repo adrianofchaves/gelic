@@ -14,6 +14,10 @@ public class FormSistema extends Form{
     
     private String nomeSistema;
     private String erroNomeSistema;
+    private Boolean inclusao = true;
+    private boolean exclusao;
+    private boolean alteracao;
+    
     
     public void apagaErros() {
         super.apagaErros();
@@ -32,8 +36,6 @@ public class FormSistema extends Form{
         }        
         nomeSistema = sistema.getNome();
     }
-    
-    private Boolean inclusao = true;
     
     public FormSistema(){
         
@@ -69,6 +71,28 @@ public class FormSistema extends Form{
     public void setInclusao(Boolean inclusao) {
         this.inclusao = inclusao;
     }
-    
 
+    public boolean isExclusao() {
+        return exclusao;
+    }
+
+    public void setExclusao(boolean exclusao) {
+        this.exclusao = exclusao;
+        if (exclusao) {
+            alteracao = false;
+            inclusao = false;
+            }
+    }
+
+    public boolean isAlteracao() {
+        return alteracao;
+    }
+
+    public void setAlteracao(boolean alteracao) {
+        this.alteracao = alteracao;
+        if (alteracao) {
+            exclusao = false;
+            inclusao = false;
+        }
+    }
 }

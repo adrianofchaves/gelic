@@ -76,4 +76,16 @@ public class Sistemas {
       }
     }
   }
+    public static void excluir(String nome) throws SQLException, NamingException {
+        Connection gelic = model.services.Conexao.getConnection();
+        try {
+            model.daos.Sistemas.excluir(nome);
+            gelic.commit();
+            gelic.close();
+            }catch (SQLException e) {
+                gelic.rollback();
+                gelic.close();
+                throw e;
+                }
+        }
 }

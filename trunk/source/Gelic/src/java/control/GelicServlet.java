@@ -14,6 +14,7 @@ import control.commands.Comando;
 import control.commands.EfetuarLogin;
 import control.commands.ExcecaoComando;
 import control.commands.ExcluirModalidade;
+import control.commands.ExcluirSistema;
 import control.commands.ExcluirUsuario;
 import control.commands.GravarModalidade;
 import control.commands.GravarSistema;
@@ -63,6 +64,7 @@ public class GelicServlet extends HttpServlet {
         comandos.put("ExcluirModalidade", new ExcluirModalidade());
         comandos.put("CadastroSistemas", new CadastroSistemas());
         comandos.put("AlterarSistema", new AlterarSistema());
+        comandos.put("ExcluirSistema", new ExcluirSistema());
         comandos.put("NovoSistema", new NovoSistema());
         comandos.put("GravarSistema", new GravarSistema());
         comandos.put("NovoUsuario", new NovoUsuario());

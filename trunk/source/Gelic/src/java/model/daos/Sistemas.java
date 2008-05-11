@@ -111,4 +111,13 @@ public class Sistemas {
         
         return sistemas;
     }
+  public static int excluir(String nome) throws SQLException, NamingException {
+    final String sqlExcluiSistema = "delete from SISTEMAS where NOME = ?";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlExcluiSistema);
+    pstmt.setString(1, nome);
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
+  }
 }

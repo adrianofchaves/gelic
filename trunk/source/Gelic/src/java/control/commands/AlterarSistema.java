@@ -28,6 +28,7 @@ public class AlterarSistema implements Comando{
             frm.setSistema(sistema);
             frm.atualizaCampos();
             frm.setInclusao(false);
+            frm.setAlteracao(true);
             req.getSession().setAttribute("formSistema", frm);
             return "/formSistema.jsp";
         } catch (SQLException ex) {
