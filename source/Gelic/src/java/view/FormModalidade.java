@@ -13,108 +13,111 @@ import javax.naming.NamingException;
  */
 public class FormModalidade extends Form {
 
-    private model.beans.Modalidade modalidade;
-    private String siglaModalidade;
-    private String errosiglaModalidade;
-    private String nomeModalidade;
-    private String erroNomeModalidade;
-    private boolean inclusao = true;
-    private boolean exclusao;
-    private boolean alteracao;
-    
+  private model.beans.Modalidade modalidade;
+  private String siglaModalidade;
+  private String errosiglaModalidade;
+  private String nomeModalidade;
+  private String erroNomeModalidade;
+  private boolean inclusao = true;
+  private boolean exclusao;
+  private boolean alteracao;
 
-    public void apagaErros() {
-        super.apagaErros();
-        erroNomeModalidade = "";
-        errosiglaModalidade = "";
-    }
+  public void apagaErros() {
+    super.apagaErros();
+    erroNomeModalidade = "";
+    errosiglaModalidade = "";
+  }
 
-    public void valida() throws SQLException, NamingException {
-        apagaErros();
-        if (getSiglaModalidade().length() > 3) {
-            setErroSiglaModalidade("Sigla deve ter no máximo 3 caracteres");
-            addErro("Sigla inválida");
-        }
+  public void valida() throws SQLException, NamingException {
+    if( isExclusao()){
+      // críticas de exclusão
+      return;
     }
+    apagaErros();
+    if (getSiglaModalidade().length() > 3) {
+      setErroSiglaModalidade("Sigla deve ter no máximo 3 caracteres");
+      addErro("Sigla inválida");
+    }
+  }
 
-    public void atualizaCampos() {
-        apagaErros();
-        if (modalidade == null) {
-            return;
-        }
-        siglaModalidade = modalidade.getSigla();
-        nomeModalidade = modalidade.getNome();
+  public void atualizaCampos() {
+    apagaErros();
+    if (modalidade == null) {
+      return;
     }
+    siglaModalidade = modalidade.getSigla();
+    nomeModalidade = modalidade.getNome();
+  }
 
-    public model.beans.Modalidade getModalidade() {
-        return modalidade;
-    }
+  public model.beans.Modalidade getModalidade() {
+    return modalidade;
+  }
 
-    public void setModalidade(model.beans.Modalidade modalidade) {
-        this.modalidade = modalidade;
-    }
+  public void setModalidade(model.beans.Modalidade modalidade) {
+    this.modalidade = modalidade;
+  }
 
-    public String getSiglaModalidade() {
-        return siglaModalidade;
-    }
+  public String getSiglaModalidade() {
+    return siglaModalidade;
+  }
 
-    public void setSiglaModalidade(String siglaModalidade) {
-        this.siglaModalidade = siglaModalidade;
-    }
+  public void setSiglaModalidade(String siglaModalidade) {
+    this.siglaModalidade = siglaModalidade;
+  }
 
-    public String getErroSiglaModalidade() {
-        return errosiglaModalidade;
-    }
+  public String getErroSiglaModalidade() {
+    return errosiglaModalidade;
+  }
 
-    public void setErroSiglaModalidade(String errosiglaModalidade) {
-        this.errosiglaModalidade = errosiglaModalidade;
-    }
+  public void setErroSiglaModalidade(String errosiglaModalidade) {
+    this.errosiglaModalidade = errosiglaModalidade;
+  }
 
-    public String getNomeModalidade() {
-        return nomeModalidade;
-    }
+  public String getNomeModalidade() {
+    return nomeModalidade;
+  }
 
-    public void setNomeModalidade(String nomeModalidade) {
-        this.nomeModalidade = nomeModalidade;
-    }
+  public void setNomeModalidade(String nomeModalidade) {
+    this.nomeModalidade = nomeModalidade;
+  }
 
-    public String getErroNomeModalidade() {
-        return erroNomeModalidade;
-    }
+  public String getErroNomeModalidade() {
+    return erroNomeModalidade;
+  }
 
-    public void setErroNomeModalidade(String erroNomeModalidade) {
-        this.erroNomeModalidade = erroNomeModalidade;
-    }
+  public void setErroNomeModalidade(String erroNomeModalidade) {
+    this.erroNomeModalidade = erroNomeModalidade;
+  }
 
-    public boolean isInclusao() {
-        return inclusao;
-    }
+  public boolean isInclusao() {
+    return inclusao;
+  }
 
-    public void setInclusao(Boolean inclusao) {
-        this.inclusao = inclusao;
-    }
+  public void setInclusao(Boolean inclusao) {
+    this.inclusao = inclusao;
+  }
 
-    public boolean isExclusao() {
-        return exclusao;
-    }
+  public boolean isExclusao() {
+    return exclusao;
+  }
 
-    public void setExclusao(boolean exclusao) {
-        this.exclusao = exclusao;
-        if (exclusao) {
-            alteracao = false;
-            inclusao = false;
-        }
+  public void setExclusao(boolean exclusao) {
+    this.exclusao = exclusao;
+    if (exclusao) {
+      alteracao = false;
+      inclusao = false;
     }
+  }
 
-    public boolean isAlteracao() {
-        return alteracao;
-    }
+  public boolean isAlteracao() {
+    return alteracao;
+  }
 
-    public void setAlteracao(boolean alteracao) {
-        this.alteracao = alteracao;
-        if (alteracao) {
-            exclusao = false;
-            inclusao = false;
-        }
+  public void setAlteracao(boolean alteracao) {
+    this.alteracao = alteracao;
+    if (alteracao) {
+      exclusao = false;
+      inclusao = false;
     }
+  }
 }

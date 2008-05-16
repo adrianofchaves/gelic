@@ -24,7 +24,8 @@ public class ExcluirModalidade implements Comando {
       if (sigla == null) {
         throw new ExcecaoComando("Sigla inválido (nulo)");
       }
-      model.beans.Modalidade modalidade = model.services.Modalidades.recuperar(sigla);
+      model.beans.Modalidade modalidade = model.services.Modalidades.recuperar(
+              sigla);
       view.FormModalidade frm = new view.FormModalidade();
       frm.setModalidade(modalidade);
       frm.atualizaCampos();
