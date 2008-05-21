@@ -19,7 +19,7 @@
     </table>
     <table class="menu">
       <th class="menuItem" >
-        <a href="formLicitacao.jsp">Nova Licitação</a>
+        <a href="Comercial?comando=NovaLicitacao">Nova Licitação</a>
       </th>
       <th class="menuItem" >
         <a href="Comercial?comando=CadastroTiposLicitacoes">
