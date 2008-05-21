@@ -60,56 +60,77 @@
       <table class="tabelaCadastro">
         <td class="tabelaCadastro" style = "width:30%">
           Órgão:<BR>
-          <select name="razaoSocialOrgao" 
-                  class="tabelaCadastro"
-                  value="${sessionScope.formLicitacao.razaoSocialOrgao}">
-            <option>pcrj</option>
-            <option>bb</option>
-            <option>cef-df</option>
-            <option>cef-rj</option>
+          <select name="razaoSocialOrgao" class="tabelaCadastro">
+            <c:forEach var="orgao" items="${sessionScope.formLicitacao.orgaos}">
+              <option 
+                <c:if test="${orgao==sessionScope.formLicitacao.orgaoLicitacao}">
+                  selected 
+                </c:if> >
+                ${orgao}
+                </option>
+            </c:forEach>
           </select>
         </td>
-        <td class="tabelaCadastro" style = "width:40%">
+        <td class="tabelaCadastro" style = "width:10%">
+          Ano:<BR>
+          <input type="text" class="tabelaCadastro"
+                 name="${sessionScope.formLicitacao.anoLicitacao}" />
+        </td>
+        <td class="tabelaCadastro" style = "width:30%">
           Número:<BR>
           <input type="text" class="tabelaCadastro"
                  name="${sessionScope.formLicitacao.numeroLicitacao}" />
         </td>
-        <td class="tabelaCadastro" style="width:40">
+        <td class="tabelaCadastro" style="width:30">
           Processo:<BR>
           <input type="text" class="tabelaCadastro"
-                 value="${sessionScope.formLicitacao.processoLicitacao}"/>
+                 value="${sessionScope.formLicitacao.numeroProcessoLicitacao}"/>
         </td>
       </table>
       
       <table class="tabelaCadastro">
         <td class="tabelaCadastro" style = "width:30%">
           Modalidade:<BR>
-          <select name="modalidadeLicitacao" 
-                  class="tabelaCadastro"
-                  value="${sessionScope.formLicitacao.modalidadeLicitacao}">
-            <option>Por Lote</option>
-            <option>Por Item</option>
+          <select name="modalidadeLicitacao" class="tabelaCadastro">
+            <c:forEach var="modalidade" 
+                       items="${sessionScope.formLicitacao.modalidades}">
+              <option 
+                <c:if test="${modalidade==sessionScope.formLicitacao.modalidadeLicitacao}">
+                  selected
+                </c:if> 
+                >
+                ${modalidade}
+                </option>
+            </c:forEach>
           </select>
         </td>
         
         <td class="tabelaCadastro" style = "width:40%">
           Tipo:<BR>
-          <select name="tipoLicitacao" 
-                  class="tabelaCadastro"
-                  value="${sessionScope.formLicitacao.tipoLicitacao}">
-            <option>Carta Convite</option>
-            <option>Tomada de Preços</option>
-            <option>Pregão Eletronico</option>
+          <select name="tipoLicitacao" class="tabelaCadastro">
+            <c:forEach var="tipo" items="${sessionScope.formLicitacao.tiposLicitacoes}">
+              <option
+                <c:if test="${tipo==sessionScope.formLicitacao.tipoLicitacaoLicitacao}">
+                      selected
+                </c:if> >
+                ${tipo}
+                </option>
+            </c:forEach>            
           </select>
         </td>
         
-        <td class="tabelaCadastro" style = "width:40%">
+        <td class="tabelaCadastro" style = "width:30%">
           Sistema:<BR>
-          <select name="sistemaLicitacao" 
-                  class="tabelaCadastro"
-                  value="${sessionScope.formLicitacao.sistemaLicitacao}">
-            <option>Registro de Preços</option>
-            <option>Fornecimento</option>
+          <select name="sistemaLicitacao" class="tabelaCadastro">
+            <c:forEach var="sistema" items="${sessionScope.formLicitacao.sistemas}">
+              <option 
+                <c:if test="${sistema==sessionScope.formLicitacao.sistemaLicitacao}">
+                  selected
+                </c:if>
+                >
+                ${sistema}
+                </option>
+            </c:forEach>
           </select>
         </td>
       </table>

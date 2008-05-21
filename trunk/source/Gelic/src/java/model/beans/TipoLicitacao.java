@@ -18,6 +18,9 @@ public class TipoLicitacao {
     this.sigla = sigla;
     this.id = id;
   }
+  public String toString(){
+    return this.getSigla();
+  }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.840F2D76-51E7-E850-261A-9FFE3693974F]

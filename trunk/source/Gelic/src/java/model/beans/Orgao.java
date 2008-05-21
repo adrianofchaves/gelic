@@ -12,6 +12,9 @@ import java.util.ArrayList;
 // #[regen=yes,id=DCE.BCBEDA24-3258-895B-6ABA-2FB01F80EE75]
 // </editor-fold> 
 public class Orgao {
+  public String toString(){
+    return getApelido();
+  }
     private ArrayList<model.beans.Contato> contatos;
 
     /**
