@@ -49,7 +49,11 @@
             
             <P>Nome:<br>
                 <input type="text" name="nomeTipoDocumento" class="caixaTexto"
-                  value="${sessionScope.formTipoDocumento.nomeTipoDocumento}" />
+                 <c:if test="${sessionScope.formTipoDocumento.exclusao}">
+                   disabled
+                 </c:if>
+                  value="${sessionScope.formTipoDocumento.nomeTipoDocumento}"
+                  maxlength=50 />
                 <font class="erroCampo" >
                     ${sessionScope.formTipoDocumento.erroNomeTipoDocumento}
                 </font>

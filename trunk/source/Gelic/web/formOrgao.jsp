@@ -54,7 +54,8 @@
                  <c:if test="${sessionScope.formOrgao.exclusao}">
                    disabled
                  </c:if>                 
-                 value="${sessionScope.formOrgao.apelidoOrgao}" />
+                 value="${sessionScope.formOrgao.apelidoOrgao}"
+                 maxlength=15 />
         </td>                
         <td class="tabelaCadastro" style="width:80%">
           Razão Social:<BR>
@@ -62,7 +63,8 @@
                  <c:if test="${sessionScope.formOrgao.exclusao}">
                    disabled
                  </c:if>                 
-                 value="${sessionScope.formOrgao.razaoSocialOrgao}"/>
+                 value="${sessionScope.formOrgao.razaoSocialOrgao}"
+                 maxlength=50 />
         </td>
       </table>
       
@@ -83,7 +85,8 @@
                  <c:if test="${sessionScope.formOrgao.exclusao}">
                    disabled
                  </c:if>                 
-                 value="${sessionScope.formOrgao.cnpjOrgao}" />
+                 value="${sessionScope.formOrgao.cnpjOrgao}"
+                 maxlength=14 />
         </td>                
         <td class="tabelaCadastro" style="width:50%">
           IE:<BR>
@@ -91,7 +94,8 @@
                  <c:if test="${sessionScope.formOrgao.exclusao}">
                    disabled
                  </c:if>                 
-                 value="${sessionScope.formOrgao.ieOrgao}"/>
+                 value="${sessionScope.formOrgao.ieOrgao}"
+                 maxlength=15 />
         </td>
       </table>
       
@@ -132,7 +136,8 @@
                    disabled
                  </c:if>                 
                  class="tabelaCadastro"
-                 value="${sessionScope.formOrgao.logradouroOrgao}" />
+                 value="${sessionScope.formOrgao.logradouroOrgao}"
+                 maxlength=30 />
         </TD>
         <TD class="tabelaCadastro"  style="width:20%" >
           Numero: <BR>
@@ -141,7 +146,8 @@
                  <c:if test="${sessionScope.formOrgao.exclusao}">
                    disabled
                  </c:if>                 
-                 value="${sessionScope.formOrgao.numeroOrgao}" />
+                 value="${sessionScope.formOrgao.numeroOrgao}"
+                 maxlength=15 />
         </TD>
         <TD class="tabelaCadastro"  style="width:15%" >
           Complemento: <BR>
@@ -150,7 +156,8 @@
                  <c:if test="${sessionScope.formOrgao.exclusao}">
                    disabled
                  </c:if>                 
-                 value="${sessionScope.formOrgao.complementoOrgao}" />
+                 value="${sessionScope.formOrgao.complementoOrgao}"
+                 maxlength=20 />
         </TD>
       </TABLE>
       <table class = "tabelaErro">
@@ -175,7 +182,8 @@
                  <c:if test="${sessionScope.formOrgao.exclusao}">
                    disabled
                  </c:if>                 
-                 value="${sessionScope.formOrgao.bairroOrgao}" />
+                 value="${sessionScope.formOrgao.bairroOrgao}"
+                 maxlength=20 />
         </TD>
         <TD class="tabelaCadastro"  style="width:30%" >
           Cidade: <BR>
@@ -184,7 +192,8 @@
                  <c:if test="${sessionScope.formOrgao.exclusao}">
                    disabled
                  </c:if>                 
-                 value="${sessionScope.formOrgao.cidadeOrgao}" />
+                 value="${sessionScope.formOrgao.cidadeOrgao}"
+                 maxlength=30 />
         </TD>
         <TD class="tabelaCadastro"  style="width:10%" >
           Estado<BR>
@@ -211,7 +220,8 @@
                  <c:if test="${sessionScope.formOrgao.exclusao}">
                    disabled
                  </c:if>                 
-                 value="${sessionScope.formOrgao.cepOrgao}" />
+                 value="${sessionScope.formOrgao.cepOrgao}"
+                 maxlength=8 />
         </TD>
       </TABLE>
       <table class = "tabelaErro">
@@ -236,7 +246,8 @@
                  <c:if test="${sessionScope.formOrgao.exclusao}">
                    disabled
                  </c:if>                 
-                 value="${sessionScope.formOrgao.siteOrgao}" />
+                 value="${sessionScope.formOrgao.siteOrgao}"
+                 maxlength=50 />
         </TD>
         <TD class="tabelaCadastro" style="width: 45%">
           Email: <BR>
@@ -245,7 +256,8 @@
                  <c:if test="${sessionScope.formOrgao.exclusao}">
                    disabled
                  </c:if>                 
-                 value="${sessionScope.formOrgao.emailOrgao}" />
+                 value="${sessionScope.formOrgao.emailOrgao}"
+                 maxlength=50 />
         </TD>
       </TABLE>
       <table class = "tabelaErro">
@@ -266,7 +278,8 @@
                  <c:if test="${sessionScope.formOrgao.exclusao}">
                    disabled
                  </c:if>                 
-                 value="${sessionScope.formOrgao.ddiOrgao}" />
+                 value="${sessionScope.formOrgao.ddiOrgao}"
+                 maxlength=3 />
         </TD>
         <TD class="tabelaCadastro" style="width: 10%">
           DDD: <BR>
@@ -274,7 +287,8 @@
                  <c:if test="${sessionScope.formOrgao.exclusao}">
                    disabled
                  </c:if>                 
-                 value="${sessionScope.formOrgao.dddOrgao}" />
+                 value="${sessionScope.formOrgao.dddOrgao}"
+                 maxlength=2 />
         </TD>
         <TD class="tabelaCadastro" style="width: 50%">
           Número: <BR>
@@ -282,7 +296,8 @@
                  <c:if test="${sessionScope.formOrgao.exclusao}">
                    disabled
                  </c:if>                 
-                 value="${sessionScope.formOrgao.numeroTelefoneOrgao}" />
+                 value="${sessionScope.formOrgao.numeroTelefoneOrgao}"
+                 maxlength=8 />
         </TD>
         <TD class="tabelaCadastro" style="width: 30%">
           Ramal: <BR>
@@ -290,7 +305,8 @@
                  <c:if test="${sessionScope.formOrgao.exclusao}">
                    disabled
                  </c:if>                 
-                 value="${sessionScope.formOrgao.ramalOrgao}" />
+                 value="${sessionScope.formOrgao.ramalOrgao}"
+                 maxlength=4 />
         </TD>
       </TABLE>
       <table class = "tabelaErro">

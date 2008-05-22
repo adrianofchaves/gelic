@@ -54,7 +54,8 @@
                    disabled
                  </c:if>
                  class="tabelaCadastro" 
-                 value="${sessionScope.formEmpresa.nomeFantasiaEmpresa}" />
+                 value="${sessionScope.formEmpresa.nomeFantasiaEmpresa}"
+                 maxlength=20 />
         </td>
         <td class="caixaSelecaoTabelaCadastro" style="width:20%;">
         Portador
@@ -86,7 +87,8 @@
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
-                 value="${sessionScope.formEmpresa.razaoSocialEmpresa}"/>
+                 value="${sessionScope.formEmpresa.razaoSocialEmpresa}"
+                 maxlength=50 />
         </td>
         <td class="caixaSelecaoTabelaCadastro" 
             style="width:20%;">
@@ -98,9 +100,7 @@
                  <c:if test="${sessionScope.formEmpresa.EFornecedorEmpresa=='true'}">
                    checked
                  </c:if>
-                 
                  value="ON" />
-          
         </td>
       </table>
       <table class="tabelaErro">
@@ -119,7 +119,8 @@
                    disabled
                  </c:if>
                  name = "cnpjEmpresa"
-                 value="${sessionScope.formEmpresa.cnpjEmpresa}" />
+                 value="${sessionScope.formEmpresa.cnpjEmpresa}"
+                 maxlength=14 />
         </td>                
         <td class="tabelaCadastro" style="width:30%">
           IE:<BR>
@@ -127,7 +128,8 @@
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
-                 value="${sessionScope.formEmpresa.ieEmpresa}"/>
+                 value="${sessionScope.formEmpresa.ieEmpresa}"
+                 maxlength=15 />
         </td>
         <td class="tabelaCadastro" style="width: 30%">
           IM:<BR>
@@ -135,7 +137,8 @@
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
-                 value="${sessionScope.formEmpresa.imEmpresa}" />
+                 value="${sessionScope.formEmpresa.imEmpresa}"
+                 maxlength=15 />
         </td>
       </table>
       <table class="tabelaErros">
@@ -178,7 +181,8 @@
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
-                 value="${sessionScope.formEmpresa.logradouroEmpresa}" />
+                 value="${sessionScope.formEmpresa.logradouroEmpresa}"
+                 maxlength=30 />
         </TD>
         <TD class="tabelaCadastro"  style="width:20%" >
           Numero: <BR>
@@ -187,7 +191,8 @@
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
-                 value="${sessionScope.formEmpresa.numeroEmpresa}" />
+                 value="${sessionScope.formEmpresa.numeroEmpresa}"
+                 maxlength=15 />
         </TD>
         <TD class="tabelaCadastro"  style="width:15%" >
           Complemento: <BR>
@@ -196,7 +201,8 @@
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
-                 value="${sessionScope.formEmpresa.complementoEmpresa}" />
+                 value="${sessionScope.formEmpresa.complementoEmpresa}"
+                 maxlength=20 />
         </TD>
       </TABLE>
       <table class = "tabelaErro">
@@ -221,7 +227,8 @@
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
-                 value="${sessionScope.formEmpresa.bairroEmpresa}" />
+                 value="${sessionScope.formEmpresa.bairroEmpresa}"
+                 maxlength=20 />
         </TD>
         <TD class="tabelaCadastro"  style="width:30%" >
           Cidade: <BR>
@@ -230,7 +237,8 @@
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
-                 value="${sessionScope.formEmpresa.cidadeEmpresa}" />
+                 value="${sessionScope.formEmpresa.cidadeEmpresa}"
+                 maxlength=30 />
         </TD>
         <TD class="tabelaCadastro"  style="width:10%" >
           Estado<BR>
@@ -257,7 +265,8 @@
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
-                 value="${sessionScope.formEmpresa.cepEmpresa}" />
+                 value="${sessionScope.formEmpresa.cepEmpresa}"
+                 maxlength=8 />
         </TD>
       </TABLE>
       <table class = "tabelaErro">
@@ -282,7 +291,8 @@
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
-                 value="${sessionScope.formEmpresa.siteEmpresa}" />
+                 value="${sessionScope.formEmpresa.siteEmpresa}"
+                 maxlength=50 />
         </TD>
         <TD class="tabelaCadastro" style="width: 45%">
           Email: <BR>
@@ -291,7 +301,8 @@
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
-                 value="${sessionScope.formEmpresa.emailEmpresa}" />
+                 value="${sessionScope.formEmpresa.emailEmpresa}"
+                 maxlength=50 />
         </TD>
       </TABLE>
       <table class = "tabelaErro">
@@ -311,7 +322,8 @@
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
-                 value="${sessionScope.formEmpresa.ddiEmpresa}" />
+                 value="${sessionScope.formEmpresa.ddiEmpresa}"
+                 maxlength=3 />
         </TD>
         <TD class="tabelaCadastro" style="width: 10%">
           DDD: <BR>
@@ -319,7 +331,8 @@
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
-                 value="${sessionScope.formEmpresa.dddEmpresa}" />
+                 value="${sessionScope.formEmpresa.dddEmpresa}"
+                 maxlength=2 />
         </TD>
         <TD class="tabelaCadastro" style="width: 50%">
           Número: <BR>
@@ -327,7 +340,8 @@
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
-                 value="${sessionScope.formEmpresa.numeroTelefoneEmpresa}" />
+                 value="${sessionScope.formEmpresa.numeroTelefoneEmpresa}"
+                 maxlength=8 />
         </TD>
         <TD class="tabelaCadastro" style="width: 30%">
           Ramal: <BR>
@@ -335,7 +349,8 @@
                  <c:if test="${sessionScope.formEmpresa.exclusao}">
                    disabled
                  </c:if>
-                 value="${sessionScope.formEmpresa.ramalEmpresa}" />
+                 value="${sessionScope.formEmpresa.ramalEmpresa}"
+                 maxlength=4 />
         </TD>
       </TABLE>
       <table class = "tabelaErro">

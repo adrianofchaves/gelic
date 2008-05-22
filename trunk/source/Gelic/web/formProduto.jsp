@@ -52,7 +52,8 @@
                    disabled
                  </c:if>
                  class="tabelaCadastro" 
-                 value="${sessionScope.formProduto.codigoProduto}" />
+                 value="${sessionScope.formProduto.codigoProduto}"
+                 maxlength=4 />
         </td>
         <td class="tabelaCadastro" style="width:80%;">
           Descrição:
@@ -61,7 +62,8 @@
                  <c:if test="${sessionScope.formProduto.exclusao}">
                    disabled
                  </c:if>
-                 value="${sessionScope.formProduto.descricaoProduto}" />
+                 value="${sessionScope.formProduto.descricaoProduto}"
+                 maxlength=50 />
         </td>
       </table>
       <table class="tabelaErro">

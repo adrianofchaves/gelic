@@ -74,17 +74,20 @@
         <td class="tabelaCadastro" style = "width:10%">
           Ano:<BR>
           <input type="text" class="tabelaCadastro"
-                 name="${sessionScope.formLicitacao.anoLicitacao}" />
+                 name="${sessionScope.formLicitacao.anoLicitacao}"
+                 maxlength=4 />
         </td>
         <td class="tabelaCadastro" style = "width:30%">
           Número:<BR>
           <input type="text" class="tabelaCadastro"
-                 name="${sessionScope.formLicitacao.numeroLicitacao}" />
+                 name="${sessionScope.formLicitacao.numeroLicitacao}"
+                 maxlength=10 />
         </td>
         <td class="tabelaCadastro" style="width:30">
           Processo:<BR>
           <input type="text" class="tabelaCadastro"
-                 value="${sessionScope.formLicitacao.numeroProcessoLicitacao}"/>
+                 value="${sessionScope.formLicitacao.numeroProcessoLicitacao}"
+                 maxlength=20 />
         </td>
       </table>
       
@@ -172,31 +175,36 @@
         <td class="tabelaCadastro" style="width: 20%">
           Validade da Proposta: (dias)<BR>
           <input type="text" class="tabelaCadastro"
-                 value="${sessionScope.formLicitacao.diasValidadePropostaLicitacao}"/>
+                 value="${sessionScope.formLicitacao.diasValidadePropostaLicitacao}"
+                 maxlength=3 />
         </td>
         
         <td class="tabelaCadastro" style="width: 20%">
           Prazo de Entrega: (dias) <BR>
           <input type="text" class="tabelaCadastro"
-                 value="${sessionScope.formLicitacao.diasPrazoEntregaLicitacao}"/>
+                 value="${sessionScope.formLicitacao.diasPrazoEntregaLicitacao}"
+                 maxlength=3 />
         </td>
         
         <td class="tabelaCadastro" style="width: 20%">
           Prazo de Pagamento: (dias)<BR>
           <input type="text" class="tabelaCadastro"
-                 value="${sessionScope.formLicitacao.diasPrazoPagamentoLicitacao}"/>
+                 value="${sessionScope.formLicitacao.diasPrazoPagamentoLicitacao}"
+                 maxlength=3 />
         </td>
         
         <td class="tabelaCadastro" style="width: 20%">
           Vigência do Contrato: (dias)<BR>
           <input type="text" class="tabelaCadastro"
-                 value="${sessionScope.formLicitacao.diasVigenciaLicitacao}"/>
+                 value="${sessionScope.formLicitacao.diasVigenciaLicitacao}"
+                 maxlength=4 />
         </td>
         
         <td class="tabelaCadastro" style="width: 20%">
           Prazo de Garantia: (Anos)<BR>
           <input type="text" class="tabelaCadastro"
-                 value="${sessionScope.formLicitacao.anosPrazoGarantiaLicitacao}"/>
+                 value="${sessionScope.formLicitacao.anosPrazoGarantiaLicitacao}"
+                 maxlength=2 />
         </td>
       </table>    
       
@@ -204,7 +212,7 @@
       <table class="tabelaCadastro">
         <td class="tabelaCadastro" style="width:33%">
           Amostra:<BR>
-          <textarea name="ad" rows="4" style="width:100%" 
+          <textarea name="ad" rows="4" style="width:100%"
                     name="termosAmostraLicitacao">
                     ${sessionScope.formLicitacao.termosAmostraLicitacao} 
           </textarea>                   
