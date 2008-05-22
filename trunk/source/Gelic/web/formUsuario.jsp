@@ -55,7 +55,8 @@
                <c:if test="${sessionScope.formUsuario.exclusao}">
                  disabled
                </c:if>               
-               value="${sessionScope.formUsuario.loginUsuario}" />
+               value="${sessionScope.formUsuario.loginUsuario}"
+               maxlength=25/>
         <font class="erroCampo">
           ${sessionScope.formUsuario.erroLoginUsuario}
         </font>
@@ -65,7 +66,8 @@
                <c:if test="${sessionScope.formUsuario.exclusao}">
                  disabled
                </c:if>               
-               value="${sessionScope.formUsuario.senhaUsuario}" />
+               value="${sessionScope.formUsuario.senhaUsuario}"
+               maxlength=40 />
         <font class="erroCampo">
           ${sessionScope.formUsuario.erroSenhaUsuario}
         </font>
@@ -77,7 +79,7 @@
                </c:if>               
                class = "caixaTexto"
                value="${sessionScope.formUsuario.confirmaSenhaUsuario}" 
-               />
+               maxlength=40 />
         <font class="erroCampo">
           ${sessionScope.formUsuario.erroConfirmaSenhaUsuario}
         </font>

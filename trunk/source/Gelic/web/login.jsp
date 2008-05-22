@@ -29,14 +29,16 @@
                 ${requestScope.formLogin.erros}
             </font>                    
             <P>Login:<BR>
-                <input class="caixaTexto" type="text" name="login" value="" />             
+                <input class="caixaTexto" type="text" name="login" value=""
+                maxlength=25 />
                 <font class="erroCampo"> 
                     ${requestScope.formLogin.erroLogin}
                 </font>
             </P>
             <P>
                 Senha:<BR>
-                <input class="caixaTexto"  type="password" name="senha" value="" />
+                <input class="caixaTexto"  type="password" name="senha" value=""
+                maxlength=40 />
                 <font class="erroCampo">
                     ${requestScope.formLogin.erroSenha}
                 </font>
