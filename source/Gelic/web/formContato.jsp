@@ -50,7 +50,8 @@
 <P>
   Nome: <BR>
   <input type="text" name="nomeContato" class="caixaTexto"
-         value="${sessionScope.formContato.nomeContato}" 
+         value="${sessionScope.formContato.nomeContato}"
+         maxlength=30
          <c:if test="${sessionScope.formContato.exclusao}">
            disabled
          </c:if>         
@@ -68,7 +69,8 @@
            <c:if test="${sessionScope.formContato.exclusao}">
              disabled
            </c:if>
-           value="${sessionScope.formContato.ddiContato}" />
+           value="${sessionScope.formContato.ddiContato}"
+           maxlength=3 />
   </TD>
   <TD class="tabelaCadastro" style="width: 10%">
     DDD: <BR>
@@ -76,7 +78,8 @@
            <c:if test="${sessionScope.formContato.exclusao}">
              disabled
            </c:if>
-           value="${sessionScope.formContato.dddContato}" />
+           value="${sessionScope.formContato.dddContato}"
+           maxlength=2 />
   </TD>
   <TD class="tabelaCadastro" style="width: 50%">
     Número: <BR>
@@ -84,7 +87,8 @@
            <c:if test="${sessionScope.formContato.exclusao}">
              disabled
            </c:if>
-           value="${sessionScope.formContato.numeroTelefoneContato}" />
+           value="${sessionScope.formContato.numeroTelefoneContato}"
+           maxlength=8 />
   </TD>
   <TD class="tabelaCadastro" style="width: 30%">
     Ramal: <BR>
@@ -92,7 +96,8 @@
            <c:if test="${sessionScope.formContato.exclusao}">
              disabled
            </c:if>
-           value="${sessionScope.formContato.ramalContato}" />
+           value="${sessionScope.formContato.ramalContato}"
+           maxlength=4 />
   </TD>
 </TABLE>
 <table class = "tabelaErro">

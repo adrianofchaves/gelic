@@ -135,8 +135,8 @@ CREATE TABLE DUPLICATAS (
 
 CREATE TABLE EMPRESAS (
     CNPJ          VARCHAR(14) NOT NULL,
-    IE            VARCHAR(10),
-    IM            VARCHAR(10),
+    IE            VARCHAR(15),
+    IM            VARCHAR(15),
     RAZAOSOCIAL   VARCHAR(50) NOT NULL,
     NOMEFANTASIA  VARCHAR(20),
     ENDERECO      INTEGER,
@@ -483,13 +483,13 @@ INSERT INTO CONTATOS (ID, NOME, TELEFONE, LICITACAO, ORGAO, LOCALENTREGA, EMPRES
 
 COMMIT WORK;
 
-INSERT INTO TIPOSDOCUMENTOS (ID, NOME) VALUES (1, 'certidão de regularidade estadual');
-INSERT INTO TIPOSDOCUMENTOS (ID, NOME) VALUES (2, 'certidão de regularidade federal');
-INSERT INTO TIPOSDOCUMENTOS (ID, NOME) VALUES (3, 'certidão de regularidade municipal');
-INSERT INTO TIPOSDOCUMENTOS (ID, NOME) VALUES (4, 'certidão de falencias e concordatas');
+INSERT INTO TIPOSDOCUMENTOS (ID, NOME) VALUES (1, 'certidao de regularidade estadual');
+INSERT INTO TIPOSDOCUMENTOS (ID, NOME) VALUES (2, 'certidao de regularidade federal');
+INSERT INTO TIPOSDOCUMENTOS (ID, NOME) VALUES (3, 'certidao de regularidade municipal');
+INSERT INTO TIPOSDOCUMENTOS (ID, NOME) VALUES (4, 'certidao de falencias e concordatas');
 INSERT INTO TIPOSDOCUMENTOS (ID, NOME) VALUES (5, 'atestados de capacidade tecnica');
-INSERT INTO TIPOSDOCUMENTOS (ID, NOME) VALUES (6, 'certidão de regularidade de situação junto ao FGTS');
-INSERT INTO TIPOSDOCUMENTOS (ID, NOME) VALUES (7, 'certidão negativa de debito junto ao INSS');
+INSERT INTO TIPOSDOCUMENTOS (ID, NOME) VALUES (6, 'certidao de regularidade de situacao junto ao FGTS');
+INSERT INTO TIPOSDOCUMENTOS (ID, NOME) VALUES (7, 'certidao negativa de debito junto ao INSS');
 
 COMMIT WORK;
 

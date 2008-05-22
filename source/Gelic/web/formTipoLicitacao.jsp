@@ -47,14 +47,22 @@
             
             <P>Nome:<br>
                 <input type="text" name="nomeTipoLicitacao" class="caixaTexto"
-                       value="${sessionScope.formTipoLicitacao.nomeTipoLicitacao}" />
+                    <c:if test="${sessionScope.formTipoLicitacao.exclusao}">
+                        disabled
+                    </c:if>
+                       value="${sessionScope.formTipoLicitacao.nomeTipoLicitacao}"
+                       maxlength=25 />
                 <font class="erroCampo" >
                     ${sessionScope.formTipoLicitacao.erroNomeTipoLicitacao}
                 </font>
             </P>            
             <P>Sigla:<br>
                 <input type="text" name="siglaTipoLicitacao" class="caixaTexto"
-                       value="${sessionScope.formTipoLicitacao.siglaTipoLicitacao}" />
+                    <c:if test="${sessionScope.formTipoLicitacao.exclusao}">
+                        disabled
+                    </c:if>
+                       value="${sessionScope.formTipoLicitacao.siglaTipoLicitacao}"
+                       maxlength=2 />
                 <font class="erroCampo" >
                     ${sessionScope.formTipoLicitacao.erroSiglaTipoLicitacao}
                 </font>
