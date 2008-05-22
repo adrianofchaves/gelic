@@ -56,7 +56,8 @@
                        <c:if test="${sessionScope.formModalidade.exclusao}">
                             disabled
                        </c:if>
-                       value="${sessionScope.formModalidade.siglaModalidade}" />
+                       value="${sessionScope.formModalidade.siglaModalidade}"
+                       maxlength=3 />
                 <font class="erroCampo" >
                     ${sessionScope.formModalidade.erroSiglaModalidade}
                 </font>
@@ -66,7 +67,8 @@
                        <c:if test="${sessionScope.formModalidade.exclusao}">
                             disabled
                        </c:if>
-                       value="${sessionScope.formModalidade.nomeModalidade}" />
+                       value="${sessionScope.formModalidade.nomeModalidade}"
+                       maxlength=25 />
                 <font class="erroCampo" >
                     ${sessionScope.formModalidade.erroNomeModalidade}
                 </font>

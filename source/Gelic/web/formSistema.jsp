@@ -55,7 +55,8 @@
                        <c:if test="${sessionScope.formSistema.exclusao}">
                             disabled
                        </c:if>
-                       value="${sessionScope.formSistema.nomeSistema}" />
+                       value="${sessionScope.formSistema.nomeSistema}"
+                       maxlength=30 />
                 <font class="erroCampo" >
                     ${sessionScope.formSistema.erroNomeSistema}
                 </font>
