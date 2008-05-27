@@ -19,6 +19,7 @@ public class NovaLicitacao implements Comando{
       form.setOrigem(browser);
       req.getSession().setAttribute(view.FormLicitacao.NOME_ATRIBUTO_DEFAULT, form);
       form.preparaInclusao();
+      form.setTitulo("Nova licitação");
       return form.getNome();
     } catch (NamingException ex) {
       Logger.getLogger(NovaLicitacao.class.getName()).log(Level.SEVERE, null, ex);
