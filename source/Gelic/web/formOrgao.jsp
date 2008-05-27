@@ -23,7 +23,7 @@
         </th>
         <c:if test="${!sessionScope.formSistema.inclusao}">
           <th class="menuItem" >
-          <a href="Comercial?comando=CadastroContatos&orgao=${sessionScope.formOrgao.orgao.cnpj}">Contatos</a>
+            <a href="Comercial?comando=CadastroContatos&orgao=${sessionScope.formOrgao.orgao.cnpj}">Contatos</a>
           </th>
         </c:if>
         <th class="menuItem" >
@@ -98,7 +98,6 @@
                  maxlength=15 />
         </td>
       </table>
-      
       <table class="tabelaErros">
         <td class="tabelaErros" style="width: 50%">
           ${sessionScope.formOrgao.erroCnpjOrgao}

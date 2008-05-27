@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package view;
 
 import java.sql.SQLException;
@@ -14,185 +13,189 @@ import javax.naming.NamingException;
  * @author Paulo
  */
 public class FormLicitacao extends Form {
-    static public final String NOME_ATRIBUTO_DEFAULT = "formLicitacao";
-    static public final String NOME_DEFAULT = NOME_ATRIBUTO_DEFAULT + ".jsp";
-    
-    private model.beans.Licitacao licitacao;
-    private ArrayList<model.beans.TipoLicitacao> tiposLicitacoes;
-    private String tipoLicitacaoLicitacao;
-    private String erroTipoLicitacaoLicitacao;
-    private String numeroLicitacao;
-    private String erroNumeroLicitacao;
-    private int anoLicitacao;
-    private String erroAnoLicitacao;
-    private ArrayList<model.beans.Orgao> orgaos;
-    private String orgaoLicitacao;
-    private String erroOrgaoLicitacao;
-    private String objetoLicitacao;
-    private String erroObjetoLicitacao;    
-    private String numeroProcessoLicitacao;
-    private String erroNumeroProcessoLicitacao;
-    private ArrayList<model.beans.Modalidade> modalidades;
-    private String modalidadeLicitacao;
-    private String erroModalidadeLicitacao;
-    private ArrayList<model.beans.Sistema> sistemas;
-    private String sistemaLicitacao;
-    private String erroSistemaLicitacao;    
-    private String dataDocumentacaoLicitacao;
-    private String erroDataDocumentacaoLicitacao;    
-    private String dataPropostaLicitacao;
-    private String erroDataPropostaLicitacao;
-    private String dataRealizacaoLicitacao;
-    private String erroDataRealizacaoLicitacao;
-    private int diasPrazoEntregaLicitacao;
-    private int diasPrazoPagamentoLicitacao;
-    private int diasVigenciaLicitacao;
-    private int anosPrazoGarantiaLicitacao;
-    private int diasValidadePropostaLicitacao;
-    private String termosAmostraLicitacao;
-    private String termosGarantiaLicitacao;
-    private String termosMultaLicitacao;
-    
-    
-    
-    
-    private boolean inclusao = true;
-    private boolean exclusao = false;
-    private boolean alteracao = false;
 
-  public void  preparaInclusao() throws NamingException, SQLException {
+  static public final String NOME_ATRIBUTO_DEFAULT = "formLicitacao";
+  static public final String NOME_DEFAULT = NOME_ATRIBUTO_DEFAULT + ".jsp";
+  private model.beans.Licitacao licitacao;
+  private ArrayList<model.beans.TipoLicitacao> tiposLicitacoes;
+  private String tipoLicitacaoLicitacao;
+  private String erroTipoLicitacaoLicitacao;
+  private String numeroLicitacao;
+  private String erroNumeroLicitacao;
+  private int anoLicitacao;
+  private String erroAnoLicitacao;
+  private ArrayList<model.beans.Orgao> orgaos;
+  private String orgaoLicitacao;
+  private String erroOrgaoLicitacao;
+  private String objetoLicitacao;
+  private String erroObjetoLicitacao;
+  private String numeroProcessoLicitacao;
+  private String erroNumeroProcessoLicitacao;
+  private ArrayList<model.beans.Modalidade> modalidades;
+  private String modalidadeLicitacao;
+  private String erroModalidadeLicitacao;
+  private ArrayList<model.beans.Sistema> sistemas;
+  private String sistemaLicitacao;
+  private String erroSistemaLicitacao;
+  private String dataDocumentacaoLicitacao;
+  private String erroDataDocumentacaoLicitacao;
+  private String dataPropostaLicitacao;
+  private String erroDataPropostaLicitacao;
+  private String dataRealizacaoLicitacao;
+  private String erroDataRealizacaoLicitacao;
+  private String diasPrazoEntregaLicitacao;
+  private String erroDiasPrazoEntregaLicitacao;
+  private String diasPrazoPagamentoLicitacao;
+  private String erroDiasPrazoPagamentoLicitacao;
+  private String diasVigenciaLicitacao;
+  private String erroDiasVigenciaLicitacao;  
+  private String anosPrazoGarantiaLicitacao;
+  private String erroAnosPrazoGarantiaLicitacao;
+  private String diasValidadePropostaLicitacao;
+  private String erroDiasValidadePropostaLicitacao;
+  private String termosAmostraLicitacao;
+  private String erroTermosAmostraLicitacao;
+  private String termosGarantiaLicitacao;
+  private String erroTermosGarantiaLicitacao;
+  private String termosMultaLicitacao;
+  private String erroTermosMultaLicitacao;
+  private boolean inclusao = true;
+  private boolean exclusao = false;
+  private boolean alteracao = false;
+
+  public void preparaInclusao() throws NamingException, SQLException {
     setExclusao(false);
     setAlteracao(false);
-    setInclusao(true);    
+    setInclusao(true);
     setNome(NOME_DEFAULT);
     orgaos = model.services.Orgaos.recuperar();
     modalidades = model.services.Modalidades.recuperar();
     sistemas = model.services.Sistemas.recuperar();
     tiposLicitacoes = model.services.TiposLicitacoes.recuperar();
-    
+
   }
-    
-    public void valida() throws SQLException, NamingException {
-        apagaErros();
-        if( isExclusao() ){
-          // Colocar críticas de exclusão aqui.
-          return;
-        }
-        if( getNumeroLicitacao().length() ==0){
-            setErroNumeroLicitacao("Numero não pode ser vazio");
-            addErro("Numero inválido!");
-        }
-    }
-    @Override
-    protected void apagaErros() {
-        super.apagaErros();
-        setErroNumeroLicitacao("");
-    }
 
-    public void atualizaCampos() {
-        apagaErros();
-        if (getLicitacao() == null) {
-            return;
-        }
-        setOrgaoLicitacao(licitacao.getOrgao().toString());
-        setNumeroLicitacao(licitacao.getNumero());
-        setNumeroProcessoLicitacao(licitacao.getNumeroProcesso());
-        setAnoLicitacao(licitacao.getAno());        
-        setModalidadeLicitacao(licitacao.getModalidade().toString());
-        setTipoLicitacaoLicitacao(licitacao.getTipoLicitacao().toString());
-        setSistemaLicitacao(licitacao.getSistema().toString());
-        
-        setObjetoLicitacao(licitacao.getObjeto());
+  public void valida() throws SQLException, NamingException {
+    apagaErros();
+    if (isExclusao()) {
+      // Colocar críticas de exclusão aqui.
+      return;
     }
-
-
-    public boolean isInclusao() {
-        return inclusao;
+    if (getNumeroLicitacao().length() == 0) {
+      setErroNumeroLicitacao("Numero não pode ser vazio");
+      addErro("Numero inválido!");
     }
+  }
 
-    public model.beans.Licitacao getLicitacao() {
-        return licitacao;
-    }
+  @Override
+  protected void apagaErros() {
+    super.apagaErros();
+    setErroNumeroLicitacao("");
+  }
 
-    public String getTipoLicitacaoLicitacao() {
-        return tipoLicitacaoLicitacao;
+  public void atualizaCampos() {
+    apagaErros();
+    if (getLicitacao() == null) {
+      return;
     }
+    setOrgaoLicitacao(licitacao.getOrgao().toString());
+    setNumeroLicitacao(licitacao.getNumero());
+    setNumeroProcessoLicitacao(licitacao.getNumeroProcesso());
+    setAnoLicitacao(licitacao.getAno());
+    setModalidadeLicitacao(licitacao.getModalidade().toString());
+    setTipoLicitacaoLicitacao(licitacao.getTipoLicitacao().toString());
+    setSistemaLicitacao(licitacao.getSistema().toString());
 
-    public String getErroTipoLicitacaoLicitacao() {
-        return erroTipoLicitacaoLicitacao;
-    }
+    setObjetoLicitacao(licitacao.getObjeto());
+  }
 
-    public String getNumeroLicitacao() {
-        return numeroLicitacao;
-    }
+  public boolean isInclusao() {
+    return inclusao;
+  }
 
-    public void setNumeroLicitacao(String numeroLicitacao) {
-        this.numeroLicitacao = numeroLicitacao;
-    }
+  public model.beans.Licitacao getLicitacao() {
+    return licitacao;
+  }
 
-    public String getErroNumeroLicitacao() {
-        return erroNumeroLicitacao;
-    }
+  public String getTipoLicitacaoLicitacao() {
+    return tipoLicitacaoLicitacao;
+  }
 
-    public void setErroNumeroLicitacao(String erroNumeroLicitacao) {
-        this.erroNumeroLicitacao = erroNumeroLicitacao;
-    }
+  public String getErroTipoLicitacaoLicitacao() {
+    return erroTipoLicitacaoLicitacao;
+  }
 
-    public int getAnoLicitacao() {
-        return anoLicitacao;
-    }
+  public String getNumeroLicitacao() {
+    return numeroLicitacao;
+  }
 
-    public void setAnoLicitacao(int anoLicitacao) {
-        this.anoLicitacao = anoLicitacao;
-    }
+  public void setNumeroLicitacao(String numeroLicitacao) {
+    this.numeroLicitacao = numeroLicitacao;
+  }
 
-    public String getErroAnoLicitacao() {
-        return erroAnoLicitacao;
-    }
+  public String getErroNumeroLicitacao() {
+    return erroNumeroLicitacao;
+  }
 
-    public void setErroAnoLicitacao(String erroAnoLicitacao) {
-        this.erroAnoLicitacao = erroAnoLicitacao;
-    }
+  public void setErroNumeroLicitacao(String erroNumeroLicitacao) {
+    this.erroNumeroLicitacao = erroNumeroLicitacao;
+  }
 
-    public String getOrgaoLicitacao() {
-        return orgaoLicitacao;
-    }
+  public int getAnoLicitacao() {
+    return anoLicitacao;
+  }
 
-    public void setOrgaoLicitacao(String orgaoLicitacao) {
-        this.orgaoLicitacao = orgaoLicitacao;
-    }
+  public void setAnoLicitacao(int anoLicitacao) {
+    this.anoLicitacao = anoLicitacao;
+  }
 
-    public String getErroOrgaoLicitacao() {
-        return erroOrgaoLicitacao;
-    }
+  public String getErroAnoLicitacao() {
+    return erroAnoLicitacao;
+  }
 
-    public void setErroOrgaoLicitacao(String erroOrgaoLicitacao) {
-        this.erroOrgaoLicitacao = erroOrgaoLicitacao;
-    }
+  public void setErroAnoLicitacao(String erroAnoLicitacao) {
+    this.erroAnoLicitacao = erroAnoLicitacao;
+  }
 
-    public String getObjetoLicitacao() {
-        return objetoLicitacao;
-    }
+  public String getOrgaoLicitacao() {
+    return orgaoLicitacao;
+  }
 
-    public void setObjetoLicitacao(String objetoLicitacao) {
-        this.objetoLicitacao = objetoLicitacao;
-    }
+  public void setOrgaoLicitacao(String orgaoLicitacao) {
+    this.orgaoLicitacao = orgaoLicitacao;
+  }
 
-    public String getErroObjetoLicitacao() {
-        return erroObjetoLicitacao;
-    }
+  public String getErroOrgaoLicitacao() {
+    return erroOrgaoLicitacao;
+  }
 
-    public void setErroObjetoLicitacao(String erroObjetoLicitacao) {
-        this.erroObjetoLicitacao = erroObjetoLicitacao;
-    }
+  public void setErroOrgaoLicitacao(String erroOrgaoLicitacao) {
+    this.erroOrgaoLicitacao = erroOrgaoLicitacao;
+  }
 
-    public void setInclusao(boolean inclusao) {
-        this.inclusao = inclusao;
-    }
+  public String getObjetoLicitacao() {
+    return objetoLicitacao;
+  }
 
-    public void setTipoLicitacaoLicitacao(String tipoLicitacaoLicitacao) {
-        this.tipoLicitacaoLicitacao = tipoLicitacaoLicitacao;
-    }
+  public void setObjetoLicitacao(String objetoLicitacao) {
+    this.objetoLicitacao = objetoLicitacao;
+  }
+
+  public String getErroObjetoLicitacao() {
+    return erroObjetoLicitacao;
+  }
+
+  public void setErroObjetoLicitacao(String erroObjetoLicitacao) {
+    this.erroObjetoLicitacao = erroObjetoLicitacao;
+  }
+
+  public void setInclusao(boolean inclusao) {
+    this.inclusao = inclusao;
+  }
+
+  public void setTipoLicitacaoLicitacao(String tipoLicitacaoLicitacao) {
+    this.tipoLicitacaoLicitacao = tipoLicitacaoLicitacao;
+  }
 
   public boolean isExclusao() {
     return exclusao;
@@ -210,9 +213,7 @@ public class FormLicitacao extends Form {
     this.alteracao = alteracao;
   }
 
-  public
-
-  String getNumeroProcessoLicitacao() {
+  public String getNumeroProcessoLicitacao() {
     return numeroProcessoLicitacao;
   }
 
@@ -228,9 +229,7 @@ public class FormLicitacao extends Form {
     this.erroNumeroProcessoLicitacao = erroNumeroProcessoLicitacao;
   }
 
-  public
-
-  String getModalidadeLicitacao() {
+  public String getModalidadeLicitacao() {
     return modalidadeLicitacao;
   }
 
@@ -246,9 +245,7 @@ public class FormLicitacao extends Form {
     this.erroModalidadeLicitacao = erroModalidadeLicitacao;
   }
 
-  public
-
-  String getSistemaLicitacao() {
+  public String getSistemaLicitacao() {
     return sistemaLicitacao;
   }
 
@@ -264,9 +261,7 @@ public class FormLicitacao extends Form {
     this.erroSistemaLicitacao = erroSistemaLicitacao;
   }
 
-  public
-
-  String getDataDocumentacaoLicitacao() {
+  public String getDataDocumentacaoLicitacao() {
     return dataDocumentacaoLicitacao;
   }
 
@@ -346,43 +341,43 @@ public class FormLicitacao extends Form {
     this.sistemas = sistemas;
   }
 
-  public int getDiasPrazoEntregaLicitacao() {
+  public String getDiasPrazoEntregaLicitacao() {
     return diasPrazoEntregaLicitacao;
   }
 
-  public void setDiasPrazoEntregaLicitacao(int diasPrazoEntregaLicitacao) {
+  public void setDiasPrazoEntregaLicitacao(String diasPrazoEntregaLicitacao) {
     this.diasPrazoEntregaLicitacao = diasPrazoEntregaLicitacao;
   }
 
-  public int getDiasPrazoPagamentoLicitacao() {
+  public String getDiasPrazoPagamentoLicitacao() {
     return diasPrazoPagamentoLicitacao;
   }
 
-  public void setDiasPrazoPagamentoLicitacao(int diasPrazoPagamentoLicitacao) {
+  public void setDiasPrazoPagamentoLicitacao(String diasPrazoPagamentoLicitacao) {
     this.diasPrazoPagamentoLicitacao = diasPrazoPagamentoLicitacao;
   }
 
-  public int getDiasVigenciaLicitacao() {
+  public String getDiasVigenciaLicitacao() {
     return diasVigenciaLicitacao;
   }
 
-  public void setDiasVigenciaLicitacao(int diasVigenciaLicitacao) {
+  public void setDiasVigenciaLicitacao(String diasVigenciaLicitacao) {
     this.diasVigenciaLicitacao = diasVigenciaLicitacao;
   }
 
-  public int getAnosPrazoGarantiaLicitacao() {
+  public String getAnosPrazoGarantiaLicitacao() {
     return anosPrazoGarantiaLicitacao;
   }
 
-  public void setAnosPrazoGarantiaLicitacao(int anosPrazoGarantiaLicitacao) {
+  public void setAnosPrazoGarantiaLicitacao(String anosPrazoGarantiaLicitacao) {
     this.anosPrazoGarantiaLicitacao = anosPrazoGarantiaLicitacao;
   }
 
-  public int getDiasValidadePropostaLicitacao() {
+  public String getDiasValidadePropostaLicitacao() {
     return diasValidadePropostaLicitacao;
   }
 
-  public void setDiasValidadePropostaLicitacao(int diasValidadePropostaLicitacao) {
+  public void setDiasValidadePropostaLicitacao(String diasValidadePropostaLicitacao) {
     this.diasValidadePropostaLicitacao = diasValidadePropostaLicitacao;
   }
 
@@ -410,4 +405,67 @@ public class FormLicitacao extends Form {
     this.termosMultaLicitacao = termosMultaLicitacao;
   }
 
+  public String getErroDiasPrazoEntregaLicitacao() {
+    return erroDiasPrazoEntregaLicitacao;
+  }
+
+  public void setErroDiasPrazoEntregaLicitacao(String erroDiasPrazoEntregaLicitacao) {
+    this.erroDiasPrazoEntregaLicitacao = erroDiasPrazoEntregaLicitacao;
+  }
+
+  public String getErroDiasPrazoPagamentoLicitacao() {
+    return erroDiasPrazoPagamentoLicitacao;
+  }
+
+  public void setErroDiasPrazoPagamentoLicitacao(String erroDiasPrazoPagamentoLicitacao) {
+    this.erroDiasPrazoPagamentoLicitacao = erroDiasPrazoPagamentoLicitacao;
+  }
+
+  public String getErroDiasVigenciaLicitacao() {
+    return erroDiasVigenciaLicitacao;
+  }
+
+  public void setErroDiasVigenciaLicitacao(String erroDiasVigenciaLicitacao) {
+    this.erroDiasVigenciaLicitacao = erroDiasVigenciaLicitacao;
+  }
+
+  public String getErroAnosPrazoGarantiaLicitacao() {
+    return erroAnosPrazoGarantiaLicitacao;
+  }
+
+  public void setErroAnosPrazoGarantiaLicitacao(String erroAnosPrazoGarantiaLicitacao) {
+    this.erroAnosPrazoGarantiaLicitacao = erroAnosPrazoGarantiaLicitacao;
+  }
+
+  public String getErroDiasValidadePropostaLicitacao() {
+    return erroDiasValidadePropostaLicitacao;
+  }
+
+  public void setErroDiasValidadePropostaLicitacao(String erroDiasValidadePropostaLicitacao) {
+    this.erroDiasValidadePropostaLicitacao = erroDiasValidadePropostaLicitacao;
+  }
+
+  public String getErroTermosAmostraLicitacao() {
+    return erroTermosAmostraLicitacao;
+  }
+
+  public void setErroTermosAmostraLicitacao(String erroTermosAmostraLicitacao) {
+    this.erroTermosAmostraLicitacao = erroTermosAmostraLicitacao;
+  }
+
+  public String getErroTermosGarantiaLicitacao() {
+    return erroTermosGarantiaLicitacao;
+  }
+
+  public void setErroTermosGarantiaLicitacao(String erroTermosGarantiaLicitacao) {
+    this.erroTermosGarantiaLicitacao = erroTermosGarantiaLicitacao;
+  }
+
+  public String getErroTermosMultaLicitacao() {
+    return erroTermosMultaLicitacao;
+  }
+
+  public void setErroTermosMultaLicitacao(String erroTermosMultaLicitacao) {
+    this.erroTermosMultaLicitacao = erroTermosMultaLicitacao;
+  }
 }
