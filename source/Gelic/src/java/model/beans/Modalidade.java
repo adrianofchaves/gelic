@@ -11,7 +11,14 @@ package model.beans;
 // #[regen=yes,id=DCE.AE3CF9F1-73F1-6A42-61C4-5451E2B7687F]
 // </editor-fold> 
 public class Modalidade {
+  private int id;
 
+  public Modalidade(int id, String nome, String sigla) {
+    this.id = id;
+    this.nome = nome;
+    this.sigla = sigla;
+  }  
+  
   public String toString() {
     return getSigla();
   }
@@ -66,6 +73,14 @@ public class Modalidade {
   // </editor-fold> 
   public void setSigla(String val) {
     this.sigla = val;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 }
 

@@ -51,8 +51,16 @@ public class Licitacoes {
     return licitacoes;
   }
 
-  public static model.beans.Licitacao recuperar(String numero)
+  public static model.beans.Licitacao recuperar(int id)
           throws SQLException, NamingException {
-    return model.daos.Licitacoes.recuperar(numero);
+    model.beans.Licitacao licitacao = model.daos.Licitacoes.recuperar(id);
+    licitacao.setOrgao(model.daos.Orgaos.recuperar(licitacao.getIdorgao()));
+    licitacao.setSistema(model.daos.Sistemas.recuperar(licitacao.getIdSistema()));
+    licitacao.setModalidade(
+            model.daos.Modalidades.recuperar(licitacao.getIdModalidade()));
+    licitacao.setTipoLicitacao(model.daos.TiposLicitacoes.recuperar(
+            licitacao.getIdTipoLicitacao()));
+    
+    return licitacao;
   }
 }

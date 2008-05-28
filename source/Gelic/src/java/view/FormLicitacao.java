@@ -62,16 +62,27 @@ public class FormLicitacao extends Form {
   private boolean inclusao = true;
   private boolean exclusao = false;
   private boolean alteracao = false;
+  /**
+   * Prepara form para alteração.
+   * @param licitacao - ID da licitação
+   */
+  public void preparaAlteracao(String licitacao) 
+          throws SQLException, NamingException {
+    
+    this.licitacao = model.services.Licitacoes.recuperar(
+            Integer.parseInt(licitacao));
+    atualizaCampos();
+    setAlteracao(true);
+    setNome(NOME_DEFAULT);
+    carregaListas();
+  }
 
   public void preparaInclusao() throws NamingException, SQLException {
     setExclusao(false);
     setAlteracao(false);
     setInclusao(true);
     setNome(NOME_DEFAULT);
-    orgaos = model.services.Orgaos.recuperar();
-    modalidades = model.services.Modalidades.recuperar();
-    sistemas = model.services.Sistemas.recuperar();
-    tiposLicitacoes = model.services.TiposLicitacoes.recuperar();
+    carregaListas();
 
   }
 
@@ -467,5 +478,12 @@ public class FormLicitacao extends Form {
 
   public void setErroTermosMultaLicitacao(String erroTermosMultaLicitacao) {
     this.erroTermosMultaLicitacao = erroTermosMultaLicitacao;
+  }
+
+  private void carregaListas() throws SQLException, NamingException {
+    orgaos = model.services.Orgaos.recuperar();
+    modalidades = model.services.Modalidades.recuperar();
+    sistemas = model.services.Sistemas.recuperar();
+    tiposLicitacoes = model.services.TiposLicitacoes.recuperar();
   }
 }
