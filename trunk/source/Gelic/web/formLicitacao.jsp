@@ -21,12 +21,9 @@
         <th class="menuItem" >
           <a href="homeComercial.jsp">Voltar</a>
         </th>
-        <c:if test="${!sessionScope.formLicitacao.inclusao}">
+        <c:if test="${sessionScope.formLicitacao.alteracao}">
           <th class="menuItem" >
-            <a href="browserContatos.jsp">Contatos</a>
-          </th>
-          <th class="menuItem" >
-            <a href="browserDocumentos.jsp">Documentos</a>
+            <a href="browserDocumentosLicitacoes.jsp">Documentos</a>
           </th>
           <th class="menuItem" >
             <a href="formLote.jsp">Lotes</a>                    
@@ -59,36 +56,41 @@
       <table class="tabelaCadastro">
         <td class="tabelaCadastro" style = "width:30%">
           Órgão:<BR>
-          <select name="orgaoLicitacao" class="tabelaCadastro">
-            <c:forEach var="orgao" items="${sessionScope.formLicitacao.orgaos}">
-              <option 
-                <c:if test="${orgao==sessionScope.formLicitacao.orgaoLicitacao}">
-                  selected 
-                </c:if> >
-                ${orgao}
-                </option>
+          <select name="orgaoLicitacao" class="tabelaCadastro" 
+                  <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
+                  >
+                  <c:forEach var="orgao" items="${sessionScope.formLicitacao.orgaos}">
+                    <option 
+                    <c:if test="${orgao==sessionScope.formLicitacao.orgaoLicitacao}">
+                      selected 
+                    </c:if> >
+                    ${orgao}
+                    </option>
             </c:forEach>
           </select>
         </td>
         <td class="tabelaCadastro" style = "width:10%">
-          Ano:<BR>
-          <input type="text" class="tabelaCadastro" name = "anoLicitacao"          
-                 value="${sessionScope.formLicitacao.anoLicitacao}"
-                 maxlength=4 />
-        </td>
+        Ano:<BR>
+        <input type="text" class="tabelaCadastro" name = "anoLicitacao"     
+               <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
+               value="${sessionScope.formLicitacao.anoLicitacao}"
+               maxlength=4 />
+               </td>
         <td class="tabelaCadastro" style = "width:30%">
-          Número:<BR>
-          <input type="text" class="tabelaCadastro" name="numeroLicitacao"
-                 value="${sessionScope.formLicitacao.numeroLicitacao}"
-                 maxlength=10 />
-        </td>
+        Número:<BR>
+        <input type="text" class="tabelaCadastro" name="numeroLicitacao"
+               <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
+               value="${sessionScope.formLicitacao.numeroLicitacao}"
+               maxlength=10 />
+               </td>
         <td class="tabelaCadastro" style="width:30">
-          Processo:<BR>
-          <input type="text" class="tabelaCadastro" 
-                 name="numeroProcessoLicitacao"
-                 value="${sessionScope.formLicitacao.numeroProcessoLicitacao}"
-                 maxlength=20 />
-        </td>
+        Processo:<BR>
+        <input type="text" class="tabelaCadastro" 
+               name="numeroProcessoLicitacao"
+               <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
+               value="${sessionScope.formLicitacao.numeroProcessoLicitacao}"
+               maxlength=20 />
+               </td>
       </table>
       <table class="tabelaErro">
         <td class="tabelaErro" style="width: 30%">
@@ -107,37 +109,43 @@
       <table class="tabelaCadastro">
         <td class="tabelaCadastro" style = "width:30%">
           Modalidade:<BR>
-          <select name="modalidadeLicitacao" class="tabelaCadastro">
-            <c:forEach var="modalidade" 
-                       items="${sessionScope.formLicitacao.modalidades}">
-              <option 
-                <c:if test="${modalidade==sessionScope.formLicitacao.modalidadeLicitacao}">
-                  selected
-                </c:if> 
-                >${modalidade}</option>
+          <select name="modalidadeLicitacao" class="tabelaCadastro"
+                  <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
+                  >
+                  <c:forEach var="modalidade" 
+                             items="${sessionScope.formLicitacao.modalidades}">
+                    <option 
+                    <c:if test="${modalidade==sessionScope.formLicitacao.modalidadeLicitacao}">
+                      selected
+                    </c:if> 
+                    >${modalidade}</option>
             </c:forEach>
           </select>
         </td>
         <td class="tabelaCadastro" style = "width:40%">
           Tipo:<BR>
-          <select name="tipoLicitacao" class="tabelaCadastro">
-            <c:forEach var="tipo" items="${sessionScope.formLicitacao.tiposLicitacoes}">
-              <option
-                <c:if test="${tipo==sessionScope.formLicitacao.tipoLicitacaoLicitacao}">
-                  selected
-                </c:if> >${tipo}</option>
+          <select name="tipoLicitacao" 
+                  <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
+                  class="tabelaCadastro">
+                  <c:forEach var="tipo" items="${sessionScope.formLicitacao.tiposLicitacoes}">
+                    <option
+                    <c:if test="${tipo==sessionScope.formLicitacao.tipoLicitacaoLicitacao}">
+                      selected
+                    </c:if> >${tipo}</option>
             </c:forEach>            
           </select>
         </td>
         <td class="tabelaCadastro" style = "width:30%">
           Sistema:<BR>
-          <select name="sistemaLicitacao" class="tabelaCadastro">
-            <c:forEach var="sistema" items="${sessionScope.formLicitacao.sistemas}">
-              <option 
-                <c:if test="${sistema==sessionScope.formLicitacao.sistemaLicitacao}">
-                  selected
-                </c:if>
-                >${sistema}</option>
+          <select name="sistemaLicitacao" 
+                  <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
+                  class="tabelaCadastro">
+                  <c:forEach var="sistema" items="${sessionScope.formLicitacao.sistemas}">
+                    <option 
+                    <c:if test="${sistema==sessionScope.formLicitacao.sistemaLicitacao}">
+                      selected
+                    </c:if>
+                    >${sistema}</option>
             </c:forEach>
           </select>
         </td>
@@ -158,21 +166,24 @@
       
       <table class="tabelaCadastro">
         <td class="tabelaCadastro" style="width: 33%">
-          Documentação:<BR>
-          <input type="text" class="tabelaCadastro" 
-                 name="dataDocumentacaoLicitacao"
-                 value="${sessionScope.formLicitacao.dataDocumentacaoLicitacao}"/>
-        </td>        
+        Documentação:<BR>
+        <input type="text" class="tabelaCadastro" 
+               <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
+               name="dataDocumentacaoLicitacao"
+               value="${sessionScope.formLicitacao.dataDocumentacaoLicitacao}"/>
+               </td>        
         <td class="tabelaCadastro" style="width: 34%">
-          Proposta:<BR>
-          <input type="text" class="tabelaCadastro" name="dataPropostaLicitacao"
-                 value="${sessionScope.formLicitacao.dataPropostaLicitacao}"/>
-        </td>        
+        Proposta:<BR>
+        <input type="text" class="tabelaCadastro" name="dataPropostaLicitacao"
+               <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
+               value="${sessionScope.formLicitacao.dataPropostaLicitacao}"/>
+               </td>        
         <td class="tabelaCadastro" style="width: 33%">
-          Realização:<BR>
-          <input type="text" class="tabelaCadastro" name="dataRealizacaoLicitacao"
-                 value="${sessionScope.formLicitacao.dataRealizacaoLicitacao}"/>
-        </td>        
+        Realização:<BR>
+        <input type="text" class="tabelaCadastro" name="dataRealizacaoLicitacao"
+               <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
+               value="${sessionScope.formLicitacao.dataRealizacaoLicitacao}"/>
+               </td>        
       </table>
       <table class="tabelaErro">
         <td class="tabelaErro" style="width: 33%">
@@ -190,6 +201,7 @@
       <table class="tabelaCadastro">
         <td class="tabelaCadastro" style="width: 100%" >          
           <textarea name="objetoLicitacao" style="width:100%" rows="4"
+                    <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
                     >${sessionScope.formLicitacao.objetoLicitacao}</textarea>
         </td>
       </table>
@@ -203,40 +215,45 @@
       
       <table class="tabelaCadastro">        
         <td class="tabelaCadastro" style="width: 20%">
-          Validade da Proposta: (dias)<BR>
-          <input type="text" class="tabelaCadastro" 
-                 name="diasValidadePropostaLicitacao"
-                 value="${sessionScope.formLicitacao.diasValidadePropostaLicitacao}"
-                 maxlength=3 />
-        </td>        
+        Validade da Proposta: (dias)<BR>
+        <input type="text" class="tabelaCadastro" 
+               name="diasValidadePropostaLicitacao"
+               <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
+               value="${sessionScope.formLicitacao.diasValidadePropostaLicitacao}"
+               maxlength=3 />
+               </td>        
         <td class="tabelaCadastro" style="width: 20%">
-          Prazo de Entrega: (dias) <BR>
-          <input type="text" class="tabelaCadastro"
-                 name="diasPrazoEntregaLicitacao"
-                 value="${sessionScope.formLicitacao.diasPrazoEntregaLicitacao}"
-                 maxlength=3 />
-        </td>        
+        Prazo de Entrega: (dias) <BR>
+        <input type="text" class="tabelaCadastro"
+               name="diasPrazoEntregaLicitacao"
+               <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
+               value="${sessionScope.formLicitacao.diasPrazoEntregaLicitacao}"
+               maxlength=3 />
+               </td>        
         <td class="tabelaCadastro" style="width: 20%">
-          Prazo de Pagamento: (dias)<BR>
-          <input type="text" class="tabelaCadastro" 
-                 name="diasPrazoPagamentoLicitacao"
-                 value="${sessionScope.formLicitacao.diasPrazoPagamentoLicitacao}"
-                 maxlength=3 />
-        </td>        
+        Prazo de Pagamento: (dias)<BR>
+        <input type="text" class="tabelaCadastro" 
+               name="diasPrazoPagamentoLicitacao"
+               <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
+               value="${sessionScope.formLicitacao.diasPrazoPagamentoLicitacao}"
+               maxlength=3 />
+               </td>        
         <td class="tabelaCadastro" style="width: 20%">
-          Vigência do Contrato: (dias)<BR>
-          <input type="text" class="tabelaCadastro"
-                 name="diasVigenciaLicitacao"
-                 value="${sessionScope.formLicitacao.diasVigenciaLicitacao}"
-                 maxlength=4 />
-        </td>        
+        Vigência do Contrato: (dias)<BR>
+        <input type="text" class="tabelaCadastro"
+               name="diasVigenciaLicitacao"
+               <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
+               value="${sessionScope.formLicitacao.diasVigenciaLicitacao}"
+               maxlength=4 />
+               </td>        
         <td class="tabelaCadastro" style="width: 20%">
-          Prazo de Garantia: (Anos)<BR>
-          <input type="text" class="tabelaCadastro" 
-                 name="anosPrazoGarantiaLicitacao"
-                 value="${sessionScope.formLicitacao.anosPrazoGarantiaLicitacao}"
-                 maxlength=2 />
-        </td>
+        Prazo de Garantia: (Anos)<BR>
+        <input type="text" class="tabelaCadastro" 
+               name="anosPrazoGarantiaLicitacao"
+               <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
+               value="${sessionScope.formLicitacao.anosPrazoGarantiaLicitacao}"
+               maxlength=2 />
+               </td>
       </table>
       <table class="tabelaErro">
         <td class="tabelaErro" style="width: 20%">
@@ -261,18 +278,21 @@
         <td class="tabelaCadastro" style="width:33%">
           Amostra:<BR>
           <textarea name="amostraLicitcao" rows="4" style="width:100%"
+                    <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
                     name="termosAmostraLicitacao">${sessionScope.formLicitacao.termosAmostraLicitacao}</textarea>
         </td>
         <td class="tabelaCadastro" style="width:34%">
           Garantia:<BR>
           <textarea rows="4" cols="20" 
                     style="width:100%" 
+                    <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
                     name="termosGarantiaLicitacao">${sessionScope.formLicitacao.termosGarantiaLicitacao}</textarea>
         </td>
         <td class="tabelaCadastro" style="width:33%">
           Multa:<BR>
           <textarea rows="4" cols="20" 
                     style="width:100%" 
+                    <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
                     name="termosMultaLicitacao">${sessionScope.formLicitacao.termosMultaLicitacao}</textarea>
         </td>
       </table>
@@ -288,10 +308,13 @@
         </td>        
       </table> 
       <p>
-        <input class="botao" type="submit" value="Salvar" 
-               name="executar"/>
-        <input class="botao" type="submit" value="Excluir" 
-               name="excluir"/>
+        <c:if test="${!sessionScope.formLicitacao.exclusao}">
+          <input class="botao" type="submit" value="Salvar" 
+                 name="executar"/>
+        </c:if>        
+        <c:if test="${sessionScope.formLicitacao.exclusao}">
+          <input class="botao" type="submit" value="Excluir" name="excluir"/>
+        </c:if>               
         <INPUT class="botao" TYPE="submit" value="Cancelar" 
                name="cancelar"/>                
       </p>
