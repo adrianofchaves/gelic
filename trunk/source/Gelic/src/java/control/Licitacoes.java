@@ -24,6 +24,7 @@ public class Licitacoes {
             return preparaCadastro(req);
         }
         req.getSession().setAttribute("browserLicitacoes", browser);
+        browser.setNome("/homeComercial.jsp");
         return "/homeComercial.jsp";
 
     }

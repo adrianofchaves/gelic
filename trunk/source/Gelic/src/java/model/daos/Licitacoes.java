@@ -18,6 +18,14 @@ import model.beans.Licitacao;
  * @author Paulo
  */
 public class Licitacoes {
+  private static int getNextID() throws SQLException, NamingException{
+    final String sql = "select gen_id(GEN_LICITACOES_ID, 1) from rdb$database";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sql);
+    ResultSet rs = pstmt.executeQuery();
+    rs.next();
+    return rs.getInt(1);
+  }
 
   /**
    * Inclui nova licitacao no banco de dados.
@@ -27,20 +35,46 @@ public class Licitacoes {
    * @throws java.sql.SQLException
    * @throws javax.naming.NamingException
    */
-  static public int incluir(int tipolicitacao, String numero, int ano,
-          String orgao, String objeto)
-          throws SQLException, NamingException {
+  static public int incluir( model.beans.TipoLicitacao tipoLicitacao,
+          String numero, int ano, model.beans.Modalidade modalidade,
+          model.beans.Sistema sistema, model.beans.Orgao orgao, 
+          String numeroProcesso, String objeto, Date dataDocumentacao, 
+          Date dataProposta, Date dataRealizacao, int diasValidadeProposta,
+          int diasPrazoEntrega, int diasPrazoPagamento, int diasVigencia,
+          int anosPrazoGarantia, String termosAmostra, String termosGarantia,
+          String termosMulta) throws SQLException, NamingException {
+    
     final String sqlIncluiLicitacao = "insert into LICITACOES( " +
-            "TIPOLICITACAO, NUMERO, ANO, ORGAO, OBJETO) values (?,?,?,?,?)";
+            "TIPOLICITACAO, NUMERO, ANO, MODALIDADE, SISTEMA, ORGAO, " +
+            "NUMEROPROCESSO, OBJETO, DATADOCUMENTACAO, DATAPROPOSTA, " +
+            "DATAREALIZACAO, DIASVALIDADEPROPOSTA, DIASPRAZOENTREGA," +
+            "DIASPRAZOPAGAMENTO, DIASVIGENCIA, ANOSPRAZOGARANTIA," +
+            "TERMOSAMOSTRA, TERMOSGARANTIA, TERMOSMULTA ) " +
+            "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     Connection gelic = model.services.Conexao.getConnection();
 
     PreparedStatement pstmt = gelic.prepareStatement(sqlIncluiLicitacao);
 
-    pstmt.setInt(1, tipolicitacao);
+    pstmt.setInt(1, tipoLicitacao.getId());
     pstmt.setString(2, numero);
     pstmt.setInt(3, ano);
-    pstmt.setString(4, orgao);
-    pstmt.setString(5, objeto);
+    pstmt.setInt(4, modalidade.getId());
+    pstmt.setInt(5, sistema.getId());
+    pstmt.setString(6, orgao.getCnpj());
+    pstmt.setString(7, numeroProcesso);
+    pstmt.setString(8, objeto);
+    pstmt.setDate(9, dataDocumentacao);
+    pstmt.setDate(10, dataProposta);
+    pstmt.setDate(11, dataRealizacao);
+    pstmt.setInt(12, diasValidadeProposta);
+    pstmt.setInt(13, diasPrazoEntrega);
+    pstmt.setInt(14, diasPrazoPagamento);
+    pstmt.setInt(15, diasVigencia);
+    pstmt.setInt(16, anosPrazoGarantia);
+    pstmt.setString(17, termosAmostra);
+    pstmt.setString(18, termosGarantia);
+    pstmt.setString(19, termosMulta);
+    
     int buffer = pstmt.executeUpdate();
     /*
      * Para aproveitar a conexão no pool é necessário fechar tudo...
@@ -59,7 +93,7 @@ public class Licitacoes {
    * @throws java.sql.SQLException
    * @throws javax.naming.NamingException
    */
-  static public int alterar(int tipolicitacao, String numero, 
+  static public int alterar(int tipolicitacao, String numero,
           String numeroAnterior, int ano, String orgao, String descricao)
           throws SQLException, NamingException {
     final String sqlAlteraLicitacao = "update LICITACOES set " +
@@ -93,8 +127,8 @@ public class Licitacoes {
             "NUMERO, ANO, MODALIDADE, SISTEMA, ORGAO, NUMEROPROCESSO, " +
             "OBJETO, DATADOCUMENTACAO, DATAPROPOSTA, DATAREALIZACAO, " +
             "DIASVALIDADEPROPOSTA, DIASPRAZOENTREGA, DIASPRAZOPAGAMENTO, " +
-            "DIASVIGENCIA, ANOSPRAZOGARANTIA, PEDEAMOSTRA, TERMOSAMOSTRA, " +
-            "PEDEGARANTIA, TERMOSGARANTIA, PREVEMULTA, TERMOSMULTA, STATUS " +
+            "DIASVIGENCIA, ANOSPRAZOGARANTIA, TERMOSAMOSTRA, " +
+            "TERMOSGARANTIA, TERMOSMULTA, STATUS " +
             "from LICITACOES where ID = ?";
 
     Connection gelic = model.services.Conexao.getConnection();
@@ -121,8 +155,8 @@ public class Licitacoes {
             "NUMERO, ANO, MODALIDADE, SISTEMA, ORGAO, NUMEROPROCESSO, " +
             "OBJETO, DATADOCUMENTACAO, DATAPROPOSTA, DATAREALIZACAO, " +
             "DIASVALIDADEPROPOSTA, DIASPRAZOENTREGA, DIASPRAZOPAGAMENTO, " +
-            "DIASVIGENCIA, ANOSPRAZOGARANTIA, PEDEAMOSTRA, TERMOSAMOSTRA, " +
-            "PEDEGARANTIA, TERMOSGARANTIA, PREVEMULTA, TERMOSMULTA, STATUS " +
+            "DIASVIGENCIA, ANOSPRAZOGARANTIA, TERMOSAMOSTRA, " +
+            "TERMOSGARANTIA, TERMOSMULTA, STATUS " +
             "from LICITACOES";
     ArrayList<model.beans.Licitacao> licitacoes = null;
     PreparedStatement pstmt;
@@ -190,24 +224,18 @@ public class Licitacoes {
     int diasPrazoPagamento = rs.getInt("DIASPRAZOPAGAMENTO");
     int diasVigencia = rs.getInt("DIASVIGENCIA");
     int anosPrazoGarantia = rs.getInt("ANOSPRAZOGARANTIA");
-    boolean pedeAmostra = (new model.beans.SimNao(
-            rs.getString("PEDEAMOSTRA"))).toBoolean();
     String termosAmostra = rs.getString("TERMOSAMOSTRA");
-    boolean pedeGarantia = (new model.beans.SimNao(
-            rs.getString("PEDEGARANTIA"))).toBoolean();
     String termosGarantia = rs.getString("TERMOSGARANTIA");
-    boolean preveMulta = (new model.beans.SimNao(
-            rs.getString("PREVEMULTA"))).toBoolean();
     String termosMulta = rs.getString("TERMOSMULTA");
     int status = rs.getInt("STATUS");
 
-    licitacao = new model.beans.Licitacao(id, idTipoLicitacao, numero, ano, 
-            idModalidade, idSistema, idorgao, numeroProcesso, objeto, 
-            dataDocumentacao,  dataProposta, dataRealizacao, 
-            diasValidadeProposta, diasPrazoEntrega, diasPrazoPagamento, 
-            diasVigencia, anosPrazoGarantia, pedeAmostra, termosAmostra, 
-            pedeGarantia, termosGarantia, preveMulta, termosMulta, status);
-    
+    licitacao = new model.beans.Licitacao(id, idTipoLicitacao, numero, ano,
+            idModalidade, idSistema, idorgao, numeroProcesso, objeto,
+            dataDocumentacao, dataProposta, dataRealizacao,
+            diasValidadeProposta, diasPrazoEntrega, diasPrazoPagamento,
+            diasVigencia, anosPrazoGarantia, termosAmostra, termosGarantia, 
+            termosMulta, status);
+
     return licitacao;
   }
 }
