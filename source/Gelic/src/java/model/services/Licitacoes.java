@@ -5,6 +5,7 @@
 package model.services;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
@@ -28,12 +29,21 @@ public class Licitacoes {
     gelic.close();
   }
 
-  public static void incluir(String numero, int tipolicitacao, int ano,
-          String objeto, String descricao)
-          throws NamingException, SQLException {
+  public static void incluir(model.beans.TipoLicitacao tipoLicitacao,
+          String numero, int ano, model.beans.Modalidade modalidade,
+          model.beans.Sistema sistema, model.beans.Orgao orgao, 
+          String numeroProcesso, String objeto, Date dataDocumentacao, 
+          Date dataProposta, Date dataRealizacao, int diasValidadeProposta,
+          int diasPrazoEntrega, int diasPrazoPagamento, int diasVigencia,
+          int anosPrazoGarantia, String termosAmostra, String termosGarantia,
+          String termosMulta) throws NamingException, SQLException {
     Connection gelic = model.services.Conexao.getConnection();
-    if (model.daos.Licitacoes.incluir(tipolicitacao, numero,
-            ano, objeto, descricao) == 1) {
+    if (model.daos.Licitacoes.incluir(tipoLicitacao, numero, ano, modalidade, 
+            sistema, orgao, numeroProcesso, objeto, dataDocumentacao, 
+            dataProposta, dataRealizacao, diasValidadeProposta, 
+            diasPrazoEntrega, diasPrazoPagamento, diasVigencia, 
+            anosPrazoGarantia, termosAmostra, termosGarantia, 
+            termosMulta) == 1) {
       gelic.commit();
     } else {
       gelic.rollback();

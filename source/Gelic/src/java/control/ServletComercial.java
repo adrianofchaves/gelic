@@ -24,6 +24,7 @@ import control.commands.ExcluirTipoDocumento;
 import control.commands.ExcluirTipoLicitacao;
 import control.commands.GravarContato;
 import control.commands.GravarEmpresa;
+import control.commands.GravarLicitacao;
 import control.commands.GravarNovoProduto;
 import control.commands.GravarOrgao;
 import control.commands.GravarTipoDocumento;
@@ -95,6 +96,7 @@ public class ServletComercial extends HttpServlet {
         comandos.put("NovaLicitacao", new NovaLicitacao());
         comandos.put("AlterarLicitacao", new AlterarLicitacao());
         comandos.put("ExcluirLicitacao", new ExcluirLicitacao());
+        comandos.put("GravarLicitacao", new GravarLicitacao());
         
     }
 

@@ -4,6 +4,7 @@
  */
 package view;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
@@ -37,21 +38,21 @@ public class FormLicitacao extends Form {
   private ArrayList<model.beans.Sistema> sistemas;
   private String sistemaLicitacao;
   private String erroSistemaLicitacao;
-  private String dataDocumentacaoLicitacao;
+  private Date dataDocumentacaoLicitacao;
   private String erroDataDocumentacaoLicitacao;
-  private String dataPropostaLicitacao;
+  private Date dataPropostaLicitacao;
   private String erroDataPropostaLicitacao;
-  private String dataRealizacaoLicitacao;
+  private Date dataRealizacaoLicitacao;
   private String erroDataRealizacaoLicitacao;
-  private String diasPrazoEntregaLicitacao;
+  private int  diasPrazoEntregaLicitacao;
   private String erroDiasPrazoEntregaLicitacao;
-  private String diasPrazoPagamentoLicitacao;
+  private int diasPrazoPagamentoLicitacao;
   private String erroDiasPrazoPagamentoLicitacao;
-  private String diasVigenciaLicitacao;
-  private String erroDiasVigenciaLicitacao;  
-  private String anosPrazoGarantiaLicitacao;
+  private int diasVigenciaLicitacao;
+  private String erroDiasVigenciaLicitacao;
+  private int anosPrazoGarantiaLicitacao;
   private String erroAnosPrazoGarantiaLicitacao;
-  private String diasValidadePropostaLicitacao;
+  private int diasValidadePropostaLicitacao;
   private String erroDiasValidadePropostaLicitacao;
   private String termosAmostraLicitacao;
   private String erroTermosAmostraLicitacao;
@@ -62,13 +63,77 @@ public class FormLicitacao extends Form {
   private boolean inclusao = true;
   private boolean exclusao = false;
   private boolean alteracao = false;
+
+  public String cancelar() {
+    return getOrigem().getNome();
+  }
+  private model.beans.TipoLicitacao calculaTipoLicitacaoLicitacao(){
+    String buffer = tipoLicitacaoLicitacao;
+    for( model.beans.TipoLicitacao tipo : tiposLicitacoes){
+      if(tipo.getSigla().equalsIgnoreCase(buffer)){
+        return tipo;
+      }
+    }
+    return null;
+  }
+  private model.beans.Modalidade calculaModalidadeLicitacao(){
+    String buffer = modalidadeLicitacao;
+    for( model.beans.Modalidade modalidade : modalidades){
+      if(modalidade.getSigla().equalsIgnoreCase(buffer)){
+        return modalidade;
+      }
+    }
+    return null;
+  }
+  private model.beans.Sistema calculaSistemaLicitacao(){
+    String buffer = sistemaLicitacao;
+    for( model.beans.Sistema sistema : sistemas){
+      if(sistema.getNome().equalsIgnoreCase(buffer)){
+        return sistema;
+      }
+    }
+    return null;
+  }
+  private model.beans.Orgao calculaOrgaoLicitacao(){
+    String buffer = orgaoLicitacao;
+    for( model.beans.Orgao orgao : orgaos){
+      if(orgao.getApelido().equalsIgnoreCase(buffer)){
+        return orgao;
+      }
+    }
+    return null;
+  }
+  public String gravar() throws ExcecaoForm, NamingException, SQLException {
+    if (!validar()) {
+      return getNome();
+    }
+    if(isInclusao()){
+      model.services.Licitacoes.incluir(
+              calculaTipoLicitacaoLicitacao(), getNumeroLicitacao(), 
+              getAnoLicitacao(), calculaModalidadeLicitacao(),
+              calculaSistemaLicitacao(), calculaOrgaoLicitacao(), 
+              getNumeroProcessoLicitacao(), getObjetoLicitacao(), 
+              getDataDocumentacaoLicitacao(), getDataPropostaLicitacao(), 
+              getDataRealizacaoLicitacao(), getDiasValidadePropostaLicitacao(),
+              getDiasPrazoEntregaLicitacao(), getDiasPrazoPagamentoLicitacao(), 
+              getDiasVigenciaLicitacao(), getAnosPrazoGarantiaLicitacao(), 
+              getTermosAmostraLicitacao(), getTermosGarantiaLicitacao(),
+              getTermosMultaLicitacao() );
+      getOrigem().setMensagem("Nova licitação incluída.");
+    }
+    
+    getOrigem().refresh();
+    
+    return getOrigem().getNome();    
+  }
+
   /**
    * Prepara form para alteração.
    * @param licitacao - ID da licitação
    */
-  public void preparaAlteracao(String licitacao) 
+  public void preparaAlteracao(String licitacao)
           throws SQLException, NamingException {
-    
+
     this.licitacao = model.services.Licitacoes.recuperar(
             Integer.parseInt(licitacao));
     atualizaCampos();
@@ -77,7 +142,7 @@ public class FormLicitacao extends Form {
     carregaListas();
   }
 
-  public void preparaExclusao(String licitacao) 
+  public void preparaExclusao(String licitacao)
           throws SQLException, NamingException {
     this.licitacao = model.services.Licitacoes.recuperar(
             Integer.parseInt(licitacao));
@@ -125,19 +190,18 @@ public class FormLicitacao extends Form {
     setAnoLicitacao(licitacao.getAno());
     setModalidadeLicitacao(licitacao.getModalidade().toString());
     setTipoLicitacaoLicitacao(licitacao.getTipoLicitacao().toString());
-    setSistemaLicitacao(licitacao.getSistema().toString());    
-    setDataDocumentacaoLicitacao(licitacao.getDataRealizacao().toString());
-    setDataPropostaLicitacao(licitacao.getDataProposta().toString());
-    setDataRealizacaoLicitacao(licitacao.getDataRealizacao().toString());    
-    setDiasValidadePropostaLicitacao(
-            Integer.toString(licitacao.getDiasValidadeProposta()));
-    setDiasPrazoEntregaLicitacao(
-            Integer.toString(licitacao.getDiasPrazoEntrega()));
-    setDiasPrazoPagamentoLicitacao(
-            Integer.toString(licitacao.getDiasPrazoPagamento()));
-    setDiasVigenciaLicitacao(Integer.toString(licitacao.getDiasVigencia()));
-    setAnosPrazoGarantiaLicitacao(
-            Integer.toString(licitacao.getAnosPrazoGarantia()));    
+    setSistemaLicitacao(licitacao.getSistema().toString());
+    setDataDocumentacaoLicitacao(
+            Date.valueOf(licitacao.getDataRealizacao().toString()));
+    setDataPropostaLicitacao(
+            Date.valueOf(licitacao.getDataProposta().toString()));
+    setDataRealizacaoLicitacao(
+            Date.valueOf(licitacao.getDataRealizacao().toString()));
+    setDiasValidadePropostaLicitacao(licitacao.getDiasValidadeProposta());
+    setDiasPrazoEntregaLicitacao(licitacao.getDiasPrazoEntrega());
+    setDiasPrazoPagamentoLicitacao(licitacao.getDiasPrazoPagamento());
+    setDiasVigenciaLicitacao(licitacao.getDiasVigencia());
+    setAnosPrazoGarantiaLicitacao(licitacao.getAnosPrazoGarantia());
     setTermosAmostraLicitacao(licitacao.getTermosAmostra());
     setTermosGarantiaLicitacao(licitacao.getTermosGarantia());
     setTermosMultaLicitacao(licitacao.getTermosMulta());
@@ -296,27 +360,27 @@ public class FormLicitacao extends Form {
     this.erroSistemaLicitacao = erroSistemaLicitacao;
   }
 
-  public String getDataDocumentacaoLicitacao() {
+  public Date getDataDocumentacaoLicitacao() {
     return dataDocumentacaoLicitacao;
   }
 
-  public void setDataDocumentacaoLicitacao(String dataDocumentacaoLicitacao) {
+  public void setDataDocumentacaoLicitacao(Date dataDocumentacaoLicitacao) {
     this.dataDocumentacaoLicitacao = dataDocumentacaoLicitacao;
   }
 
-  public String getDataPropostaLicitacao() {
+  public Date getDataPropostaLicitacao() {
     return dataPropostaLicitacao;
   }
 
-  public void setDataPropostaLicitacao(String dataPropostaLicitacao) {
+  public void setDataPropostaLicitacao(Date dataPropostaLicitacao) {
     this.dataPropostaLicitacao = dataPropostaLicitacao;
   }
 
-  public String getDataRealizacaoLicitacao() {
+  public Date getDataRealizacaoLicitacao() {
     return dataRealizacaoLicitacao;
   }
 
-  public void setDataRealizacaoLicitacao(String dataRealizacaoLicitacao) {
+  public void setDataRealizacaoLicitacao(Date dataRealizacaoLicitacao) {
     this.dataRealizacaoLicitacao = dataRealizacaoLicitacao;
   }
 
@@ -376,43 +440,43 @@ public class FormLicitacao extends Form {
     this.sistemas = sistemas;
   }
 
-  public String getDiasPrazoEntregaLicitacao() {
+  public int getDiasPrazoEntregaLicitacao() {
     return diasPrazoEntregaLicitacao;
   }
 
-  public void setDiasPrazoEntregaLicitacao(String diasPrazoEntregaLicitacao) {
+  public void setDiasPrazoEntregaLicitacao(int diasPrazoEntregaLicitacao) {
     this.diasPrazoEntregaLicitacao = diasPrazoEntregaLicitacao;
   }
 
-  public String getDiasPrazoPagamentoLicitacao() {
+  public int getDiasPrazoPagamentoLicitacao() {
     return diasPrazoPagamentoLicitacao;
   }
 
-  public void setDiasPrazoPagamentoLicitacao(String diasPrazoPagamentoLicitacao) {
+  public void setDiasPrazoPagamentoLicitacao(int diasPrazoPagamentoLicitacao) {
     this.diasPrazoPagamentoLicitacao = diasPrazoPagamentoLicitacao;
   }
 
-  public String getDiasVigenciaLicitacao() {
+  public int getDiasVigenciaLicitacao() {
     return diasVigenciaLicitacao;
   }
 
-  public void setDiasVigenciaLicitacao(String diasVigenciaLicitacao) {
+  public void setDiasVigenciaLicitacao(int diasVigenciaLicitacao) {
     this.diasVigenciaLicitacao = diasVigenciaLicitacao;
   }
 
-  public String getAnosPrazoGarantiaLicitacao() {
+  public int getAnosPrazoGarantiaLicitacao() {
     return anosPrazoGarantiaLicitacao;
   }
 
-  public void setAnosPrazoGarantiaLicitacao(String anosPrazoGarantiaLicitacao) {
+  public void setAnosPrazoGarantiaLicitacao(int anosPrazoGarantiaLicitacao) {
     this.anosPrazoGarantiaLicitacao = anosPrazoGarantiaLicitacao;
   }
 
-  public String getDiasValidadePropostaLicitacao() {
+  public int getDiasValidadePropostaLicitacao() {
     return diasValidadePropostaLicitacao;
   }
 
-  public void setDiasValidadePropostaLicitacao(String diasValidadePropostaLicitacao) {
+  public void setDiasValidadePropostaLicitacao(int diasValidadePropostaLicitacao) {
     this.diasValidadePropostaLicitacao = diasValidadePropostaLicitacao;
   }
 
@@ -509,5 +573,53 @@ public class FormLicitacao extends Form {
     modalidades = model.services.Modalidades.recuperar();
     sistemas = model.services.Sistemas.recuperar();
     tiposLicitacoes = model.services.TiposLicitacoes.recuperar();
+  }
+
+  private boolean validar() {
+    if (isExclusao()) {
+      /**
+       * Incluir aqui as críticas de esclusão, se houverem 
+       */
+      return true;
+    }
+    boolean result = true;
+    if (getAnoLicitacao() == 0) {
+      setErroAnoLicitacao("Ano da licitação inválido!");
+      addErro("Ano da licitação inválido.");
+      result = false;
+    } else {
+      if (getAnoLicitacao() < 2000) {
+        setErroAnoLicitacao("Informe um ano posterior a 1999.");
+        addErro("Ano da licitação inválido.");
+        result = false;
+      }
+    }
+    if (getDataRealizacaoLicitacao().before(getDataDocumentacaoLicitacao())) {
+      addErro("Data da realização deve ser posterior à data de documentação");
+      setErroDataRealizacaoLicitacao("Deve ser posterior à " +
+              "data de documentação");
+      setErroDataDocumentacaoLicitacao("Deve ser anterior à " +
+              "data de realização");
+      result = false;
+    }
+    if (getDataRealizacaoLicitacao().before(getDataPropostaLicitacao())) {
+      addErro("Data da realização deve ser posterior à data da " +
+              "apresentação da proposta");
+      setErroDataRealizacaoLicitacao("Deve ser posterior à data da proposta");
+      setErroDataPropostaLicitacao("Deve ser anterior à " +
+              "data de realização");
+      result = false;
+    }
+    if( getNumeroLicitacao() == null || getNumeroLicitacao().isEmpty()){
+      addErro("O número da licitação deve ser informado.");
+      setErroNumeroLicitacao("Este campo deve ser informado.");
+      result = false;
+    }
+    if( getNumeroLicitacao() == null || getNumeroLicitacao().isEmpty()){
+      addErro("O número do processo deve ser informado.");
+      setErroNumeroProcesso("Este campo deve ser informado.");
+      result = false;
+    }
+    return result;
   }
 }

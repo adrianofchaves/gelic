@@ -26,11 +26,8 @@ public class Licitacao {
   private int diasPrazoPagamento;
   private int diasVigencia;
   private int anosPrazoGarantia;
-  private boolean pedeAmostra;
   private String termosAmostra;
-  private boolean pedeGarantia;
   private String termosGarantia;
-  private boolean preveMulta;
   private String termosMulta;
   private int status;
   private ArrayList<Lote> mLote;
@@ -38,6 +35,7 @@ public class Licitacao {
   public Licitacao() {
 
   }
+
   /**
    * Cria uma nova instância da classe apenas com os atributos "atômicos", isto
    * é, os que não estão relacionados à outras classes.
@@ -59,21 +57,17 @@ public class Licitacao {
    * @param diasPrazoPagamento
    * @param diasVigencia
    * @param anosPrazoGarantia
-   * @param pedeAmostra
    * @param termosAmostra
-   * @param pedeGarantia
    * @param termosGarantia
-   * @param preveMulta
    * @param termosMulta
    * @param status
    */
-  public Licitacao(int id, int idTipoLicitacao, String numero, int ano, 
-          int idModalidade, int idSistema, String idorgao, 
-          String numeroProcesso, String objeto, Date dataDocumentacao, 
-          Date dataProposta, Date dataRealizacao, int diasValidadeProposta, 
-          int diasPrazoEntrega, int diasPrazoPagamento, int diasVigencia, 
-          int anosPrazoGarantia, boolean pedeAmostra, String termosAmostra, 
-          boolean pedeGarantia, String termosGarantia, boolean preveMulta, 
+  public Licitacao(int id, int idTipoLicitacao, String numero, int ano,
+          int idModalidade, int idSistema, String idorgao,
+          String numeroProcesso, String objeto, Date dataDocumentacao,
+          Date dataProposta, Date dataRealizacao, int diasValidadeProposta,
+          int diasPrazoEntrega, int diasPrazoPagamento, int diasVigencia,
+          int anosPrazoGarantia, String termosAmostra, String termosGarantia,
           String termosMulta, int status) {
     this.id = id;
     this.idTipoLicitacao = idTipoLicitacao;
@@ -92,16 +86,11 @@ public class Licitacao {
     this.diasPrazoPagamento = diasPrazoPagamento;
     this.diasVigencia = diasVigencia;
     this.anosPrazoGarantia = anosPrazoGarantia;
-    this.pedeAmostra = pedeAmostra;
     this.termosAmostra = termosAmostra;
-    this.pedeGarantia = pedeGarantia;
     this.termosGarantia = termosGarantia;
-    this.preveMulta = preveMulta;
     this.termosMulta = termosMulta;
     this.status = status;
   }
-
- 
 
   public int getId() {
     return id;
@@ -255,14 +244,6 @@ public class Licitacao {
     this.anosPrazoGarantia = anosPrazoGarantia;
   }
 
-  public boolean isPedeAmostra() {
-    return pedeAmostra;
-  }
-
-  public void setPedeAmostra(boolean pedeAmostra) {
-    this.pedeAmostra = pedeAmostra;
-  }
-
   public String getTermosAmostra() {
     return termosAmostra;
   }
@@ -271,28 +252,12 @@ public class Licitacao {
     this.termosAmostra = termosAmostra;
   }
 
-  public boolean isPedeGarantia() {
-    return pedeGarantia;
-  }
-
-  public void setPedeGarantia(boolean pedeGarantia) {
-    this.pedeGarantia = pedeGarantia;
-  }
-
   public String getTermosGarantia() {
     return termosGarantia;
   }
 
   public void setTermosGarantia(String termosGarantia) {
     this.termosGarantia = termosGarantia;
-  }
-
-  public boolean isPreveMulta() {
-    return preveMulta;
-  }
-
-  public void setPreveMulta(boolean preveMulta) {
-    this.preveMulta = preveMulta;
   }
 
   public String getTermosMulta() {
