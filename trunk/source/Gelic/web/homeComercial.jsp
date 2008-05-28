@@ -66,7 +66,7 @@
         items="${sessionScope.browserLicitacoes.licitacoes}">                
         <tr class="dados">
           <td>
-            <a href="Comercial?comando=AlterarLicitacao&numero=${licitacao.numero}">
+            <a href="Comercial?comando=AlterarLicitacao&licitacao=${licitacao.id}">
               ${licitacao.tipoLicitacao.sigla}
               ${licitacao.numero}/${licitacao.ano}
             </a>

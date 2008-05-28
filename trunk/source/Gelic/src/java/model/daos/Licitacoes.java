@@ -87,7 +87,7 @@ public class Licitacoes {
     return buffer;
   }
 
-  public static model.beans.Licitacao recuperar(String numero)
+  public static model.beans.Licitacao recuperar(int id)
           throws SQLException, NamingException {
     final String sqlRecuperarLicitacao = "select ID, TIPOLICITACAO, " +
             "NUMERO, ANO, MODALIDADE, SISTEMA, ORGAO, NUMEROPROCESSO, " +
@@ -95,13 +95,13 @@ public class Licitacoes {
             "DIASVALIDADEPROPOSTA, DIASPRAZOENTREGA, DIASPRAZOPAGAMENTO, " +
             "DIASVIGENCIA, ANOSPRAZOGARANTIA, PEDEAMOSTRA, TERMOSAMOSTRA, " +
             "PEDEGARANTIA, TERMOSGARANTIA, PREVEMULTA, TERMOSMULTA, STATUS " +
-            "from LICITACOES where NUMERO = ?";
+            "from LICITACOES where ID = ?";
 
     Connection gelic = model.services.Conexao.getConnection();
 
     PreparedStatement pstmt = gelic.prepareStatement(sqlRecuperarLicitacao);
 
-    pstmt.setString(1, numero);
+    pstmt.setInt(1, id);
     ResultSet rs = pstmt.executeQuery();
     model.beans.Licitacao licitacao = null;
     if (rs != null && rs.next()) {

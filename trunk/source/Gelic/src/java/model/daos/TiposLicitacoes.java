@@ -17,18 +17,11 @@ import javax.naming.NamingException;
  */
 public class TiposLicitacoes {
 
-  final static String sqlContaTiposLicitacoes =
-          "select count(*) from TIPOSLICITACOES";
-  final static String sqlRecuperaTiposLicitacoes =
-          "select ID, NOME, SIGLA from TIPOSLICITACOES";
-  final static String sqlIncluiTipoLicitacao =
-          "insert into TIPOSLICITACOES(NOME,SIGLA) values (?,?)";
-  final static String sqlAlteraTipoLicitacao =
-          "update TIPOSLICITACOES set NOME= ?, SIGLA=? where NOME= ? ";
-
   public static int alterar(String nomeAnterior, String novoNome,
           String novaSigla)
           throws SQLException, NamingException {
+    final String sqlAlteraTipoLicitacao =
+            "update TIPOSLICITACOES set NOME= ?, SIGLA=? where NOME= ? ";
     Connection gelic = model.services.Conexao.getConnection();
 
     PreparedStatement pstmt = gelic.prepareStatement(sqlAlteraTipoLicitacao);
@@ -50,6 +43,8 @@ public class TiposLicitacoes {
 
   public static int incluir(String nome, String sigla)
           throws SQLException, NamingException {
+    final String sqlIncluiTipoLicitacao =
+            "insert into TIPOSLICITACOES(NOME,SIGLA) values (?,?)";
     Connection gelic = model.services.Conexao.getConnection();
 
     PreparedStatement pstmt = gelic.prepareStatement(
@@ -67,8 +62,33 @@ public class TiposLicitacoes {
     return buffer;
   }
 
+  static public model.beans.TipoLicitacao recuperar(int id) 
+          throws NamingException, SQLException {
+    final String sqlRecuperaTipoLicitacao =
+            "select ID, NOME, SIGLA from TIPOSLICITACOES where ID=?";
+    Connection gelic = model.services.Conexao.getPool().getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlRecuperaTipoLicitacao);
+    model.beans.TipoLicitacao tipo = null;
+    pstmt.setInt(1, id);
+    ResultSet rs = pstmt.executeQuery();
+    if(rs.next()){
+      tipo = new model.beans.TipoLicitacao(
+              rs.getString("nome"),
+              rs.getString("sigla"),
+              rs.getInt("id"));
+    }
+    rs.close();
+    pstmt.close();
+    gelic.close();
+    return tipo;
+  }
+
   static public ArrayList<model.beans.TipoLicitacao> recuperar()
           throws SQLException, NamingException {
+    final String sqlContaTiposLicitacoes =
+            "select count(*) from TIPOSLICITACOES";
+    final String sqlRecuperaTiposLicitacoes =
+            "select ID, NOME, SIGLA from TIPOSLICITACOES";
     ArrayList<model.beans.TipoLicitacao> tipos = null;
     PreparedStatement pstmt;
     int quantidadeTipos = 0;
@@ -101,10 +121,10 @@ public class TiposLicitacoes {
         tipos = new ArrayList<model.beans.TipoLicitacao>(quantidadeTipos);
       }
 
-      tipos.add(new model.beans.TipoLicitacao( 
+      tipos.add(new model.beans.TipoLicitacao(
               rs.getString("NOME"),
               rs.getString("SIGLA"),
-              rs.getInt( "ID")) );
+              rs.getInt("ID")));
     }
     /*
      * Para aproveitar a conexão no pool é necessário fechar tudo...
@@ -115,11 +135,12 @@ public class TiposLicitacoes {
 
     return tipos;
   }
-  
-    public static int excluir(String sigla) throws SQLException, NamingException {
-    final String sqlExcluiTipoLicitacao = "delete from TIPOSLICITACOES where SIGLA = ?";
+
+  public static int excluir(String sigla) throws SQLException, NamingException {
+    final String sqlExcluiTipoLicitacao = 
+            "delete from TIPOSLICITACOES where SIGLA = ?";
     Connection gelic = model.services.Conexao.getConnection();
-    PreparedStatement pstmt = gelic.prepareStatement(sqlExcluiTipoLicitacao);
+    PreparedStatement pstmt = gelic.prepareStatement(sqlExcluiTipoLicitacao);    
     pstmt.setString(1, sigla);
     int buffer = pstmt.executeUpdate();
     pstmt.close();
