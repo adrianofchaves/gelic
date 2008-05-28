@@ -84,7 +84,7 @@
             ${licitacao.objeto}
           </td>
           <td>
-            <a href="Comercial?comando=ExcluirLicitacao&licitacao=${licitacao.numero}">
+            <a href="Comercial?comando=ExcluirLicitacao&licitacao=${licitacao.id}">
               <img src="img/trash.PNG"  width="16" height="16" 
                    alt="trash"/>
             </a>

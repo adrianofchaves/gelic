@@ -77,6 +77,16 @@ public class FormLicitacao extends Form {
     carregaListas();
   }
 
+  public void preparaExclusao(String licitacao) 
+          throws SQLException, NamingException {
+    this.licitacao = model.services.Licitacoes.recuperar(
+            Integer.parseInt(licitacao));
+    atualizaCampos();
+    setExclusao(true);
+    setNome(NOME_DEFAULT);
+    carregaListas();
+  }
+
   public void preparaInclusao() throws NamingException, SQLException {
     setExclusao(false);
     setAlteracao(false);
@@ -115,8 +125,22 @@ public class FormLicitacao extends Form {
     setAnoLicitacao(licitacao.getAno());
     setModalidadeLicitacao(licitacao.getModalidade().toString());
     setTipoLicitacaoLicitacao(licitacao.getTipoLicitacao().toString());
-    setSistemaLicitacao(licitacao.getSistema().toString());
-
+    setSistemaLicitacao(licitacao.getSistema().toString());    
+    setDataDocumentacaoLicitacao(licitacao.getDataRealizacao().toString());
+    setDataPropostaLicitacao(licitacao.getDataProposta().toString());
+    setDataRealizacaoLicitacao(licitacao.getDataRealizacao().toString());    
+    setDiasValidadePropostaLicitacao(
+            Integer.toString(licitacao.getDiasValidadeProposta()));
+    setDiasPrazoEntregaLicitacao(
+            Integer.toString(licitacao.getDiasPrazoEntrega()));
+    setDiasPrazoPagamentoLicitacao(
+            Integer.toString(licitacao.getDiasPrazoPagamento()));
+    setDiasVigenciaLicitacao(Integer.toString(licitacao.getDiasVigencia()));
+    setAnosPrazoGarantiaLicitacao(
+            Integer.toString(licitacao.getAnosPrazoGarantia()));    
+    setTermosAmostraLicitacao(licitacao.getTermosAmostra());
+    setTermosGarantiaLicitacao(licitacao.getTermosGarantia());
+    setTermosMultaLicitacao(licitacao.getTermosMulta());
     setObjetoLicitacao(licitacao.getObjeto());
   }
 
