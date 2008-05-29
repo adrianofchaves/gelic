@@ -42,12 +42,23 @@ public class FormLote extends Form {
     return getNome();
   }
 
+  public String preparaExclusao(String lote) throws NamingException, SQLException {
+    view.FormLicitacao form = (view.FormLicitacao)getOrigem().getOrigem();
+    
+    setLote(model.services.Lotes.recuperar(Integer.parseInt(lote)));
+    atualizaCampos();
+    setTitulo("Excluindo lote " + getLote().toString() +
+            " da licitação " + form.getLicitacao().toString());
+    setExclusao(true);    
+    getOrigem().setMensagem("");
+    setNome(NOME_DEFAULT);
+    
+    return getNome();
+  }
+
   public String preparaInclusao() {
     view.FormLicitacao form = (view.FormLicitacao) getOrigem().getOrigem();
-    setTitulo("Novo lote da licitação " +
-            form.getLicitacao().getTipoLicitacao().getSigla() + " " +
-            form.getLicitacao().getNumero() + "/" +
-            form.getLicitacao().getAno());
+    setTitulo("Novo lote da licitação " + form.getLicitacao().toString());
     getOrigem().setMensagem("");
     setNome(NOME_DEFAULT);
     return getNome();

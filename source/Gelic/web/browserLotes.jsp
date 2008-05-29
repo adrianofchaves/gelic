@@ -54,7 +54,7 @@
             ${lote.nome}                        
           </td>                    
           <td>
-            <a href="Comercial?comando=ExcluirLote&id=${lote.id}">
+            <a href="Comercial?comando=ExcluirLote&lote=${lote.id}">
               <img src="img/trash.PNG"  width="16" height="16" 
                    alt="trash"/>
             </a>
