@@ -33,6 +33,7 @@ import control.commands.GravarTipoLicitacao;
 import control.commands.NovaEmpresa;
 import control.commands.NovaLicitacao;
 import control.commands.NovoContato;
+import control.commands.NovoLote;
 import control.commands.NovoOrgao;
 import control.commands.NovoProduto;
 import control.commands.NovoTipoDocumento;
@@ -99,6 +100,7 @@ public class ServletComercial extends HttpServlet {
         comandos.put("ExcluirLicitacao", new ExcluirLicitacao());
         comandos.put("GravarLicitacao", new GravarLicitacao());
         comandos.put("CadastroLotes", new CadastroLotes());
+        comandos.put("NovoLote", new NovoLote());
         
     }
 

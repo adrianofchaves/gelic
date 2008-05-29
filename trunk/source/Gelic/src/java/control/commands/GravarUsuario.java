@@ -51,7 +51,6 @@ public class GravarUsuario implements Comando {
 
   private String processa(HttpServletRequest req)
           throws SQLException, NamingException, NoSuchAlgorithmException {
-
     /*Popula form*/
     FormUsuario frm = populaForm(req);
     /*Executa críticas*/
