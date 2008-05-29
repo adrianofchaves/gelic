@@ -160,6 +160,21 @@ public class FormLicitacao extends Form {
       model.services.Licitacoes.excluir(licitacao);
       getOrigem().setMensagem("Licitação excluída.");
     }
+    if (isAlteracao()) {
+      model.services.Licitacoes.alterar( getLicitacao(),
+              calculaTipoLicitacaoLicitacao(), getNumeroLicitacao(),
+              getAnoLicitacao(), calculaModalidadeLicitacao(),
+              calculaSistemaLicitacao(), calculaOrgaoLicitacao(),
+              getNumeroProcessoLicitacao(), getObjetoLicitacao(),
+              getDataDocumentacaoLicitacao(), getDataPropostaLicitacao(),
+              getDataRealizacaoLicitacao(), getDiasValidadePropostaLicitacao(),
+              getDiasPrazoEntregaLicitacao(), getDiasPrazoPagamentoLicitacao(),
+              getDiasVigenciaLicitacao(), getAnosPrazoGarantiaLicitacao(),
+              getTermosAmostraLicitacao(), getTermosGarantiaLicitacao(),
+              getTermosMultaLicitacao());
+      getOrigem().setMensagem("Licitação alterada.");
+    }
+
     getOrigem().refresh();
 
     return getOrigem().getNome();
