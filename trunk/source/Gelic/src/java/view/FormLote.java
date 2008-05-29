@@ -23,9 +23,29 @@ public class FormLote extends Form {
   private boolean alteracao;
   public final static String NOME_ATRIBUTO_DEFAULT = "formLote";
   public final static String NOME_DEFAULT = NOME_ATRIBUTO_DEFAULT + ".jsp";
+  
+  public void apagaErros(){
+    super.apagaErros();
+    setErroNomeLote(null);
+    setErroNumeroLote(null);
+  }
+  public String cancelar() {
+    getOrigem().setMensagem("");
+    return getOrigem().getNome();    
+  }
 
   public model.beans.Lote getLote() {
     return lote;
+  }
+
+  public String gravar() {
+    if(isExclusao()){
+      //ignora erros de parse
+      apagaErros();
+    }
+    
+    
+    throw new UnsupportedOperationException("Not yet implemented");
   }
 
   public String preparaAlteracao(String lote) throws NamingException, SQLException {
@@ -61,6 +81,12 @@ public class FormLote extends Form {
     setTitulo("Novo lote da licitação " + form.getLicitacao().toString());
     getOrigem().setMensagem("");
     setNome(NOME_DEFAULT);
+    /* sugere um número para o lote */
+    for(model.beans.Lote mlote : form.getLicitacao().getMLote()){        
+        if( mlote.getNumero() >= getNumeroLote() ){
+           setNumeroLote(mlote.getNumero()+1);
+        }
+    }
     return getNome();
   }
 
