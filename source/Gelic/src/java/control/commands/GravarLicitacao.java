@@ -6,6 +6,7 @@ package control.commands;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
@@ -27,10 +28,6 @@ public class GravarLicitacao implements Comando {
         return form.cancelar();
       }
       populaForm(form, req);
-      if (form.temErros()) {
-        // ocorreram erros de parse 
-        return form.getNome();
-      }
       return form.gravar();
     } catch (ExcecaoForm ex) {
       Logger.getLogger(
@@ -49,6 +46,7 @@ public class GravarLicitacao implements Comando {
 
   private void populaForm(FormLicitacao form, HttpServletRequest req) {
     /* popular campos */
+    form.apagaErros();
     String buffer = util.Request.getParameter(req, "orgaoLicitacao");
     form.setOrgaoLicitacao(buffer);
 
@@ -75,30 +73,33 @@ public class GravarLicitacao implements Comando {
     buffer = util.Request.getParameter(req, "sistemaLicitacao");
     form.setSistemaLicitacao(buffer);
 
-    buffer = util.Request.getParameter(req, "dataDocumentacaoLicitacao");
     try {
-      form.setDataDocumentacaoLicitacao(Date.valueOf(buffer));
-    } catch (IllegalArgumentException ex) {
-      form.addErro("Campo data da documentação inválido!");
-      form.setErroDataDocumentacaoLicitacao("Data inválida");
+      form.setDataDocumentacaoLicitacao(
+              util.Request.getDateParameter(req, "dataDocumentacaoLicitacao"));
+    } catch (ParseException ex) {
+      form.addErro("Data da documentação inválida");
+      form.setErroDataDocumentacaoLicitacao(
+              "Informe a data no formato: dd/mm/yyyy");
     }
 
-    buffer = util.Request.getParameter(req, "dataPropostaLicitacao");
     try {
-      form.setDataPropostaLicitacao(Date.valueOf(buffer));
-    } catch (IllegalArgumentException ex) {
-      form.addErro("Campo data da proposta inválido!");
-      form.setErroDataPropostaLicitacao("Data inválida");
+      form.setDataPropostaLicitacao(
+              util.Request.getDateParameter(req, "dataPropostaLicitacao"));
+    } catch (ParseException ex) {
+      form.addErro("Data da proposta inválida");
+      form.setErroDataPropostaLicitacao(
+              "Informe a data no formato: dd/mm/yyyy");
     }
 
-    buffer = util.Request.getParameter(req, "dataRealizacaoLicitacao");
     try {
-      form.setDataRealizacaoLicitacao(Date.valueOf(buffer));
-    } catch (IllegalArgumentException ex) {
-      form.addErro("Campo data da documentação inválido!");
-      form.setErroDataDocumentacaoLicitacao("Data inválida");
+      form.setDataRealizacaoLicitacao(
+              util.Request.getDateParameter(req, "dataRealizacaoLicitacao"));
+    } catch (ParseException ex) {
+      form.addErro("Data da realização inválida");
+      form.setErroDataRealizacaoLicitacao(
+              "Informe a data no formato: dd/mm/yyyy");
     }
-
+    
     buffer = util.Request.getParameter(req, "objetoLicitacao");
     form.setObjetoLicitacao(buffer);
 
@@ -107,8 +108,7 @@ public class GravarLicitacao implements Comando {
       form.setDiasValidadePropostaLicitacao(Integer.parseInt(buffer));
     } catch (NumberFormatException ex) {
       form.addErro("Campo validade inválido!");
-      form.setErroDiasValidadePropostaLicitacao(
-              "Valor numérico(inteiro) inválido.");
+      form.setErroDiasValidadePropostaLicitacao("Valor numérico(inteiro) inválido.");
     }
 
     buffer = util.Request.getParameter(req, "diasPrazoEntregaLicitacao");
@@ -116,8 +116,7 @@ public class GravarLicitacao implements Comando {
       form.setDiasPrazoEntregaLicitacao(Integer.parseInt(buffer));
     } catch (NumberFormatException ex) {
       form.addErro("Campo entrega inválido!");
-      form.setErroDiasPrazoEntregaLicitacao(
-              "Valor numérico(inteiro) inválido.");
+      form.setErroDiasPrazoEntregaLicitacao("Valor numérico(inteiro) inválido.");
     }
 
     buffer = util.Request.getParameter(req, "diasPrazoPagamentoLicitacao");
@@ -125,8 +124,7 @@ public class GravarLicitacao implements Comando {
       form.setDiasPrazoPagamentoLicitacao(Integer.parseInt(buffer));
     } catch (NumberFormatException ex) {
       form.addErro("Campo pagamento inválido!");
-      form.setErroDiasPrazoPagamentoLicitacao(
-              "Valor numérico(inteiro) inválido.");
+      form.setErroDiasPrazoPagamentoLicitacao("Valor numérico(inteiro) inválido.");
     }
 
     buffer = util.Request.getParameter(req, "diasVigenciaLicitacao");
@@ -136,14 +134,13 @@ public class GravarLicitacao implements Comando {
       form.addErro("Campo vigencia inválido!");
       form.setErroDiasVigenciaLicitacao("Valor numérico(inteiro) inválido.");
     }
-    
-    buffer = util.Request.getParameter(req, "anosGarantiaLicitacao");
+
+    buffer = util.Request.getParameter(req, "anosPrazoGarantiaLicitacao");
     try {
-    form.setAnosPrazoGarantiaLicitacao(Integer.parseInt(buffer));
+      form.setAnosPrazoGarantiaLicitacao(Integer.parseInt(buffer));
     } catch (NumberFormatException ex) {
       form.addErro("Campo garantia inválido!");
-      form.setErroAnosPrazoGarantiaLicitacao(
-              "Valor numérico(inteiro) inválido.");
+      form.setErroAnosPrazoGarantiaLicitacao("Valor numérico(inteiro) inválido.");
     }
 
     buffer = util.Request.getParameter(req, "termosAmostraLicitacao");

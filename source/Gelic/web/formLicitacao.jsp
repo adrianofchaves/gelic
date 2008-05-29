@@ -94,16 +94,16 @@
       </table>
       <table class="tabelaErro">
         <td class="tabelaErro" style="width: 30%">
-          ${sessionScope.formOrgao.erroOrgaoLicitacao}
+          ${sessionScope.formLicitacao.erroOrgaoLicitacao}
         </td>
         <td class="tabelaErro" style="width:10%">
-          ${sessionScope.formOrgao.erroAnoLicitacao}
+          ${sessionScope.formLicitacao.erroAnoLicitacao}
         </td>
         <td class="tabelaErro" style="width:30%">
-          ${sessionScope.formOrgao.erroNumeroLicitacao}
+          ${sessionScope.formLicitacao.erroNumeroLicitacao}
         </td>
         <td class="tabelaErro" style="width:30%">
-          ${sessionScope.formOrgao.erroNumeroProcessoLicitacao}
+          ${sessionScope.formLicitacao.erroNumeroProcessoLicitacao}
         </td>
       </table>      
       <table class="tabelaCadastro">
@@ -155,10 +155,10 @@
           ${sessionScope.formLicitacao.erroModalidadeLicitacao}
         </td>
         <td class="tabelaErro" style="width:40%">
-          ${sessionScope.formOrgao.erroTipoLicitacaoLicitacao}
+          ${sessionScope.formLicitacao.erroTipoLicitacaoLicitacao}
         </td>
         <td class="tabelaErro" style="width:30%">
-          ${sessionScope.formOrgao.erroSistemaLicitacao}
+          ${sessionScope.formLicitacao.erroSistemaLicitacao}
         </td>        
       </table> 
       
@@ -190,10 +190,10 @@
           ${sessionScope.formLicitacao.erroDataDocumentacaoLicitacao}
         </td>
         <td class="tabelaErro" style="width:34%">
-          ${sessionScope.formOrgao.erroDataPropostaLicitacao}
+          ${sessionScope.formLicitacao.erroDataPropostaLicitacao}
         </td>
         <td class="tabelaErro" style="width:33%">
-          ${sessionScope.formOrgao.erroDataRealizacaoLicitacao}
+          ${sessionScope.formLicitacao.erroDataRealizacaoLicitacao}
         </td>        
       </table> 
       
@@ -260,16 +260,16 @@
           ${sessionScope.formLicitacao.erroDiasValidadePropostaLicitacao}
         </td>
         <td class="tabelaErro" style="width:20%">
-          ${sessionScope.formOrgao.erroDiasPrazoEntregaLicitacao}
+          ${sessionScope.formLicitacao.erroDiasPrazoEntregaLicitacao}
         </td>
         <td class="tabelaErro" style="width:20%">
-          ${sessionScope.formOrgao.erroDiasPrazoPagamentoLicitacao}
+          ${sessionScope.formLicitacao.erroDiasPrazoPagamentoLicitacao}
         </td>        
         <td class="tabelaErro" style="width:20%">
-          ${sessionScope.formOrgao.erroDiasVigenciaLicitacao}
+          ${sessionScope.formLicitacao.erroDiasVigenciaLicitacao}
         </td>        
         <td class="tabelaErro" style="width:20%">
-          ${sessionScope.formOrgao.erroAnosPrazoGarantiaLicitacao}
+          ${sessionScope.formLicitacao.erroAnosPrazoGarantiaLicitacao}
         </td>        
       </table> 
       
@@ -301,10 +301,10 @@
           ${sessionScope.formLicitacao.erroTermosAmostraLicitacao}
         </td>
         <td class="tabelaErro" style="width:34%">
-          ${sessionScope.formOrgao.erroTermosGarantiaLicitacao}
+          ${sessionScope.formLicitacao.erroTermosGarantiaLicitacao}
         </td>
         <td class="tabelaErro" style="width:33%">
-          ${sessionScope.formOrgao.erroTermosMultaLicitacao}
+          ${sessionScope.formLicitacao.erroTermosMultaLicitacao}
         </td>        
       </table> 
       <p>
