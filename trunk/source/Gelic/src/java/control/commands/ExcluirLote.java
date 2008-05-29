@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author Adriano
  */
-public class AlterarLote implements Comando {
+public class ExcluirLote implements Comando {
 
   public String executar(HttpServletRequest req) throws ExcecaoComando {
     try {
@@ -24,17 +24,14 @@ public class AlterarLote implements Comando {
       req.getSession().setAttribute(view.FormLote.NOME_ATRIBUTO_DEFAULT, form);
       form.setOrigem(browser);
       String lote = util.Request.getParameter(req, "lote");
-      return form.preparaAlteracao(lote);
+      return form.preparaExclusao(lote);
     } catch (NamingException ex) {
-      Logger.getLogger(
-              AlterarLote.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(ExcluirLote.class.getName()).log(Level.SEVERE, null, ex);
       throw new ExcecaoComando(ex.getMessage());
     } catch (SQLException ex) {
-      Logger.getLogger(
-              AlterarLote.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(ExcluirLote.class.getName()).log(Level.SEVERE, null, ex);
       throw new ExcecaoComando(ex.getMessage());
     }
-    
-    
+
   }
 }

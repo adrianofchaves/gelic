@@ -20,7 +20,12 @@
     <tr>
       <th class="menuItem" >
         <a href="Comercial?comando=CadastroLotes">Voltar</a>
-      </th>                             
+      </th>                       
+      <c:if test="${sessionScope.formLote.alteracao}">
+        <th class="menuItem">
+          <a href="Comercial?comando=CadastroItensLotes">Itens</a>
+        </th>
+      </c:if>
       <th class="menuItem" >
         <a href="homeComercial.jsp">Início</a>
       </th>
@@ -43,7 +48,7 @@
   <input type="text" name="numeroLote" class="caixaTexto"
          value="${sessionScope.formLote.numeroLote}"
          maxlength=30
-         <c:if test="${sessionScope.numeroLote.exclusao}">
+         <c:if test="${sessionScope.formLote.exclusao}">
            disabled
          </c:if>         
          />
@@ -67,11 +72,11 @@
 
 
 <P>
-  <c:if test="${sessionScope.formContato.exclusao}">
+  <c:if test="${sessionScope.formLote.exclusao}">
     <input class="botao" type="submit" value="Excluir" 
            name="excluir"/>
   </c:if>
-  <c:if test="${!sessionScope.formContato.exclusao}">
+  <c:if test="${!sessionScope.formLote.exclusao}">
     <input class="botao" type="submit" value="Salvar" 
            name="executar"/>
   </c:if>

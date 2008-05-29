@@ -20,6 +20,7 @@ import control.commands.ExcecaoComando;
 import control.commands.ExcluirContato;
 import control.commands.ExcluirEmpresa;
 import control.commands.ExcluirLicitacao;
+import control.commands.ExcluirLote;
 import control.commands.ExcluirOrgao;
 import control.commands.ExcluirProduto;
 import control.commands.ExcluirTipoDocumento;
@@ -103,6 +104,7 @@ public class ServletComercial extends HttpServlet {
         comandos.put("CadastroLotes", new CadastroLotes());
         comandos.put("NovoLote", new NovoLote());
         comandos.put("AlterarLote", new AlterarLote());
+        comandos.put("ExcluirLote", new ExcluirLote());
         
     }
 
