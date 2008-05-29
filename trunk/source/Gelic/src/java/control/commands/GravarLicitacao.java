@@ -52,7 +52,9 @@ public class GravarLicitacao implements Comando {
 
     buffer = util.Request.getParameter(req, "anoLicitacao");
     try {
-      form.setAnoLicitacao(Integer.parseInt(buffer));
+      if (buffer != null) {
+        form.setAnoLicitacao(Integer.parseInt(buffer));
+      }
     } catch (NumberFormatException ex) {
       form.addErro("Campo ano inválido!");
       form.setErroAnoLicitacao("Valor numérico(inteiro) inválido.");
@@ -73,7 +75,7 @@ public class GravarLicitacao implements Comando {
     buffer = util.Request.getParameter(req, "sistemaLicitacao");
     form.setSistemaLicitacao(buffer);
 
-    try {
+    try {      
       form.setDataDocumentacaoLicitacao(
               util.Request.getDateParameter(req, "dataDocumentacaoLicitacao"));
     } catch (ParseException ex) {
@@ -99,7 +101,7 @@ public class GravarLicitacao implements Comando {
       form.setErroDataRealizacaoLicitacao(
               "Informe a data no formato: dd/mm/yyyy");
     }
-    
+
     buffer = util.Request.getParameter(req, "objetoLicitacao");
     form.setObjetoLicitacao(buffer);
 

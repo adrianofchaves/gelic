@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
+import model.beans.Licitacao;
 
 /**
  *
@@ -22,6 +23,17 @@ public class Licitacoes {
     Connection gelic = model.services.Conexao.getConnection();
     if (model.daos.Licitacoes.alterar(tipolicitacao, numeroAnterior, novoNumero,
             ano, objeto, descricao) == 1) {
+      gelic.commit();
+    } else {
+      gelic.rollback();
+    }
+    gelic.close();
+  }
+
+  public static void excluir(Licitacao licitacao) 
+          throws SQLException, NamingException {
+    Connection gelic = model.services.Conexao.getConnection();
+    if (model.daos.Licitacoes.excluir(licitacao) == 1) {
       gelic.commit();
     } else {
       gelic.rollback();

@@ -170,19 +170,19 @@
         <input type="text" class="tabelaCadastro" 
                <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
                name="dataDocumentacaoLicitacao"
-               value="${sessionScope.formLicitacao.dataDocumentacaoLicitacao}"/>
+               value="${sessionScope.formLicitacao.dataDocumentacaoLicitacaoFormatada}"/>
                </td>        
         <td class="tabelaCadastro" style="width: 34%">
         Proposta:<BR>
         <input type="text" class="tabelaCadastro" name="dataPropostaLicitacao"
                <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
-               value="${sessionScope.formLicitacao.dataPropostaLicitacao}"/>
+               value="${sessionScope.formLicitacao.dataPropostaLicitacaoFormatada}"/>
                </td>        
         <td class="tabelaCadastro" style="width: 33%">
         Realização:<BR>
         <input type="text" class="tabelaCadastro" name="dataRealizacaoLicitacao"
                <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
-               value="${sessionScope.formLicitacao.dataRealizacaoLicitacao}"/>
+               value="${sessionScope.formLicitacao.dataRealizacaoLicitacaoFormatada}"/>
                </td>        
       </table>
       <table class="tabelaErro">
@@ -277,7 +277,7 @@
       <table class="tabelaCadastro">
         <td class="tabelaCadastro" style="width:33%">
           Amostra:<BR>
-          <textarea name="amostraLicitcao" rows="4" style="width:100%"
+          <textarea rows="4" style="width:100%"
                     <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
                     name="termosAmostraLicitacao">${sessionScope.formLicitacao.termosAmostraLicitacao}</textarea>
         </td>

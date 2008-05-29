@@ -18,6 +18,17 @@ import model.beans.Licitacao;
  * @author Paulo
  */
 public class Licitacoes {
+
+  public static int excluir(Licitacao licitacao) 
+          throws NamingException, SQLException {
+    final String sqlExcluirLicitacao = "delete from LICITACOES where ID = ?";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlExcluirLicitacao);
+    pstmt.setInt(1, licitacao.getId());
+    int result =  pstmt.executeUpdate();
+    pstmt.close();
+    return result;
+  }
   private static int getNextID() throws SQLException, NamingException{
     final String sql = "select gen_id(GEN_LICITACOES_ID, 1) from rdb$database";
     Connection gelic = model.services.Conexao.getConnection();
