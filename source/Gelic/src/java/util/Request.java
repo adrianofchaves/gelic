@@ -6,7 +6,6 @@
 package util;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import javax.servlet.ServletRequest;
 
 /**
@@ -31,17 +30,6 @@ public class Request {
     }
     static public java.sql.Date getDateParameter( ServletRequest req, 
             String nomeParametro) throws ParseException{
-      return parse(getParameter(req, nomeParametro));
-    }
-    final static String DATE_PATTERN = "dd/MM/yyyy";
-    static private java.sql.Date parse(String origem) throws ParseException{
-      SimpleDateFormat formatter = new SimpleDateFormat(DATE_PATTERN);
-      java.util.Date dt = formatter.parse(origem);      
-      java.sql.Date result = new java.sql.Date(dt.getTime());      
-      return result;
-    }
-    
-    public static void main(String[] args) throws ParseException{
-      System.out.println(parse("21/11/1974"));
-    }
+      return Forms.parse(getParameter(req, nomeParametro));
+    }    
 }

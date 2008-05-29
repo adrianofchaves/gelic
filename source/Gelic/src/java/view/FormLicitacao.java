@@ -134,6 +134,10 @@ public class FormLicitacao extends Form {
   }
 
   public String gravar() throws ExcecaoForm, NamingException, SQLException {
+    if(isExclusao()){
+      //ignora erros de parse
+     apagaErros(); 
+    }
     validar();
     if (temErros()) {
       return getNome();
@@ -152,7 +156,10 @@ public class FormLicitacao extends Form {
               getTermosMultaLicitacao());
       getOrigem().setMensagem("Nova licitação incluída.");
     }
-
+    if( isExclusao()){
+      model.services.Licitacoes.excluir(licitacao);
+      getOrigem().setMensagem("Licitação excluída.");
+    }
     getOrigem().refresh();
 
     return getOrigem().getNome();
@@ -164,7 +171,7 @@ public class FormLicitacao extends Form {
    */
   public void preparaAlteracao(String licitacao)
           throws SQLException, NamingException {
-
+    this.getOrigem().setMensagem("");
     this.licitacao = model.services.Licitacoes.recuperar(
             Integer.parseInt(licitacao));
     atualizaCampos();
@@ -175,6 +182,7 @@ public class FormLicitacao extends Form {
 
   public void preparaExclusao(String licitacao)
           throws SQLException, NamingException {
+    this.getOrigem().setMensagem("");
     this.licitacao = model.services.Licitacoes.recuperar(
             Integer.parseInt(licitacao));
     atualizaCampos();
@@ -184,6 +192,7 @@ public class FormLicitacao extends Form {
   }
 
   public void preparaInclusao() throws NamingException, SQLException {
+    this.getOrigem().setMensagem("");
     setExclusao(false);
     setAlteracao(false);
     setInclusao(true);
@@ -315,6 +324,10 @@ public class FormLicitacao extends Form {
 
   public void setInclusao(boolean inclusao) {
     this.inclusao = inclusao;
+    if(inclusao){
+      setAlteracao(false);
+      setExclusao(false);
+    }
   }
 
   public void setTipoLicitacaoLicitacao(String tipoLicitacaoLicitacao) {
@@ -327,6 +340,10 @@ public class FormLicitacao extends Form {
 
   public void setExclusao(boolean exclusao) {
     this.exclusao = exclusao;
+    if(exclusao){
+      setAlteracao(false);
+      setInclusao(false);
+    }
   }
 
   public boolean isAlteracao() {
@@ -335,6 +352,10 @@ public class FormLicitacao extends Form {
 
   public void setAlteracao(boolean alteracao) {
     this.alteracao = alteracao;
+    if(alteracao){
+      setInclusao(false);
+      setExclusao(false);
+    }
   }
 
   public String getNumeroProcessoLicitacao() {
@@ -384,15 +405,19 @@ public class FormLicitacao extends Form {
   public void setErroSistemaLicitacao(String erroSistemaLicitacao) {
     this.erroSistemaLicitacao = erroSistemaLicitacao;
   }
-
+  public String getDataDocumentacaoLicitacaoFormatada(){
+    return util.Forms.formata(getDataDocumentacaoLicitacao());
+  }
   public Date getDataDocumentacaoLicitacao() {
     return dataDocumentacaoLicitacao;
   }
 
   public void setDataDocumentacaoLicitacao(Date dataDocumentacaoLicitacao) {
-    this.dataDocumentacaoLicitacao = dataDocumentacaoLicitacao;
+    this.dataDocumentacaoLicitacao = dataDocumentacaoLicitacao;    
   }
-
+  public String getDataPropostaLicitacaoFormatada(){
+    return util.Forms.formata(getDataPropostaLicitacao());
+  }
   public Date getDataPropostaLicitacao() {
     return dataPropostaLicitacao;
   }
@@ -400,7 +425,9 @@ public class FormLicitacao extends Form {
   public void setDataPropostaLicitacao(Date dataPropostaLicitacao) {
     this.dataPropostaLicitacao = dataPropostaLicitacao;
   }
-
+  public String getDataRealizacaoLicitacaoFormatada(){
+    return util.Forms.formata(getDataRealizacaoLicitacao());
+  }
   public Date getDataRealizacaoLicitacao() {
     return dataRealizacaoLicitacao;
   }
