@@ -62,6 +62,30 @@ public class Licitacoes {
     }
     gelic.close();
   }
+  
+  public static void alterar(model.beans.Licitacao licitacao, 
+          model.beans.TipoLicitacao tipoLicitacao,
+          String numero, int ano, model.beans.Modalidade modalidade,
+          model.beans.Sistema sistema, model.beans.Orgao orgao, 
+          String numeroProcesso, String objeto, Date dataDocumentacao, 
+          Date dataProposta, Date dataRealizacao, int diasValidadeProposta,
+          int diasPrazoEntrega, int diasPrazoPagamento, int diasVigencia,
+          int anosPrazoGarantia, String termosAmostra, String termosGarantia,
+          String termosMulta) throws NamingException, SQLException {
+    Connection gelic = model.services.Conexao.getConnection();
+    if (model.daos.Licitacoes.alterar(licitacao, 
+            tipoLicitacao, numero, ano, modalidade, 
+            sistema, orgao, numeroProcesso, objeto, dataDocumentacao, 
+            dataProposta, dataRealizacao, diasValidadeProposta, 
+            diasPrazoEntrega, diasPrazoPagamento, diasVigencia, 
+            anosPrazoGarantia, termosAmostra, termosGarantia, 
+            termosMulta) == 1) {
+      gelic.commit();
+    } else {
+      gelic.rollback();
+    }
+    gelic.close();
+  }
 
   static public ArrayList<model.beans.Licitacao> recuperar()
           throws SQLException, NamingException {

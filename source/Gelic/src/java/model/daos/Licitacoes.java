@@ -37,6 +37,58 @@ public class Licitacoes {
     rs.next();
     return rs.getInt(1);
   }
+  static public int alterar( model.beans.Licitacao licitacao,
+          model.beans.TipoLicitacao tipoLicitacao,
+          String numero, int ano, model.beans.Modalidade modalidade,
+          model.beans.Sistema sistema, model.beans.Orgao orgao, 
+          String numeroProcesso, String objeto, Date dataDocumentacao, 
+          Date dataProposta, Date dataRealizacao, int diasValidadeProposta,
+          int diasPrazoEntrega, int diasPrazoPagamento, int diasVigencia,
+          int anosPrazoGarantia, String termosAmostra, String termosGarantia,
+          String termosMulta) throws SQLException, NamingException {
+    
+    final String sqlIncluiLicitacao = "update LICITACOES set " +
+            "TIPOLICITACAO = ?, NUMERO = ?, ANO = ?, MODALIDADE = ?, " +
+            "SISTEMA = ?, ORGAO = ?, NUMEROPROCESSO = ?, OBJETO = ?, " +
+            "DATADOCUMENTACAO = ?, DATAPROPOSTA = ?, DATAREALIZACAO = ?," +
+            "DIASVALIDADEPROPOSTA = ?, DIASPRAZOENTREGA = ?," +
+            "DIASPRAZOPAGAMENTO = ?, DIASVIGENCIA = ?, ANOSPRAZOGARANTIA = ?," +
+            "TERMOSAMOSTRA = ?, TERMOSGARANTIA = ?, TERMOSMULTA = ? " +
+            "where ID=?";
+    Connection gelic = model.services.Conexao.getConnection();
+
+    PreparedStatement pstmt = gelic.prepareStatement(sqlIncluiLicitacao);
+
+    pstmt.setInt(1, tipoLicitacao.getId());
+    pstmt.setString(2, numero);
+    pstmt.setInt(3, ano);
+    pstmt.setInt(4, modalidade.getId());
+    pstmt.setInt(5, sistema.getId());
+    pstmt.setString(6, orgao.getCnpj());
+    pstmt.setString(7, numeroProcesso);
+    pstmt.setString(8, objeto);
+    pstmt.setDate(9, dataDocumentacao);
+    pstmt.setDate(10, dataProposta);
+    pstmt.setDate(11, dataRealizacao);
+    pstmt.setInt(12, diasValidadeProposta);
+    pstmt.setInt(13, diasPrazoEntrega);
+    pstmt.setInt(14, diasPrazoPagamento);
+    pstmt.setInt(15, diasVigencia);
+    pstmt.setInt(16, anosPrazoGarantia);
+    pstmt.setString(17, termosAmostra);
+    pstmt.setString(18, termosGarantia);
+    pstmt.setString(19, termosMulta);
+    
+    pstmt.setInt(20, licitacao.getId());
+    int buffer = pstmt.executeUpdate();
+    /*
+     * Para aproveitar a conexão no pool é necessário fechar tudo...
+     * Não fecha o connection por causa do transaction.
+     */
+    pstmt.close();
+
+    return buffer;
+  }
 
   /**
    * Inclui nova licitacao no banco de dados.
