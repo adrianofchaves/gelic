@@ -22,7 +22,7 @@ public class CadastroUsuarios implements Comando {
     public String executar(HttpServletRequest req) throws ExcecaoComando {
         try {
 
-            return control.Usuarios.prepararBrowser(req);
+           return control.Usuarios.prepararBrowser(req);
             
         } catch (SQLException ex) {
             Logger.getLogger(CadastroUsuarios.class.getName()).
