@@ -46,7 +46,7 @@
         items="${sessionScope.browserLotes.lotes}">                
         <tr class="dados">
           <td>
-            <a href="Comercial?comando=AlterarLote&id=${lote.id}">
+            <a href="Comercial?comando=AlterarLote&lote=${lote.id}">
               ${lote.numero}
             </a>                        
           </td>                    

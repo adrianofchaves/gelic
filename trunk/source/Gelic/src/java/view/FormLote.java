@@ -4,6 +4,9 @@
  */
 package view;
 
+import java.sql.SQLException;
+import javax.naming.NamingException;
+
 /**
  *
  * @author Adriano
@@ -23,6 +26,20 @@ public class FormLote extends Form {
 
   public model.beans.Lote getLote() {
     return lote;
+  }
+
+  public String preparaAlteracao(String lote) throws NamingException, SQLException {
+    view.FormLicitacao form = (view.FormLicitacao)getOrigem().getOrigem();
+    
+    setLote(model.services.Lotes.recuperar(Integer.parseInt(lote)));
+    atualizaCampos();
+    setTitulo("Alterando lote " + getLote().toString() +
+            " da licitação " + form.getLicitacao().toString());
+    setAlteracao(true);    
+    getOrigem().setMensagem("");
+    setNome(NOME_DEFAULT);
+    
+    return getNome();
   }
 
   public String preparaInclusao() {
@@ -94,5 +111,10 @@ public class FormLote extends Form {
 
   public void setAlteracao(boolean alteracao) {
     this.alteracao = alteracao;
+  }
+
+  private void atualizaCampos() {
+    setNumeroLote(lote.getNumero());
+    setNomeLote(lote.getNome());    
   }
 }

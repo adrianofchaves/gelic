@@ -28,7 +28,10 @@ public class Lote {
 
   private int id;
   private String numeroContrato;
-
+  
+  public String toString(){
+    return Integer.toString(getNumero());
+  }
   public Lote(int id, String numeroContrato, String nome,
           Date assinaturaContrato, int numero) {
     this.id = id;
