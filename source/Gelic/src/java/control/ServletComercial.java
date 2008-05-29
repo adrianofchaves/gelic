@@ -3,6 +3,7 @@ package control;
 import control.commands.AlterarContato;
 import control.commands.AlterarEmpresa;
 import control.commands.AlterarLicitacao;
+import control.commands.AlterarLote;
 import control.commands.AlterarOrgao;
 import control.commands.AlterarProduto;
 import control.commands.AlterarTipoDocumento;
@@ -101,6 +102,7 @@ public class ServletComercial extends HttpServlet {
         comandos.put("GravarLicitacao", new GravarLicitacao());
         comandos.put("CadastroLotes", new CadastroLotes());
         comandos.put("NovoLote", new NovoLote());
+        comandos.put("AlterarLote", new AlterarLote());
         
     }
 

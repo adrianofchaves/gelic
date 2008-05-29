@@ -35,7 +35,15 @@ public class Licitacao {
   public Licitacao() {
 
   }
-
+  
+  public String toString(){
+    String buffer = "";
+    if( getTipoLicitacao() != null ){
+       buffer = getTipoLicitacao().getSigla() + " ";
+    }
+    
+    return buffer + getNumero() + "/" + getAno();
+  }
   /**
    * Cria uma nova instância da classe apenas com os atributos "atômicos", isto
    * é, os que não estão relacionados à outras classes.
