@@ -26,7 +26,7 @@
             <a href="browserDocumentosLicitacoes.jsp">Documentos</a>
           </th>
           <th class="menuItem" >
-            <a href="formLote.jsp">Lotes</a>                    
+            <a href="Comercial?comando=CadastroLotes">Lotes</a>                    
           </th>
         </c:if>
         <th class="menuItem" >
