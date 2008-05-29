@@ -106,7 +106,7 @@ public class Licitacoes {
             model.daos.Modalidades.recuperar(licitacao.getIdModalidade()));
     licitacao.setTipoLicitacao(model.daos.TiposLicitacoes.recuperar(
             licitacao.getIdTipoLicitacao()));
-    
+    model.daos.Lotes.recuperar(licitacao);
     return licitacao;
   }
 }

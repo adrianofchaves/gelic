@@ -1,7 +1,7 @@
 <%-- 
-    Document   : browserContatos
-    Created on : 28/03/2008, 09:23:23
-    Author     : adriano
+    Document   : browserLotes
+    Created on : 29/05/2008, 00:59:47
+    Author     : Adriano
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,17 +13,17 @@
   <head>
     <link rel="STYLESHEET" href="estilos.css" type="text/css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>GELIC--Cadastro de contatos</title>          
+    <title>GELIC--Lotes da Licitação</title>          
     <table class="nomeSistema"><th>GELIC &nbsp;&nbsp;</th></table>
     
     <table class="menu"><tr>
         <th class="menuItem" >                
-        <a href="${sessionScope.browserContatos.origem.nome}">
+        <a href="${sessionScope.browserLotes.origem.nome}">
           Voltar</a>
         </th>
         <th class="menuItem" >
-          <a href="Comercial?comando=NovoContato">
-          Novo contato</a>                    
+          <a href="Comercial?comando=NovoLote">
+          Novo lote</a>                    
         </th>        
         <th class="menuItem" >
           <a href="Gelic?comando=Logout">
@@ -33,28 +33,28 @@
   </head>
   <body>    
     <table class="cadastro"><TH class="cadastro">
-        ${sessionScope.browserContatos.titulo}
+        ${sessionScope.browserLotes.titulo}
     </TH></TABLE>
     <table class="cadastro">
       <tr class="cabecalho">
-        <td>Nome</td>
-        <td>Telefone</td>                    
+        <td>Número</td>
+        <td>Nome</td>                    
       </tr>
       
       <c:forEach 
-        var="contato" 
-        items="${sessionScope.browserContatos.contatos}">                
+        var="lote" 
+        items="${sessionScope.browserLotes.lotes}">                
         <tr class="dados">
           <td>
-            <a href="Comercial?comando=AlterarContato&id=${contato.id}">
-              ${contato.nome}
+            <a href="Comercial?comando=AlterarLote&id=${lote.id}">
+              ${lote.numero}
             </a>                        
           </td>                    
           <td>
-            ${contato.telefone}                        
+            ${lote.nome}                        
           </td>                    
           <td>
-            <a href="Comercial?comando=ExcluirContato&id=${contato.id}">
+            <a href="Comercial?comando=ExcluirLote&id=${lote.id}">
               <img src="img/trash.PNG"  width="16" height="16" 
                    alt="trash"/>
             </a>
@@ -63,7 +63,7 @@
       </c:forEach>      
     </table>        
     <font class="mensagem">
-      <P>${sessionScope.browserContatos.mensagem}</P>
+      <P>${sessionScope.browserLotes.mensagem}</P>
     </font>
   </body>
 </html>
