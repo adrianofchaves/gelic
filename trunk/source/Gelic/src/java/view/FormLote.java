@@ -72,8 +72,7 @@ public class FormLote extends Form {
 
     setLote(model.services.Lotes.recuperar(Integer.parseInt(lote)));
     atualizaCampos();
-    setTitulo("Alterando lote " + getLote().toString() +
-            " da licitação " + getLicitacao().toString());
+    setTitulo("Alterando lote " + getLicitacao()+"-"+getLote());
     setAlteracao(true);
     getOrigem().setMensagem("");
     setNome(NOME_DEFAULT);
@@ -87,8 +86,7 @@ public class FormLote extends Form {
 
     setLote(model.services.Lotes.recuperar(Integer.parseInt(lote)));
     atualizaCampos();
-    setTitulo("Excluindo lote " + getLote().toString() +
-            " da licitação " + getLicitacao().toString());
+    setTitulo("Excluindo lote " + getLicitacao()+"-"+getLote());
     setExclusao(true);
     getOrigem().setMensagem("");
     setNome(NOME_DEFAULT);

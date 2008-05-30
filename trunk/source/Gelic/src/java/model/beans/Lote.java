@@ -1,6 +1,7 @@
 package model.beans;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *  <p style="margin-top: 0">
@@ -28,6 +29,26 @@ public class Lote {
 
   private int id;
   private String numeroContrato;
+  ArrayList<ItemLote> itensLote;
+  
+  public float getTotalEstimado(){
+    if( getItensLote() == null ){
+      return 0;
+    }
+    float total = 0;
+    for( model.beans.ItemLote item : getItensLote()){
+      total += item.getPrecoEstimado() * item.getQuantidade();
+    }
+    return total;
+  }
+
+  public ArrayList<ItemLote> getItensLote() {
+    return itensLote;
+  }
+
+  public void setItensLote(ArrayList<ItemLote> itensLote) {
+    this.itensLote = itensLote;
+  }
   
   public String toString(){
     return Integer.toString(getNumero());

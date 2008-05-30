@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.naming.NamingException;
 
 /**
@@ -113,6 +114,34 @@ public class Produtos {
     pstmt.close();
     gelic.close();
     return produto;
+  }
+
+  public static void recuperar(model.beans.Lote lote)
+          throws SQLException, NamingException {
+    final String sql = "select distinct PRODUTOS.ID, PRODUTOS.CODIGO, " +
+            "PRODUTOS.DESCRICAO, " +
+            "PRODUTOS.PRECOVENDA, PRODUTOS.PRECOCOMPRA " +
+            "from PRODUTOS inner join ITENSLOTE ON " +
+            "( ITENSLOTE.LOTE=? ) AND (ITENSLOTE.PRODUTO = PRODUTOS.ID)";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sql);
+    pstmt.setInt(1, lote.getId());
+    ResultSet rs = pstmt.executeQuery();
+    HashMap<Integer, model.beans.Produto> produtos = new HashMap<Integer, model.beans.Produto>();
+    while (rs.next()) {
+      produtos.put(new Integer(rs.getInt("ID")),
+              new model.beans.Produto(rs.getInt("ID"),
+              rs.getString("CODIGO"),
+              rs.getString("DESCRICAO"),
+              rs.getFloat("PRECOVENDA"),
+              rs.getFloat("PRECOCOMPRA")));
+    }
+    for (model.beans.ItemLote itemLote : lote.getItensLote()) {
+      itemLote.setProduto(produtos.get(new Integer(itemLote.getIdProduto())));
+    }
+    rs.close();
+    pstmt.close();
+    gelic.close();    
   }
 
   public static model.beans.Produto recuperar(String codigo)

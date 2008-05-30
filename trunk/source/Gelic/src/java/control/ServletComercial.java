@@ -10,6 +10,7 @@ import control.commands.AlterarTipoDocumento;
 import control.commands.AlterarTipoLicitacao;
 import control.commands.CadastroContatos;
 import control.commands.CadastroEmpresas;
+import control.commands.CadastroItensLote;
 import control.commands.CadastroLotes;
 import control.commands.CadastroOrgaos;
 import control.commands.CadastroTiposDocumentos;
@@ -107,6 +108,8 @@ public class ServletComercial extends HttpServlet {
         comandos.put("AlterarLote", new AlterarLote());
         comandos.put("ExcluirLote", new ExcluirLote());
         comandos.put("GravarLote", new GravarLote());
+        comandos.put("CadastroItensLote", new CadastroItensLote());
+        
     }
 
     public void init() throws ServletException {
