@@ -66,8 +66,7 @@
          maxlength=30
          <c:if test="${sessionScope.formLote.exclusao}">
            disabled
-         </c:if>         
-         />
+         </c:if>                  />
          <font class="erroCampo" >
   ${sessionScope.formLote.erroNomeLote}
   </font>

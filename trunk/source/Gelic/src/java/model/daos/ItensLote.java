@@ -10,13 +10,40 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
-import model.beans.ItemLote;
 
 /**
  *
  * @author Adriano
  */
 public class ItensLote {
+
+  public static model.beans.ItemLote recuperar(int id)
+          throws NamingException, SQLException {
+    final String sql = "select ITENSLOTE.ID, ITENSLOTE.NUMERO, " +
+            " ITENSLOTE.QUANTIDADE, ITENSLOTE.PRECOESTIMADO, " +
+            " ITENSLOTE.PRECOPROPOSTO, ITENSLOTE.PRECOCOMPRA," +
+            " ITENSLOTE.PRODUTO, ITENSLOTE.LOTE " +
+            "from ITENSLOTE where ID = ?";
+    Connection gelic = model.services.Conexao.getPool().getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sql);
+    pstmt.setInt(1, id);
+    ResultSet rs = pstmt.executeQuery();
+    model.beans.ItemLote itemLote = null;
+    if(rs.next()){
+      itemLote = new model.beans.ItemLote(
+                  rs.getInt("ID"),
+                  rs.getInt("NUMERO"),
+                  rs.getFloat("QUANTIDADE"),
+                  rs.getFloat("PRECOESTIMADO"),
+                  rs.getFloat("PRECOPROPOSTO"),
+                  rs.getFloat("PRECOCOMPRA"),
+                  rs.getInt("PRODUTO"));
+    }
+    rs.close();
+    pstmt.close();
+    gelic.close();
+    return itemLote;
+  }
 
   public static void recuperar(model.beans.Licitacao licitacao)
           throws NamingException, SQLException {
@@ -34,9 +61,9 @@ public class ItensLote {
       for (model.beans.Lote lote : licitacao.getMLote()) {
         if (lote.getId() == rs.getInt("LOTE")) {
           if (lote.getItensLote() == null) {
-            lote.setItensLote(new ArrayList<ItemLote>(10));
+            lote.setItensLote(new ArrayList<model.beans.ItemLote>(10));
           }
-          lote.getItensLote().add(new ItemLote(
+          lote.getItensLote().add(new model.beans.ItemLote(
                   rs.getInt("ID"),
                   rs.getInt("NUMERO"),
                   rs.getFloat("QUANTIDADE"),

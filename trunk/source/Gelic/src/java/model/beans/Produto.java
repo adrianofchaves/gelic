@@ -31,6 +31,10 @@ public class Produto {
   // </editor-fold> 
   private float precoCompra;
 
+  @Override
+  public String toString(){
+    return codigo + "-" + descricao;
+  }
   public Produto(int  id, String codigo, String descricao, 
           float precoVenda, float precoCompra) {
     this.id = id;

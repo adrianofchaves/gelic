@@ -18,5 +18,11 @@ public class ItensLote {
     model.daos.ItensLote.recuperar(lote);
     model.daos.Produtos.recuperar(lote);
   }
-
+  public static model.beans.ItemLote recuperar(int id)
+          throws NamingException, SQLException{
+    model.beans.ItemLote item = model.daos.ItensLote.recuperar(id);
+    item.setProduto(model.daos.Produtos.recuperar(item.getIdProduto()));
+            
+    return item;
+  }
 }
