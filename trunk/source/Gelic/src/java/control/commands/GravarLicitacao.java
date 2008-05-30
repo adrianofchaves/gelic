@@ -4,7 +4,6 @@
  */
 package control.commands;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;

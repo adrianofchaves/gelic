@@ -63,7 +63,12 @@ public class FormLicitacao extends Form {
   private boolean inclusao = true;
   private boolean exclusao = false;
   private boolean alteracao = false;
-
+  
+  @Override
+  public void refresh(){
+    
+  }
+  @Override
   public void apagaErros() {
     super.apagaErros();
 
