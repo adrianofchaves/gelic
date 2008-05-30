@@ -23,70 +23,92 @@ public class FormLote extends Form {
   private boolean alteracao;
   public final static String NOME_ATRIBUTO_DEFAULT = "formLote";
   public final static String NOME_DEFAULT = NOME_ATRIBUTO_DEFAULT + ".jsp";
-  
-  public void apagaErros(){
+
+  @Override
+  public void apagaErros() {
     super.apagaErros();
     setErroNomeLote(null);
     setErroNumeroLote(null);
   }
+
   public String cancelar() {
     getOrigem().setMensagem("");
-    return getOrigem().getNome();    
+    return getOrigem().getNome();
   }
 
   public model.beans.Lote getLote() {
     return lote;
   }
 
-  public String gravar() {
-    if(isExclusao()){
+  public String gravar() throws NamingException, SQLException, ExcecaoForm {
+    if (isExclusao()) {
       //ignora erros de parse
       apagaErros();
     }
-    
-    
-    throw new UnsupportedOperationException("Not yet implemented");
+    valida();
+    if( temErros()){
+      return getNome();
+    }
+    if( isInclusao()){
+      model.services.Lotes.incluir( getLicitacao(), getNumeroLote(), 
+              getNomeLote());
+      getOrigem().setMensagem("Lote incluído.");
+    }
+    if(isAlteracao()){
+      model.services.Lotes.alterar( getLote(), getNumeroLote(), 
+              getNomeLote());
+      getOrigem().setMensagem("Lote alterado.");
+    }
+    if(isExclusao()){
+      model.services.Lotes.excluir( getLote() );
+      getOrigem().setMensagem("Lote excluído.");
+    }
+    getOrigem().refresh();
+    return getOrigem().getNome();
   }
 
-  public String preparaAlteracao(String lote) throws NamingException, SQLException {
-    view.FormLicitacao form = (view.FormLicitacao)getOrigem().getOrigem();
-    
+  public String preparaAlteracao(String lote)
+          throws NamingException, SQLException {
+
     setLote(model.services.Lotes.recuperar(Integer.parseInt(lote)));
     atualizaCampos();
     setTitulo("Alterando lote " + getLote().toString() +
-            " da licitação " + form.getLicitacao().toString());
-    setAlteracao(true);    
+            " da licitação " + getLicitacao().toString());
+    setAlteracao(true);
     getOrigem().setMensagem("");
     setNome(NOME_DEFAULT);
-    
+
     return getNome();
   }
 
-  public String preparaExclusao(String lote) throws NamingException, SQLException {
-    view.FormLicitacao form = (view.FormLicitacao)getOrigem().getOrigem();
-    
+  public String preparaExclusao(String lote)
+          throws NamingException, SQLException {
+
+
     setLote(model.services.Lotes.recuperar(Integer.parseInt(lote)));
     atualizaCampos();
     setTitulo("Excluindo lote " + getLote().toString() +
-            " da licitação " + form.getLicitacao().toString());
-    setExclusao(true);    
+            " da licitação " + getLicitacao().toString());
+    setExclusao(true);
     getOrigem().setMensagem("");
     setNome(NOME_DEFAULT);
-    
+
     return getNome();
   }
 
   public String preparaInclusao() {
-    view.FormLicitacao form = (view.FormLicitacao) getOrigem().getOrigem();
-    setTitulo("Novo lote da licitação " + form.getLicitacao().toString());
+    setTitulo("Novo lote da licitação " + getLicitacao().toString());
     getOrigem().setMensagem("");
     setNome(NOME_DEFAULT);
+    setInclusao(true);
     /* sugere um número para o lote */
-    for(model.beans.Lote mlote : form.getLicitacao().getMLote()){        
-        if( mlote.getNumero() >= getNumeroLote() ){
-           setNumeroLote(mlote.getNumero()+1);
-        }
+    setNumeroLote(1);
+    for (model.beans.Lote mlote : getLicitacao().getMLote()) {
+      if (mlote.getNumero() >= getNumeroLote()) {
+        setNumeroLote(mlote.getNumero() + 1);
+      }
     }
+    
     return getNome();
   }
 
@@ -152,6 +174,33 @@ public class FormLote extends Form {
 
   private void atualizaCampos() {
     setNumeroLote(lote.getNumero());
-    setNomeLote(lote.getNome());    
+    setNomeLote(lote.getNome());
+  }
+
+  private view.FormLicitacao getFormLicitacao() {
+    view.FormLicitacao form = (view.FormLicitacao) getOrigem().getOrigem();
+    return form;
+  }
+
+  private model.beans.Licitacao getLicitacao() {
+    return getFormLicitacao().getLicitacao();
+  }
+
+  private void valida() throws NamingException, SQLException {
+    if (isInclusao()) {
+      if (model.services.Lotes.recuperar(
+              getLicitacao(), getNumeroLote()) != null) {
+        addErro("Número do lote inválido.");
+        setErroNumeroLote("Já existe lote com esse número nesta licitação.");
+      }
+    }
+    if (isAlteracao()) {
+      if (model.services.Lotes.recuperar(
+              getLicitacao(), getNumeroLote()).getId() != lote.getId()) {
+        addErro("Número do lote inválido.");
+        setErroNumeroLote("Já existe lote com esse número nesta licitação.");
+
+      }
+    }
   }
 }

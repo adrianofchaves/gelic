@@ -15,20 +15,7 @@ import model.beans.Licitacao;
  *
  * @author Paulo
  */
-public class Licitacoes {
-
-  public static void alterar(String numeroAnterior, String novoNumero,
-          int tipolicitacao, int ano, String objeto, String descricao)
-          throws NamingException, SQLException {
-    Connection gelic = model.services.Conexao.getConnection();
-    if (model.daos.Licitacoes.alterar(tipolicitacao, numeroAnterior, novoNumero,
-            ano, objeto, descricao) == 1) {
-      gelic.commit();
-    } else {
-      gelic.rollback();
-    }
-    gelic.close();
-  }
+public class Licitacoes { 
 
   public static void excluir(Licitacao licitacao) 
           throws SQLException, NamingException {

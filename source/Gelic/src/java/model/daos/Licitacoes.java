@@ -19,17 +19,18 @@ import model.beans.Licitacao;
  */
 public class Licitacoes {
 
-  public static int excluir(Licitacao licitacao) 
+  public static int excluir(Licitacao licitacao)
           throws NamingException, SQLException {
     final String sqlExcluirLicitacao = "delete from LICITACOES where ID = ?";
     Connection gelic = model.services.Conexao.getConnection();
     PreparedStatement pstmt = gelic.prepareStatement(sqlExcluirLicitacao);
     pstmt.setInt(1, licitacao.getId());
-    int result =  pstmt.executeUpdate();
+    int result = pstmt.executeUpdate();
     pstmt.close();
     return result;
   }
-  private static int getNextID() throws SQLException, NamingException{
+
+  private static int getNextID() throws SQLException, NamingException {
     final String sql = "select gen_id(GEN_LICITACOES_ID, 1) from rdb$database";
     Connection gelic = model.services.Conexao.getConnection();
     PreparedStatement pstmt = gelic.prepareStatement(sql);
@@ -37,16 +38,17 @@ public class Licitacoes {
     rs.next();
     return rs.getInt(1);
   }
-  static public int alterar( model.beans.Licitacao licitacao,
+
+  static public int alterar(model.beans.Licitacao licitacao,
           model.beans.TipoLicitacao tipoLicitacao,
           String numero, int ano, model.beans.Modalidade modalidade,
-          model.beans.Sistema sistema, model.beans.Orgao orgao, 
-          String numeroProcesso, String objeto, Date dataDocumentacao, 
+          model.beans.Sistema sistema, model.beans.Orgao orgao,
+          String numeroProcesso, String objeto, Date dataDocumentacao,
           Date dataProposta, Date dataRealizacao, int diasValidadeProposta,
           int diasPrazoEntrega, int diasPrazoPagamento, int diasVigencia,
           int anosPrazoGarantia, String termosAmostra, String termosGarantia,
           String termosMulta) throws SQLException, NamingException {
-    
+
     final String sqlIncluiLicitacao = "update LICITACOES set " +
             "TIPOLICITACAO = ?, NUMERO = ?, ANO = ?, MODALIDADE = ?, " +
             "SISTEMA = ?, ORGAO = ?, NUMEROPROCESSO = ?, OBJETO = ?, " +
@@ -78,7 +80,7 @@ public class Licitacoes {
     pstmt.setString(17, termosAmostra);
     pstmt.setString(18, termosGarantia);
     pstmt.setString(19, termosMulta);
-    
+
     pstmt.setInt(20, licitacao.getId());
     int buffer = pstmt.executeUpdate();
     /*
@@ -98,15 +100,15 @@ public class Licitacoes {
    * @throws java.sql.SQLException
    * @throws javax.naming.NamingException
    */
-  static public int incluir( model.beans.TipoLicitacao tipoLicitacao,
+  static public int incluir(model.beans.TipoLicitacao tipoLicitacao,
           String numero, int ano, model.beans.Modalidade modalidade,
-          model.beans.Sistema sistema, model.beans.Orgao orgao, 
-          String numeroProcesso, String objeto, Date dataDocumentacao, 
+          model.beans.Sistema sistema, model.beans.Orgao orgao,
+          String numeroProcesso, String objeto, Date dataDocumentacao,
           Date dataProposta, Date dataRealizacao, int diasValidadeProposta,
           int diasPrazoEntrega, int diasPrazoPagamento, int diasVigencia,
           int anosPrazoGarantia, String termosAmostra, String termosGarantia,
           String termosMulta) throws SQLException, NamingException {
-    
+
     final String sqlIncluiLicitacao = "insert into LICITACOES( " +
             "TIPOLICITACAO, NUMERO, ANO, MODALIDADE, SISTEMA, ORGAO, " +
             "NUMEROPROCESSO, OBJETO, DATADOCUMENTACAO, DATAPROPOSTA, " +
@@ -137,7 +139,7 @@ public class Licitacoes {
     pstmt.setString(17, termosAmostra);
     pstmt.setString(18, termosGarantia);
     pstmt.setString(19, termosMulta);
-    
+
     int buffer = pstmt.executeUpdate();
     /*
      * Para aproveitar a conexão no pool é necessário fechar tudo...
@@ -296,7 +298,7 @@ public class Licitacoes {
             idModalidade, idSistema, idorgao, numeroProcesso, objeto,
             dataDocumentacao, dataProposta, dataRealizacao,
             diasValidadeProposta, diasPrazoEntrega, diasPrazoPagamento,
-            diasVigencia, anosPrazoGarantia, termosAmostra, termosGarantia, 
+            diasVigencia, anosPrazoGarantia, termosAmostra, termosGarantia,
             termosMulta, status);
 
     return licitacao;

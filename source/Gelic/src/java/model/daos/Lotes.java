@@ -11,11 +11,52 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
 
+
+
+
 /**
  *
  * @author Adriano
  */
 public class Lotes {
+
+  public static int alterar(model.beans.Lote lote, int numero, String nome) 
+          throws SQLException, NamingException {
+    final String sql = "update LOTES set NUMERO=?, NOME=? where ID=?";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sql);
+    pstmt.setInt(1, numero);
+    pstmt.setString(2, nome);
+    pstmt.setInt(3, lote.getId());
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
+  }
+
+  public static int excluir(model.beans.Lote lote) 
+          throws SQLException, NamingException {
+    final String sql = "delete from LOTES where ID=?";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sql);    
+    pstmt.setInt(1, lote.getId());
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
+  }
+
+  public static int incluir(model.beans.Licitacao licitacao, int numero, 
+          String nome) throws SQLException, NamingException {
+    final String sql = "insert into LOTES(LICITACAO, NUMERO, NOME) " +
+            "values (?,?,?)";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sql);    
+    pstmt.setInt(1, licitacao.getId());
+    pstmt.setInt(2, numero);
+    pstmt.setString(3, nome);
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
+  }
 
   public static model.beans.Lote recuperar(int id)
           throws NamingException, SQLException {
