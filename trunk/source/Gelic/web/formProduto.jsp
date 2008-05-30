@@ -33,7 +33,7 @@
   </head>
   <body>
     <form name="frmProduto" 
-          action="Comercial?comando=GravarNovoProduto" 
+          action="Comercial?comando=GravarProduto" 
           method="POST">
       <p class="caption">
         ${sessionScope.formProduto.titulo}

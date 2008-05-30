@@ -32,7 +32,7 @@ import control.commands.GravarContato;
 import control.commands.GravarEmpresa;
 import control.commands.GravarLicitacao;
 import control.commands.GravarLote;
-import control.commands.GravarNovoProduto;
+import control.commands.GravarProduto;
 import control.commands.GravarOrgao;
 import control.commands.GravarTipoDocumento;
 import control.commands.GravarTipoLicitacao;
@@ -84,7 +84,7 @@ public class ServletComercial extends HttpServlet {
         comandos.put("ExcluirTipoDocumento", new ExcluirTipoDocumento());
         comandos.put("CadastroProdutos", new CadastroProdutos());
         comandos.put("NovoProduto",new NovoProduto());
-        comandos.put("GravarNovoProduto", new GravarNovoProduto());
+        comandos.put("GravarProduto", new GravarProduto());
         comandos.put("AlterarProduto", new AlterarProduto());
         comandos.put("ExcluirProduto", new ExcluirProduto());
         comandos.put("CadastroEmpresas", new CadastroEmpresas());
@@ -114,7 +114,7 @@ public class ServletComercial extends HttpServlet {
         comandos.put("CadastroItensLote", new CadastroItensLote());
         comandos.put("NovoItemLote", new NovoItemLote());
         comandos.put("AlterarItemLote", new AlterarItemLote());
-        comandos.put("ExcluirItemLote", new ExcluirItemLote());
+        comandos.put("ExcluirItemLote", new ExcluirItemLote());        
         
     }
 
