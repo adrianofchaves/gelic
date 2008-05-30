@@ -44,6 +44,7 @@ public class ItemLote {
 
   public ItemLote(int id, int numero, float quantidade, float precoEstimado, 
           float precoProposto, float precoCompra, int idProduto) {
+    this.id = id;
     this.numero = numero;
     this.quantidade = quantidade;
     this.precoEstimado = precoEstimado;

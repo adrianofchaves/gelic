@@ -22,7 +22,7 @@
         Voltar</a>
       </th>
       <th class="menuItem" >
-        <a href="Comercial?comando=NovoProduto">
+        <a href="Comercial?comando=NovoItemLote">
         Novo Item</a>                    
       </th>
       <th class="menuItem" >
@@ -49,7 +49,7 @@
         items="${sessionScope.browserItensLote.itensLote}">                
         <tr class="dados">
           <td>
-            <a href="Comercial?comando=AlterarItemLote&codigo=${itemLote.id}">
+            <a href="Comercial?comando=AlterarItemLote&itemLote=${itemLote.id}">
               ${itemLote.numero}    
             </a>                        
           </td>

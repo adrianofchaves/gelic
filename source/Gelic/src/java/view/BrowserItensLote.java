@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author Adriano
  */
 public class BrowserItensLote extends Form{
-  ArrayList<model.beans.ItemLote> itensLote;
+  private ArrayList<model.beans.ItemLote> itensLote;
   static public final String NOME_ATRIBUTO_DEFAULT = "browserItensLote";
   static public final String NOME_DEFAULT = NOME_ATRIBUTO_DEFAULT + ".jsp";
   

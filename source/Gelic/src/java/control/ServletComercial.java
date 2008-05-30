@@ -2,6 +2,7 @@ package control;
 
 import control.commands.AlterarContato;
 import control.commands.AlterarEmpresa;
+import control.commands.AlterarItemLote;
 import control.commands.AlterarLicitacao;
 import control.commands.AlterarLote;
 import control.commands.AlterarOrgao;
@@ -20,6 +21,7 @@ import control.commands.Comando;
 import control.commands.ExcecaoComando;
 import control.commands.ExcluirContato;
 import control.commands.ExcluirEmpresa;
+import control.commands.ExcluirItemLote;
 import control.commands.ExcluirLicitacao;
 import control.commands.ExcluirLote;
 import control.commands.ExcluirOrgao;
@@ -37,6 +39,7 @@ import control.commands.GravarTipoLicitacao;
 import control.commands.NovaEmpresa;
 import control.commands.NovaLicitacao;
 import control.commands.NovoContato;
+import control.commands.NovoItemLote;
 import control.commands.NovoLote;
 import control.commands.NovoOrgao;
 import control.commands.NovoProduto;
@@ -109,6 +112,9 @@ public class ServletComercial extends HttpServlet {
         comandos.put("ExcluirLote", new ExcluirLote());
         comandos.put("GravarLote", new GravarLote());
         comandos.put("CadastroItensLote", new CadastroItensLote());
+        comandos.put("NovoItemLote", new NovoItemLote());
+        comandos.put("AlterarItemLote", new AlterarItemLote());
+        comandos.put("ExcluirItemLote", new ExcluirItemLote());
         
     }
 
