@@ -38,7 +38,9 @@
     <table class="cadastro">
       <tr class="cabecalho">
         <td>Número</td>
-        <td>Nome</td>                    
+        <td>Nome</td>   
+        <td>Total Estimado</td>
+        <td></td>
       </tr>
       
       <c:forEach 
@@ -50,9 +52,8 @@
               ${lote.numero}
             </a>                        
           </td>                    
-          <td>
-            ${lote.nome}                        
-          </td>                    
+          <td>${lote.nome}</td>  
+          <td>${lote.totalEstimado}</td>
           <td>
             <a href="Comercial?comando=ExcluirLote&lote=${lote.id}">
               <img src="img/trash.PNG"  width="16" height="16" 

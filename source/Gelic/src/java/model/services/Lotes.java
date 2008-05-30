@@ -51,7 +51,9 @@ public class Lotes {
   }
   static public model.beans.Lote recuperar(int id) 
           throws NamingException, SQLException{
-    return model.daos.Lotes.recuperar(id);
+    model.beans.Lote lote = model.daos.Lotes.recuperar(id);
+    model.services.ItensLote.recuperar(lote);    
+    return lote;
   }
 
   public static model.beans.Lote recuperar(model.beans.Licitacao licitacao, 

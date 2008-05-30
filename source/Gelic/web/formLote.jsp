@@ -23,7 +23,10 @@
       </th>                       
       <c:if test="${sessionScope.formLote.alteracao}">
         <th class="menuItem">
-          <a href="Comercial?comando=CadastroItensLotes">Itens</a>
+          <a href="Comercial?comando=CadastroItensLote">Itens</a>
+        </th>
+        <th class="menuItem">
+          <a href="Comercial?comando=CadastroPropostas">Propostas</a>
         </th>
       </c:if>
       <th class="menuItem" >

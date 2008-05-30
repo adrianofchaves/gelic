@@ -14,6 +14,44 @@ package model.beans;
 // </editor-fold> 
 public class ItemLote {
 
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+  int id;
+  
+  model.beans.Produto produto;
+
+  public int getIdProduto() {
+    return idProduto;
+  }
+
+  public void setIdProduto(int idProduto) {
+    this.idProduto = idProduto;
+  }
+  int idProduto;
+  
+  public Produto getProduto() {
+    return produto;
+  }
+
+  public void setProduto(Produto produto) {
+    this.produto = produto;
+  }
+
+  public ItemLote(int id, int numero, float quantidade, float precoEstimado, 
+          float precoProposto, float precoCompra, int idProduto) {
+    this.numero = numero;
+    this.quantidade = quantidade;
+    this.precoEstimado = precoEstimado;
+    this.precoProposto = precoProposto;
+    this.precoCompra = precoCompra;
+    this.idProduto = idProduto;
+  }
+
     /**
      *  <p style="margin-top: 0">
      *        N&#250;mero do item.
