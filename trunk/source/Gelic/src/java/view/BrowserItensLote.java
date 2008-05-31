@@ -5,7 +5,11 @@
 
 package view;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.NamingException;
 
 
 /**
@@ -28,6 +32,21 @@ public class BrowserItensLote extends Form{
   }
   private model.beans.Licitacao getLicitacao(){
     return getFormLicitacao().getLicitacao();
+  }
+  @Override
+  public void refresh() throws ExcecaoForm{
+    try {
+      getOrigem().refresh();
+      model.services.ItensLote.recuperar(getLote());
+    } catch (NamingException ex) {
+      Logger.getLogger(
+              BrowserItensLote.class.getName()).log(Level.SEVERE, null, ex);
+      throw new ExcecaoForm(ex.getMessage());
+    } catch (SQLException ex) {
+      Logger.getLogger(
+              BrowserItensLote.class.getName()).log(Level.SEVERE, null, ex);
+      throw new ExcecaoForm(ex.getMessage());
+    }
   }
   public String executar(){
     setTitulo( "Itens do lote " + getLicitacao() + "-" + getLote());

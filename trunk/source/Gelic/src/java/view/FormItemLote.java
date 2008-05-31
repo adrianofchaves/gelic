@@ -27,11 +27,63 @@ public class FormItemLote extends Form {
   float precoEstimadoItemLote;
   private String erroPrecoEstimadoItemLote;
 
+  public String cancelar() {
+    getOrigem().setMensagem("");
+    return getOrigem().getNome();
+  }
+
   public String getErroNumeroItemLote() {
     return erroNumeroItemLote;
   }
 
-  public String preparaExclusao(String parameter) 
+  private view.FormLote getFormLote() {
+    return (view.FormLote) getBrowserItensLote().getOrigem();
+  }
+
+  private model.beans.Lote getLote() {
+    return getFormLote().getLote();
+  }
+
+  private model.beans.Produto calculaProdutoItemLote() {
+    for (model.beans.Produto produto : getProdutos()) {
+      if (produto.toString().equals(getProdutoItemLote())) {
+        return produto;
+      }
+    }
+    return null;
+  }
+
+  public String gravar() throws SQLException, NamingException, ExcecaoForm {
+    if (isExclusao()) {
+      //ignora erros de parse
+      apagaErros();
+    }
+    valida();
+    if (temErros()) {
+      return getNome();
+    }
+    if (isInclusao()) {
+      model.services.ItensLote.incluir(getLote(), getNumeroItemLote(),
+              calculaProdutoItemLote(), getQuantidadeItemLote(),
+              getPrecoEstimadoItemLote());
+      getOrigem().setMensagem("Item do Lote incluído.");
+    }
+    if (isAlteracao()) {
+      model.services.ItensLote.alterar(getItemLote(), getNumeroItemLote(),
+              calculaProdutoItemLote(), getQuantidadeItemLote(),
+              getPrecoEstimadoItemLote());
+      getOrigem().setMensagem("Item do Lote alterado.");
+    }
+    if (isExclusao()) {
+      model.services.ItensLote.excluir(getItemLote());
+      getOrigem().setMensagem("Item do Lote excluído.");
+    }
+    getOrigem().refresh();
+    return getOrigem().getNome();
+
+  }
+
+  public String preparaExclusao(String parameter)
           throws SQLException, NamingException {
     setProdutos(model.services.Produtos.recuperar());
     setTitulo("Excluindo item do lote " +
@@ -117,10 +169,6 @@ public class FormItemLote extends Form {
 
   public String getNomeAtributo() {
     return nomeAtributo;
-  }
-
-  private view.FormLote getFormLote() {
-    return (view.FormLote) getBrowserItensLote().getOrigem();
   }
 
   private view.FormLicitacao getFormLicitacao() {
@@ -229,4 +277,23 @@ public class FormItemLote extends Form {
   public void setQuantidadeItemLote(float quantidadeItemLote) {
     this.quantidadeItemLote = quantidadeItemLote;
   }
+
+  private void valida() throws NamingException, SQLException {
+    if (isInclusao()) {
+      if (model.services.ItensLote.recuperar( 
+              getLote(), getNumeroItemLote()) != null) {
+        addErro("Número do item de lote inválido.");
+        setErroNumeroItemLote("Já existe item com esse número neste lote.");
+      }
+    }
+    if (isAlteracao()) {
+      if (model.services.ItensLote.recuperar(
+              getLote(), getNumeroItemLote()).getId() != getItemLote().getId()) {
+        addErro("Número do item de lote inválido.");
+        setErroNumeroItemLote("Já existe item com esse número neste lote.");
+
+      }
+    }  
+  }
+  
 }

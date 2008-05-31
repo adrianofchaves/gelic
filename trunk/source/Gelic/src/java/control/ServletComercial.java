@@ -30,6 +30,7 @@ import control.commands.ExcluirTipoDocumento;
 import control.commands.ExcluirTipoLicitacao;
 import control.commands.GravarContato;
 import control.commands.GravarEmpresa;
+import control.commands.GravarItemLote;
 import control.commands.GravarLicitacao;
 import control.commands.GravarLote;
 import control.commands.GravarProduto;
@@ -114,7 +115,8 @@ public class ServletComercial extends HttpServlet {
         comandos.put("CadastroItensLote", new CadastroItensLote());
         comandos.put("NovoItemLote", new NovoItemLote());
         comandos.put("AlterarItemLote", new AlterarItemLote());
-        comandos.put("ExcluirItemLote", new ExcluirItemLote());        
+        comandos.put("ExcluirItemLote", new ExcluirItemLote()); 
+        comandos.put("GravarItemLote", new GravarItemLote());
         
     }
 
