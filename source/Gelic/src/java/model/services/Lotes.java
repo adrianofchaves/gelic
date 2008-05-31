@@ -8,7 +8,7 @@ package model.services;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.naming.NamingException;
-import model.beans.Lote;
+
 
 
 
@@ -18,7 +18,7 @@ import model.beans.Lote;
  */
 public class Lotes {
 
-  public static void alterar(Lote lote, int numero, String nome) 
+  public static void alterar(model.beans.Lote lote, int numero, String nome) 
           throws SQLException, NamingException {
    Connection gelic = model.services.Conexao.getConnection();
    if (model.daos.Lotes.alterar(lote, numero, nome) == 1) {
@@ -29,7 +29,8 @@ public class Lotes {
     gelic.close();
   }
 
-  public static void excluir(Lote lote) throws SQLException, NamingException {
+  public static void excluir(model.beans.Lote lote) 
+          throws SQLException, NamingException {
    Connection gelic = model.services.Conexao.getConnection();
    if (model.daos.Lotes.excluir(lote) == 1) {
       gelic.commit();

@@ -5,6 +5,8 @@
 package view;
 
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.naming.NamingException;
 
 /**
@@ -46,21 +48,21 @@ public class FormLote extends Form {
       apagaErros();
     }
     valida();
-    if( temErros()){
+    if (temErros()) {
       return getNome();
     }
-    if( isInclusao()){
-      model.services.Lotes.incluir( getLicitacao(), getNumeroLote(), 
+    if (isInclusao()) {
+      model.services.Lotes.incluir(getLicitacao(), getNumeroLote(),
               getNomeLote());
       getOrigem().setMensagem("Lote incluído.");
     }
-    if(isAlteracao()){
-      model.services.Lotes.alterar( getLote(), getNumeroLote(), 
+    if (isAlteracao()) {
+      model.services.Lotes.alterar(getLote(), getNumeroLote(),
               getNomeLote());
       getOrigem().setMensagem("Lote alterado.");
     }
-    if(isExclusao()){
-      model.services.Lotes.excluir( getLote() );
+    if (isExclusao()) {
+      model.services.Lotes.excluir(getLote());
       getOrigem().setMensagem("Lote excluído.");
     }
     getOrigem().refresh();
@@ -72,7 +74,7 @@ public class FormLote extends Form {
 
     setLote(model.services.Lotes.recuperar(Integer.parseInt(lote)));
     atualizaCampos();
-    setTitulo("Alterando lote " + getLicitacao()+"-"+getLote());
+    setTitulo("Alterando lote " + getLicitacao() + "-" + getLote());
     setAlteracao(true);
     getOrigem().setMensagem("");
     setNome(NOME_DEFAULT);
@@ -86,7 +88,7 @@ public class FormLote extends Form {
 
     setLote(model.services.Lotes.recuperar(Integer.parseInt(lote)));
     atualizaCampos();
-    setTitulo("Excluindo lote " + getLicitacao()+"-"+getLote());
+    setTitulo("Excluindo lote " + getLicitacao() + "-" + getLote());
     setExclusao(true);
     getOrigem().setMensagem("");
     setNome(NOME_DEFAULT);
@@ -106,7 +108,7 @@ public class FormLote extends Form {
         setNumeroLote(mlote.getNumero() + 1);
       }
     }
-    
+
     return getNome();
   }
 
@@ -200,5 +202,20 @@ public class FormLote extends Form {
 
       }
     }
+  }
+
+  public void refresh() throws ExcecaoForm {
+    if (!isInclusao()) {
+      try {
+        model.services.Lotes.recuperar(lote.getId());
+      } catch (NamingException ex) {
+        Logger.getLogger(FormLote.class.getName()).log(Level.SEVERE, null, ex);
+        throw new ExcecaoForm(ex.getMessage());
+      } catch (SQLException ex) {
+        Logger.getLogger(FormLote.class.getName()).log(Level.SEVERE, null, ex);
+        throw new ExcecaoForm(ex.getMessage());
+      }
+    }
+
   }
 }

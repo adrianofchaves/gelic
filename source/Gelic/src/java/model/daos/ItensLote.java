@@ -11,11 +11,59 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
 
+
+
+
 /**
  *
  * @author Adriano
  */
 public class ItensLote {
+
+  public static int alterar(model.beans.ItemLote itemLote, int numero, 
+          model.beans.Produto produto, float quantidade, float precoEstimado) 
+          throws SQLException, NamingException {
+    final String sql = "update ITENSLOTE set NUMERO=?, QUANTIDADE=?, " +
+            "PRECOESTIMADO=?, PRODUTO=? where ID=?";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sql);
+    pstmt.setInt(1, numero);
+    pstmt.setFloat(2, quantidade);
+    pstmt.setFloat(3, precoEstimado);
+    pstmt.setInt(4, produto.getId());
+    pstmt.setInt(5, itemLote.getId());
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
+  }
+
+  public static int excluir(model.beans.ItemLote itemLote) 
+          throws SQLException, NamingException {
+    final String sql = "delete from ITENSLOTE where ID = ?";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sql);
+    pstmt.setInt(1, itemLote.getId());
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
+  }
+
+  public static int incluir(model.beans.Lote lote, int numero, 
+          model.beans.Produto produto, float quantidade, float precoEstimado) 
+          throws SQLException, NamingException {
+    final String sql = "insert into ITENSLOTE(NUMERO, QUANTIDADE, " +
+            "PRECOESTIMADO, PRODUTO, LOTE) values (?,?,?,?,?)";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sql);
+    pstmt.setInt(1, numero);
+    pstmt.setFloat(2, quantidade);
+    pstmt.setFloat(3, precoEstimado);
+    pstmt.setInt(4, produto.getId());
+    pstmt.setInt(5, lote.getId());
+    int buffer = pstmt.executeUpdate();
+    pstmt.close();
+    return buffer;
+  }
 
   public static model.beans.ItemLote recuperar(int id)
           throws NamingException, SQLException {
