@@ -30,6 +30,15 @@ public class Lote {
   private int id;
   private String numeroContrato;
   ArrayList<ItemLote> itensLote;
+  ArrayList<LoteProposta> lotesProposta;
+
+  public ArrayList<LoteProposta> getLotesProposta() {
+    return lotesProposta;
+  }
+
+  public void setLotesProposta(ArrayList<LoteProposta> lotesProposta) {
+    this.lotesProposta = lotesProposta;
+  }
   
   public float getTotalEstimado(){
     if( getItensLote() == null ){

@@ -17,6 +17,7 @@ import control.commands.CadastroOrgaos;
 import control.commands.CadastroTiposDocumentos;
 import control.commands.CadastroTiposLicitacoes;
 import control.commands.CadastroProdutos;
+import control.commands.CadastroPropostas;
 import control.commands.Comando;
 import control.commands.ExcecaoComando;
 import control.commands.ExcluirContato;
@@ -117,6 +118,7 @@ public class ServletComercial extends HttpServlet {
         comandos.put("AlterarItemLote", new AlterarItemLote());
         comandos.put("ExcluirItemLote", new ExcluirItemLote()); 
         comandos.put("GravarItemLote", new GravarItemLote());
+        comandos.put("CadastroPropostas", new CadastroPropostas());
         
     }
 
