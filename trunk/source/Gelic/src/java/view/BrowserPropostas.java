@@ -7,7 +7,7 @@ package view;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
-import model.beans.EmpresaLote;
+
 
 /**
  *
@@ -19,11 +19,11 @@ public class BrowserPropostas extends Form {
   public static final String NOME_DEFAULT = NOME_ATRIBUTO_DEFAULT + ".jsp";
   ArrayList<model.beans.EmpresaLote> empresas;
 
-  public ArrayList<EmpresaLote> getEmpresas() {
+  public ArrayList<model.beans.EmpresaLote> getEmpresas() {
     return empresas;
   }
 
-  public void setEmpresas(ArrayList<EmpresaLote> empresas) {
+  public void setEmpresas(ArrayList<model.beans.EmpresaLote> empresas) {
     this.empresas = empresas;
   }
 

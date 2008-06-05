@@ -42,11 +42,11 @@
         <TD> </TD>
       </tr>
       <c:forEach 
-        var="proposta" 
-        items="${sessionScope.browserEmpresas.empresas}">                
+        var="empresa" 
+        items="${sessionScope.browserPropostas.empresas}">                
         <tr class="dados">
           <td>
-            <a href="Comercial?comando=AlterarProposta&empresa=${empresa.empresa.id}">
+            <a href="Comercial?comando=AlterarProposta&empresa=${empresa.empresa.cnpj}">
               ${empresa.empresa}
             </a>                        
           </td>                    
@@ -54,7 +54,7 @@
             ${empresa.total}
           </td>                    
           <td>
-            <a href="Comercial?comando=ExcluirProposta&proposta=${empresa.empresa.id}">
+            <a href="Comercial?comando=ExcluirProposta&proposta=${empresa.empresa.cnpj}">
               <img src="img/trash.PNG"  width="16" height="16" 
                    alt="trash"/>
             </a>
