@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model.beans;
 
 /**
@@ -10,7 +9,10 @@ package model.beans;
  * @author adriano
  */
 public class Proposta {
+
   private int idItemLote;
+  private model.beans.ItemLote itemLote;
+  private float preco;
 
   public int getIdItemLote() {
     return idItemLote;
@@ -24,9 +26,6 @@ public class Proposta {
     this.idItemLote = idItemLote;
     this.preco = preco;
   }
-  
-  private model.beans.ItemLote itemLote;
-  private float preco;  
 
   public ItemLote getItemLote() {
     return itemLote;
@@ -43,8 +42,8 @@ public class Proposta {
   public void setPreco(float preco) {
     this.preco = preco;
   }
-  public float getTotal(){
+
+  public float getTotal() {
     return getItemLote().getQuantidade() * getPreco();
   }
-
 }

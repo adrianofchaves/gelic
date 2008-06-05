@@ -24,7 +24,15 @@ import java.util.ArrayList;
 // #[regen=yes,id=DCE.E413090E-BDA9-411D-2941-6596971A8777]
 // </editor-fold> 
 public class Empresa {
-    
+    ArrayList<model.beans.EmpresaLote> lotes;
+
+  public ArrayList<EmpresaLote> getLotes() {
+    return lotes;
+  }
+
+  public void setLotes(ArrayList<EmpresaLote> lotes) {
+    this.lotes = lotes;
+  }
     
     /**
      *  <p style="margin-top: 0">
