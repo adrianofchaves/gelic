@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
-import model.beans.TipoEndereco;
 
 /**
  *
@@ -45,7 +44,7 @@ public class Empresas {
     }
 
     pstmt.setString(8, cnpj);
-    
+
     int regs = pstmt.executeUpdate();
     pstmt.close();
     return regs;
@@ -61,34 +60,36 @@ public class Empresas {
     return buffer;
   }
 
-  public static int incluir(String nomeFantasiaEmpresa, 
-          boolean ePortadorEmpresa, String razaoSocialEmpresa, 
-          boolean eFornecedorEmpresa, String cnpjEmpresa, String ieEmpresa, 
-          String imEmpresa, TipoEndereco end) 
+  public static int incluir(String nomeFantasiaEmpresa,
+          boolean ePortadorEmpresa, String razaoSocialEmpresa,
+          boolean eFornecedorEmpresa, String cnpjEmpresa, String ieEmpresa,
+          String imEmpresa, model.beans.TipoEndereco end)
           throws SQLException, NamingException {
     final String sqlIncluir = "insert into EMPRESAS(CNPJ, IE, IM, " +
             "RAZAOSOCIAL, NOMEFANTASIA, EPORTADOR, EFORNECEDOR, ENDERECO) " +
             "values (?, ?, ?, ?, ?, ?, ?, ?)";
     Connection gelic = model.services.Conexao.getConnection();
     PreparedStatement pstmt = gelic.prepareStatement(sqlIncluir);
-    
+
     pstmt.setString(1, cnpjEmpresa);
     pstmt.setString(2, ieEmpresa);
     pstmt.setString(3, imEmpresa);
     pstmt.setString(4, razaoSocialEmpresa);
     pstmt.setString(5, nomeFantasiaEmpresa);
-    if( ePortadorEmpresa )
+    if (ePortadorEmpresa) {
       pstmt.setBoolean(6, true);
-    else
+    } else {
       pstmt.setBoolean(6, false);
-    if( eFornecedorEmpresa )
+    }
+    if (eFornecedorEmpresa) {
       pstmt.setBoolean(7, true);
-    else
+    } else {
       pstmt.setBoolean(7, false);
+    }
     pstmt.setInt(8, end.getId());
-    
+
     int regs = pstmt.executeUpdate();
-    
+
     pstmt.close();
     return regs;
   }
@@ -154,6 +155,42 @@ public class Empresas {
           "select CNPJ, IE, IM, RAZAOSOCIAL, NOMEFANTASIA, EPORTADOR, " +
           "EFORNECEDOR from empresas where CNPJ = ?";
 
+  public static void recuperar(model.beans.Lote lote)
+          throws NamingException, SQLException {
+    final String sqlConta = "select count(*) from EMPRESASLOTES where LOTE = ?";
+
+    final String sql = "select LOTE, EMPRESA, CNPJ, IE, IM, RAZAOSOCIAL, " +
+            " NOMEFANTASIA, EPORTADOR, EFORNECEDOR from EMPRESAS " +
+            " inner join EMPRESASLOTES " +
+            " on (EMPRESASLOTES.LOTE = ?) and " +
+            " (EMPRESAS.CNPJ = EMPRESASLOTES.EMPRESA)";
+
+    Connection gelic = model.services.Conexao.getPool().getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sqlConta);
+    pstmt.setInt(1, lote.getId());
+    ResultSet rs = pstmt.executeQuery();
+    rs.next();
+    lote.setEmpresas(new ArrayList<model.beans.EmpresaLote>(rs.getInt(1)));
+    rs.close();
+    pstmt.close();
+    pstmt = gelic.prepareStatement(sql);
+    pstmt.setInt(1, lote.getId());
+    rs = pstmt.executeQuery();
+    while (rs.next()) {
+      lote.getEmpresas().add( new model.beans.EmpresaLote( lote, 
+              criaEmpresa(
+              rs.getString("CNPJ"),
+              rs.getString("IE"),
+              rs.getString("IM"),
+              rs.getString("RAZAOSOCIAL"),
+              rs.getString("NOMEFANTASIA"),
+              rs.getString("EPORTADOR"),
+              rs.getString("EFORNECEDOR"))));
+    }
+
+
+  }
+
   public static model.beans.Empresa recuperar(String cnpj)
           throws SQLException, NamingException {
     Connection gelic = model.services.Conexao.getConnection();
@@ -174,6 +211,7 @@ public class Empresas {
     /*
      * Para aproveitar a conexão no pool é necessário fechar tudo...
      */
+
     rs.close();
     pstmt.close();
     gelic.close();
@@ -195,11 +233,13 @@ public class Empresas {
     } else {
       empresa.setEFornecedor(false);
     }
+
     if (ePortador != null && ePortador.equalsIgnoreCase("s")) {
       empresa.setEPortador(true);
     } else {
       empresa.setEPortador(false);
     }
+
     return empresa;
   }
 }

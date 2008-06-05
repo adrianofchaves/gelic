@@ -29,15 +29,15 @@ public class Lote {
 
   private int id;
   private String numeroContrato;
-  ArrayList<ItemLote> itensLote;
-  ArrayList<LoteProposta> lotesProposta;
-
-  public ArrayList<LoteProposta> getLotesProposta() {
-    return lotesProposta;
+  private ArrayList<ItemLote> itensLote;
+  private ArrayList<EmpresaLote> empresas;
+  
+  public ArrayList<EmpresaLote> getEmpresas() {
+    return empresas;
   }
 
-  public void setLotesProposta(ArrayList<LoteProposta> lotesProposta) {
-    this.lotesProposta = lotesProposta;
+  public void setEmpresas(ArrayList<EmpresaLote> empresas) {
+    this.empresas = empresas;
   }
   
   public float getTotalEstimado(){
