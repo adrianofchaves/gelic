@@ -4,6 +4,8 @@
  */
 package view;
 
+import model.beans.Proposta;
+
 
 
 /**
@@ -15,6 +17,15 @@ public class ItemFormProposta {
   private float valor;
   private String nome;
   private String erro;
+  private model.beans.Proposta proposta;
+
+  public Proposta getProposta() {
+    return proposta;
+  }
+
+  public void setProposta(Proposta proposta) {
+    this.proposta = proposta;
+  }
   
   private model.beans.ItemLote itemLote;
 
