@@ -28,6 +28,7 @@ import control.commands.ExcluirLicitacao;
 import control.commands.ExcluirLote;
 import control.commands.ExcluirOrgao;
 import control.commands.ExcluirProduto;
+import control.commands.ExcluirProposta;
 import control.commands.ExcluirTipoDocumento;
 import control.commands.ExcluirTipoLicitacao;
 import control.commands.GravarContato;
@@ -123,6 +124,7 @@ public class ServletComercial extends HttpServlet {
         comandos.put("CadastroPropostas", new CadastroPropostas());
         comandos.put("NovaProposta", new NovaProposta());
         comandos.put("AlterarProposta", new AlterarProposta());
+        comandos.put("ExcluirProposta", new ExcluirProposta());
         
     }
 
