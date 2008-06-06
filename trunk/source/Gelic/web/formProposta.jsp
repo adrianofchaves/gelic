@@ -52,16 +52,19 @@
         </select>
       </P>
       
-      <table class="tabelaCadastro">
-        <th style = "width:60%" align="left">Item</th>
-        <th style = "width:20%" align="left">Quantidade</th>
-        <th style = "width:20%" align="left">Preço</th>
+      <table style="width: 90%">
+        <th style="width: 10%"></th>
+        <th style="width: 10%" align="left">Item</th>
+        <th style="width: 60%" align="left">Produto</th>
+        <th style="width: 20%" align="left">Quantidade</th>
+        <th style="width: 20%" align="left">Preço</th>
         <c:forEach var="item" items="${sessionScope.formProposta.itens}">
           <tr>
+            <td style="width: 10%"></td>
+            <td>${item.itemLote.numero}</td>
             <td>${item.itemLote.produto}</td>
             <td>${item.itemLote.quantidade}</td>
-            <td><input type="text" name="${item.nome}" class="tabelaCadastro"
-                       value="${item.valor}"
+            <td><input type="text" name="${item.nome}" value="${item.valor}"
                        maxlength=30
                        <c:if test="${sessionScope.formProposta.exclusao}">
                          disabled
@@ -69,9 +72,8 @@
                        />
                        </td>
           </tr>
-          <tr class="tabelaErro">
-            <td></td>
-            <td></td>
+          <tr>            
+            <td></td><td></td><td></td>
             <td class="tabelaErro">${item.erro}</td>
           </tr>
         </c:forEach>

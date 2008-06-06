@@ -29,11 +29,12 @@
                     <a href="homeComercial.jsp">Todas licitações</a>
                     TODO: tela que lista todas as licitações com critérios 
                 </th> -->
+      <!--
       <th class="menuItem" >
         <a href="Comercial?comando=CadastroTiposDocumentos">
           Tipos de documento
         </a>
-      </th>
+      </th> -->
       <th class="menuItem" >
         <a href="Comercial?comando=CadastroProdutos">Produtos</a>
       </th>

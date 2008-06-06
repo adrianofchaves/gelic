@@ -233,9 +233,12 @@ table.tabelaErro{
     margin-bottom: 10px;
 }
 td.tabelaErro{
-    padding-left: 5px;
-    padding-right: 5px;
-    vertical-align: top;
+    width: 90%;    
+    margin-left: 5%;
+    color: red;
+    font-weight: bold;
+    font-size: X-small;
+    margin-bottom: 10px;
 }
 table.tabelaCadastro{
     width: 90%;        

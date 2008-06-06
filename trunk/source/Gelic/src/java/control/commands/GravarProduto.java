@@ -43,23 +43,23 @@ public class GravarProduto implements Comando {
               "codigoProduto"));
       frm.setDescricaoProduto(util.Request.getParameter(req,
               "descricaoProduto"));
-      try{
-      frm.setPrecovendaProduto(Float.parseFloat(
-              util.Request.getParameter(req, "precovendaProduto")));
-      }catch(NullPointerException ex){
+      try {
+        frm.setPrecovendaProduto(Float.parseFloat(
+                util.Request.getParameter(req, "precovendaProduto")));
+      } catch (NullPointerException ex) {
         frm.setPrecovendaProduto(0);
-      }catch(NumberFormatException ex){
+      } catch (NumberFormatException ex) {
         frm.setPrecovendaProduto(0);
       }
-      try{
-      frm.setPrecocompraProduto(Float.parseFloat(
-              util.Request.getParameter(req, "precocompraProduto")));
-      }catch(NullPointerException ex){
+      try {
+        frm.setPrecocompraProduto(Float.parseFloat(
+                util.Request.getParameter(req, "precocompraProduto")));
+      } catch (NullPointerException ex) {
         frm.setPrecovendaProduto(0);
-      }catch(NumberFormatException ex){
+      } catch (NumberFormatException ex) {
         frm.setPrecocompraProduto(0);
       }
-      
+
       frm.valida();
 
       if (frm.temErros()) {
