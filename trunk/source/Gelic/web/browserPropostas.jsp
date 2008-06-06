@@ -46,7 +46,7 @@
         items="${sessionScope.browserPropostas.empresas}">                
         <tr class="dados">
           <td>
-            <a href="Comercial?comando=AlterarProposta&empresa=${empresa.empresa.cnpj}">
+            <a href="Comercial?comando=AlterarProposta&proposta=${empresa.empresa.cnpj}">
               ${empresa.empresa}
             </a>                        
           </td>                    

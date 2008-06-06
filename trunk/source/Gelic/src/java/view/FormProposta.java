@@ -48,6 +48,28 @@ public class FormProposta extends Form {
     return getNome();
   }
 
+  public String preparaExclusao(String empresa) 
+          throws NamingException, SQLException {
+    prepara();
+
+    for (model.beans.EmpresaLote emp : getLote().getEmpresas()) {
+      if (empresa.equals(emp.getEmpresa().getCnpj())) {
+        setEmpresaProposta(emp.getEmpresa().toString());
+        for (model.beans.Proposta proposta : emp.getPropostas()) {
+          for( ItemFormProposta itemForm : getItens()){
+            if( itemForm.getItemLote().getId() == proposta.getIdItemLote()){
+              itemForm.setProposta(proposta);
+              itemForm.setValor(proposta.getPreco());
+            }
+          }
+        }
+      }
+    }
+    setTitulo("Excluindo proposta");
+    setExclusao(true);
+    return getNome();
+  }
+
   public void setEmpresaProposta(String empresaProposta) {
     this.empresaProposta = empresaProposta;
   }
