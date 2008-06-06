@@ -22,9 +22,10 @@
           <a href="homeComercial.jsp">Voltar</a>
         </th>
         <c:if test="${sessionScope.formLicitacao.alteracao}">
+          <!--
           <th class="menuItem" >
             <a href="browserDocumentosLicitacoes.jsp">Documentos</a>
-          </th>
+          </th> -->
           <th class="menuItem" >
             <a href="Comercial?comando=CadastroLotes">Lotes</a>                    
           </th>

@@ -27,6 +27,18 @@ public class FormProposta extends Form {
     return empresaProposta;
   }
 
+  public String gravar() {
+    if( isExclusao()){
+      apagaErros();
+    }
+    valida();
+    if( !getErros().isEmpty()){
+      return getNome();
+    }
+      
+    throw new UnsupportedOperationException("Not yet implemented");
+  }
+
   public String preparaAlteracao(String empresa) throws NamingException, SQLException {
     prepara();
 
@@ -154,5 +166,9 @@ public class FormProposta extends Form {
     prepara();
     setTitulo("Nova proposta");
     return getNome();
+  }
+
+  private void valida() {
+    
   }
 }
