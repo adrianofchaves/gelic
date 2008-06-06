@@ -39,12 +39,13 @@
       
       <P>
         Empresa: <BR>
-        <select name="empresaProposta" class="tabelaCadastro" 
+        <select name="empresaProposta" class="cadastro" style = "width:40%"
                 <c:if test="${sessionScope.formProposta.exclusao}">disabled</c:if>
                 >
-                <c:forEach var="proposta" items="${sessionScope.formPropostas.empresas}">
+                <c:forEach var="empresa" 
+                           items="${sessionScope.formProposta.empresas}">
                   <option 
-                  <c:if test="${empresa==sessionScope.formProposta.empresa}">
+                  <c:if test="${empresa==sessionScope.formProposta.empresaProposta}">
                     selected 
                   </c:if> >${empresa}</option>
           </c:forEach>
@@ -52,21 +53,21 @@
       </P>
       
       <table class="tabelaCadastro">
-        <th>Item</th>
-        <th>Quantidade</th>
-        <th>Preço</th>
+        <th style = "width:60%" align="left">Item</th>
+        <th style = "width:20%" align="left">Quantidade</th>
+        <th style = "width:20%" align="left">Preço</th>
         <c:forEach var="item" items="${sessionScope.formProposta.itens}">
           <tr>
-            <td>${item.produto}</td>
-            <td>${item.quantidade}</td>
-            <td><input type="text" name="${item.nome}" class="caixaTexto"
-                       value="${item.preco}"
+            <td>${item.itemLote.produto}</td>
+            <td>${item.itemLote.quantidade}</td>
+            <td><input type="text" name="${item.nome}" class="tabelaCadastro"
+                       value="${item.valor}"
                        maxlength=30
                        <c:if test="${sessionScope.formProposta.exclusao}">
                          disabled
                        </c:if>         
                        />
-            </td>
+                       </td>
           </tr>
           <tr class="tabelaErro">
             <td></td>
