@@ -22,7 +22,7 @@
         Voltar</a>
       </th>
       <th class="menuItem" >
-        <a href="Comercial?comando=NovaEmpresa">
+        <a href="Comercial?comando=NovaProposta">
         Nova proposta</a>                    
       </th>
       <th class="menuItem" >
