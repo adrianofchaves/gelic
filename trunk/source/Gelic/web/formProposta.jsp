@@ -40,7 +40,7 @@
       <P>
         Empresa: <BR>
         <select name="empresaProposta" class="cadastro" style = "width:40%"
-                <c:if test="${sessionScope.formProposta.exclusao}">disabled</c:if>
+                <c:if test="${!sessionScope.formProposta.inclusao}">disabled</c:if>
                 >
                 <c:forEach var="empresa" 
                            items="${sessionScope.formProposta.empresas}">
