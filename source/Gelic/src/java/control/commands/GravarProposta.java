@@ -4,8 +4,12 @@
  */
 package control.commands;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
-import view.FormProposta;
+import view.ExcecaoForm;
 
 /**
  *
@@ -14,16 +18,30 @@ import view.FormProposta;
 public class GravarProposta implements Comando {
 
   public String executar(HttpServletRequest req) throws ExcecaoComando {
-    view.FormProposta form = (view.FormProposta) req.getSession().
+    try {
+      view.FormProposta form = (view.FormProposta) req.getSession().
             getAttribute(view.FormProposta.NOME_ATRIBUTO_DEFAULT);
-    if (req.getParameter("cancelar") != null) {
-      return form.getOrigem().getNome();
+      if (req.getParameter("cancelar") != null) {
+        return form.getOrigem().getNome();
+      }
+      populaForm(req, form);
+      return form.gravar();
+    } catch (SQLException ex) {
+      Logger.getLogger(GravarProposta.class.getName()).
+              log(Level.SEVERE, null, ex);
+       throw new ExcecaoComando(ex.getMessage());
+    } catch (NamingException ex) {
+      Logger.getLogger(GravarProposta.class.getName()).
+              log(Level.SEVERE, null, ex);
+       throw new ExcecaoComando(ex.getMessage());
+    } catch (view.ExcecaoForm ex) {
+      Logger.getLogger(GravarProposta.class.getName()).
+              log(Level.SEVERE, null, ex);
+      throw new ExcecaoComando(ex.getMessage());
     }
-    populaForm(req, form);
-    return form.gravar();
   }
 
-  private void populaForm(HttpServletRequest req, FormProposta form) {    
+  private void populaForm(HttpServletRequest req, view.FormProposta form) {    
     form.setEmpresaProposta(util.Request.getParameter(req, "empresaProposta"));
     for (view.ItemFormProposta item : form.getItens()) {
       String buffer = util.Request.getParameter(req, item.getNome());

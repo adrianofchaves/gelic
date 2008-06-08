@@ -7,6 +7,8 @@ package view;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
+import model.beans.Empresa;
+import model.beans.EmpresaLote;
 
 /**
  *
@@ -17,26 +19,54 @@ public class FormProposta extends Form {
   static final public String NOME_ATRIBUTO_DEFAULT = "formProposta";
   static final public String NOME_DEFAULT = NOME_ATRIBUTO_DEFAULT + ".jsp";
   private ArrayList<model.beans.Empresa> empresas;
+  private String empresaProposta;
+  private model.beans.EmpresaLote empresa;
   private ArrayList<ItemFormProposta> itens;
   private boolean inclusao;
   private boolean exclusao;
   private boolean alteracao;
-  private String empresaProposta;
+
+  public EmpresaLote getEmpresa() {
+    return empresa;
+  }
+
+  public void setEmpresa(EmpresaLote empresa) {
+    this.empresa = empresa;
+  }
 
   public String getEmpresaProposta() {
     return empresaProposta;
   }
 
-  public String gravar() {
-    if( isExclusao()){
+  public String gravar() throws ExcecaoForm, SQLException, NamingException {
+    if (isExclusao()) {
       apagaErros();
     }
     valida();
-    if( !getErros().isEmpty()){
+    if (!getErros().isEmpty()) {
       return getNome();
     }
-      
-    throw new UnsupportedOperationException("Not yet implemented");
+    if (isExclusao()) {
+      model.services.Propostas.excluir(getLote(), getEmpresa());
+      getOrigem().setMensagem("Proposta excluída.");
+    }else{
+      float precos[] = new float[getItens().size()];
+      int indice = 0;
+      for( ItemFormProposta item : getItens()){
+        precos[indice++] = item.getValor();
+      }
+      if( isAlteracao() ){
+        model.services.Propostas.alterar(getLote(), getEmpresa(), precos);
+        getOrigem().setMensagem("Proposta alterada.");
+      }
+      if( isInclusao()){
+        model.services.Propostas.incluir(getLote(), getEmpresa(), precos);
+        getOrigem().setMensagem("Proposta incluída.");
+        
+      }
+    }
+    getOrigem().refresh();
+    return getOrigem().getNome();
   }
 
   public String preparaAlteracao(String empresa) throws NamingException, SQLException {
@@ -44,10 +74,11 @@ public class FormProposta extends Form {
 
     for (model.beans.EmpresaLote emp : getLote().getEmpresas()) {
       if (empresa.equals(emp.getEmpresa().getCnpj())) {
+        setEmpresa(emp);
         setEmpresaProposta(emp.getEmpresa().toString());
         for (model.beans.Proposta proposta : emp.getPropostas()) {
-          for( ItemFormProposta itemForm : getItens()){
-            if( itemForm.getItemLote().getId() == proposta.getIdItemLote()){
+          for (ItemFormProposta itemForm : getItens()) {
+            if (itemForm.getItemLote().getId() == proposta.getIdItemLote()) {
               itemForm.setProposta(proposta);
               itemForm.setValor(proposta.getPreco());
             }
@@ -60,7 +91,7 @@ public class FormProposta extends Form {
     return getNome();
   }
 
-  public String preparaExclusao(String empresa) 
+  public String preparaExclusao(String empresa)
           throws NamingException, SQLException {
     prepara();
 
@@ -68,8 +99,8 @@ public class FormProposta extends Form {
       if (empresa.equals(emp.getEmpresa().getCnpj())) {
         setEmpresaProposta(emp.getEmpresa().toString());
         for (model.beans.Proposta proposta : emp.getPropostas()) {
-          for( ItemFormProposta itemForm : getItens()){
-            if( itemForm.getItemLote().getId() == proposta.getIdItemLote()){
+          for (ItemFormProposta itemForm : getItens()) {
+            if (itemForm.getItemLote().getId() == proposta.getIdItemLote()) {
               itemForm.setProposta(proposta);
               itemForm.setValor(proposta.getPreco());
             }
@@ -169,6 +200,6 @@ public class FormProposta extends Form {
   }
 
   private void valida() {
-    
+
   }
 }
