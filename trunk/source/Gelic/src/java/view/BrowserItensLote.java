@@ -38,6 +38,7 @@ public class BrowserItensLote extends Form{
     try {
       getOrigem().refresh();
       model.services.ItensLote.recuperar(getLote());
+      setItensLote( getLote().getItensLote() );
     } catch (NamingException ex) {
       Logger.getLogger(
               BrowserItensLote.class.getName()).log(Level.SEVERE, null, ex);
