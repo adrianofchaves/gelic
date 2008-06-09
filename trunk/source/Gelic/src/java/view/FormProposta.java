@@ -43,30 +43,40 @@ public class FormProposta extends Form {
       apagaErros();
     }
     valida();
-    if (!getErros().isEmpty()) {
+    if (temErros()) {
       return getNome();
     }
     if (isExclusao()) {
       model.services.Propostas.excluir(getLote(), getEmpresa());
       getOrigem().setMensagem("Proposta excluída.");
-    }else{
+    } else {
       float precos[] = new float[getItens().size()];
       int indice = 0;
-      for( ItemFormProposta item : getItens()){
+      for (ItemFormProposta item : getItens()) {
         precos[indice++] = item.getValor();
       }
-      if( isAlteracao() ){
+      if (isAlteracao()) {
         model.services.Propostas.alterar(getLote(), getEmpresa(), precos);
         getOrigem().setMensagem("Proposta alterada.");
       }
-      if( isInclusao()){
-        model.services.Propostas.incluir(getLote(), getEmpresa(), precos);
+      if (isInclusao()) {
+        calculaEmpresa();
+        model.services.Propostas.incluir(getLote(), calculaEmpresa(), precos);
         getOrigem().setMensagem("Proposta incluída.");
-        
+
       }
     }
     getOrigem().refresh();
     return getOrigem().getNome();
+  }
+
+  private model.beans.Empresa calculaEmpresa() {
+    for (model.beans.Empresa emp : getEmpresas()) {
+      if (emp.toString().equals(getEmpresaProposta())) {
+        return emp;
+      }      
+    }
+    return null;
   }
 
   public String preparaAlteracao(String empresa) throws NamingException, SQLException {
@@ -196,6 +206,7 @@ public class FormProposta extends Form {
   public String preparaInclusao() throws NamingException, SQLException {
     prepara();
     setTitulo("Nova proposta");
+    setInclusao(true);
     return getNome();
   }
 
