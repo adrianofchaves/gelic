@@ -25,6 +25,7 @@ public class GravarItemLote implements Comando {
       if (req.getParameter("cancelar") != null) {
         return form.cancelar();
       }
+      form.apagaErros();
       populaForm(form, req);
       return form.gravar();
     } catch (ExcecaoForm ex) {

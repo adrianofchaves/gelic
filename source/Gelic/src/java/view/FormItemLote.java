@@ -52,7 +52,16 @@ public class FormItemLote extends Form {
     }
     return null;
   }
-
+  
+  @Override
+  public void apagaErros(){
+    super.apagaErros();
+    erroNumeroItemLote="";
+    erroPrecoEstimadoItemLote = "";
+    erroProdutoItemLote = "";
+    erroQuantidadeItemLote = "";
+  }
+          
   public String gravar() throws SQLException, NamingException, ExcecaoForm {
     if (isExclusao()) {
       //ignora erros de parse

@@ -47,19 +47,30 @@ public class ItensLote {
     pstmt.close();
     return buffer;
   }
-
+  private static int getNextID() throws SQLException, NamingException{
+    final String sql = "select gen_id(GEN_ITENSLOTE_ID, 1) from rdb$database";
+    Connection gelic = model.services.Conexao.getConnection();
+    PreparedStatement pstmt = gelic.prepareStatement(sql);
+    ResultSet rs = pstmt.executeQuery();
+    rs.next();
+    int buffer = rs.getInt(1);
+    rs.close();
+    pstmt.close();
+    return buffer;
+  }
   public static int incluir(model.beans.Lote lote, int numero, 
           model.beans.Produto produto, float quantidade, float precoEstimado) 
           throws SQLException, NamingException {
-    final String sql = "insert into ITENSLOTE(NUMERO, QUANTIDADE, " +
-            "PRECOESTIMADO, PRODUTO, LOTE) values (?,?,?,?,?)";
+    final String sql = "insert into ITENSLOTE(ID, NUMERO, QUANTIDADE, " +
+            "PRECOESTIMADO, PRODUTO, LOTE) values (?, ?,?,?,?,?)";
     Connection gelic = model.services.Conexao.getConnection();
     PreparedStatement pstmt = gelic.prepareStatement(sql);
-    pstmt.setInt(1, numero);
-    pstmt.setFloat(2, quantidade);
-    pstmt.setFloat(3, precoEstimado);
-    pstmt.setInt(4, produto.getId());
-    pstmt.setInt(5, lote.getId());
+    pstmt.setInt(1,  getNextID());
+    pstmt.setInt(2, numero);
+    pstmt.setFloat(3, quantidade);
+    pstmt.setFloat(4, precoEstimado);
+    pstmt.setInt(5, produto.getId());
+    pstmt.setInt(6, lote.getId());
     int buffer = pstmt.executeUpdate();
     pstmt.close();
     return buffer;
