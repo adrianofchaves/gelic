@@ -38,7 +38,7 @@
       </c:forEach>           
       
       <P>
-        Empresa: <BR>
+        Empresa: ${!sessionScope.formProposta.inclusao}<BR>
         <select name="empresaProposta" class="cadastro" style = "width:40%"
                 <c:if test="${!sessionScope.formProposta.inclusao}">disabled</c:if>
                 >

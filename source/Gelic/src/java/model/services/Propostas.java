@@ -23,7 +23,7 @@ public class Propostas {
       int indice = 0;
       for (float preco : precos) {
         model.daos.Propostas.incluir(lote.getItensLote().get(indice++), 
-                empresa, preco);
+                empresa.getEmpresa(), preco);
       }
 
       gelic.commit();
@@ -49,7 +49,7 @@ public class Propostas {
   }
 
   public static void incluir(model.beans.Lote lote,
-          model.beans.EmpresaLote empresa, float[] precos)
+          model.beans.Empresa empresa, float[] precos)
           throws SQLException, NamingException {
     Connection gelic = model.services.Conexao.getConnection();
     try {

@@ -142,7 +142,7 @@ public class ItensLote {
           throws NamingException, SQLException {
     final String sql = "select ID, NUMERO, QUANTIDADE, PRECOESTIMADO, " +
             "PRECOPROPOSTO, PRECOCOMPRA, PRODUTO, LOTE " +
-            "from ITENSLOTE where LOTE=?";
+            "from ITENSLOTE where LOTE=? order by NUMERO";
     final String sqlConta = "select count(*) from ITENSLOTE where LOTE=?";
     Connection gelic = model.services.Conexao.getPool().getConnection();
 

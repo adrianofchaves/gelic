@@ -50,13 +50,13 @@ public class Propostas {
   }
 
   public static int incluir(model.beans.ItemLote itemLote,
-          model.beans.EmpresaLote empresa, float preco) 
+          model.beans.Empresa empresa, float preco) 
           throws SQLException, NamingException {
     final String sql = "insert into PROPOSTAS(CNPJ, ITEMLOTE, PRECOUNITARIO) " +
             "values (?,?,?)";
     Connection gelic = model.services.Conexao.getConnection();    
     PreparedStatement pstmt = gelic.prepareStatement(sql);
-    pstmt.setString(1, empresa.getIdEmpresa());
+    pstmt.setString(1, empresa.getCnpj());
     pstmt.setInt(2, itemLote.getId());
     pstmt.setFloat(3, preco);
     int buffer = pstmt.executeUpdate();
