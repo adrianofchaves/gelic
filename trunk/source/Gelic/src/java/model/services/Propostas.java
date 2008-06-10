@@ -53,6 +53,8 @@ public class Propostas {
           throws SQLException, NamingException {
     Connection gelic = model.services.Conexao.getConnection();
     try {
+      
+      model.daos.EmpresasLotes.incluir( lote, empresa );
       int indice = 0;
       for (float preco : precos) {
         model.daos.Propostas.incluir(lote.getItensLote().get(indice++), 

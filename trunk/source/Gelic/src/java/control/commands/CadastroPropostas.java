@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
+import view.ExcecaoForm;
 
 /**
  *
@@ -24,6 +25,10 @@ public class CadastroPropostas implements Comando {
       req.getSession().setAttribute(view.BrowserPropostas.NOME_ATRIBUTO_DEFAULT, browser);
       browser.setOrigem(form);
       return browser.executar();
+    } catch (ExcecaoForm ex) {
+      Logger.getLogger(CadastroPropostas.class.getName()).log(
+              Level.SEVERE, null, ex);
+      throw new ExcecaoComando(ex.getMessage());
     } catch (NamingException ex) {
       Logger.getLogger(CadastroPropostas.class.getName()).log(
               Level.SEVERE, null, ex);

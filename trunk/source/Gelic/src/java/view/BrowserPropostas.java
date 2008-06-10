@@ -6,8 +6,9 @@ package view;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.naming.NamingException;
-
 
 /**
  *
@@ -43,17 +44,31 @@ public class BrowserPropostas extends Form {
     return getFormLote().getLote();
   }
 
-  public String executar() throws NamingException, SQLException {
-
-    model.services.Propostas.recuperar(getLote());
-    setEmpresas(getLote().getEmpresas());
-
-    if (getEmpresas().isEmpty()) {
-      setMensagem("Não há proposta para este lote ainda.");
-    }
+  public String executar() throws NamingException, SQLException, ExcecaoForm {
+    refresh();
     setTitulo("Propostas do lote " + getLicitacao() + "-" + getLote());
     setNome(NOME_DEFAULT);
     return getNome();
   }
 
+  @Override
+  public void refresh() throws ExcecaoForm  {
+    try {
+      model.services.Propostas.recuperar(getLote());
+      setEmpresas(getLote().getEmpresas());
+
+      if (getEmpresas().isEmpty()) {
+        setMensagem("Não há proposta para este lote ainda.");
+      }
+    } catch (NamingException ex) {
+      Logger.getLogger(BrowserPropostas.class.getName()).
+              log(Level.SEVERE, null, ex);
+      throw new ExcecaoForm(ex.getMessage());
+    } catch (SQLException ex) {
+      Logger.getLogger(BrowserPropostas.class.getName()).
+              log(Level.SEVERE, null, ex);
+      throw new ExcecaoForm(ex.getMessage());
+    }
+
+  }
 }
