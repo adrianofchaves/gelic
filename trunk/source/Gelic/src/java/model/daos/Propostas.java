@@ -18,7 +18,7 @@ import javax.naming.NamingException;
 public class Propostas {
 
   public static int excluir(model.beans.Lote lote,
-          model.beans.EmpresaLote empresa) 
+          model.beans.EmpresaLote empresa)
           throws SQLException, NamingException {
     final String sqlEmpresaLote =
             "delete from EMPRESASLOTES where empresa = ? and lote = ?";
@@ -37,10 +37,10 @@ public class Propostas {
   }
 
   public static int incluir(model.beans.Lote lote,
-          model.beans.EmpresaLote empresa) 
+          model.beans.EmpresaLote empresa)
           throws SQLException, NamingException {
     final String sql = "insert into EMPRESASLOTES(EMPRESA,LOTE) values (?,?)";
-    Connection gelic = model.services.Conexao.getConnection();    
+    Connection gelic = model.services.Conexao.getConnection();
     PreparedStatement pstmt = gelic.prepareStatement(sql);
     pstmt.setString(1, empresa.getIdEmpresa());
     pstmt.setInt(2, lote.getId());
@@ -50,11 +50,11 @@ public class Propostas {
   }
 
   public static int incluir(model.beans.ItemLote itemLote,
-          model.beans.Empresa empresa, float preco) 
+          model.beans.Empresa empresa, float preco)
           throws SQLException, NamingException {
     final String sql = "insert into PROPOSTAS(CNPJ, ITEMLOTE, PRECOUNITARIO) " +
             "values (?,?,?)";
-    Connection gelic = model.services.Conexao.getConnection();    
+    Connection gelic = model.services.Conexao.getConnection();
     PreparedStatement pstmt = gelic.prepareStatement(sql);
     pstmt.setString(1, empresa.getCnpj());
     pstmt.setInt(2, itemLote.getId());
@@ -62,6 +62,42 @@ public class Propostas {
     int buffer = pstmt.executeUpdate();
     pstmt.close();
     return buffer;
+  }
+
+  public static void recuperar(model.beans.EmpresaLote empresa)
+          throws NamingException, SQLException {
+    final String sqlConta = "select count(*) " +
+            " from PROPOSTAS inner join ITENSLOTE on " +
+            " (PROPOSTAS.ITEMLOTE = ITENSLOTE.ID) and " +
+            " (ITENSLOTE.LOTE = ?) and " +
+            " (PROPOSTAS.CNPJ = ?) ";
+    final String sql = "select CNPJ, ITEMLOTE, PRECOUNITARIO " +
+            " from PROPOSTAS inner join ITENSLOTE on " +
+            " (PROPOSTAS.ITEMLOTE = ITENSLOTE.ID) and " +
+            " (ITENSLOTE.LOTE = ?) and " +
+            " (PROPOSTAS.CNPJ = ?) ";
+    Connection gelic = model.services.Conexao.getPool().getConnection();
+    
+    PreparedStatement pstmt = gelic.prepareStatement(sqlConta);
+    pstmt.setInt(1, empresa.getIdLote());
+    pstmt.setString(2, empresa.getIdEmpresa());
+    ResultSet rs = pstmt.executeQuery();
+    rs.next();
+    empresa.setPropostas(new ArrayList<model.beans.Proposta>(rs.getInt(1)));
+    rs.close();
+    pstmt.close();
+    
+    pstmt = gelic.prepareStatement(sql);
+    pstmt.setInt(1, empresa.getIdLote());
+    pstmt.setString(2, empresa.getIdEmpresa());
+    rs = pstmt.executeQuery();
+    while (rs.next()) {
+      model.beans.Proposta proposta = new model.beans.Proposta(
+              rs.getInt("ITEMLOTE"),
+              rs.getFloat("PRECOUNITARIO"));
+      empresa.getPropostas().add(proposta);
+    }
+
   }
 
   public static void recuperar(model.beans.Lote lote)
