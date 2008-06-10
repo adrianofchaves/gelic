@@ -114,6 +114,7 @@ public class FormProposta extends Form {
 
     for (model.beans.EmpresaLote emp : getLote().getEmpresas()) {
       if (empresa.equals(emp.getEmpresa().getCnpj())) {
+        setEmpresa(emp);
         setEmpresaProposta(emp.getEmpresa().toString());
         for (model.beans.Proposta proposta : emp.getPropostas()) {
           for (ItemFormProposta itemForm : getItens()) {

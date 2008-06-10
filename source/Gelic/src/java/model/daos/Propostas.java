@@ -21,16 +21,21 @@ public class Propostas {
           model.beans.EmpresaLote empresa)
           throws SQLException, NamingException {
     final String sqlEmpresaLote =
-            "delete from EMPRESASLOTES where empresa = ? and lote = ?";
+            "delete from EMPRESASLOTES where EMPRESA = ? and LOTE = ?";
     final String sqlProposta =
-            "delete from PROPOSTAS where empresa = ? and lote = ?";
+            "delete from PROPOSTAS where (CNPJ = ?) and " +
+            " (ITEMLOTE in (select ID from ITENSLOTE where LOTE=?))";
     Connection gelic = model.services.Conexao.getConnection();
     PreparedStatement pstmt = gelic.prepareStatement(sqlEmpresaLote);
     pstmt.setString(1, empresa.getIdEmpresa());
     pstmt.setInt(2, lote.getId());
     int buffer = pstmt.executeUpdate();
     pstmt.close();
+
     pstmt = gelic.prepareStatement(sqlProposta);
+    pstmt.setString(1, empresa.getIdEmpresa());
+    pstmt.setInt(2, lote.getId());
+
     buffer += pstmt.executeUpdate();
     pstmt.close();
     return buffer;
