@@ -7,7 +7,6 @@ package view;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
-import model.beans.Empresa;
 import model.beans.EmpresaLote;
 
 /**
@@ -20,6 +19,15 @@ public class FormProposta extends Form {
   static final public String NOME_DEFAULT = NOME_ATRIBUTO_DEFAULT + ".jsp";
   private ArrayList<model.beans.Empresa> empresas;
   private String empresaProposta;
+  private String erroEmpresaProposta;
+
+  public String getErroEmpresaProposta() {
+    return erroEmpresaProposta;
+  }
+
+  public void setErroEmpresaProposta(String erroEmpresaProposta) {
+    this.erroEmpresaProposta = erroEmpresaProposta;
+  }
   private model.beans.EmpresaLote empresa;
   private ArrayList<ItemFormProposta> itens;
   private boolean inclusao;
@@ -59,8 +67,7 @@ public class FormProposta extends Form {
         model.services.Propostas.alterar(getLote(), getEmpresa(), precos);
         getOrigem().setMensagem("Proposta alterada.");
       }
-      if (isInclusao()) {
-        calculaEmpresa();
+      if (isInclusao()) {        
         model.services.Propostas.incluir(getLote(), calculaEmpresa(), precos);
         getOrigem().setMensagem("Proposta incluída.");
 
@@ -211,6 +218,14 @@ public class FormProposta extends Form {
   }
 
   private void valida() {
-
+    if(isInclusao()){
+      for( model.beans.EmpresaLote empresaLote: getLote().getEmpresas()){
+        if( calculaEmpresa().getCnpj().equals(empresaLote.getIdEmpresa())){
+          erroEmpresaProposta= "Esta empresa já tem uma proposta para " +
+                  "este lote.";
+          addErro("Empresa inválida!");
+        }
+      }
+    }
   }
 }

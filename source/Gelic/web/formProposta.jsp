@@ -37,8 +37,7 @@
         <P class="erro" >${erro}</P>
       </c:forEach>           
       
-      <P>
-        Empresa: ${!sessionScope.formProposta.inclusao}<BR>
+      <P>Empresa:<BR>
         <select name="empresaProposta" class="cadastro" style = "width:40%"
                 <c:if test="${!sessionScope.formProposta.inclusao}">disabled</c:if>
                 >
@@ -50,6 +49,9 @@
                   </c:if> >${empresa}</option>
           </c:forEach>
         </select>
+        <font class="erroCampo">
+          ${sessionScope.formProposta.erroEmpresaProposta}
+        </font>
       </P>
       
       <table style="width: 90%">
