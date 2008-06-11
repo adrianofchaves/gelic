@@ -24,6 +24,10 @@ public class FormTipoLicitacao extends Form {
 
     public void valida() throws SQLException, NamingException {
         apagaErros();
+        if( isExclusao()){
+          /* Incluir críticas de exclusão aqui */
+          return;
+        }
         if( siglaTipoLicitacao.length()!=2){
             erroSiglaTipoLicitacao = "Sigla deve ter 2 caracteres";
             addErro("Sigla inválida!");

@@ -28,6 +28,7 @@ public class AlterarTipoLicitacao implements Comando {
             frm.setTipoLicitacao(tipo);
             frm.atualizaCampos();
             frm.setInclusao(false);
+            frm.setAlteracao(true);
             frm.setTitulo("Alterando tipo de licitacao");            
             req.getSession().setAttribute("formTipoLicitacao", frm);
             return "/formTipoLicitacao.jsp";
