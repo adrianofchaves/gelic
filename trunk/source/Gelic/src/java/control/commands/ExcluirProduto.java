@@ -26,7 +26,7 @@ public class ExcluirProduto implements Comando {
       frm.atualizaCampos();
       frm.setInclusao(false);
       frm.setExclusao(true);
-      frm.setTitulo("Excluindo Produto");
+      frm.setTitulo("Excluindo produto");
       req.getSession().setAttribute("formProduto", frm);
       return "/formProduto.jsp";
     } catch (SQLException ex) {

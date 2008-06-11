@@ -29,7 +29,7 @@ public class ExcluirTipoLicitacao implements Comando {
       frm.atualizaCampos();
       frm.setInclusao(false);
       frm.setExclusao(true);
-      frm.setTitulo("Excluindo tipo de licitacao");
+      frm.setTitulo("Excluindo tipo de licitação");
       req.getSession().setAttribute("formTipoLicitacao", frm);
       return "/formTipoLicitacao.jsp";
     } catch (SQLException ex) {
