@@ -20,11 +20,7 @@
         <th class="menuItem" >
           <a href="Comercial?comando=CadastroProdutos">
           Voltar</a>
-        </th>
-        <th class="menuItem" >
-          <a href="Comercial?comando=NovoProduto">
-          Novo Produto</a>                    
-        </th>
+        </th>        
         <th class="menuItem" >
           <a href="Gelic?comando=Logout">
           Trocar usuário</a>                    
@@ -35,15 +31,14 @@
     <form name="frmProduto" 
           action="Comercial?comando=GravarProduto" 
           method="POST">
-      <p class="caption">
-        ${sessionScope.formProduto.titulo}
-      </p>
+      
+      <p class="caption">${sessionScope.formProduto.titulo}</p> 
       <font class="erro" >
+        <BR>
         <c:forEach var="erro" items="${sessionScope.formProduto.erros}">
           <P>${erro}</P>
         </c:forEach>
       </font>
-      
       <table class="tabelaCadastro">
         <td class="tabelaCadastro" style="width:20%">
           Código:<BR>                    

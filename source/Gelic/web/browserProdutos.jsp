@@ -24,7 +24,7 @@
                 </th>
                 <th class="menuItem" >
                     <a href="Comercial?comando=NovoProduto">
-                    Novo Produto</a>                    
+                    Novo produto</a>                    
                 </th>
                 <th class="menuItem" >
                     <a href="Gelic?comando=Logout">

@@ -19,7 +19,7 @@
     </table>
     <table class="menu">
       <th class="menuItem" >
-        <a href="Comercial?comando=NovaLicitacao">Nova Licitação</a>
+        <a href="Comercial?comando=NovaLicitacao">Nova licitação</a>
       </th>
       <th class="menuItem" >
         <a href="Comercial?comando=CadastroTiposLicitacoes">
@@ -39,7 +39,7 @@
         <a href="Comercial?comando=CadastroProdutos">Produtos</a>
       </th>
       <th class="menuItem" >
-        <a href="Comercial?comando=CadastroOrgaos">Órgãos Públicos</a>
+        <a href="Comercial?comando=CadastroOrgaos">Órgãos públicos</a>
       </th>
       <th class="menuItem" >
         <a href="Comercial?comando=CadastroEmpresas">Empresas</a>                    
