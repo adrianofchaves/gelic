@@ -9,15 +9,26 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
-import model.beans.Licitacao;
+
 
 /**
  *
  * @author Paulo
  */
-public class Licitacoes { 
+public class Licitacoes {
 
-  public static void excluir(Licitacao licitacao) 
+  public static boolean temLicitacoes(model.beans.Orgao orgao) 
+          throws SQLException, NamingException {
+    ArrayList<model.beans.Licitacao> licitacoes =  recuperar();
+    for( model.beans.Licitacao licitacao : licitacoes ){
+      if( licitacao.getOrgao().getCnpj().equals(orgao.getCnpj())){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public static void excluir(model.beans.Licitacao licitacao) 
           throws SQLException, NamingException {
     Connection gelic = model.services.Conexao.getConnection();
     if (model.daos.Licitacoes.excluir(licitacao) == 1) {
