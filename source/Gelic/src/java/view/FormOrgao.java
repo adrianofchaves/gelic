@@ -539,15 +539,21 @@ public class FormOrgao extends Form {
 
   }
 
-  private void executarCriticas() {
+  private void executarCriticas() throws SQLException, NamingException {
      if( isExclusao()){
        executarCriticasExclusao();
        return;
      }
      /* ... */
+     if( getCnpjOrgao().trim().isEmpty()){
+       setErroCnpjOrgao("Este campo deve ser preenchido.");
+       addErro("Campo CNPJ inválido.");
+     }
   }
 
-  private void executarCriticasExclusao() {
-    
+  private void executarCriticasExclusao() throws SQLException, NamingException {
+    if( model.services.Licitacoes.temLicitacoes(getOrgao()) ){
+      addErro("Exclusão inválida.Este órgão tem licitações relacionadas.");
+    }
   }
 }
