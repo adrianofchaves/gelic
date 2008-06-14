@@ -19,8 +19,8 @@ import javax.naming.NamingException;
 public class Telefones {
 
   public static int alterar(model.beans.TipoTelefone telefone, 
-          String ddiContato, String dddContato, String numeroTelefoneContato, 
-          String ramalContato)
+          String ddi, String ddd, String numero, 
+          String ramal)
           throws SQLException, NamingException {
     final String sqlAlteraTelefone = "update TELEFONES set DDI = ?," +
             "DDD = ?, " +
@@ -29,10 +29,10 @@ public class Telefones {
             "where ID = ? ";
     Connection gelic = model.services.Conexao.getConnection();
     PreparedStatement pstmt = gelic.prepareStatement(sqlAlteraTelefone);
-    pstmt.setString(1, dddContato);
-    pstmt.setString(2, ddiContato);
-    pstmt.setString(3, numeroTelefoneContato);
-    pstmt.setString(4, ramalContato);
+    pstmt.setString(1, ddi);
+    pstmt.setString(2, ddd);
+    pstmt.setString(3, numero);
+    pstmt.setString(4, ramal);
     pstmt.setInt(5, telefone.getId());
     int buffer = pstmt.executeUpdate();
     pstmt.close();
