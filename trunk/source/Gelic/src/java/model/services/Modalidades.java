@@ -85,6 +85,7 @@ public class Modalidades {
     Connection gelic = model.services.Conexao.getConnection();
     try {
       model.daos.Modalidades.excluir(sigla);
+      modalidades = null;
       gelic.commit();
       gelic.close();
      }catch (SQLException e) {

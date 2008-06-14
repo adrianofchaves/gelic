@@ -93,6 +93,7 @@ public class TiposLicitacoes {
     Connection gelic = model.services.Conexao.getConnection();
     try {
       model.daos.TiposLicitacoes.excluir(sigla);
+      tiposLicitacoes = null;
       gelic.commit();
       gelic.close();
      }catch (SQLException e) {
