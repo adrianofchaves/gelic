@@ -59,7 +59,7 @@
         <th style="width: 10%" align="left">Item</th>
         <th style="width: 60%" align="left">Produto</th>
         <th style="width: 20%" align="left">Quantidade</th>
-        <th style="width: 20%" align="left">Preço</th>
+        <th style="width: 20%" align="left">Preço unitário</th>
         <c:forEach var="item" items="${sessionScope.formProposta.itens}">
           <tr>
             <td style="width: 10%"></td>
