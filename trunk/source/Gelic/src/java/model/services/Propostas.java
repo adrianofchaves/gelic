@@ -20,6 +20,8 @@ public class Propostas {
     Connection gelic = model.services.Conexao.getConnection();
     try {
       model.daos.Propostas.excluir(lote, empresa);
+      
+      model.daos.EmpresasLotes.incluir( lote, empresa.getEmpresa() );
       int indice = 0;
       for (float preco : precos) {
         model.daos.Propostas.incluir(lote.getItensLote().get(indice++), 
