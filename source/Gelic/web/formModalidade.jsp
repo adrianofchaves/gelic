@@ -45,12 +45,10 @@
           Nova Modalidade
         </c:if>
         </p>
-            <font class="erro" >
-                <c:forEach var="erro" items="${sessionScope.formModalidade.erros}">
-                    <P>${erro}</P>
-                </c:forEach>
-            </font>
-            
+        <c:forEach var="erro" items="${sessionScope.formModalidade.erros}">
+        <P class="erro" >${erro}</P>
+      </c:forEach>   
+      <P></P>
             <P>Sigla:<br>
                 <input type="text" name="siglaModalidade" class="caixaTexto"
                        <c:if test="${sessionScope.formModalidade.exclusao}">

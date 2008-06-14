@@ -70,6 +70,23 @@ public class TiposLicitacoes {
     return null;
   }
 
+  public static Object recuperarNome(String nomeTipoLicitacao) 
+          throws SQLException, NamingException {
+    if (tiposLicitacoes == null) {
+      recuperar();
+      if (tiposLicitacoes == null) {
+        return null;
+      }
+    }
+
+    for (model.beans.TipoLicitacao tipo : tiposLicitacoes) {
+      if (tipo.getNome().equalsIgnoreCase(nomeTipoLicitacao)) {
+        return tipo;
+      }
+    }
+    return null;
+  }
+
   static void recuperar(ArrayList<model.beans.Licitacao> licitacoes) 
           throws SQLException, NamingException {
     if (tiposLicitacoes == null) {

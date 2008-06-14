@@ -22,6 +22,7 @@ public class FormModalidade extends Form {
   private boolean exclusao;
   private boolean alteracao;
 
+  @Override
   public void apagaErros() {
     super.apagaErros();
     erroNomeModalidade = "";
@@ -29,11 +30,28 @@ public class FormModalidade extends Form {
   }
 
   public void valida() throws SQLException, NamingException {
-    if( isExclusao()){
+    apagaErros();
+    if (isExclusao()) {
       // críticas de exclusão
+      if (model.services.Licitacoes.temLicitacao(modalidade)) {
+        addErro("Exclusão inválida: existem licitações desta modalidade.");
+      }
       return;
     }
-    apagaErros();
+    if (isInclusao()) {
+      if (model.services.Modalidades.recuperar(siglaModalidade) != null) {
+        addErro("Sigla inválida.");
+        setErroSiglaModalidade("Já existe modalidade com esta sigla.");
+      }
+    }
+    if (isAlteracao()) {
+      if (!siglaModalidade.equalsIgnoreCase(modalidade.getSigla())) {
+        if (model.services.Modalidades.recuperar(siglaModalidade) != null) {
+          addErro("Sigla inválida.");
+          setErroSiglaModalidade("Já existe modalidade com esta sigla.");
+        }
+      }
+    }
     if (getSiglaModalidade().length() > 3) {
       setErroSiglaModalidade("Sigla deve ter no máximo 3 caracteres");
       addErro("Sigla inválida");
