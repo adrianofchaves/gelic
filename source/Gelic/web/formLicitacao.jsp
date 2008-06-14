@@ -168,9 +168,8 @@
       <table class="tabelaCadastro">
         <td class="tabelaCadastro" style="width: 33%">
         Documentação:<BR>
-        <input type="text" class="tabelaCadastro" 
-               <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>
-               name="dataDocumentacaoLicitacao"
+        <input type="text" class="tabelaCadastro" name="dataDocumentacaoLicitacao"
+               <c:if test="${sessionScope.formLicitacao.exclusao}">disabled</c:if>               
                value="${sessionScope.formLicitacao.dataDocumentacaoLicitacaoFormatada}"/>
                </td>        
         <td class="tabelaCadastro" style="width: 34%">

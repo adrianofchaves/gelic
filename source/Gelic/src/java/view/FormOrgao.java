@@ -552,7 +552,7 @@ public class FormOrgao extends Form {
   }
 
   private void executarCriticasExclusao() throws SQLException, NamingException {
-    if( model.services.Licitacoes.temLicitacoes(getOrgao()) ){
+    if( model.services.Licitacoes.temLicitacao(getOrgao()) ){
       addErro("Exclusão inválida.Este órgão tem licitações relacionadas.");
     }
   }

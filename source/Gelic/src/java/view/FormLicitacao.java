@@ -63,11 +63,12 @@ public class FormLicitacao extends Form {
   private boolean inclusao = true;
   private boolean exclusao = false;
   private boolean alteracao = false;
-  
+
   @Override
-  public void refresh(){
-    
+  public void refresh() {
+
   }
+
   @Override
   public void apagaErros() {
     super.apagaErros();
@@ -101,7 +102,7 @@ public class FormLicitacao extends Form {
   private model.beans.TipoLicitacao calculaTipoLicitacaoLicitacao() {
     String buffer = tipoLicitacaoLicitacao;
     for (model.beans.TipoLicitacao tipo : tiposLicitacoes) {
-      if (tipo.getSigla().equalsIgnoreCase(buffer)) {
+      if (tipo.toString().equalsIgnoreCase(buffer)) {
         return tipo;
       }
     }
@@ -111,7 +112,7 @@ public class FormLicitacao extends Form {
   private model.beans.Modalidade calculaModalidadeLicitacao() {
     String buffer = modalidadeLicitacao;
     for (model.beans.Modalidade modalidade : modalidades) {
-      if (modalidade.getSigla().equalsIgnoreCase(buffer)) {
+      if (modalidade.toString().equalsIgnoreCase(buffer)) {
         return modalidade;
       }
     }
@@ -139,9 +140,9 @@ public class FormLicitacao extends Form {
   }
 
   public String gravar() throws ExcecaoForm, NamingException, SQLException {
-    if(isExclusao()){
+    if (isExclusao()) {
       //ignora erros de parse
-     apagaErros(); 
+      apagaErros();
     }
     validar();
     if (temErros()) {
@@ -161,12 +162,12 @@ public class FormLicitacao extends Form {
               getTermosMultaLicitacao());
       getOrigem().setMensagem("Nova licitação incluída.");
     }
-    if( isExclusao()){
+    if (isExclusao()) {
       model.services.Licitacoes.excluir(licitacao);
       getOrigem().setMensagem("Licitação excluída.");
     }
     if (isAlteracao()) {
-      model.services.Licitacoes.alterar( getLicitacao(),
+      model.services.Licitacoes.alterar(getLicitacao(),
               calculaTipoLicitacaoLicitacao(), getNumeroLicitacao(),
               getAnoLicitacao(), calculaModalidadeLicitacao(),
               calculaSistemaLicitacao(), calculaOrgaoLicitacao(),
@@ -221,18 +222,6 @@ public class FormLicitacao extends Form {
 
   }
 
-  public void valida() throws SQLException, NamingException {
-    apagaErros();
-    if (isExclusao()) {
-      // Colocar críticas de exclusão aqui.
-      return;
-    }
-    if (getNumeroLicitacao().length() == 0) {
-      setErroNumeroLicitacao("Numero não pode ser vazio");
-      addErro("Numero inválido!");
-    }
-  }
-
   public void atualizaCampos() {
     apagaErros();
     if (getLicitacao() == null) {
@@ -246,7 +235,7 @@ public class FormLicitacao extends Form {
     setTipoLicitacaoLicitacao(licitacao.getTipoLicitacao().toString());
     setSistemaLicitacao(licitacao.getSistema().toString());
     setDataDocumentacaoLicitacao(
-            Date.valueOf(licitacao.getDataRealizacao().toString()));
+            Date.valueOf(licitacao.getDataDocumentacao().toString()));
     setDataPropostaLicitacao(
             Date.valueOf(licitacao.getDataProposta().toString()));
     setDataRealizacaoLicitacao(
@@ -344,7 +333,7 @@ public class FormLicitacao extends Form {
 
   public void setInclusao(boolean inclusao) {
     this.inclusao = inclusao;
-    if(inclusao){
+    if (inclusao) {
       setAlteracao(false);
       setExclusao(false);
     }
@@ -360,7 +349,7 @@ public class FormLicitacao extends Form {
 
   public void setExclusao(boolean exclusao) {
     this.exclusao = exclusao;
-    if(exclusao){
+    if (exclusao) {
       setAlteracao(false);
       setInclusao(false);
     }
@@ -372,7 +361,7 @@ public class FormLicitacao extends Form {
 
   public void setAlteracao(boolean alteracao) {
     this.alteracao = alteracao;
-    if(alteracao){
+    if (alteracao) {
       setInclusao(false);
       setExclusao(false);
     }
@@ -425,19 +414,23 @@ public class FormLicitacao extends Form {
   public void setErroSistemaLicitacao(String erroSistemaLicitacao) {
     this.erroSistemaLicitacao = erroSistemaLicitacao;
   }
-  public String getDataDocumentacaoLicitacaoFormatada(){
+
+  public String getDataDocumentacaoLicitacaoFormatada() {
     return util.Forms.formata(getDataDocumentacaoLicitacao());
   }
+
   public Date getDataDocumentacaoLicitacao() {
     return dataDocumentacaoLicitacao;
   }
 
   public void setDataDocumentacaoLicitacao(Date dataDocumentacaoLicitacao) {
-    this.dataDocumentacaoLicitacao = dataDocumentacaoLicitacao;    
+    this.dataDocumentacaoLicitacao = dataDocumentacaoLicitacao;
   }
-  public String getDataPropostaLicitacaoFormatada(){
+
+  public String getDataPropostaLicitacaoFormatada() {
     return util.Forms.formata(getDataPropostaLicitacao());
   }
+
   public Date getDataPropostaLicitacao() {
     return dataPropostaLicitacao;
   }
@@ -445,9 +438,11 @@ public class FormLicitacao extends Form {
   public void setDataPropostaLicitacao(Date dataPropostaLicitacao) {
     this.dataPropostaLicitacao = dataPropostaLicitacao;
   }
-  public String getDataRealizacaoLicitacaoFormatada(){
+
+  public String getDataRealizacaoLicitacaoFormatada() {
     return util.Forms.formata(getDataRealizacaoLicitacao());
   }
+
   public Date getDataRealizacaoLicitacao() {
     return dataRealizacaoLicitacao;
   }
@@ -647,35 +642,44 @@ public class FormLicitacao extends Form {
     tiposLicitacoes = model.services.TiposLicitacoes.recuperar();
   }
 
-  private boolean validar() {
+  private void validar() throws SQLException, NamingException {
     if (isExclusao()) {
       /**
        * Incluir aqui as críticas de esclusão, se houverem 
        */
-      return true;
+      return;
     }
-    boolean result = true;
+    if (getDataDocumentacaoLicitacao() == null) {
+      addErro("Data de documentação inválida.");
+      setErroDataDocumentacaoLicitacao("Campo de preenchimento obrigatório.");
+    }
+    if (getDataPropostaLicitacao() == null) {
+      addErro("Data de proposta inválida.");
+      setErroDataPropostaLicitacao("Campo de preenchimento obrigatório.");
+    }
+    if (getDataRealizacaoLicitacao() == null) {
+      addErro("Data de realização inválida.");
+      setErroDataRealizacaoLicitacao("Campo de preenchimento obrigatório.");
+    }
+
     if (getAnoLicitacao() == 0) {
       setErroAnoLicitacao("Ano da licitação inválido!");
       addErro("Ano da licitação inválido.");
-      result = false;
     } else {
       if (getAnoLicitacao() < 2000) {
         setErroAnoLicitacao("Informe um ano posterior a 1999.");
         addErro("Ano da licitação inválido.");
-        result = false;
       }
     }
-    if ( getDataRealizacaoLicitacao() != null &&
-            getDataDocumentacaoLicitacao() != null &&            
+    if (getDataRealizacaoLicitacao() != null &&
+            getDataDocumentacaoLicitacao() != null &&
             getDataRealizacaoLicitacao().before(
             getDataDocumentacaoLicitacao())) {
       addErro("Data da realização deve ser posterior à data de documentação");
       setErroDataRealizacaoLicitacao("Deve ser posterior à " +
-              "data de documentação");
+              "data da entrega da documentação");
       setErroDataDocumentacaoLicitacao("Deve ser anterior à " +
               "data de realização");
-      result = false;
     }
     if (getDataRealizacaoLicitacao() != null &&
             getDataPropostaLicitacao() != null &&
@@ -685,20 +689,38 @@ public class FormLicitacao extends Form {
       setErroDataRealizacaoLicitacao("Deve ser posterior à data da proposta");
       setErroDataPropostaLicitacao("Deve ser anterior à " +
               "data de realização");
-      result = false;
+    }
+    if (getDataDocumentacaoLicitacao() != null &&
+            getDataPropostaLicitacao() != null &&
+            getDataPropostaLicitacao().before(getDataDocumentacaoLicitacao())) {
+      addErro("Data da proposta deve ser posterior à data da " +
+              "entrega da documentação");
+      setErroDataPropostaLicitacao("Deve ser posterior à data da entrega " +
+              "da documentação");
+      setErroDataDocumentacaoLicitacao("Deve ser anterior à " +
+              "data da proposta");
     }
     if (getNumeroLicitacao() == null || getNumeroLicitacao().isEmpty()) {
       addErro("O número da licitação deve ser informado.");
       setErroNumeroLicitacao("Este campo deve ser informado.");
-      result = false;
     }
-    if (getNumeroProcessoLicitacao() == null || 
+    if (getNumeroProcessoLicitacao() == null ||
             getNumeroProcessoLicitacao().isEmpty()) {
       addErro("O número do processo deve ser informado.");
       setErroNumeroProcesso("Este campo deve ser informado.");
-      result = false;
     }
-    return result;
+    if (isInclusao() &&
+            model.services.Licitacoes.temLicitacao(
+            calculaTipoLicitacaoLicitacao(),
+            getNumeroLicitacao(),
+            getAnoLicitacao(),
+            calculaOrgaoLicitacao())) {
+      addErro("Já existe licitação indentificado pelos campos indicados.");
+      setErroTipoLicitacaoLicitacao("*");
+      setErroNumeroLicitacao("*");
+      setErroAnoLicitacao("*");
+      setErroOrgaoLicitacao("*");
+    }
   }
 
   public void setErroTipoLicitacaoLicitacao(String erroTipoLicitacaoLicitacao) {
