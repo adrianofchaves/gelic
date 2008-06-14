@@ -33,12 +33,11 @@
           method="POST">
       
       <p class="caption">${sessionScope.formProduto.titulo}</p> 
-      <font class="erro" >
-        <BR>
-        <c:forEach var="erro" items="${sessionScope.formProduto.erros}">
-          <P>${erro}</P>
-        </c:forEach>
-      </font>
+      <P></P>
+      <c:forEach var="erro" items="${sessionScope.formProduto.erros}">
+        <P class="erro" >${erro}</P>
+      </c:forEach>   
+      <P></P>
       <table class="tabelaCadastro">
         <td class="tabelaCadastro" style="width:20%">
           Código:<BR>                    

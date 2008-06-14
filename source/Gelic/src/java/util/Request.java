@@ -32,4 +32,10 @@ public class Request {
             String nomeParametro) throws ParseException{
       return Forms.parse(getParameter(req, nomeParametro));
     }    
+    static public float getFloatParameter(ServletRequest req, 
+            String nomeParametro){
+      String buffer = getParameter(req, nomeParametro);
+      buffer = buffer.replace(',', '.');
+      return Float.parseFloat(buffer);
+    }
 }

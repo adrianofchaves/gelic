@@ -37,27 +37,35 @@ public class GravarProduto implements Comando {
       if (frm == null) {
         frm = new view.FormProduto();
       }
-
+      frm.apagaErros();              
       /* popula form */
       frm.setCodigoProduto(util.Request.getParameter(req,
               "codigoProduto"));
       frm.setDescricaoProduto(util.Request.getParameter(req,
               "descricaoProduto"));
+      float buffer;
       try {
-        frm.setPrecovendaProduto(Float.parseFloat(
-                util.Request.getParameter(req, "precovendaProduto")));
+        buffer = util.Request.getFloatParameter(req, "precovendaProduto");
+        frm.setPrecovendaProduto(buffer);
       } catch (NullPointerException ex) {
-        frm.setPrecovendaProduto(0);
+        frm.addErro( "Campo preço de venda inválido.");
+        frm.setErroPrecoVendaProduto("Valor de ponto flutuante inválido.");
       } catch (NumberFormatException ex) {
-        frm.setPrecovendaProduto(0);
+        frm.addErro( "Campo preço de venda inválido.");
+        frm.setErroPrecoVendaProduto("Valor de ponto flutuante inválido.");
       }
       try {
-        frm.setPrecocompraProduto(Float.parseFloat(
-                util.Request.getParameter(req, "precocompraProduto")));
+        buffer = util.Request.getFloatParameter(req, "precocompraProduto");
+        frm.setPrecocompraProduto(buffer);
       } catch (NullPointerException ex) {
-        frm.setPrecovendaProduto(0);
+        frm.addErro( "Campo preço de compra inválido.");
+        frm.setErroPrecoCompraProduto("Valor de ponto flutuante inválido.");
       } catch (NumberFormatException ex) {
-        frm.setPrecocompraProduto(0);
+        frm.addErro( "Campo preço de compra inválido.");
+        frm.setErroPrecoCompraProduto("Valor de ponto flutuante inválido.");        
+      }
+      if (!frm.isExclusao() && frm.temErros()) {
+        return uriForm;
       }
 
       frm.valida();
