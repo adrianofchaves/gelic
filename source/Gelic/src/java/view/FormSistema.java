@@ -20,6 +20,7 @@ public class FormSistema extends Form {
   private boolean exclusao;
   private boolean alteracao;
 
+  @Override
   public void apagaErros() {
     super.apagaErros();
     erroNomeSistema = "";
@@ -27,12 +28,25 @@ public class FormSistema extends Form {
 
   public void valida() throws SQLException, NamingException {
     apagaErros();
-    if( isExclusao()){
-      if(model.services.Licitacoes.temLicitacao(sistema)){
-        addErro( "Exclusão inválida: existem licitações para este sistema.");
+    if (isExclusao()) {
+      if (model.services.Licitacoes.temLicitacao(sistema)) {
+        addErro("Exclusão inválida: existem licitações para este sistema.");
       }
     }
-
+    if (!isExclusao() && !isAlteracao()) { // inclusão
+      if (model.services.Sistemas.recuperar(nomeSistema) != null) {
+        addErro("Nome inválido!");
+        erroNomeSistema = "Já existe um sistema com esse nome";
+      }
+    }
+    if (isAlteracao()) {
+      if (!nomeSistema.equalsIgnoreCase(sistema.getNome())) {
+        if (model.services.Sistemas.recuperar(nomeSistema) != null) {
+          addErro("Nome inválido!");
+          erroNomeSistema = "Já existe um sistema com esse nome";
+        }
+      }
+    }
   }
 
   public void atualizaCampos() {

@@ -58,7 +58,7 @@ public class Sistemas {
     }
     recuperar();
     for (model.beans.Sistema sistema : sistemas) {
-      if (sistema.getNome().equals(nome)) {
+      if (sistema.getNome().equalsIgnoreCase(nome)) {
         return sistema;
       }
     }
