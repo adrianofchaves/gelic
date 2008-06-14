@@ -10,8 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
-import view.ExcecaoForm;
-import view.FormLicitacao;
 
 /**
  *
@@ -28,7 +26,7 @@ public class GravarLicitacao implements Comando {
       }
       populaForm(form, req);
       return form.gravar();
-    } catch (ExcecaoForm ex) {
+    } catch (view.ExcecaoForm ex) {
       Logger.getLogger(
               GravarLicitacao.class.getName()).log(Level.SEVERE, null, ex);
       throw new ExcecaoComando(ex.getMessage());
@@ -43,7 +41,7 @@ public class GravarLicitacao implements Comando {
     }
   }
 
-  private void populaForm(FormLicitacao form, HttpServletRequest req) {
+  private void populaForm(view.FormLicitacao form, HttpServletRequest req) {
     /* popular campos */
     form.apagaErros();
     String buffer = util.Request.getParameter(req, "orgaoLicitacao");

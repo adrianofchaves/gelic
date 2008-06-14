@@ -12,16 +12,18 @@ package model.beans;
 // </editor-fold> 
 public class Modalidade {
   private int id;
-
+  
+  @Override
+  public String toString(){
+    return this.sigla + "-" + this.nome;
+  }
   public Modalidade(int id, String nome, String sigla) {
     this.id = id;
     this.nome = nome;
     this.sigla = sigla;
   }  
   
-  public String toString() {
-    return getSigla();
-  }
+  
   /**
    *  <p style="margin-top: 0">
    *        Nome da modalidade de licita&#231;&#245;es.

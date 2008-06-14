@@ -19,7 +19,7 @@ public class TipoLicitacao {
     this.id = id;
   }
   public String toString(){
-    return this.getSigla();
+    return this.getSigla() + "-" + getNome();
   }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
