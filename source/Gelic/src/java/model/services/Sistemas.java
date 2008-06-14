@@ -80,6 +80,7 @@ public class Sistemas {
         Connection gelic = model.services.Conexao.getConnection();
         try {
             model.daos.Sistemas.excluir(nome);
+            sistemas = null;
             gelic.commit();
             gelic.close();
             }catch (SQLException e) {
