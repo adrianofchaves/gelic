@@ -16,6 +16,18 @@ import javax.naming.NamingException;
  */
 public class Licitacoes {
 
+  public static boolean temLicitacao(model.beans.Modalidade modalidade)
+          throws SQLException, NamingException {
+
+    ArrayList<model.beans.Licitacao> licitacoes = recuperar();
+    for (model.beans.Licitacao licitacao : licitacoes) {
+      if (licitacao.getIdModalidade() == modalidade.getId()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   public static boolean temLicitacao(model.beans.Orgao orgao)
           throws SQLException, NamingException {
     ArrayList<model.beans.Licitacao> licitacoes = recuperar();
@@ -106,6 +118,29 @@ public class Licitacoes {
     model.daos.Lotes.recuperar(licitacao);
     model.daos.ItensLote.recuperar(licitacao);
     return licitacao;
+  }
+
+  public static boolean temLicitacao(model.beans.Sistema sistema)
+          throws SQLException, NamingException {
+    ArrayList<model.beans.Licitacao> licitacoes = recuperar();
+    for (model.beans.Licitacao licitacao : licitacoes) {
+      if (licitacao.getIdSistema() == sistema.getId()) {
+        return true;
+      }
+    }
+    return false;
+
+  }
+
+  public static boolean temLicitacao(model.beans.TipoLicitacao tipoLicitacao)
+          throws SQLException, NamingException {
+    ArrayList<model.beans.Licitacao> licitacoes = recuperar();
+    for (model.beans.Licitacao licitacao : licitacoes) {
+      if (licitacao.getIdTipoLicitacao() == tipoLicitacao.getId()) {
+        return true;
+      }
+    }
+    return false;
   }
 
   public static boolean temLicitacao(model.beans.TipoLicitacao tipo,

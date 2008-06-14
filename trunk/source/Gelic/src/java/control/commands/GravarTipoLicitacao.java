@@ -39,11 +39,12 @@ public class GravarTipoLicitacao implements Comando {
       }
 
       /* popula form */
-      frm.setNomeTipoLicitacao(util.Request.getParameter(req,
-              "nomeTipoLicitacao"));
-      frm.setSiglaTipoLicitacao(util.Request.getParameter(req,
-              "siglaTipoLicitacao"));
-
+      if (!frm.isExclusao()) {
+        frm.setNomeTipoLicitacao(util.Request.getParameter(req,
+                "nomeTipoLicitacao"));
+        frm.setSiglaTipoLicitacao(util.Request.getParameter(req,
+                "siglaTipoLicitacao"));
+      }
       frm.valida();
 
       if (frm.temErros()) {
