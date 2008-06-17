@@ -36,6 +36,18 @@ public class Usuarios {
     gelic.close();
   }
 
+  public static int contaAdministradores() 
+          throws SQLException, NamingException {
+    ArrayList<model.beans.Usuario> usuarios = recuperar();
+    int result = 0;
+    for( model.beans.Usuario usuario : usuarios ){
+      if( usuario.getPapel().getId() == model.beans.Usuario.ADMINISTRADOR){
+        result ++;
+      }
+    }
+    return result;
+  }
+
   /**
    * Exclui o usuário com o login informado
    * @param login
