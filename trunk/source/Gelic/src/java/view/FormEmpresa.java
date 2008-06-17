@@ -4,7 +4,9 @@
  */
 package view;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.naming.NamingException;
 
 /**
  *
@@ -488,16 +490,15 @@ public class FormEmpresa extends Form {
     return tiposLogradouros;
   }
 
-  public void setTiposLogradouros(ArrayList<model.beans.TipoLogradouro> 
-          tiposLogradouros) {
+  public void setTiposLogradouros(ArrayList<model.beans.TipoLogradouro> tiposLogradouros) {
     this.tiposLogradouros = tiposLogradouros;
   }
 
-  public void valida() {
-     
+  public void valida() throws SQLException, NamingException {
+
     apagaErros();
-     
-    if(isExclusao()){
+
+    if (isExclusao()) {
       validaExclusao();
       return;
     }
@@ -505,18 +506,18 @@ public class FormEmpresa extends Form {
      * Valida alteração/inclusão
      */
     /* validar cnpj */
-    if( cnpjEmpresa == null || cnpjEmpresa.isEmpty() ){
+    if (cnpjEmpresa == null || cnpjEmpresa.isEmpty()) {
       erroCnpjEmpresa = "Cnpj inválido!";
       super.addErro("O campo cnpj deve ser preenchido!");
     }
-    
-    /* validar uf */
-    /* validar ie */
-    /* validar tipoLogradouro */
-    /* validar email */
-    /* validar site */
-    /* validar telefone*/
-    
+
+  /* validar uf */
+  /* validar ie */
+  /* validar tipoLogradouro */
+  /* validar email */
+  /* validar site */
+  /* validar telefone*/
+
   }
 
   public boolean isExclusao() {
@@ -539,7 +540,10 @@ public class FormEmpresa extends Form {
     }
   }
 
-  private void validaExclusao() {
-    
+  private void validaExclusao() throws SQLException, NamingException {
+    if (model.services.Empresas.temProposta(getEmpresa()))  {
+      addErro("Exclusão inválida! Existem propostas dessa empresa.");
+    }
+
   }
 }
