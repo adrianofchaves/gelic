@@ -39,6 +39,15 @@ public class FormUsuario extends Form {
 
   public void valida() throws SQLException, NamingException {
     apagaErros();
+    if (isExclusao()) {
+      if ( getUsuario().getPapel().getId() == model.beans.Usuario.ADMINISTRADOR
+              &&
+              model.services.Usuarios.contaAdministradores() < 2) {
+        addErro("Exclusão inválida!");
+        setErroPapelUsuario("Este é o último usuário administrador.");
+      }
+      return;
+    }
     /* Executa críticas */
     if (!getSenhaUsuario().equals(getConfirmaSenhaUsuario())) {
       setErroConfirmaSenhaUsuario("Está diferente da informada em Senha");
