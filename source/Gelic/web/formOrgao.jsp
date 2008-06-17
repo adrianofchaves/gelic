@@ -98,8 +98,8 @@
                  maxlength=15 />
         </td>
       </table>
-      <table class="tabelaErros">
-        <td class="tabelaErros" style="width: 50%">
+      <table class="tabelaErro">
+        <td class="tabelaErro" style="width: 50%">
           ${sessionScope.formOrgao.erroCnpjOrgao}
         </td>
         <td class="tabelaErros" style="width: 50%">

@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
 
+
 /**
  *
  * @author Adriano
@@ -124,5 +125,10 @@ public class Empresas {
     model.daos.Contatos.recuperar(empresas);
     model.daos.Telefones.recuperar(empresas);
     return empresas;
+  }
+
+  public static boolean temProposta(model.beans.Empresa empresa)
+          throws SQLException, NamingException {
+    return model.daos.EmpresasLotes.conta(empresa) > 0;
   }
 }

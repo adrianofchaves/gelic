@@ -78,7 +78,7 @@ public class FormOrgao extends Form {
    * Executa ações necessárias por conta do cancelamento
    */
   public void cancelar() {
-
+    getOrigem().setMensagem("");
   }
 
   /**
@@ -89,31 +89,33 @@ public class FormOrgao extends Form {
     setOrgao(model.services.Orgaos.recuperar(cnpj));
     setExclusao(true);
     atualizaCampos();
+    getOrigem().setMensagem("");
 
   }
 
   public String gravar() throws ExcecaoForm, SQLException, NamingException {
+    apagaErros();
     executarCriticas();
     if (temErros()) {
       return getNome();
     }
-    
+
     String mensagem = null;
     if (isInclusao()) {
-      model.services.Orgaos.incluir(cnpjOrgao, razaoSocialOrgao, apelidoOrgao, 
-              ieOrgao, tipoLogradouroOrgao, logradouroOrgao, numeroOrgao, 
-              complementoOrgao, bairroOrgao, cidadeOrgao, estadoOrgao, cepOrgao, 
-              siteOrgao, emailOrgao, ddiOrgao, dddOrgao, numeroTelefoneOrgao, 
+      model.services.Orgaos.incluir(cnpjOrgao, razaoSocialOrgao, apelidoOrgao,
+              ieOrgao, tipoLogradouroOrgao, logradouroOrgao, numeroOrgao,
+              complementoOrgao, bairroOrgao, cidadeOrgao, estadoOrgao, cepOrgao,
+              siteOrgao, emailOrgao, ddiOrgao, dddOrgao, numeroTelefoneOrgao,
               ramalOrgao);
-              
+
       mensagem = "Novo órgão incluido.";
     }
     if (isAlteracao()) {
       model.services.Orgaos.alterar(getOrgao(),
-              cnpjOrgao, razaoSocialOrgao, apelidoOrgao, 
-              ieOrgao, tipoLogradouroOrgao, logradouroOrgao, numeroOrgao, 
-              complementoOrgao, bairroOrgao, cidadeOrgao, estadoOrgao, cepOrgao, 
-              siteOrgao, emailOrgao, ddiOrgao, dddOrgao, numeroTelefoneOrgao, 
+              cnpjOrgao, razaoSocialOrgao, apelidoOrgao,
+              ieOrgao, tipoLogradouroOrgao, logradouroOrgao, numeroOrgao,
+              complementoOrgao, bairroOrgao, cidadeOrgao, estadoOrgao, cepOrgao,
+              siteOrgao, emailOrgao, ddiOrgao, dddOrgao, numeroTelefoneOrgao,
               ramalOrgao);
       mensagem = "Órgão alterado.";
     }
@@ -121,9 +123,8 @@ public class FormOrgao extends Form {
       model.services.Orgaos.excluir(getOrgao());
       mensagem = "Órgão excluído.";
     }
-
-    getOrigem().setMensagem(mensagem);
     getOrigem().refresh();
+    getOrigem().setMensagem(mensagem);
     return getOrigem().getNome();
   }
 
@@ -133,6 +134,7 @@ public class FormOrgao extends Form {
   public void incluir() {
     setOrgao(null);
     setInclusao(true);
+    getOrigem().setMensagem("");
   }
 
   /**
@@ -145,6 +147,7 @@ public class FormOrgao extends Form {
     setOrgao(model.services.Orgaos.recuperar(cnpj));
     atualizaCampos();
     setAlteracao(true);
+    getOrigem().setMensagem("");
   }
 
   public String getNomeAtributo() {
@@ -540,20 +543,21 @@ public class FormOrgao extends Form {
   }
 
   private void executarCriticas() throws SQLException, NamingException {
-     if( isExclusao()){
-       executarCriticasExclusao();
-       return;
-     }
-     /* ... */
-     if( getCnpjOrgao().trim().isEmpty()){
-       setErroCnpjOrgao("Este campo deve ser preenchido.");
-       addErro("Campo CNPJ inválido.");
-     }
+    if (isExclusao()) {
+      executarCriticasExclusao();
+      return;
+    }
+    /* ... */
+    if (getCnpjOrgao().trim().isEmpty()) {
+      setErroCnpjOrgao("Este campo deve ser preenchido.");
+      addErro("Campo CNPJ inválido.");
+    }
   }
 
   private void executarCriticasExclusao() throws SQLException, NamingException {
-    if( model.services.Licitacoes.temLicitacao(getOrgao()) ){
+    if (model.services.Licitacoes.temLicitacao(getOrgao())) {
       addErro("Exclusão inválida.Este órgão tem licitações relacionadas.");
     }
+    atualizaCampos();
   }
 }
