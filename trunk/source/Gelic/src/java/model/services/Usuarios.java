@@ -77,6 +77,7 @@ public class Usuarios {
     } else {
       gelic.rollback();
     }
+    gelic.close();
   }
 
   /**
