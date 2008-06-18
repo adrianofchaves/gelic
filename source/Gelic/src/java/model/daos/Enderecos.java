@@ -149,6 +149,9 @@ public class Enderecos {
     while (rs.next()) {
       tipos.add(cria(rs.getString(1)));
     }
+    rs.close();
+    pstmt.close();
+    gelic.close();
     return tipos;
   }
 

@@ -74,6 +74,9 @@ public class Contatos {
               rs.getInt("TELEFONE"), 
               rs.getInt("ID")));      
     }    
+    rs.close();
+    pstmt.close();
+    gelic.close();
   }
 
   public static void recuperarDeOrgaos(ArrayList<model.beans.Orgao> orgaos)

@@ -92,6 +92,7 @@ public class Orgaos {
               rs.getString("IE"),
               rs.getInt("ENDERECO")));
     }
+    gelic.close();
     return orgaos;
   }
 
