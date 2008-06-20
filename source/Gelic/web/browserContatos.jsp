@@ -62,8 +62,6 @@
         </tr>
       </c:forEach>      
     </table>        
-    <font class="mensagem">
-      <P>${sessionScope.browserContatos.mensagem}</P>
-    </font>
+    <P class="mensagem">${sessionScope.browserContatos.mensagem}</P>
   </body>
 </html>

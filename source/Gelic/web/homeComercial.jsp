@@ -93,8 +93,6 @@
         </tr>
       </c:forEach>
     </table>
-    <font class="mensagem">
-      <P>${sessionScope.browserLicitacoes.mensagem}</P>
-    </font>
+    <P class="mensagem">${sessionScope.browserLicitacoes.mensagem}</P>
   </body>
 </html>

@@ -11,11 +11,28 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
 
+
 /**
  *
  * @author adriano
  */
 public class Propostas {
+
+  public static int conta(model.beans.ItemLote itemLote) 
+          throws NamingException, SQLException {
+    final String sqlConta = "select count(*) from PROPOSTAS where ITEMLOTE = ?";
+    Connection gelic = model.services.Conexao.getPool().getConnection();
+    
+    PreparedStatement pstmt = gelic.prepareStatement(sqlConta);
+    pstmt.setInt(1, itemLote.getId());    
+    ResultSet rs = pstmt.executeQuery();
+    rs.next();
+    int buffer = rs.getInt(1);
+    rs.close();
+    pstmt.close();
+    gelic.close();
+    return buffer;
+  }
 
   public static int excluir(model.beans.Lote lote,
           model.beans.EmpresaLote empresa)

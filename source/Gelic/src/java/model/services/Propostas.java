@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import javax.naming.NamingException;
 
+
 /**
  *
  * @author adriano
@@ -73,6 +74,7 @@ public class Propostas {
   public static void recuperar(model.beans.Lote lote)
           throws NamingException, SQLException {
     model.daos.ItensLote.recuperar(lote);
+    model.daos.Produtos.recuperar(lote);
     model.daos.Empresas.recuperar(lote);
     for( model.beans.EmpresaLote empresa : lote.getEmpresas()){
       model.daos.Propostas.recuperar(empresa);
@@ -86,5 +88,10 @@ public class Propostas {
         }
       }
     }
+  }
+
+  public static boolean temPropostas(model.beans.ItemLote itemLote) 
+          throws NamingException, SQLException {
+    return model.daos.Propostas.conta(itemLote) > 0;
   }
 }
