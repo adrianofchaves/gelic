@@ -141,14 +141,14 @@
                  maxlength=15 />
         </td>
       </table>
-      <table class="tabelaErros">
-        <td class="tabelaErros" style="width: 40%">
+      <table class="tabelaErro">
+        <td class="tabelaErro" style="width: 40%">
           ${sessionScope.formEmpresa.erroCnpjEmpresa}
         </td>
-        <td class="tabelaErros" style="width: 30%">
+        <td class="tabelaErro" style="width: 30%">
           ${sessionScope.formEmpresa.erroIeEmpresa}
         </td>
-        <td class="tabelaErros" style="width: 30%">
+        <td class="tabelaErro" style="width: 30%">
           ${sessionScope.formEmpresa.erroImEmpresa}
         </td>
       </table>

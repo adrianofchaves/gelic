@@ -26,7 +26,7 @@ public class GravarEmpresa implements Comando {
 
   public String executar(HttpServletRequest req) throws ExcecaoComando {
     try {
-      if( req.getParameter("cancelar") != null ){
+      if (req.getParameter("cancelar") != null) {
         return executaBrowser(req, null);
       }
       view.FormEmpresa frm = (view.FormEmpresa) req.getSession().getAttribute(
@@ -34,8 +34,12 @@ public class GravarEmpresa implements Comando {
       if (frm == null) {
         frm = new view.FormEmpresa();
       }
+      if (frm.isExclusao()) {
+        frm.atualizaCampos();
+      } else {
+        populaForm(frm, req);
+      }
 
-      populaForm(frm, req);
 
       frm.valida();
 
@@ -44,18 +48,17 @@ public class GravarEmpresa implements Comando {
       }
       String mensagem = null;
       if (frm.isInclusao()) {
-        model.services.Empresas.incluir( frm.getNomeFantasiaEmpresa(), 
+        model.services.Empresas.incluir(frm.getNomeFantasiaEmpresa(),
                 frm.isEPortadorEmpresa(),
                 frm.getRazaoSocialEmpresa(), frm.isEFornecedorEmpresa(),
                 frm.getCnpjEmpresa(), frm.getIeEmpresa(), frm.getImEmpresa(),
                 frm.getTipoLogradouroEmpresa(), frm.getLogradouroEmpresa(),
                 frm.getNumeroEmpresa(), frm.getComplementoEmpresa(),
                 frm.getBairroEmpresa(), frm.getCidadeEmpresa(),
-                frm.getEstadoEmpresa(), frm.getCepEmpresa(), 
-                frm.getSiteEmpresa(), frm.getEmailEmpresa(), 
+                frm.getEstadoEmpresa(), frm.getCepEmpresa(),
+                frm.getSiteEmpresa(), frm.getEmailEmpresa(),
                 frm.getDdiEmpresa(), frm.getDddEmpresa(),
-                frm.getNumeroTelefoneEmpresa(), frm.getRamalEmpresa()
-                );
+                frm.getNumeroTelefoneEmpresa(), frm.getRamalEmpresa());
         mensagem = msgInclusao;
       }
       if (frm.isExclusao()) {
@@ -70,13 +73,13 @@ public class GravarEmpresa implements Comando {
                 frm.getTipoLogradouroEmpresa(), frm.getLogradouroEmpresa(),
                 frm.getNumeroEmpresa(), frm.getComplementoEmpresa(),
                 frm.getBairroEmpresa(), frm.getCidadeEmpresa(),
-                frm.getEstadoEmpresa(), frm.getCepEmpresa(), 
-                frm.getSiteEmpresa(), frm.getEmailEmpresa(), 
+                frm.getEstadoEmpresa(), frm.getCepEmpresa(),
+                frm.getSiteEmpresa(), frm.getEmailEmpresa(),
                 frm.getDdiEmpresa(), frm.getDddEmpresa(),
                 frm.getNumeroTelefoneEmpresa(), frm.getRamalEmpresa());
         mensagem = msgAlteracao;
       }
-      
+
       return executaBrowser(req, mensagem);
     } catch (NamingException ex) {
       Logger.getLogger(GravarEmpresa.class.getName()).log(
@@ -89,7 +92,7 @@ public class GravarEmpresa implements Comando {
     }
   }
 
-  private String executaBrowser(HttpServletRequest req, String mensagem) 
+  private String executaBrowser(HttpServletRequest req, String mensagem)
           throws NamingException, SQLException {
     view.BrowserEmpresas browser = new view.BrowserEmpresas(
             model.services.Empresas.recuperar());
@@ -98,7 +101,7 @@ public class GravarEmpresa implements Comando {
     return uriBrowser;
   }
 
-   private void populaForm(view.FormEmpresa frm, HttpServletRequest req) {
+  private void populaForm(view.FormEmpresa frm, HttpServletRequest req) {
 
     frm.setNomeFantasiaEmpresa(
             util.Request.getParameter(req, "nomeFantasiaEmpresa"));

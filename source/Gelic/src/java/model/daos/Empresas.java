@@ -77,14 +77,14 @@ public class Empresas {
     pstmt.setString(4, razaoSocialEmpresa);
     pstmt.setString(5, nomeFantasiaEmpresa);
     if (ePortadorEmpresa) {
-      pstmt.setBoolean(6, true);
+      pstmt.setString(6, "S");
     } else {
-      pstmt.setBoolean(6, false);
+      pstmt.setString(6, "N");
     }
     if (eFornecedorEmpresa) {
-      pstmt.setBoolean(7, true);
+      pstmt.setString(7, "S");
     } else {
-      pstmt.setBoolean(7, false);
+      pstmt.setString(7, "N");
     }
     pstmt.setInt(8, end.getId());
 
