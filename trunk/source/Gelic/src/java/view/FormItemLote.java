@@ -52,16 +52,16 @@ public class FormItemLote extends Form {
     }
     return null;
   }
-  
+
   @Override
-  public void apagaErros(){
+  public void apagaErros() {
     super.apagaErros();
-    erroNumeroItemLote="";
+    erroNumeroItemLote = "";
     erroPrecoEstimadoItemLote = "";
     erroProdutoItemLote = "";
     erroQuantidadeItemLote = "";
   }
-          
+
   public String gravar() throws SQLException, NamingException, ExcecaoForm {
     if (isExclusao()) {
       //ignora erros de parse
@@ -289,7 +289,7 @@ public class FormItemLote extends Form {
 
   private void valida() throws NamingException, SQLException {
     if (isInclusao()) {
-      if (model.services.ItensLote.recuperar( 
+      if (model.services.ItensLote.recuperar(
               getLote(), getNumeroItemLote()) != null) {
         addErro("Número do item de lote inválido.");
         setErroNumeroItemLote("Já existe item com esse número neste lote.");
@@ -303,7 +303,11 @@ public class FormItemLote extends Form {
         setErroNumeroItemLote("Já existe item com esse número neste lote.");
 
       }
-    }  
+    }
+    if (isExclusao()) {
+      if (model.services.Propostas.temPropostas(getItemLote())) {
+        addErro("Exclusão inválida: já existe propostas para este item.");
+      }
+    }
   }
-  
 }

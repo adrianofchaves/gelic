@@ -35,11 +35,11 @@
 <p class="caption">
   ${sessionScope.formItemLote.titulo}
 </p>
-<font class="erro" >
+
   <c:forEach var="erro" items="${sessionScope.formItemLote.erros}">
-    <P>${erro}</P>
+    <P class="erro">${erro}</P>
   </c:forEach>
-</font>
+
 
 <P>
   Número: <BR>
