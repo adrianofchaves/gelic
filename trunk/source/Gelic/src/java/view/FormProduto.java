@@ -51,6 +51,11 @@ public class FormProduto extends Form {
     apagaErros();
     if (isExclusao()) {
       /* colocar aqui críticas de exclusão */
+      if( model.services.ItensLote.temItens(getProduto())){
+        addErro("Exclusão inválida: este produto está " +
+                "relacionado a algum lote.");
+      }
+        
       return;
     }
     if (getCodigoProduto().length() == 0) {
