@@ -11,6 +11,7 @@ import javax.naming.NamingException;
 
 
 
+
 /**
  *
  * @author Adriano
@@ -79,5 +80,11 @@ public class ItensLote {
       }     
     }
     return null;
+  }
+
+  public static boolean temItens(model.beans.Produto produto) 
+          throws NamingException, SQLException {
+    return model.daos.ItensLote.contaItens(produto) > 0;
+            
   }
 }

@@ -11,9 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.naming.NamingException;
 
-
-
-
 /**
  *
  * @author Adriano
@@ -34,6 +31,22 @@ public class ItensLote {
     pstmt.setInt(5, itemLote.getId());
     int buffer = pstmt.executeUpdate();
     pstmt.close();
+    return buffer;
+  }
+
+  public static int contaItens(model.beans.Produto produto)
+          throws NamingException, SQLException {
+    final String sql = "select count(*) from ITENSLOTE where PRODUTO = ?";
+    Connection gelic = model.services.Conexao.getPool().getConnection();
+
+    PreparedStatement pstmt = gelic.prepareStatement(sql);
+    pstmt.setInt(1, produto.getId());
+    ResultSet rs = pstmt.executeQuery();
+    rs.next();
+    int buffer = rs.getInt(1);
+    rs.close();
+    pstmt.close();
+    gelic.close();
     return buffer;
   }
 

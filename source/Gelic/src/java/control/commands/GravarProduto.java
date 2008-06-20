@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
+import view.FormProduto;
 
 /**
  *
@@ -37,32 +38,11 @@ public class GravarProduto implements Comando {
       if (frm == null) {
         frm = new view.FormProduto();
       }
-      frm.apagaErros();              
-      /* popula form */
-      frm.setCodigoProduto(util.Request.getParameter(req,
-              "codigoProduto"));
-      frm.setDescricaoProduto(util.Request.getParameter(req,
-              "descricaoProduto"));
-      float buffer;
-      try {
-        buffer = util.Request.getFloatParameter(req, "precovendaProduto");
-        frm.setPrecovendaProduto(buffer);
-      } catch (NullPointerException ex) {
-        frm.addErro( "Campo preço de venda inválido.");
-        frm.setErroPrecoVendaProduto("Valor de ponto flutuante inválido.");
-      } catch (NumberFormatException ex) {
-        frm.addErro( "Campo preço de venda inválido.");
-        frm.setErroPrecoVendaProduto("Valor de ponto flutuante inválido.");
-      }
-      try {
-        buffer = util.Request.getFloatParameter(req, "precocompraProduto");
-        frm.setPrecocompraProduto(buffer);
-      } catch (NullPointerException ex) {
-        frm.addErro( "Campo preço de compra inválido.");
-        frm.setErroPrecoCompraProduto("Valor de ponto flutuante inválido.");
-      } catch (NumberFormatException ex) {
-        frm.addErro( "Campo preço de compra inválido.");
-        frm.setErroPrecoCompraProduto("Valor de ponto flutuante inválido.");        
+      frm.apagaErros();
+      if (frm.isExclusao()) {
+        frm.atualizaCampos();
+      } else {
+        populaForm(frm, req);
       }
       if (!frm.isExclusao() && frm.temErros()) {
         return uriForm;
@@ -118,5 +98,32 @@ public class GravarProduto implements Comando {
     browser.setMensagem(mensagem);
     req.getSession().setAttribute(chaveBrowser, browser);
     return uriBrowser;
+  }
+
+  private void populaForm(FormProduto frm, HttpServletRequest req) {
+    /* popula form */
+    frm.setCodigoProduto(util.Request.getParameter(req, "codigoProduto"));
+    frm.setDescricaoProduto(util.Request.getParameter(req, "descricaoProduto"));
+    float buffer;
+    try {
+      buffer = util.Request.getFloatParameter(req, "precovendaProduto");
+      frm.setPrecovendaProduto(buffer);
+    } catch (NullPointerException ex) {
+      frm.addErro("Campo preço de venda inválido.");
+      frm.setErroPrecoVendaProduto("Valor de ponto flutuante inválido.");
+    } catch (NumberFormatException ex) {
+      frm.addErro("Campo preço de venda inválido.");
+      frm.setErroPrecoVendaProduto("Valor de ponto flutuante inválido.");
+    }
+    try {
+      buffer = util.Request.getFloatParameter(req, "precocompraProduto");
+      frm.setPrecocompraProduto(buffer);
+    } catch (NullPointerException ex) {
+      frm.addErro("Campo preço de compra inválido.");
+      frm.setErroPrecoCompraProduto("Valor de ponto flutuante inválido.");
+    } catch (NumberFormatException ex) {
+      frm.addErro("Campo preço de compra inválido.");
+      frm.setErroPrecoCompraProduto("Valor de ponto flutuante inválido.");
+    }
   }
 }
