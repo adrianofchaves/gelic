@@ -7,6 +7,8 @@ package view;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.naming.NamingException;
 
 /**
@@ -65,7 +67,19 @@ public class FormLicitacao extends Form {
   private boolean alteracao = false;
 
   @Override
-  public void refresh() {
+  public void refresh() throws ExcecaoForm {
+    try {
+      this.licitacao = model.services.Licitacoes.recuperar(
+              this.licitacao.getId());
+    } catch (SQLException ex) {
+      Logger.getLogger(FormLicitacao.class.getName()).log(
+              Level.SEVERE, null, ex);
+      throw new ExcecaoForm(ex.getMessage());
+    } catch (NamingException ex) {
+      Logger.getLogger(FormLicitacao.class.getName()).log(
+              Level.SEVERE, null, ex);
+      throw new ExcecaoForm(ex.getMessage());
+    }
 
   }
 

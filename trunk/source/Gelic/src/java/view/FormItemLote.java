@@ -296,8 +296,9 @@ public class FormItemLote extends Form {
       }
     }
     if (isAlteracao()) {
-      if (model.services.ItensLote.recuperar(
-              getLote(), getNumeroItemLote()).getId() != getItemLote().getId()) {
+      model.beans.ItemLote item = model.services.ItensLote.recuperar(
+              getLote(), getNumeroItemLote());
+      if (item != null && item.getId() != getItemLote().getId()) {
         addErro("Número do item de lote inválido.");
         setErroNumeroItemLote("Já existe item com esse número neste lote.");
 

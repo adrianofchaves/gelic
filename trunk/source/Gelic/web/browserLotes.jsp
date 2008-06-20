@@ -18,7 +18,7 @@
     
     <table class="menu"><tr>
         <th class="menuItem" >                
-        <a href="${sessionScope.browserLotes.origem.nome}">
+          <a href="${sessionScope.browserLotes.origem.nome}">
           Voltar</a>
         </th>
         <th class="menuItem" >
@@ -62,9 +62,7 @@
           </td>
         </tr>
       </c:forEach>      
-    </table>        
-    <font class="mensagem">
-      <P>${sessionScope.browserLotes.mensagem}</P>
-    </font>
+    </table>
+    <P class="mensagem">${sessionScope.browserLotes.mensagem}</P>
   </body>
 </html>
