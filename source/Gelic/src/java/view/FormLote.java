@@ -98,6 +98,7 @@ public class FormLote extends Form {
 
   public String preparaInclusao() {
     setTitulo("Novo lote da licitação " + getLicitacao().toString());
+    
     getOrigem().setMensagem("");
     setNome(NOME_DEFAULT);
     setInclusao(true);
@@ -195,8 +196,9 @@ public class FormLote extends Form {
       }
     }
     if (isAlteracao()) {
-      if (model.services.Lotes.recuperar(
-              getLicitacao(), getNumeroLote()).getId() != lote.getId()) {
+      model.beans.Lote mLote = model.services.Lotes.recuperar( getLicitacao(), 
+              getNumeroLote());
+      if (mLote != null && mLote.getId() != lote.getId()) {
         addErro("Número do lote inválido.");
         setErroNumeroLote("Já existe lote com esse número nesta licitação.");
 
@@ -204,6 +206,7 @@ public class FormLote extends Form {
     }
   }
 
+  @Override
   public void refresh() throws ExcecaoForm {
     if (!isInclusao()) {
       try {
